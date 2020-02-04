@@ -8,9 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using webTemplate.Models;
-using static webTemplate.Models.ApplicationUser;
 
-namespace webTemplate.App_Start
+namespace webTemplate
 {
 	public partial class Startup
 	{
@@ -20,9 +19,9 @@ namespace webTemplate.App_Start
 			// 設定資料庫內容、使用者管理員和登入管理員，以針對每個要求使用單一執行個體
 			app.CreatePerOwinContext(ApplicationDbContext.Create);
 			app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
-			//app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
-			//使用Role來判斷前後台使用者: 2.增加角色的OwinContext
-			//app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
+            app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
+            //使用Role來判斷前後台使用者: 2.增加角色的OwinContext
+            //app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
             // 讓應用程式使用 Cookie 儲存已登入使用者的資訊
             // 並使用 Cookie 暫時儲存使用者利用協力廠商登入提供者登入的相關資訊；

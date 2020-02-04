@@ -13,3 +13,4 @@ C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\zh-Hant\EntityFramework.res
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.csproj.CopyComplete
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.dll
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.pdb
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll

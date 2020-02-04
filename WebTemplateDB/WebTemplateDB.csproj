@@ -56,6 +56,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IMenuUIService.cs" />
+    <Compile Include="Models\AspNetRoles.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaims.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogins.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\WebFunctionList.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
@@ -90,12 +102,11 @@
     </None>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Models\WebTemplate.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WebTemplate.Context.cs</LastGenOutput>
       <DependentUpon>WebTemplate.edmx</DependentUpon>
+      <LastGenOutput>WebTemplate.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\WebTemplate.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

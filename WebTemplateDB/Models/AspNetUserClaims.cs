@@ -12,18 +12,13 @@ namespace WebTemplateDB.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class WebFunctionList
+    public partial class AspNetUserClaims
     {
         public int Id { get; set; }
-        public string IId { get; set; }
-        public string ParentId { get; set; }
-        public string Text { get; set; }
-        public string URL { get; set; }
-        public string ActionName { get; set; }
-        public string Controller { get; set; }
-        public Nullable<int> Sort { get; set; }
-        public string sValue { get; set; }
-        public Nullable<int> LastLevel { get; set; }
-        public string iclassTag { get; set; }
+        public string UserId { get; set; }
+        public string ClaimType { get; set; }
+        public string ClaimValue { get; set; }
+    
+        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

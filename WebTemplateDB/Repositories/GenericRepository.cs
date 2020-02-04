@@ -16,7 +16,7 @@ namespace WebTemplateDB.Repositories
         public DbContext _context { get; set; }
 
         public GenericRepository()
-            : this(new WebTemplateTestEntities())
+            : this(new WebTemplateEntities())
         {
         }
 

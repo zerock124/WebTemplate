@@ -14,7 +14,7 @@ namespace WebTemplateDB.Service
     {
         private IGenericRepository<WebFunctionList> _WebFunctionList;
 
-        protected WebTemplateTestEntities _db
+        protected WebTemplateEntities _db
         {
             get;
             private set;
@@ -23,7 +23,7 @@ namespace WebTemplateDB.Service
         public MenuUIService()
         {
             _WebFunctionList = new GenericRepository<WebFunctionList>();
-            _db = new WebTemplateTestEntities();
+            _db = new WebTemplateEntities();
         }
 
         /// <summary>

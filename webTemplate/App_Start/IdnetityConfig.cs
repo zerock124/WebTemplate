@@ -2,15 +2,16 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using Microsoft.Owin.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using webTemplate.Models;
-using static webTemplate.Models.ApplicationUser;
 
-namespace webTemplate.App_Start
+namespace webTemplate
 {
     public class EmailService : IIdentityMessageService
     {
@@ -84,6 +85,38 @@ namespace webTemplate.App_Start
             }
 
             return manager;
+        }
+    }
+
+    // 設定在此應用程式中使用的應用程式登入管理員。
+    public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
+    {
+        public ApplicationSignInManager(ApplicationUserManager userManager, IAuthenticationManager authenticationManager)
+            : base(userManager, authenticationManager)
+        {
+        }
+
+        public override Task<ClaimsIdentity> CreateUserIdentityAsync(ApplicationUser user)
+        {
+            return user.GenerateUserIdentityAsync((ApplicationUserManager)UserManager);
+        }
+
+        public static ApplicationSignInManager Create(IdentityFactoryOptions<ApplicationSignInManager> options, IOwinContext context)
+        {
+            return new ApplicationSignInManager(context.GetUserManager<ApplicationUserManager>(), context.Authentication);
+        }
+    }
+
+    //使用Role來判斷前後台使用者: 1.增加角色管理員相關的設定
+    public class ApplicationRoleManager : RoleManager<IdentityRole>
+    {
+        public ApplicationRoleManager(IRoleStore<IdentityRole, string> roleStore) : base(roleStore)
+        {
+        }
+
+        public static ApplicationRoleManager Create(IdentityFactoryOptions<ApplicationRoleManager> options, IOwinContext context)
+        {
+            return new ApplicationRoleManager(new RoleStore<IdentityRole>(context.Get<ApplicationDbContext>()));
         }
     }
 }
