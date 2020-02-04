@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="WebTemplateTestModelStoreContainer" CdmEntityContainer="WebTemplateTestEntities">
+    <EntitySetMapping Name="WebFunctionList">
+      <EntityTypeMapping TypeName="WebTemplateTestModel.WebFunctionList">
+        <MappingFragment StoreEntitySet="WebFunctionList">
+          <ScalarProperty Name="LastLevel" ColumnName="LastLevel" />
+          <ScalarProperty Name="sValue" ColumnName="sValue" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IId" ColumnName="IId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Text" ColumnName="Text" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+          <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+          <ScalarProperty Name="Controller" ColumnName="Controller" />
+          <ScalarProperty Name="iclassTag" ColumnName="iclassTag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

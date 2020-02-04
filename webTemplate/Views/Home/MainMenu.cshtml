@@ -1,0 +1,121 @@
+﻿@model List<ViewModel.Home.WebMenuViewModel>
+
+@{
+
+    string error = ViewBag.errorMsg;
+    var root = Model.Where(m => string.IsNullOrEmpty(m.ParentId));
+    var node = Model.Where(m => !string.IsNullOrEmpty(m.ParentId));
+
+}
+
+
+<div class="sideBar" id="MainMenu">
+
+    <div class="menuRow" data-floor="1" data-menutype="Main">
+        <div class="nav flex-column">
+
+            <div class="nav-item">
+                <a class="nav-link" href="@Url.Action("Index","Home")">
+                    <i class="material-icons">home</i>
+                    <span class="description">首頁</span>
+                </a>
+            </div>
+
+            @MenuItemRender(root, true)
+        </div>
+    </div>
+
+    @{
+        var parentids = node.Select(x => x.ParentId).Distinct();
+    }
+
+    @foreach (string parentid in parentids)
+    {
+        var nodelist = node.Where(x => x.ParentId == parentid);
+        var floor = 1;
+        var iid = parentid;
+        var findParentName = true;
+        var parentName = "";
+        var parentIcon = "";
+
+        foreach (var i in Model)
+        {
+            if (i.IId == iid)
+            {
+                floor++;
+                iid = i.ParentId;
+
+                if (findParentName)
+                {
+                    parentName = i.Text;
+                    parentIcon = i.iclassTag;
+                }
+            }
+        }
+
+        <div class="menuRow" data-floor="@floor" data-menutype="Indent" data-id="@parentid">
+            <div class="px-3 pt-4">
+                <h5>
+                    <i class="material-icons">@parentIcon</i>
+                    @parentName
+                </h5>
+            </div>
+            <hr class="mt-0" />
+            <div class="nav flex-column">
+
+                @MenuItemRender(nodelist)
+
+            </div>
+        </div>
+
+    }
+
+    @helper MenuItemRender(IEnumerable<ViewModel.Home.WebMenuViewModel> menuItem, bool descriptionValue = false)
+    {
+
+        foreach (var item in menuItem)
+        {
+            var hasURL = !string.IsNullOrEmpty(item.URL);
+            var hasChilden = Model.Any(x => x.ParentId == item.IId);
+
+            var propURL = hasURL ? string.Format("href={0}", Url.Content("~" + item.URL)) : "";
+            var childenData = hasChilden ? string.Format("data-childrenid={0}", item.IId) : "";
+
+            var textClass = descriptionValue ? string.Format("class={0}", "description") : "";
+
+            <div class="nav-item" @childenData>
+                <a class="nav-link" @propURL>
+                    <i class="material-icons">@item.iclassTag</i>
+                    <span @textClass>@item.Text</span>
+                    @if (hasChilden)
+                    {<i class="material-icons smenuicon">expand_more</i>}
+                </a>
+            </div>
+        }
+
+    }
+
+
+    @*<div class="menuRow" data-floor="1" data-menutype="Main">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="@Url.Action("Index","Home")">
+                        <i class="material-icons">home</i>
+                        首頁
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="menuRow" data-floor="2" data-menutype="Indent" data-id="aaa1">
+            <ul class="nav flex-column">
+                <li class="nav-item" data-childrenid="aaa2">
+                    <a class="nav-link">
+                        <i class="material-icons">done</i>
+                        次選項1
+                        <i class="material-icons smenuicon">expand_more</i>
+                    </a>
+                </li>
+            </ul>
+        </div>*@
+</div>

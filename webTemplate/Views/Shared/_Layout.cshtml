@@ -1,0 +1,229 @@
+﻿@{
+    string BasePath = Url.Content("~");
+    string WebTitle = "後臺管理系統";
+    string UserName = User.Identity.Name;
+}
+
+<!DOCTYPE html>
+<html lang="zh-tw">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*<link rel="icon" type="image/x-icon" href="@Url.Content("~/Images/icon/" + FavIconFileName)" />*@
+    <title>@ViewBag.Title - @WebTitle</title>
+    @Styles.Render("~/Style/MainStyles")
+    @RenderSection("Styles", required: false)
+    @Scripts.Render("~/Script/MainScripts")
+</head>
+<body>
+    <nav class="navbar navbar-expand fixed-top navbar-dark bg-dark py-0">
+        <a class="navbar-brand" href="@Url.Action("Index","Home")">
+            @*<img class="webLogo" src="@Url.Content("~/Images/logo/" + WebLogoFileName)" role="banner" />*@
+            <span class="d-none d-md-inline">@WebTitle</span>
+        </a>
+        <ul class="navbar-nav flex-row ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="material-icons">person</i>
+                    @UserName
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="#"><i class="icon-settings mr-2"></i>設定</a>
+                    <a class="dropdown-item" href="@Url.Action("ResetPassword", "Account")"><i class="icon-settings mr-2"></i>重設密碼</a>
+                    <a class="dropdown-item" data-fn="signout" href="#"><i class="icon-logout mr-2"></i>登出</a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+
+    <div>
+
+        @Html.Action("MainMenu", "Home")
+
+        @*<div class="sideBar" id="MainMenu" data-root="@Url.Content("~/")" data-url="@Url.Action("MainMenu", "Home")"></div>*@
+
+        <div class="appContent">
+
+            <main class="main">
+                @RenderBody()
+            </main>
+
+            <footer class="bg-dark text-light">
+                <div class="container-fluid">
+                    <div class="pt-4 pb-2">
+                        &copy;
+                        @DateTime.Now.Year
+                        -
+                        @WebTitle
+                    </div>
+                    @*<div class="row my-4">
+                            <div class="col-12 col-xl-auto">
+                                <h3>通用計程車管理系統</h3>
+                                <p>&copy; @DateTime.Now.Year - 我的 ASP.NET 應用程式</p>
+                            </div>
+                            <div class="col-12 col-xl px-0">
+                                <ul class="nav">
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            司機管理
+                                        </a>
+
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link active small" href="#">
+                                                    司機管理
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link small" href="#">
+                                                    營運管理
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link small" href="#">Link</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link disabled small" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            營運管理
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            帳號管理
+                                        </a>
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link active small" href="#">
+                                                    營運管理
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link small" href="#">
+                                                    營運管理
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link small" href="#">
+                                                    Link
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link disabled small" href="#" tabindex="-1" aria-disabled="true">
+                                                    Disabled
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link">
+                                            系統設置
+                                        </a>
+                                        <ul class="nav flex-column">
+                                            <li class="nav-item">
+                                                <a class="nav-link active small" href="#">
+                                                    司機管理
+                                                </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link small" href="#">
+                                                    營運管理
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link active">
+                                            營運管理
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>*@
+                </div>
+            </footer>
+        </div>
+
+    </div>
+    @using (Html.BeginForm("Signout", "Account", FormMethod.Post, new { @class = "d-none", @id = "signoutForm" }))
+    {
+        @Html.AntiForgeryToken();
+    }
+
+    @Scripts.Render("~/Script/LayoutComponents")
+    @Scripts.Render("~/Scripts/Requirejs")
+    @*
+        require全域設定(可在內頁重複設定)
+
+        目前使用自訂套件名單有
+        1. vuex-module-decorators - npm內容缺乏 umd & amd 編譯
+        2. v-calendar - npm內容包含 umd 編譯，但在 amd 的內容缺少套件引入內容 (["vue"])
+    *@
+    @if (HttpContext.Current.IsDebuggingEnabled)
+    {
+        <script>
+        requirejs.config({
+            urlArgs(url) {
+                return (url.indexOf('?') === -1 ? '?' : '&') + 'v=' + new Date().getTime();
+            },
+            waitSeconds: 100,
+            paths: {
+                "vue": "@Url.Content("~/node_modules/vue/dist/vue")",
+                "vue-class-component": "@Url.Content("~/node_modules/vue-class-component/dist/vue-class-component")",
+                "vue-property-decorator": "@Url.Content("~/node_modules/vue-property-decorator/lib/vue-property-decorator.umd")",
+                "vue-router": "@Url.Content("~/node_modules/vue-router/dist/vue-router")",
+                "vuex": "@Url.Content("~/node_modules/vuex/dist/vuex")",
+                "vuex-class": "@Url.Content("~/node_modules/vuex-class/dist/vuex-class")",
+                "vuex-module-decorators": "@Url.Content("~/Scripts/vuex-module-decorators/dist/amd/index")",
+                "bootstrap-vue": "@Url.Content("~/node_modules/bootstrap-vue/dist/bootstrap-vue")",
+                "v-calendar": "@Url.Content("~/Scripts/v-calendar/lib/v-calendar.umd")",
+                "vue-smooth-reflow": "@Url.Content("~/node_modules/vue-smooth-reflow/dist/vue-smooth-reflow.min")",
+                //"moment": "@Url.Content("~/node_modules/moment/moment")"
+            },
+            packages: [
+                {
+                    name: 'moment',
+                    location: '@Url.Content("~/node_modules/moment")',
+                    main: 'moment'
+                }
+            ]
+        });
+        </script>
+    }
+    else
+    {
+        <script>
+        requirejs.config({
+            @*urlArgs: 'v=@ScriptVersion',*@
+            waitSeconds: 100,
+            paths: {
+                "vue": "@Url.Content("~/node_modules/vue/dist/vue.min")",
+                "vue-class-component": "@Url.Content("~/node_modules/vue-class-component/dist/vue-class-component")",
+                "vue-property-decorator": "@Url.Content("~/node_modules/vue-property-decorator/lib/vue-property-decorator.umd")",
+                "vue-router": "@Url.Content("~/node_modules/vue-router/dist/vue-router.min")",
+                "vuex": "@Url.Content("~/node_modules/vuex/dist/vuex.min")",
+                "vuex-class": "@Url.Content("~/node_modules/vuex-class/dist/vuex-class.min")",
+                "vuex-module-decorators": "@Url.Content("~/Scripts/vuex-module-decorators/dist/amd/index.min")",
+                "bootstrap-vue": "@Url.Content("~/node_modules/bootstrap-vue/dist/bootstrap-vue.min")",
+                "v-calendar": "@Url.Content("~/Scripts/v-calendar/lib/v-calendar.umd.min")",
+                "vue-smooth-reflow": "@Url.Content("~/node_modules/vue-smooth-reflow/dist/vue-smooth-reflow.min")",
+                //"moment": "@Url.Content("~/node_modules/moment/moment")"
+            },
+            packages: [
+                {
+                    name: 'moment',
+                    location: '@Url.Content("~/node_modules/moment")',
+                    main: 'min/moment.min'
+                }
+            ]
+        });
+        </script>
+    }
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

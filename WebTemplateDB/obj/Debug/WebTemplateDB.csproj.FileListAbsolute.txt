@@ -1,0 +1,15 @@
+C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.csprojAssemblyReference.cache
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\WebTemplateDB.dll.config
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\WebTemplateDB.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\WebTemplateDB.pdb
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\EntityFramework.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\EntityFramework.SqlServer.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\ViewModel.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\ViewModel.pdb
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\ViewModel.dll.config
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\EntityFramework.xml
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\EntityFramework.SqlServer.xml
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\zh-Hant\EntityFramework.resources.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.csproj.CopyComplete
+C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.pdb
