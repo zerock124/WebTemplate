@@ -48,7 +48,7 @@ namespace webTemplate.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() : base("WebTemplateTestEntities", throwIfV1Schema: false)
+        public ApplicationDbContext() : base("WebTemplate", throwIfV1Schema: false)
         {
         }
 

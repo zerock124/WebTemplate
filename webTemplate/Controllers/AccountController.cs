@@ -71,7 +71,8 @@ namespace webTemplate.Controllers
                     CreateTime = DateTime.Now,
                     PhoneNumber = model.PhoneNumber,
                     PhoneNumberConfirmed = true,
-                    RegisterDate = DateTime.Now,                  
+                    RegisterDate = DateTime.Now,
+                    UpdateTime = DateTime.Now,
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
