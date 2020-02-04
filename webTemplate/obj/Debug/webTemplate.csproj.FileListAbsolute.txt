@@ -91,10 +91,8 @@ C:\xinyu\Project\webTemplate\webTemplate\bin\ViewModel.dll.config
 C:\xinyu\Project\webTemplate\webTemplate\bin\WebTemplateDB.pdb
 C:\xinyu\Project\webTemplate\webTemplate\bin\WebTemplateDB.dll.config
 C:\xinyu\Project\webTemplate\webTemplate\bin\EntityFramework.xml
-C:\xinyu\Project\webTemplate\webTemplate\bin\zh-Hant\EntityFramework.resources.dll
 C:\xinyu\Project\webTemplate\webTemplate\bin\EntityFramework.SqlServer.dll
 C:\xinyu\Project\webTemplate\webTemplate\bin\EntityFramework.SqlServer.xml
-C:\xinyu\Project\webTemplate\webTemplate\bin\zh-Hant\EntityFramework.SqlServer.resources.dll
 C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.dll
 C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Security.dll
 C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Security.OAuth.dll
