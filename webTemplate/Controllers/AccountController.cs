@@ -43,9 +43,10 @@ namespace webTemplate.Controllers
         }
 
         // GET: Account
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult SignIn()
         {
-            return View();
+            return View("SignIn");
         }
 
         [AllowAnonymous]

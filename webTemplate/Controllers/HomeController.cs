@@ -8,6 +8,7 @@ using WebTemplateDB.Service;
 
 namespace webTemplate.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         private MenuUIService _MenuUI;
