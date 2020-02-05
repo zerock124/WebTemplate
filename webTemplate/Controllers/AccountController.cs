@@ -13,14 +13,14 @@ using webTemplate.Models;
 namespace webTemplate.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         /*
         * 目前構想此控制項用於處理外部人員資訊 
         * 包含登入、外部註冊、修改密碼(確認原密碼)等等
         */
         private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private new ApplicationUserManager _userManager;
 
         public ApplicationSignInManager SignInManager
         {

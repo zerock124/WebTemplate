@@ -110,3 +110,5 @@ C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.AspNet.Identity.EntityFra
 C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Security.Cookies.xml
+C:\xinyu\Project\webTemplate\webTemplate\bin\Serilog.dll
+C:\xinyu\Project\webTemplate\webTemplate\bin\Serilog.xml

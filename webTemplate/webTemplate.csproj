@@ -82,6 +82,9 @@
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\packages\Serilog.2.9.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -158,6 +161,8 @@
     <Compile Include="App_Start\IdnetityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\BackOperationRecordController.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -220,8 +225,8 @@
     <Content Include="Content\dist\js\pages\dashboard.js" />
     <Content Include="Content\dist\js\pages\dashboard2.js" />
     <Content Include="Content\dist\js\pages\dashboard3.js" />
+    <Content Include="Content\font-family.css" />
     <Content Include="Content\fonts\MaterialIcons-Regular.svg" />
-    <Content Include="Content\logineffect\logineffect.css" />
     <Content Include="Content\Main.css" />
     <Content Include="Content\Main.min.css" />
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.css" />
@@ -242,10 +247,6 @@
     <Content Include="Content\plugins\bootstrap4-duallistbox\bootstrap-duallistbox.min.css" />
     <Content Include="Content\plugins\bootstrap4-duallistbox\jquery.bootstrap-duallistbox.js" />
     <Content Include="Content\plugins\bootstrap4-duallistbox\jquery.bootstrap-duallistbox.min.js" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.bundle.js" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.bundle.min.js" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.js" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\plugins\bs-custom-file-input\bs-custom-file-input.js" />
     <Content Include="Content\plugins\bs-custom-file-input\bs-custom-file-input.min.js" />
     <Content Include="Content\plugins\chart.js\Chart.bundle.js" />
@@ -1782,7 +1783,6 @@
     <Content Include="Content\plugins\toastr\toastr.css" />
     <Content Include="Content\plugins\toastr\toastr.min.css" />
     <Content Include="Content\plugins\toastr\toastr.min.js" />
-    <Content Include="Content\road\roadcontainer.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1919,10 +1919,6 @@
     <Content Include="Content\plugins\bootstrap-colorpicker\css\bootstrap-colorpicker.min.css.map" />
     <Content Include="Content\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.js.map" />
     <Content Include="Content\plugins\bootstrap-colorpicker\js\bootstrap-colorpicker.min.js.map" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.bundle.js.map" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.bundle.min.js.map" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.js.map" />
-    <Content Include="Content\plugins\bootstrap\js\bootstrap.min.js.map" />
     <Content Include="Content\plugins\bs-custom-file-input\bs-custom-file-input.js.map" />
     <Content Include="Content\plugins\bs-custom-file-input\bs-custom-file-input.min.js.map" />
     <Content Include="Content\plugins\daterangepicker\bower.json" />
@@ -1992,12 +1988,9 @@
     <Content Include="Content\dist\css\alt\adminlte.plugins.min.css.map" />
     <Content Include="Content\dist\js\adminlte.js.map" />
     <Content Include="Content\dist\js\adminlte.min.js.map" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="node_modules\requirejs\require.js" />
     <Content Include="Scripts\bootstrap\bootstrap.js" />
     <Content Include="Scripts\bootstrap\bootstrap.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate\jquery.validate.min.js" />
@@ -2027,10 +2020,12 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="tsconfig.json" />
+    <Content Include="Views\BackOperationRecord\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Scripts\jquery.paging\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2038,7 +2033,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ViewModel\ViewModel.csproj">

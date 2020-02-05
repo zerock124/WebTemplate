@@ -3,15 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ViewModel.Home;
-using WebTemplateDB.Service;
 
 namespace webTemplate.Controllers
 {
-    [Authorize]
-    public class HomeController : BaseController
+    public class BackOperationRecordController : Controller
     {
-
+        // GET: BackOperationRecord
         public ActionResult Index()
         {
             return View();

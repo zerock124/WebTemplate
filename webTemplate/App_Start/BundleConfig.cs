@@ -10,10 +10,12 @@ namespace webTemplate
         {
 
             bundles.Add(new StyleBundle("~/Style/MainStyles").Include(
+                "~/Content/font-family.css",
                 "~/Content/dist/css/adminlte.min.css",
                 "~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"));
 
             bundles.Add(new StyleBundle("~/Style/SiginStyles").Include(
+                "~/Content/font-family.css",
                 "~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
                 "~/Content/dist/css/adminlte.min.css"));
 

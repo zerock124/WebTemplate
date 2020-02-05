@@ -46,8 +46,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BackOperationRecord\BackOperationRecordViewModel.cs" />
     <Compile Include="Home\WebMenuViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Share\PaginationViewModel.cs" />
+    <Compile Include="Share\ResponseViewModel.cs" />
+    <Compile Include="Share\ResWithPaginationViewModel.cs" />
+    <Compile Include="Verity\DataVerityResult.cs" />
+    <Compile Include="Verity\PageDataVerityResult.cs" />
+    <Compile Include="Verity\VerityResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

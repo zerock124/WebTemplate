@@ -34,9 +34,9 @@
         <div class="control-sidebar-bg"></div>
     </div>
 
+
     @Scripts.Render("~/Script/MainScripts")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/lib")
+    <script src="~/Content/dist/js/demo.js"></script>
     @RenderSection("scripts", required: false)
 
     @Scripts.Render("~/Script/LayoutComponents")

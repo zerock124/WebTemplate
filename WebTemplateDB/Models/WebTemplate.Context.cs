@@ -30,5 +30,6 @@ namespace WebTemplateDB.Models
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<WebFunctionList> WebFunctionList { get; set; }
+        public virtual DbSet<BackOperationRecord> BackOperationRecord { get; set; }
     }
 }

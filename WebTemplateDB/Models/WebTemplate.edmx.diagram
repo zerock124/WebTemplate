@@ -13,6 +13,7 @@
         <AssociationConnector Association="WebTemplateModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="WebTemplateModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
         <AssociationConnector Association="WebTemplateModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="WebTemplateModel.BackOperationRecord" Width="1.5" PointX="3.375" PointY="6.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
