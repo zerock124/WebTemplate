@@ -2026,6 +2026,7 @@
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
+    <Content Include="tsconfig.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2055,6 +2056,7 @@
     <TypeScriptCompile Include="Content\plugins\fullcalendar-interaction\main.d.ts" />
     <TypeScriptCompile Include="Content\plugins\fullcalendar-timegrid\main.d.ts" />
     <TypeScriptCompile Include="Content\plugins\fullcalendar\main.d.ts" />
+    <TypeScriptCompile Include="Scripts\views\components\Aside.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

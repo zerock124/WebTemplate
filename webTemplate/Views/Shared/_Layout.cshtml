@@ -12,15 +12,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @*<link rel="icon" type="image/x-icon" href="@Url.Content("~/Images/icon/" + FavIconFileName)" />*@
     <title>@ViewBag.Title - @WebTitle</title>
+    <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
     @Styles.Render("~/Style/MainStyles")
     @RenderSection("Styles", required: false)
-    @Scripts.Render("~/Script/MainScripts")
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
     <div class="wrapper">
 
         @Html.Partial("_Header")
+
+        @Html.Partial("_Sidebar")
 
         @RenderBody()
 
@@ -32,17 +34,10 @@
         <div class="control-sidebar-bg"></div>
     </div>
 
-
-
-
+    @Scripts.Render("~/Script/MainScripts")
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/lib")
     @RenderSection("scripts", required: false)
-
-    @using (Html.BeginForm("Signout", "Account", FormMethod.Post, new { @class = "d-none", @id = "signoutForm" }))
-    {
-        @Html.AntiForgeryToken();
-    }
 
     @Scripts.Render("~/Script/LayoutComponents")
     @Scripts.Render("~/Scripts/Requirejs")

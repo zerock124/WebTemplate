@@ -10,7 +10,8 @@ namespace webTemplate
         {
 
             bundles.Add(new StyleBundle("~/Style/MainStyles").Include(
-                "~/Content/Main.css"));
+                "~/Content/dist/css/adminlte.min.css",
+                "~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"));
 
             bundles.Add(new StyleBundle("~/Style/SiginStyles").Include(
                 "~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
@@ -19,11 +20,12 @@ namespace webTemplate
             bundles.Add(new ScriptBundle("~/Script/MainScripts").Include(
                 "~/Scripts/jquery/jquery-{version}.js",
                 "~/Scripts/bootstrap/bootstrap.bundle.js",
+                "~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
                 "~/Content/dist/js/adminlte.min.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/Script/LayoutComponents").Include(
-                "~/Scripts/build/components/TopNavBar.js",
+                "~/Scripts/build/components/Aside.js",
                 "~/Scripts/build/components/SideBarManu.js"
                 ));
 

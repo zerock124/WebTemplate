@@ -10,6 +10,28 @@ namespace webTemplate.Models
     {
     }
 
+    /// <summary>
+    /// 登入帳號/密碼
+    /// </summary>
+    public class LoginViewModel
+    {
+        //[Required]
+        //[Display(Name = "電子郵件")]
+        //[EmailAddress]
+        //public string Email { get; set; }
+        [Required]
+        [Display(Name = "登入帳號")]
+        public string UserName { get; set; }
+
+        [Required]
+        [DataType(DataType.Password)]
+        [Display(Name = "密碼")]
+        public string Password { get; set; }
+
+        [Display(Name = "記住我?")]
+        public bool RememberMe { get; set; }
+    }
+
     public class RegisterViewModel 
     {
         [Required]
@@ -43,5 +65,13 @@ namespace webTemplate.Models
         [Required]
         [Display(Name = "角色名稱")]
         public string RoleName { get; set; }
+    }
+
+    public class SendCodeViewModel
+    {
+        public string SelectedProvider { get; set; }
+        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
+        public string ReturnUrl { get; set; }
+        public bool RememberMe { get; set; }
     }
 }
