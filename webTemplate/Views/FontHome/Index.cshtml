@@ -1,0 +1,172 @@
+﻿
+@{
+    ViewBag.Title = "前台首頁管理";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <div id="v_app"></div>
+
+</div>
+
+<template id="FontHomeManagement">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card card-default color-palette-box">
+                <div class="card-blue">
+                    <div class="row m-3">
+                        <div class="col">
+                            <div class="info-box-content">
+                                <div class="h5">
+                                    總筆數：
+                                    <span class="badge badge-primary">5</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col text-right">
+                            <a href="@Url.Action("Create","FontHome")" class="btn btn-primary">新增</a>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-auto">
+                            <label class="h5">上線日期：</label>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                                <input type="date" v-model="StartDateTime" class="form-control float-right">
+                                <h4>
+                                    ~
+                                </h4>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                                <input type="date" v-model="EndDateTime" class="form-control float-right">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-auto">
+                            <label class="h5">關鍵字：</label>
+                        </div>
+                        <div class="col-auto navbar-expand navbar-white navbar-light">
+                            <div class="input-group">
+                                <div class="pr-2">
+                                    <b-form-select v-model="Selectd" :options="Options"></b-form-select>
+                                </div>
+                                <input class="form-control form-control-navbar" v-model="Query" placeholder="Search">
+                                <div class="input-group-append">
+                                    <button class="btn btn-navbar" v-on:click.prevert="SetSearchDate">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col">
+                    <div class="card">
+                        <div class="card-body table-responsive table-bordered">
+                            <table class="table">
+                                <thead class="table-bordered">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>圖片</th>
+                                        <th>圖片名稱</th>
+                                        <th>連結網址</th>
+                                        <th>上線期間</th>
+                                        <th>備註</th>
+                                        <th>狀態</th>
+                                        <th>建立日期/更新日期</th>
+                                        <th>操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody v-for="(Item, index) in ListItem">
+                                    <tr>
+                                        <td>{{Item.FontHomeId}}</td>
+                                        <td><b-img :src="Item.ImgUrl" alt="Alternate Text" /></td>
+                                        <td>
+                                            {{Item.ImageName}}
+                                        </td>
+                                        <td>
+                                            {{Item.FontHomeUrl}}
+                                        </td>
+                                        <td>
+                                            {{Item.StartDateTime | dateToDateTimeString}}<br />~<br />
+                                            {{Item.EndDateTime |dateToDateTimeString}}
+                                        </td>
+                                        <td>{{Item.Remark}}</td>
+                                        <td>
+                                            <button class="btn btn-success" v-if="Item.Status">正常</button>
+                                            <button class="btn btn-danger" v-if="!Item.Status">停用</button>
+                                        </td>
+                                        <td>
+                                            {{Item.CreateTime | dateToDateTimeString}}<br />/ <br />
+                                            {{Item.UpdateTime | dateToDateTimeString}}
+                                        </td>
+                                        <td>
+                                            <button class="btn-sm btn-primary" v-on:click="GetEditFontHome(Item.FontHomeId)">
+                                                <i class="fas fa-pen"></i>
+                                            </button>
+                                            <button class="btn-sm btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </button>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                        <div class="card-footer clearfix">
+                            <b-pagination class="pagination pagination-sm m-0 float-right"
+                                          v-model="CurrentPage"
+                                          :total-rows="TotalCounts"
+                                          :per-page="PerPage"></b-pagination>
+                        </div>
+                    </div>
+                    <!-- /.card -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="FontHomeListItem">
+
+</template>
+
+@section Scripts {
+    <script>
+
+    </script>
+    <script>
+        requirejs.config({
+            baseUrl: "@Url.Content("~/Scripts/build/view/FontHome")"
+        });
+        require(["index"]);
+    </script>
+
+}

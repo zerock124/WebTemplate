@@ -14,7 +14,7 @@ namespace WebTemplateDB.Models
     
     public partial class BackOperationRecord
     {
-        public int OperationId { get; set; }
+        public int Id { get; set; }
         public string UserName { get; set; }
         public Nullable<int> RoleId { get; set; }
         public string ContentText { get; set; }

@@ -1,0 +1,6 @@
+C:\xinyu\Project\webTemplate\ViewModel\bin\Release\ViewModel.dll.config
+C:\xinyu\Project\webTemplate\ViewModel\bin\Release\ViewModel.dll
+C:\xinyu\Project\webTemplate\ViewModel\bin\Release\ViewModel.pdb
+C:\xinyu\Project\webTemplate\ViewModel\obj\Release\ViewModel.csprojAssemblyReference.cache
+C:\xinyu\Project\webTemplate\ViewModel\obj\Release\ViewModel.dll
+C:\xinyu\Project\webTemplate\ViewModel\obj\Release\ViewModel.pdb

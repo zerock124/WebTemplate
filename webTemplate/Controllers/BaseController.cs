@@ -60,13 +60,6 @@ namespace webTemplate.Controllers
 		/// </summary>
 		//public static string BingMapKey = ConfigurationManager.AppSettings["BingMapKey"].ToString();
 
-        public static HttpClient httpClient;
-
-        public BaseController()
-        {
-            httpClient = new HttpClient();
-        }
-
         ///// <summary>
         ///// 非同步執行推播API
         ///// </summary>

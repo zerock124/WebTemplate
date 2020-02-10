@@ -13,6 +13,6 @@ namespace WebTemplateDB.Interface
         /// 取所有項目 by帳號
         /// </summary>
         /// <returns></returns>
-        List<WebMenuViewModel> GetMenuByUserId();
+        //List<WebMenuViewModel> GetMenuByUserId();
     }
 }

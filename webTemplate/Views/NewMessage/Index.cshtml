@@ -1,0 +1,143 @@
+﻿
+@{
+    ViewBag.Title = "最新消息管理";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="nav-icon fas fa-comment-alt"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div id="v_app"></div>
+    <div id="NewMessageManagement">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="card card-default color-palette-box">
+                    <div class="card-blue">
+                        <div class="row m-3">
+                            <div class="col">
+                                <div class="info-box-content">
+                                    <h5>
+                                        總筆數：
+                                        <span class="badge badge-primary">5</span>
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col text-right">
+                                <button type="button" class="btn btn-primary">新增</button>
+                            </div>
+                        </div>
+                        <div class="row m-3">
+                            <div class="col-auto">
+                                <label class="h5">更新日期：</label>
+                            </div>
+                            <div class="col-auto">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control float-right" id="reservation">
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <label class="h5">關鍵字：</label>
+                            </div>
+                            <div class="col-auto navbar-expand navbar-white navbar-light">
+                                <div class="input-group">
+                                    <input class="form-control form-control-navbar" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-navbar">
+                                            <i class="fas fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body table-responsive table-bordered">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>日期</th>
+                                            <th>分類</th>
+                                            <th>圖片</th>
+                                            <th>標題</th>
+                                            <th>內文</th>
+                                            <th>備註</th>
+                                            <th>狀態</th>
+                                            <th>建立日期/更新日期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1.</td>
+                                            <td></td>
+                                            <td>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td>
+                                            </td>
+                                            <td>備註</td>
+                                            <td>
+                                            </td>
+                                            <td>建立日期/更新日期</td>
+                                            <td>
+                                                <button class="btn-sm btn-primary">
+                                                    <i class="fas fa-pen"></i>
+                                                </button>
+                                                <button class="btn-sm btn-danger">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- /.card-body -->
+                            <div class="card-footer clearfix">
+                                <ul class="pagination pagination-sm m-0 float-right">
+                                    <li class="page-item"><a class="page-link" href="#">&laquo;</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">&raquo;</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.card -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*@section Scripts {
+        <script>
+            requirejs.config({
+                baseUrl: "@Url.Content("~/Scripts/build/view/Permission/")"
+            });
+            require(["index"]);
+        </script>
+
+    }*@

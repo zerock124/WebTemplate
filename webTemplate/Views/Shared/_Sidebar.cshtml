@@ -29,9 +29,9 @@
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
                 with font-awesome or any other icon font library -->
-                <li class="nav-item has-treeview menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                <li class="nav-item">
+                    <a href="@Url.Action("Index","Home")" class="nav-link">
+                        <i class="nav-icon fas fa-home"></i>
                         <p>
                             Home
                             <i class="right fas fa-angle-left"></i>
@@ -39,30 +39,26 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/widgets.html" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
+                    <a href="@Url.Action("Index","FontHome")" class="nav-link">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             前台首頁管理
-                            <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-copy"></i>
+                        <i class="nav-icon fas fa-file-alt"></i>
                         <p>
-                            關於我們管理
-                            <i class="fas fa-angle-left right"></i>
-                            <span class="badge badge-info right">6</span>
+                            靜態頁管理
                         </p>
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-chart-pie"></i>
+                    <a href="@Url.Action("Index","NewMessage")" class="nav-link">
+                        <i class="nav-icon fas fa-comment-alt"></i>               
                         <p>
                             最新消息管理
-                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                 </li>

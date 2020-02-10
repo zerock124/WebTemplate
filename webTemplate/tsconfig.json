@@ -21,7 +21,7 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "rootDir": "./Scripts/views",
-    "outDir": "./Scripts/build"
+    "rootDir": "Scripts",
+    "outDir": "./Scripts/build/"
   }
 }

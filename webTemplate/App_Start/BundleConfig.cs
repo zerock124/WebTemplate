@@ -10,11 +10,14 @@ namespace webTemplate
         {
 
             bundles.Add(new StyleBundle("~/Style/MainStyles").Include(
-                "~/Content/font-family.css",
+                "~/Content/Home.css",
+                "~/node_modules/animate.css/animate.css",
                 "~/Content/dist/css/adminlte.min.css",
-                "~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css"));
+                "~/Content/plugins/overlayScrollbars/css/OverlayScrollbars.min.css",
+                "~/Content/plugins/daterangepicker/daterangepicker.css",
+                "~/Content/plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch.min.css"));
 
-            bundles.Add(new StyleBundle("~/Style/SiginStyles").Include(
+             bundles.Add(new StyleBundle("~/Style/SiginStyles").Include(
                 "~/Content/font-family.css",
                 "~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css",
                 "~/Content/dist/css/adminlte.min.css"));
@@ -23,8 +26,9 @@ namespace webTemplate
                 "~/Scripts/jquery/jquery-{version}.js",
                 "~/Scripts/bootstrap/bootstrap.bundle.js",
                 "~/Content/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js",
-                "~/Content/dist/js/adminlte.min.js"
-                ));
+                "~/Content/dist/js/adminlte.min.js",
+                "~/Content/plugins/daterangepicker/daterangepicker.js",
+                "~/Content/plugins/bootstrap-switch/js/bootstrap-switch.min.js"));
 
             bundles.Add(new ScriptBundle("~/Script/LayoutComponents").Include(
                 "~/Scripts/build/components/Aside.js",
