@@ -1,4 +1,4 @@
-﻿import { IFontHomeService, FontHomeViewModel } from './model'
+﻿import { IFontHomeService, FontHomeViewModel, SearchModel } from './model'
 import { AjaxReturn } from '../Share/PublicFunction';
 
 class FontHomeService implements IFontHomeService {
@@ -12,11 +12,14 @@ class FontHomeService implements IFontHomeService {
         return AjaxReturn(setting, 'FormData');
     }
 
-    GetFontHomeList(SearchModel): JQuery.jqXHR<ResponseViewModel<FontHomeViewModel[]>> {
+    GetFontHomeList(SearchModel: SearchModel, sendPagination: SendPaginationModel): JQuery.jqXHR<ResWithPaginationViewModel<FontHomeViewModel[]>> {
         const setting: JQueryAjaxSettings = {
             url: '/FontHome/GetFontHomeList',
             type: 'POST',
-            data: SearchModel,
+            data: {
+                ...SearchModel,
+                ...sendPagination
+            }
         }
         return AjaxReturn(setting);
     }

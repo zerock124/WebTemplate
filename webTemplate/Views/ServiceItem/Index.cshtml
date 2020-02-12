@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "服務項目管理";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+
+    <div id="v_app"></div>
+</div>
+
+
+<template id="ServiceItemManagement">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row m-3">
+                <div class="col">
+                    <div class="card card-default color-palette-box">
+                        <div class="card-blue">
+                            <div>
+                                <b-tabs content-class="mt-3">
+                                    <b-tab title="服務項目" active>
+                                        <service-item-list></service-item-list>
+                                    </b-tab>
+                                </b-tabs>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="ServiceItemList">
+    <div>
+        <div class="row">
+            <div class="col">
+                <div class="info-box-content">
+                    <div class="h5 m-2 text-right">
+                        <button class="btn btn-primary btn-sm" v-on:click="CreateSpaceItem">新增</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-3 justify-content-start">
+            <service-item-list-item v-for="item in ServiceItemList"
+                                    :list-item="item"
+                                    :key="item.ServiceItemId">
+            </service-item-list-item>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <div class="info-box-content">
+                    <div class="h5 m-2 text-right">
+                        <button class="btn btn-primary btn-sm">送出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<template id="ServiceItemListItem">
+    <div class="col-auto col-sm-6 col-md-4 animated fadeInRightBig px-3">
+
+        <div class="row mb-3 justify-content-center">
+            <div v-if="!image">
+                <img :src="DefaultImage" alt="Alternate Text" class="animated fadeInRightBig" />
+            </div>
+            <div v-if="image">
+                <img :src="image" alt="Alternate Text" class="animated fadeInRightBig" />
+            </div>
+        </div>
+
+        <div class="row mb-3 justify-content-center">
+            <h6 class="m-1">( 圖片 / 60*60 / PNG 格式 )</h6>
+        </div>
+
+        <form action="\" enctype="multipart/form-data" method="post">
+
+            <div class="row mb-3">
+                <small class="h6 pl-3 align-self-center">
+                    圖片檔案：
+                </small>
+                <div class="col">
+                    <b-form-file required
+                                 name="PhotoFile"
+                                 v-model="PhotoFile"
+                                 v-on:change="fileSelected"
+                                 placeholder="上傳圖片">
+                    </b-form-file>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <small class="h6 pl-3 align-self-center">
+                    項目名稱：
+                </small>
+
+                <div class="col">
+                    <b-form-input type="text"
+                                  name="ServiceItemName"
+                                  v-model="ServiceItemName">
+                    </b-form-input>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</template>
+
+@section Scripts {
+    <script>
+        requirejs.config({
+            baseUrl: "@Url.Content("~/Scripts/build/view/ServiceItem")"
+        });
+        require(["index"]);
+    </script>
+}

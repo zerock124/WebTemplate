@@ -8,7 +8,7 @@
      * 取得前台首頁圖片列表
      * @param SearchModel
      */
-    GetFontHomeList(SearchModel): JQuery.jqXHR<ResponseViewModel<FontHomeViewModel[]>>
+    GetFontHomeList(SearchModel: SearchModel, sendPagination: SendPaginationModel): JQuery.jqXHR<ResWithPaginationViewModel<FontHomeViewModel[]>>
     /**
      * 變更前台首頁圖片
      * @param model

@@ -16,6 +16,10 @@ export function AjaxReturn(_setting: JQueryAjaxSettings, _datatype: AjaxConvertD
 		defSetting.processData = false;
 	}
 
+	// 如果網址未包含主機位置 (代表使用相對路徑或當前路徑)，加上網站基底位置
+	if (!CheckURLHasOrigin(_setting.url))
+		_setting.url = RemoveUrlPathDoubleSlash(BasePath + _setting.url);
+
 	return jQuery.ajax(Object.assign(defSetting, _setting));
 }
 

@@ -36,6 +36,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             _this_1.CurrentPage = 1;
             _this_1.TotalPage = 1;
             _this_1.TotalCounts = 1;
+            _this_1.searchmodel = null;
             _this_1.Pagination = { PerPage: 10, CurrentPage: 1, TotalCounts: 0, TotalPage: 1 };
             _this_1.Selectd = 0;
             _this_1.Options = [{
@@ -52,9 +53,25 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
         }
         FontHomeManagement.prototype.created = function () {
             var _this = this;
-            if (_this.searchmodel) {
-                _this.GetFontHomeList(_this.searchmodel);
-            }
+            _this.SetDefaultSearchModel();
+        };
+        FontHomeManagement.prototype.SetDefaultSearchModel = function () {
+            var _this = this;
+            _this.searchmodel = {
+                Query: "",
+                StartDateTime: null,
+                EndDateTime: null,
+                SearchEnum: 0,
+            };
+            _this.GetFontHomeList(_this.searchmodel);
+        };
+        FontHomeManagement.prototype.GetFontHomeList = function (searchmodel) {
+            var _this = this;
+            var sendPagination = {
+                PerPage: _this.Pagination.PerPage,
+                CurrentPage: _this.Pagination.CurrentPage
+            };
+            _this.GetFontHomeListItem(searchmodel, sendPagination);
         };
         FontHomeManagement.prototype.SetSearchDate = function () {
             var _this = this;
@@ -68,24 +85,18 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 EndDateTime: moment(_this.EndDateTime).endOf('day').toDate(),
                 Query: _this.Query
             };
+            console.log(_this.searchmodel);
             _this.GetFontHomeListItem(_this.searchmodel, sendPagination);
-        };
-        FontHomeManagement.prototype.GetFontHomeList = function (searchmodel) {
-            var _this = this;
-            var sendPagination = {
-                PerPage: _this.Pagination.PerPage,
-                CurrentPage: _this.Pagination.CurrentPage
-            };
-            _this.GetFontHomeListItem(searchmodel, sendPagination);
         };
         FontHomeManagement.prototype.GetFontHomeListItem = function (searchmodel, sendPagination) {
             var _this = this;
-            service_1.default.GetFontHomeList(searchmodel).then(function (res) {
+            service_1.default.GetFontHomeList(searchmodel, sendPagination).then(function (res) {
                 if (!res.Success) {
                     console.log(res);
                 }
                 if (res.Data) {
                     _this.ListItem = res.Data;
+                    _this.Pagination = res.Pagination;
                 }
             }).catch(function (err) {
                 console.log(err);
@@ -94,9 +105,10 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
         FontHomeManagement.prototype.GetImageUrl = function () {
             var _this = this;
             if (_this.ListItem) {
+                var BasePath = window.BasePath;
                 var length = _this.ListItem.length;
                 for (var i = 0; i < length; i++) {
-                    _this.ListItem[i].ImgUrl = Enums_1.UrlPathEnum.FontHomePhoto + '?filename=' + _this.ListItem[i].ImageName;
+                    _this.ListItem[i].ImgUrl = BasePath + Enums_1.UrlPathEnum.FontHomePhoto + '?filename=' + _this.ListItem[i].ImageName;
                 }
             }
         };
@@ -139,19 +151,6 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             var url = '/FontHome/GetEditFontHome?FontHomeId=' + FontHomeId;
             window.location.href = url;
         };
-        __decorate([
-            vue_property_decorator_1.Prop({
-                default: function () {
-                    var search = {
-                        Query: "",
-                        StartDateTime: null,
-                        EndDateTime: null,
-                        SearchEnum: 0,
-                    };
-                    return search;
-                }
-            })
-        ], FontHomeManagement.prototype, "searchmodel", void 0);
         __decorate([
             vue_property_decorator_1.Watch('ListItem')
         ], FontHomeManagement.prototype, "GetImageUrl", null);

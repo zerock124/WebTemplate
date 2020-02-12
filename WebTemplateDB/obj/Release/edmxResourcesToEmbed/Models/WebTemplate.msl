@@ -61,16 +61,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="BackOperationRecord">
-      <EntityTypeMapping TypeName="WebTemplateModel.BackOperationRecord">
-        <MappingFragment StoreEntitySet="BackOperationRecord">
-          <ScalarProperty Name="Id" ColumnName="Id" />
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="ContentText" ColumnName="ContentText" />
-          <ScalarProperty Name="Result" ColumnName="Result" />
+    <EntitySetMapping Name="FontHome">
+      <EntityTypeMapping TypeName="WebTemplateModel.FontHome">
+        <MappingFragment StoreEntitySet="FontHome">
+          <ScalarProperty Name="FontHomeId" ColumnName="FontHomeId" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="FontHomeUrl" ColumnName="FontHomeUrl" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -82,36 +86,5 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="FontHomeButton">
-      <EntityTypeMapping TypeName="WebTemplateModel.FontHomeButton">
-        <MappingFragment StoreEntitySet="FontHomeButton">
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="Link" ColumnName="Link" />
-          <ScalarProperty Name="ImgName" ColumnName="ImgName" />
-          <ScalarProperty Name="FontHomeId" ColumnName="FontHomeId" />
-          <ScalarProperty Name="FontHomeButtonId" ColumnName="FontHomeButtonId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FontHome">
-      <EntityTypeMapping TypeName="WebTemplateModel.FontHome">
-        <MappingFragment StoreEntitySet="FontHome">
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="UpdateTme" ColumnName="UpdateTme" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
-          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
-          <ScalarProperty Name="FontHomeUrl" ColumnName="FontHomeUrl" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-          <ScalarProperty Name="FontHomeId" ColumnName="FontHomeId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -1,7 +1,6 @@
 ﻿import { Vue, Component, Prop } from 'vue-property-decorator'
 import { FontHomeViewModel } from '../model';
 import { UrlPathEnum } from '../../Share/Enums';
-import service from '../service'
 import moment = require('moment');
 
 @Component({
@@ -29,8 +28,9 @@ export default class FontHomeCreateManagement extends Vue {
 
     GetDefaultFontHomeUrl() {
         const _this = this;
+        const BasePath = window.BasePath; // _Layout.cshtml
         const photo = "NoImage.jpg";
-        _this.DefaultImage = UrlPathEnum.FontHomePhoto + '?filename=' + photo;
+        _this.DefaultImage = BasePath + UrlPathEnum.FontHomePhoto + '?filename=' + photo;
     };
 
     fileSelected(event) {

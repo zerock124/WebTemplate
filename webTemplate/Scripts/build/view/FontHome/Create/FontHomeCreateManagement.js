@@ -41,8 +41,9 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "mo
         };
         FontHomeCreateManagement.prototype.GetDefaultFontHomeUrl = function () {
             var _this = this;
+            var BasePath = window.BasePath;
             var photo = "NoImage.jpg";
-            _this.DefaultImage = Enums_1.UrlPathEnum.FontHomePhoto + '?filename=' + photo;
+            _this.DefaultImage = BasePath + Enums_1.UrlPathEnum.FontHomePhoto + '?filename=' + photo;
         };
         ;
         FontHomeCreateManagement.prototype.fileSelected = function (event) {

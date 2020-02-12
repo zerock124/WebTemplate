@@ -22,22 +22,20 @@
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 <body class="hold-transition login-page">
-    <div class="login-box">
+    <div class="text-primary">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Admin</b>LTE</a>
+            光點數位官網後台管理系統
         </div>
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <p class="login-box-msg">Sign in to start your session</p>
-
                 <form action="@Url.Action("SignIn","Account")" method="post">
                     @Html.AntiForgeryToken()
                     <div class="input-group mb-3">
                         <input type="text" name="UserName" class="form-control" placeholder="使用者帳號">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
+                                <span class="fas fa-user-alt"></span>
                             </div>
                         </div>
                     </div>
@@ -45,7 +43,7 @@
                         <input type="password" name="Password" class="form-control" placeholder="密碼">
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
+                                <span class="fas fa-key"></span>
                             </div>
                         </div>
                     </div>
@@ -54,7 +52,7 @@
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember" name="RememberMe" value="true">
                                 <label for="remember">
-                                    Remember Me
+                                    記住我
                                 </label>
                             </div>
                         </div>
@@ -66,23 +64,6 @@
                     </div>
                 </form>
 
-                <div class="social-auth-links text-center mb-3">
-                    <p>- OR -</p>
-                    <a href="#" class="btn btn-block btn-primary">
-                        <i class="fab fa-facebook mr-2"></i> Sign in using Facebook
-                    </a>
-                    <a href="#" class="btn btn-block btn-danger">
-                        <i class="fab fa-google-plus mr-2"></i> Sign in using Google+
-                    </a>
-                </div>
-                <!-- /.social-auth-links -->
-
-                <p class="mb-1">
-                    <a href="forgot-password.html">I forgot my password</a>
-                </p>
-                <p class="mb-0">
-                    <a href="register.html" class="text-center">Register a new membership</a>
-                </p>
             </div>
             <!-- /.login-card-body -->
         </div>

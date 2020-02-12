@@ -26,7 +26,6 @@ namespace webTemplate.Controllers
             _fontHomeService = new FontHomeService();
         }
 
-        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -206,7 +205,7 @@ namespace webTemplate.Controllers
             }
 
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return RedirectToAction("Index");
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
     }
 }

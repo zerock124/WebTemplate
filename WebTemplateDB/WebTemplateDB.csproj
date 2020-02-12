@@ -58,6 +58,7 @@
     <Compile Include="Interface\IBackOperationRecordService.cs" />
     <Compile Include="Interface\IFontHomeService.cs" />
     <Compile Include="Interface\IMenuUIService.cs" />
+    <Compile Include="Interface\IStaticPageService.cs" />
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
@@ -70,16 +71,13 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BackOperationRecord.cs">
-      <DependentUpon>WebTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FontHome.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\FontHomeButton.cs">
+    <Compile Include="Models\StaticPage.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\WebTemplate.Context.cs">
@@ -103,6 +101,7 @@
     <Compile Include="Service\BackOperationRecordService.cs" />
     <Compile Include="Service\FontHomeService.cs" />
     <Compile Include="Service\MenuUIService.cs" />
+    <Compile Include="Service\StaticPageService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -112,3 +112,9 @@ C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Security.Cookies.xml
 C:\xinyu\Project\webTemplate\webTemplate\bin\Serilog.dll
 C:\xinyu\Project\webTemplate\webTemplate\bin\Serilog.xml
+C:\xinyu\Project\webTemplate\webTemplate\bin\System.Net.Http.Formatting.dll
+C:\xinyu\Project\webTemplate\webTemplate\bin\System.Web.Http.dll
+C:\xinyu\Project\webTemplate\webTemplate\bin\System.Web.Http.WebHost.dll
+C:\xinyu\Project\webTemplate\webTemplate\bin\System.Net.Http.Formatting.xml
+C:\xinyu\Project\webTemplate\webTemplate\bin\System.Web.Http.xml
+C:\xinyu\Project\webTemplate\webTemplate\bin\System.Web.Http.WebHost.xml

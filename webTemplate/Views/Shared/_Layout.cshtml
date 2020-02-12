@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
     @Styles.Render("~/Style/MainStyles")
     @RenderSection("Styles", required: false)
+
+    @*正常全域模式下設定*@
+    <script>
+        window.BasePath = '@BasePath';
+    </script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
@@ -62,6 +67,8 @@
                 "vue-property-decorator": "@Url.Content("~/node_modules/vue-property-decorator/lib/vue-property-decorator.umd")",
                 "bootstrap-vue": "@Url.Content("~/node_modules/bootstrap-vue/dist/bootstrap-vue")",
                 "vue-js-toggle-button": "@Url.Content("~/node_modules/vue-js-toggle-button/dist/index")",
+                "quill": "@Url.Content("~/node_modules/quill/dist/quill")",
+                "vue2-editor": "@Url.Content("~/node_modules/vue2-editor/dist/vue2-editor.umd")",
                 //"moment": "@Url.Content("~/node_modules/moment/moment")"
             },
             packages: [
@@ -86,6 +93,9 @@
                 "vue-property-decorator": "@Url.Content("~/node_modules/vue-property-decorator/lib/vue-property-decorator.umd")",
                 "bootstrap-vue": "@Url.Content("~/node_modules/bootstrap-vue/dist/bootstrap-vue.min")",
                 "vue-js-toggle-button": "@Url.Content("~/node_modules/vue-js-toggle-button/dist/index")",
+                "vue-summernote": "@Url.Content("~/node_modules/vue-summernote/src/plugins/editer/index")",
+                "vue2-editor": "@Url.Content("~/node_modules/vue2-editor/dist/vue2-editor.umd")",
+                "quill": "@Url.Content("~/node_modules/quill/dist/quill")",
                 //"moment": "@Url.Content("~/node_modules/moment/moment")"
             },
             packages: [

@@ -90,7 +90,7 @@ namespace WebTemplateDB.Service
                             Status = a.Status,
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
-                            UpdateTime = a.UpdateTme,
+                            UpdateTime = a.UpdateTime,
                             UpdateUser = a.UpdateUser
                         };
 
@@ -167,7 +167,7 @@ namespace WebTemplateDB.Service
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
                             Remark = a.Remark,
-                            UpdateTime = a.UpdateTme,
+                            UpdateTime = a.UpdateTime,
                             Status = a.Status,
                             UpdateUser = a.UpdateUser,
                         };
@@ -199,7 +199,7 @@ namespace WebTemplateDB.Service
                     fonthome.EndDateTime = model.EndDateTime;
                     fonthome.Remark = model.Remark;
                     fonthome.Status = model.Status;
-                    fonthome.UpdateTme = DateTime.Now;
+                    fonthome.UpdateTime = DateTime.Now;
                     fonthome.UpdateUser = model.UpdateUser;
 
                     _fontHome.Update(fonthome);

@@ -67,7 +67,8 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                     _this.Remark = res.Data.Remark;
                     _this.Status = res.Data.Status;
                     var photo = _this.ImageName;
-                    _this.FontHomeImage = Enums_1.UrlPathEnum.FontHomePhoto + '?filename=' + photo;
+                    var BasePath = window.BasePath;
+                    _this.FontHomeImage = BasePath + Enums_1.UrlPathEnum.FontHomePhoto + '?filename=' + photo;
                 }
             }).catch(function (err) {
                 console.log(err);
@@ -103,10 +104,14 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             }
         };
         FontHomeEditManagement.prototype.EditFontHome = function (data) {
+            var _this_1 = this;
             service_1.default.EditFontHomeItem(data).then(function (res) {
                 if (!res.Success) {
+                    console.log(res);
                 }
-                if (res.Data) {
+                if (res.Success) {
+                    var locationURL = _this_1.httpURL.split("/GetEditFontHome")[0];
+                    document.location.href = locationURL;
                 }
             }).catch(function (err) {
                 console.log(err);

@@ -25,17 +25,8 @@ export default class FontHomeManagement extends Vue {
     TotalPage: number = 1;
     TotalCounts: number = 1;
 
-    @Prop({
-        default: () => {
-            const search: SearchModel = {
-                Query: "",
-                StartDateTime: null,
-                EndDateTime: null,
-                SearchEnum: 0,
-            }
-            return search;
-        }
-    }) searchmodel: SearchModel | undefined;
+    searchmodel: SearchModel | null = null
+
     Pagination: PaginationViewModel = { PerPage: 10, CurrentPage: 1, TotalCounts: 0, TotalPage: 1 };
 
     Selectd: number = 0;
@@ -52,9 +43,27 @@ export default class FontHomeManagement extends Vue {
 
     created() {
         const _this = this;
-        if (_this.searchmodel) {
-            _this.GetFontHomeList(_this.searchmodel);
+        _this.SetDefaultSearchModel();
+    }
+
+    SetDefaultSearchModel() {
+        const _this = this;
+        _this.searchmodel = {
+            Query: "",
+            StartDateTime: null,
+            EndDateTime: null,
+            SearchEnum: 0,
         }
+        _this.GetFontHomeList(_this.searchmodel);
+    }
+
+    GetFontHomeList(searchmodel: SearchModel) {
+        const _this = this;
+        const sendPagination: SendPaginationModel = {
+            PerPage: _this.Pagination.PerPage,
+            CurrentPage: _this.Pagination.CurrentPage
+        }
+        _this.GetFontHomeListItem(searchmodel, sendPagination);
     }
 
     SetSearchDate() {
@@ -71,27 +80,21 @@ export default class FontHomeManagement extends Vue {
             Query: _this.Query
         }
 
-        _this.GetFontHomeListItem(_this.searchmodel, sendPagination);
-    }
+        console.log(_this.searchmodel);
 
-    GetFontHomeList(searchmodel: SearchModel) {
-        const _this = this;
-        const sendPagination: SendPaginationModel = {
-            PerPage: _this.Pagination.PerPage,
-            CurrentPage: _this.Pagination.CurrentPage
-        }
-        _this.GetFontHomeListItem(searchmodel, sendPagination);
+        _this.GetFontHomeListItem(_this.searchmodel, sendPagination);
     }
 
     GetFontHomeListItem(searchmodel, sendPagination) {
         const _this = this;
 
-        service.GetFontHomeList(searchmodel).then(res => {
+        service.GetFontHomeList(searchmodel, sendPagination).then(res => {
             if (!res.Success) {
                 console.log(res);
             }
             if (res.Data) {
                 _this.ListItem = res.Data;
+                _this.Pagination = res.Pagination;
             }
         }).catch(err => {
             console.log(err);
@@ -102,10 +105,10 @@ export default class FontHomeManagement extends Vue {
     GetImageUrl() {
         const _this = this;
         if (_this.ListItem) {
-
+            const BasePath = window.BasePath; // _Layout.cshtml
             var length = _this.ListItem.length;
             for (var i = 0; i < length; i++) {
-                _this.ListItem[i].ImgUrl = UrlPathEnum.FontHomePhoto + '?filename=' + _this.ListItem[i].ImageName;
+                _this.ListItem[i].ImgUrl = BasePath + UrlPathEnum.FontHomePhoto + '?filename=' + _this.ListItem[i].ImageName;
             }
         }
     }

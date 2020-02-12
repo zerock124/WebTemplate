@@ -22,7 +22,7 @@ namespace WebTemplateDB.Models
         public string Remark { get; set; }
         public bool Status { get; set; }
         public System.DateTime CreateTime { get; set; }
-        public Nullable<System.DateTime> UpdateTme { get; set; }
+        public Nullable<System.DateTime> UpdateTime { get; set; }
         public string CreateUser { get; set; }
         public string UpdateUser { get; set; }
     }

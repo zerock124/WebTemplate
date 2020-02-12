@@ -14,6 +14,8 @@ define(["require", "exports"], function (require, exports) {
             defSetting.contentType = false;
             defSetting.processData = false;
         }
+        if (!CheckURLHasOrigin(_setting.url))
+            _setting.url = RemoveUrlPathDoubleSlash(BasePath + _setting.url);
         return jQuery.ajax(Object.assign(defSetting, _setting));
     }
     exports.AjaxReturn = AjaxReturn;

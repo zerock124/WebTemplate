@@ -54,6 +54,7 @@
     <Compile Include="Share\PaginationViewModel.cs" />
     <Compile Include="Share\ResponseViewModel.cs" />
     <Compile Include="Share\ResWithPaginationViewModel.cs" />
+    <Compile Include="StaticPage\StaticPageViewModel.cs" />
     <Compile Include="Verity\DataVerityResult.cs" />
     <Compile Include="Verity\PageDataVerityResult.cs" />
     <Compile Include="Verity\SaveFileVerityResult.cs" />

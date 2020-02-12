@@ -55,7 +55,8 @@ export default class FontHomeEditManagement extends Vue {
                 _this.Remark = res.Data.Remark;
                 _this.Status = res.Data.Status;
                 const photo = _this.ImageName;
-                _this.FontHomeImage = UrlPathEnum.FontHomePhoto + '?filename=' + photo;
+                const BasePath = window.BasePath; // _Layout.cshtml
+                _this.FontHomeImage = BasePath + UrlPathEnum.FontHomePhoto + '?filename=' + photo;
             }
         }).catch(err => {
             console.log(err);
@@ -107,8 +108,11 @@ export default class FontHomeEditManagement extends Vue {
     EditFontHome(data) {
         service.EditFontHomeItem(data).then(res => {
             if (!res.Success) {
+                console.log(res);
             }
-            if (res.Data) {
+            if (res.Success) {
+                const locationURL = this.httpURL.split("/GetEditFontHome")[0];
+                document.location.href = locationURL ;
             }
         }).catch(err => {
             console.log(err);

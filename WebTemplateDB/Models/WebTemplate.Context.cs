@@ -30,8 +30,7 @@ namespace WebTemplateDB.Models
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<BackOperationRecord> BackOperationRecord { get; set; }
         public virtual DbSet<FontHome> FontHome { get; set; }
-        public virtual DbSet<FontHomeButton> FontHomeButton { get; set; }
+        public virtual DbSet<StaticPage> StaticPage { get; set; }
     }
 }

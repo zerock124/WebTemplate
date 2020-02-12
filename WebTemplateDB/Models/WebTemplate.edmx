@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="WebTemplateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="WebTemplateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__MigrationHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -71,18 +71,6 @@
           <Property Name="AccessFailedCount" Type="int" Nullable="false" />
           <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
         </EntityType>
-        <EntityType Name="BackOperationRecord">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
-          <Property Name="RoleId" Type="int" />
-          <Property Name="ContentText" Type="nvarchar(max)" />
-          <Property Name="Result" Type="bit" />
-          <Property Name="CreateTime" Type="datetime" />
-          <Property Name="IP" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="FontHome">
           <Key>
             <PropertyRef Name="FontHomeId" />
@@ -95,21 +83,20 @@
           <Property Name="Remark" Type="nvarchar" MaxLength="250" />
           <Property Name="Status" Type="bit" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTme" Type="datetime" />
+          <Property Name="UpdateTime" Type="datetime" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="FontHomeButton">
+        <EntityType Name="StaticPage">
           <Key>
-            <PropertyRef Name="FontHomeButtonId" />
+            <PropertyRef Name="StaticPageId" />
           </Key>
-          <Property Name="FontHomeButtonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FontHomeId" Type="int" />
-          <Property Name="ImgName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Link" Type="nvarchar" MaxLength="250" />
+          <Property Name="StaticPageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StaticPageEnum" Type="int" />
+          <Property Name="PageContent" Type="nvarchar(max)" />
           <Property Name="CreateTime" Type="datetime" />
-          <Property Name="UpdateTime" Type="datetime" />
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateTime" Type="datetime" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -175,9 +162,8 @@
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="BackOperationRecord" EntityType="Self.BackOperationRecord" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FontHome" EntityType="Self.FontHome" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FontHomeButton" EntityType="Self.FontHomeButton" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StaticPage" EntityType="Self.StaticPage" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -195,8 +181,7 @@
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebTemplateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -264,18 +249,6 @@
           <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
           <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
         </EntityType>
-        <EntityType Name="BackOperationRecord">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RoleId" Type="Int32" />
-          <Property Name="ContentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Result" Type="Boolean" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
-          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
         <EntityType Name="FontHome">
           <Key>
             <PropertyRef Name="FontHomeId" />
@@ -288,21 +261,8 @@
           <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTme" Type="DateTime" Precision="3" />
-          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="FontHomeButton">
-          <Key>
-            <PropertyRef Name="FontHomeButtonId" />
-          </Key>
-          <Property Name="FontHomeButtonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FontHomeId" Type="Int32" />
-          <Property Name="ImgName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Link" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="CreateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
-          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
@@ -343,9 +303,7 @@
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="BackOperationRecord" EntityType="Self.BackOperationRecord" />
           <EntitySet Name="FontHome" EntityType="Self.FontHome" />
-          <EntitySet Name="FontHomeButton" EntityType="Self.FontHomeButton" />
           <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
@@ -358,7 +316,20 @@
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
           </AssociationSet>
+          <EntitySet Name="StaticPage" EntityType="WebTemplateModel.StaticPage" />
         </EntityContainer>
+        <EntityType Name="StaticPage">
+          <Key>
+            <PropertyRef Name="StaticPageId" />
+          </Key>
+          <Property Name="StaticPageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StaticPageEnum" Type="Int32" />
+          <Property Name="PageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -425,19 +396,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="BackOperationRecord">
-            <EntityTypeMapping TypeName="WebTemplateModel.BackOperationRecord">
-              <MappingFragment StoreEntitySet="BackOperationRecord">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-                <ScalarProperty Name="ContentText" ColumnName="ContentText" />
-                <ScalarProperty Name="Result" ColumnName="Result" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="FontHome">
             <EntityTypeMapping TypeName="WebTemplateModel.FontHome">
               <MappingFragment StoreEntitySet="FontHome">
@@ -448,20 +406,6 @@
                 <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
                 <ScalarProperty Name="Remark" ColumnName="Remark" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="UpdateTme" ColumnName="UpdateTme" />
-                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="FontHomeButton">
-            <EntityTypeMapping TypeName="WebTemplateModel.FontHomeButton">
-              <MappingFragment StoreEntitySet="FontHomeButton">
-                <ScalarProperty Name="FontHomeButtonId" ColumnName="FontHomeButtonId" />
-                <ScalarProperty Name="FontHomeId" ColumnName="FontHomeId" />
-                <ScalarProperty Name="ImgName" ColumnName="ImgName" />
-                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
                 <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
@@ -477,6 +421,19 @@
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="StaticPage">
+            <EntityTypeMapping TypeName="WebTemplateModel.StaticPage">
+              <MappingFragment StoreEntitySet="StaticPage">
+                <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+                <ScalarProperty Name="StaticPageEnum" ColumnName="StaticPageEnum" />
+                <ScalarProperty Name="StaticPageId" ColumnName="StaticPageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
