@@ -20,10 +20,13 @@ namespace webTemplate.Controllers
         public string _HomeImagePath = ConfigurationManager.AppSettings["HomeImagePath"];
 
         protected IFontHomeService _fontHomeService;
+        protected IBackOperationService _backOperationService;
+        string OperationName = "前台首頁，";
 
         public FontHomeController()
         {
             _fontHomeService = new FontHomeService();
+            _backOperationService = new BackOperationService();
         }
 
         public ActionResult Index()
@@ -70,6 +73,7 @@ namespace webTemplate.Controllers
                 res.Success = true;
                 res.Message = "成功取得前台首頁管理清單";
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "查詢", CurrendUserIp);
             }
             catch
             {
@@ -111,6 +115,7 @@ namespace webTemplate.Controllers
                     res.Success = true;
                     res.Message = data.Success ? "新增前台首頁成功" : "新增前台首頁失敗";
                     res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                    await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
                 }
             }
             catch
@@ -151,6 +156,7 @@ namespace webTemplate.Controllers
                 res.Data = data;
                 res.Success = true;
                 res.Message = "取得首頁管理內容成功";
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "取得編輯資料", CurrendUserIp);
             }
             catch
             {
@@ -186,6 +192,7 @@ namespace webTemplate.Controllers
                     res.Success = true;
                     res.Message = data.Success ? "變更前台首頁成功" : "變更前台首頁失敗";
                     res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                    await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "編輯", CurrendUserIp);
                 }
                 else 
                 {
@@ -195,6 +202,7 @@ namespace webTemplate.Controllers
                     res.Success = true;
                     res.Message = data.Success ? "變更前台首頁成功" : "變更前台首頁失敗";
                     res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                    await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "編輯", CurrendUserIp);
                 }
             }
             catch
@@ -218,6 +226,7 @@ namespace webTemplate.Controllers
                 res.Data = data;
                 res.Success = true;
                 res.Message = "取得首頁管理內容成功";
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "刪除", CurrendUserIp);
             }
             catch
             {

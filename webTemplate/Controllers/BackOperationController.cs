@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace webTemplate.Controllers
 {
-    public class BackOperationRecordController : Controller
+    public class BackOperationController : Controller
     {
         // GET: BackOperationRecord
         public ActionResult Index()

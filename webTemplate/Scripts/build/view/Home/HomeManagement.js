@@ -27,9 +27,9 @@ define(["require", "exports", "vue-property-decorator", "./service"], function (
     var HomeManagement = (function (_super) {
         __extends(HomeManagement, _super);
         function HomeManagement() {
-            var _this = _super !== null && _super.apply(this, arguments) || this;
-            _this.DateNumber = null;
-            return _this;
+            var _this_1 = _super !== null && _super.apply(this, arguments) || this;
+            _this_1.DateNumber = null;
+            return _this_1;
         }
         HomeManagement.prototype.created = function () {
             var _this = this;

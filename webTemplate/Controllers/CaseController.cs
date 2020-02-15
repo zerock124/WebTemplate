@@ -10,6 +10,7 @@ using ViewModels.Share;
 using ViewModels.Verity;
 using webTemplate.Utility;
 using WebTemplateDB.Interface;
+using WebTemplateDB.Models;
 using WebTemplateDB.Service;
 
 namespace webTemplate.Controllers
@@ -19,10 +20,13 @@ namespace webTemplate.Controllers
         public string _CasePath = ConfigurationManager.AppSettings["CasePath"];
 
         protected ICaseService _caseServuce;
+        protected IBackOperationService _backOperationService;
+        string OperationName = "案例介紹，";
 
         public CaseController()
         {
             _caseServuce = new CaseService();
+            _backOperationService = new BackOperationService();
         }
 
         // GET: Case
@@ -86,6 +90,8 @@ namespace webTemplate.Controllers
                 res.Success = data.Success;
                 res.Message = data.Message;
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
+
             }
             catch
             {
@@ -109,6 +115,7 @@ namespace webTemplate.Controllers
                 res.Success = result.Success;
                 res.Message = result.Message;
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "查詢", CurrendUserIp);
             }
             catch
             {
@@ -132,6 +139,7 @@ namespace webTemplate.Controllers
                 res.Success = true;
                 res.Message = "取得案列介紹成功";
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "取得編輯資料", CurrendUserIp);
             }
             catch
             {
@@ -165,6 +173,7 @@ namespace webTemplate.Controllers
                 res.Success = result.Success;
                 res.Message = result.Message;
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "編輯", CurrendUserIp);
             }
             catch
             {
@@ -186,6 +195,7 @@ namespace webTemplate.Controllers
                 res.Success = result.Success;
                 res.Message = result.Message;
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "刪除", CurrendUserIp);
             }
             catch
             {

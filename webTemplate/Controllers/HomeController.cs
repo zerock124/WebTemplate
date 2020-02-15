@@ -6,13 +6,26 @@ using System.Web;
 using System.Web.Mvc;
 using ViewModel.Home;
 using ViewModels.Share;
+using WebTemplateDB.Interface;
 using WebTemplateDB.Service;
+using WebTemplateDB.Repositories;
+using WebTemplateDB.Models;
 
 namespace webTemplate.Controllers
 {
     [Authorize]
     public class HomeController : BaseController
     {
+        protected IHomeService _homeService;
+        protected IBackOperationService _backOperationService;
+        string OperationName = "Home頁，";
+
+        public HomeController()
+        {
+            _homeService = new HomeService();
+            _backOperationService = new BackOperationService();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -22,8 +35,22 @@ namespace webTemplate.Controllers
         {
             ResponseViewModel res = new ResponseViewModel();
 
-
-
+            try
+            {
+                var data = await _homeService.GetHomeData();
+                res.Data = data;
+                res.Success = true;
+                res.Message = "取得HomeData成功";
+                res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "取得內容", CurrendUserIp);
+            }
+            catch
+            {
+                res.Success = false;
+                res.Message = "取得HomeData失敗";
+                res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
+            }
+            res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
     }

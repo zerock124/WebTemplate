@@ -8,13 +8,13 @@ using ViewModels.Verity;
 
 namespace WebTemplateDB.Interface
 {
-    public interface IBackOperationRecordService
+    public interface IBackOperationService
     {
         /// <summary>
         /// 寫入操作紀錄
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<VerityResult> CreateBackOperationRecord(BackOperationRecordViewModel model);
+        Task<VerityResult> CreateBackOperation(string Id, string ContentText, string IP);
     }
 }

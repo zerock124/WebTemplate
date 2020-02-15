@@ -172,14 +172,12 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ApiStaticPageController.cs" />
-    <Compile Include="Controllers\BackOperationRecordController.cs" />
+    <Compile Include="Controllers\BackOperationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaseController.cs" />
-    <Compile Include="Controllers\CKEditorController.cs" />
     <Compile Include="Controllers\FontHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LatestNewsController.cs" />
-    <Compile Include="Controllers\PermissionController.cs" />
     <Compile Include="Controllers\ServiceItemController.cs" />
     <Compile Include="Controllers\StaticPageController.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
@@ -3787,10 +3785,6 @@
     <TypeScriptCompile Include="Scripts\view\FontHome\model.ts" />
     <TypeScriptCompile Include="Scripts\view\FontHome\index.ts" />
     <TypeScriptCompile Include="Scripts\view\FontHome\service.ts" />
-    <TypeScriptCompile Include="Scripts\view\Permission\index.ts" />
-    <TypeScriptCompile Include="Scripts\view\Permission\Model.ts" />
-    <TypeScriptCompile Include="Scripts\view\Permission\PermissionManagement.ts" />
-    <TypeScriptCompile Include="Scripts\view\Permission\Service.ts" />
     <TypeScriptCompile Include="Scripts\view\Share\Enums.ts" />
     <TypeScriptCompile Include="Scripts\view\Share\FilterFunction.ts" />
     <TypeScriptCompile Include="Scripts\view\Share\Interface.d.ts" />

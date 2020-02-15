@@ -29,11 +29,13 @@ namespace WebTemplateDB.Models
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUserRoles> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
-        public virtual DbSet<FontHome> FontHome { get; set; }
-        public virtual DbSet<StaticPage> StaticPage { get; set; }
-        public virtual DbSet<ServiceItem> ServiceItem { get; set; }
-        public virtual DbSet<LatestNews> LatestNews { get; set; }
+        public virtual DbSet<BackOperation> BackOperation { get; set; }
         public virtual DbSet<Case> Case { get; set; }
+        public virtual DbSet<FontHome> FontHome { get; set; }
+        public virtual DbSet<LatestNews> LatestNews { get; set; }
+        public virtual DbSet<ServiceItem> ServiceItem { get; set; }
+        public virtual DbSet<StaticPage> StaticPage { get; set; }
     }
 }

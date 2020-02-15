@@ -55,9 +55,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interface\IBackOperationRecordService.cs" />
+    <Compile Include="Interface\IBackOperationService.cs" />
     <Compile Include="Interface\ICaseService.cs" />
     <Compile Include="Interface\IFontHomeService.cs" />
+    <Compile Include="Interface\IHomeService.cs" />
     <Compile Include="Interface\ILatestNewsService.cs" />
     <Compile Include="Interface\IMenuUIService.cs" />
     <Compile Include="Interface\IServiceItemService.cs" />
@@ -71,7 +72,13 @@
     <Compile Include="Models\AspNetUserLogins.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetUserRoles.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUsers.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BackOperation.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Case.cs">
@@ -110,9 +117,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
-    <Compile Include="Service\BackOperationRecordService.cs" />
+    <Compile Include="Service\BackOperationService.cs" />
     <Compile Include="Service\CaseService.cs" />
     <Compile Include="Service\FontHomeService.cs" />
+    <Compile Include="Service\HomeService.cs" />
     <Compile Include="Service\LatestNewsService.cs" />
     <Compile Include="Service\MenuUIService.cs" />
     <Compile Include="Service\ServiceItemService.cs" />

@@ -14,10 +14,13 @@ namespace webTemplate.Controllers
     public class StaticPageController : BaseController
     {
         protected IStaticPageService _staticPageService;
+        protected IBackOperationService _backOperationService;
+        string OperationName = "靜態頁，";
 
         public StaticPageController()
         {
             _staticPageService = new StaticPageService();
+            _backOperationService = new BackOperationService();
         }
 
         // GET: StaticPage
@@ -38,6 +41,7 @@ namespace webTemplate.Controllers
                 res.Success = true;
                 res.Message = "取得靜態頁列表內容成功";
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "查詢", CurrendUserIp);
             }
             catch
             {
@@ -72,6 +76,7 @@ namespace webTemplate.Controllers
                     res.Message = result.Message;
                     res.HttpStatusCode = System.Net.HttpStatusCode.OK;
                 }
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
             }
             catch
             {
@@ -106,6 +111,7 @@ namespace webTemplate.Controllers
                     res.Message = result.Message;
                     res.HttpStatusCode = System.Net.HttpStatusCode.OK;
                 }
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "編輯", CurrendUserIp);
             }
             catch
             {

@@ -38,11 +38,11 @@
   </EntityType>
   <EntityType Name="AspNetUserRoles">
     <Key>
-      <PropertyRef Name="UserId" />
-      <PropertyRef Name="RoleId" />
+      <PropertyRef Name="UserRoleId" />
     </Key>
-    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="128" />
   </EntityType>
   <EntityType Name="AspNetUsers">
     <Key>
@@ -65,6 +65,35 @@
     <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+  </EntityType>
+  <EntityType Name="BackOperation">
+    <Key>
+      <PropertyRef Name="BackOperationId" />
+    </Key>
+    <Property Name="BackOperationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AspNerUserId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="RoleId" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ContentText" Type="nvarchar" MaxLength="50" />
+    <Property Name="Result" Type="bit" Nullable="false" />
+    <Property Name="IP" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="CaseId" />
+    </Key>
+    <Property Name="CaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CaseUrl" Type="nvarchar(max)" />
+    <Property Name="CaseEnum" Type="int" Nullable="false" />
+    <Property Name="CaseName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CaseContent" Type="nvarchar(max)" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="FontHome">
     <Key>
@@ -152,7 +181,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
-    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+    <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
@@ -166,7 +195,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
-    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+    <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1">
       <OnDelete Action="Cascade" />
     </End>
     <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
@@ -186,6 +215,8 @@
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BackOperation" EntityType="Self.BackOperation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FontHome" EntityType="Self.FontHome" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LatestNews" EntityType="Self.LatestNews" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ServiceItem" EntityType="Self.ServiceItem" Schema="dbo" store:Type="Tables" />

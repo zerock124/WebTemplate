@@ -98,8 +98,12 @@
             </div>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#">
-                <i class="fas fa-th-large"></i>
+            <a class="nav-link" href="#" data-fn="signout">
+                @using (Html.BeginForm("SignOut", "Account", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken();
+                }
+                <i class="fas fa-sign-out-alt"></i>
             </a>
         </li>
     </ul>

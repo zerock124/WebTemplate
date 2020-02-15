@@ -19,9 +19,12 @@ namespace webTemplate.Controllers
         public string _ServiceItemPath = ConfigurationManager.AppSettings["ServiceItemPath"];
 
         protected IServiceItemService _serviceItem;
+        protected IBackOperationService _backOperationService;
+        string OperationName = "服務項目，";
 
         public ServiceItemController() {
             _serviceItem = new ServiceItemService();
+            _backOperationService = new BackOperationService();
         }
 
         // GET: ServiceItem
@@ -61,6 +64,7 @@ namespace webTemplate.Controllers
                 res.Success = true;
                 res.Message = "取得服務項目列表成功";
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "查詢", CurrendUserIp);
             }
             catch
             {
@@ -100,6 +104,7 @@ namespace webTemplate.Controllers
                 res.Success = result.Success;
                 res.Message = result.Message;
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
             }
             catch 
             {

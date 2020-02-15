@@ -29,7 +29,19 @@ namespace webTemplate.Controllers
         /// 取得當前的使用者ID
         /// </summary>
         public string CurrendUserid => User.Identity.GetUserId();
+        /// <summary>
+        /// 取得當前的使用者IP
+        /// </summary>
+        public string CurrendUserIp => GetClientIP();
 
+        public string GetClientIP()
+        {
+            //判所client端是否有設定代理伺服器
+            if (Request.ServerVariables["HTTP_VIA"] == null)
+                return Request.ServerVariables["REMOTE_ADDR"].ToString();
+            else
+                return Request.ServerVariables["HTTP_X_FORWARDED_FOR"].ToString();
+        }
         /// <summary>
         /// Image Path
         /// </summary>

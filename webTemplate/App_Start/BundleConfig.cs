@@ -19,6 +19,7 @@ namespace webTemplate
                 "~/Content/plugins/bootstrap-switch/css/bootstrap3/bootstrap-switch.css"));
 
              bundles.Add(new StyleBundle("~/Style/SiginStyles").Include(
+                "~/Content/Home.css",
                 "~/Content/font-family.css",
                 "~/Content/plugins/icheck-bootstrap/icheck-bootstrap.css",
                 "~/Content/dist/css/adminlte.css"));

@@ -47,10 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BackOperationRecord\BackOperationRecordViewModel.cs" />
+    <Compile Include="BackOperation\BackOperationViewModel.cs" />
     <Compile Include="Case\CaseViewModel.cs" />
     <Compile Include="FontHome\FontHomeViewModel.cs" />
-    <Compile Include="Home\WebMenuViewModel.cs" />
+    <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="LatestNews\LatestNewsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceItem\ServiceItemViewModel.cs" />

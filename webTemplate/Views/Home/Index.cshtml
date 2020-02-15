@@ -2,6 +2,7 @@
     ViewBag.Title = "Home";
 }
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
 <style>
     .small-box .icon > i {
         font-size: 90px;
@@ -11,6 +12,7 @@
         transition: all 0.1s linear;
     }
 </style>
+
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -25,13 +27,16 @@
         </div><!-- /.container-fluid -->
     </div>
     <div id="v_app"></div>
+</div>
+
+<template id="HomeManagement">
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
+            <div class="row" v-if="DateNumber">
                 <div class="col-lg-4 col-6">
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>10</h3>
+                            <h3>{{DateNumber.LatestNewsNumber}}</h3>
 
                             <p>最新消息</p>
                         </div>
@@ -45,7 +50,7 @@
                 <div class="col-lg-4 col-6">
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>10</h3>
+                            <h3>{{DateNumber.CaseNumber}}</h3>
 
                             <p>案例介紹</p>
                         </div>
@@ -72,5 +77,18 @@
             </div>
         </div>
     </div>
-</div>
 
+</template>
+
+@section Scripts {
+    <script>
+
+    </script>
+    <script>
+        requirejs.config({
+            baseUrl: "@Url.Content("~/Scripts/build/view/Home")"
+        });
+        require(["index"]);
+    </script>
+
+}

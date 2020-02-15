@@ -7,6 +7,6 @@
 }
 
 export interface HomeViewModel {
-    HomeDataNumber: number;
-    CaseDataNumber: number;
+    LatestNewsNumber: number;
+    CaseNumber: number;
 }
