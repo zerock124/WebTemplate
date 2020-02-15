@@ -99,5 +99,53 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ServiceItem">
+      <EntityTypeMapping TypeName="WebTemplateModel.ServiceItem">
+        <MappingFragment StoreEntitySet="ServiceItem">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ServiceItemName" ColumnName="ServiceItemName" />
+          <ScalarProperty Name="ServiceItemId" ColumnName="ServiceItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LatestNews">
+      <EntityTypeMapping TypeName="WebTemplateModel.LatestNews">
+        <MappingFragment StoreEntitySet="LatestNews">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="LatestNewsContent" ColumnName="LatestNewsContent" />
+          <ScalarProperty Name="LatestNewsTitle" ColumnName="LatestNewsTitle" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="LatestNewsEnum" ColumnName="LatestNewsEnum" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="LatestNewsId" ColumnName="LatestNewsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Case">
+      <EntityTypeMapping TypeName="WebTemplateModel.Case">
+        <MappingFragment StoreEntitySet="Case">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CaseContent" ColumnName="CaseContent" />
+          <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+          <ScalarProperty Name="CaseEnum" ColumnName="CaseEnum" />
+          <ScalarProperty Name="CaseUrl" ColumnName="CaseUrl" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="CaseId" ColumnName="CaseId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

@@ -5,6 +5,8 @@ define(["require", "exports"], function (require, exports) {
     (function (UrlPathEnum) {
         UrlPathEnum["FontHomePhoto"] = "FontHome/FontHomePhotos";
         UrlPathEnum["ServiceItemPhoto"] = "ServiceItem/ServiceItemPhoto";
+        UrlPathEnum["LatestNewsPhoto"] = "LatestNews/LatestNewsPhoto";
+        UrlPathEnum["CasePhoto"] = "Case/CasePhoto";
     })(UrlPathEnum = exports.UrlPathEnum || (exports.UrlPathEnum = {}));
     var BookingStatusEnum;
     (function (BookingStatusEnum) {

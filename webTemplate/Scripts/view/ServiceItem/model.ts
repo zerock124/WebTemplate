@@ -2,6 +2,13 @@
 
     /**取得靜態頁內容 */
     GetServiceItemList(): JQuery.jqXHR<ResponseViewModel<ServiceItemViewModel[]>>
+
+    /**
+     * 新增服務項目
+     * @param model
+     */
+    CreateServiceItemList(model: ServiceItemViewModel[]): JQuery.jqXHR<ResponseViewModel<ServiceItemViewModel[]>> 
+
 }
 
 export interface ServiceItemViewModel {
@@ -19,4 +26,6 @@ export interface ServiceItemViewModel {
     UpdateTime: Date;
     /**更新的使用者 */
     UpdateUser: string;
+    /**服務項目圖片檔案 */
+    PhotoFile: File | null;
 }

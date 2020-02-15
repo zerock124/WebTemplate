@@ -73,6 +73,10 @@ namespace ViewModel.FontHome
         /// </summary>
         public DateTime? EndDateTime { get; set; }
         /// <summary>
+        /// 上線時間
+        /// </summary>
+        public DateTime? OnlineDateTime { get; set; }
+        /// <summary>
         /// 搜尋字串
         /// </summary>
         public string Query { get; set; }

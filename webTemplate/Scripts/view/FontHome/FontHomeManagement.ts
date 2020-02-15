@@ -18,7 +18,13 @@ export default class FontHomeManagement extends Vue {
 
     StartDateTime: string = moment().startOf('day').format('YYYY-MM-DD');
     EndDateTime: string = moment().endOf('day').format('YYYY-MM-DD');
+    OnlineDateTime: string = moment().format('YYYY-MM-DD');
     Query: string = '';
+
+    MaxDate: string = '';
+    MinDate: string = '';
+    OnlineMaxDate: string = '';
+    OnlineMinDate: string = '';
 
     PerPage: number = 10;
     CurrentPage: number = 1;
@@ -53,6 +59,7 @@ export default class FontHomeManagement extends Vue {
             StartDateTime: null,
             EndDateTime: null,
             SearchEnum: 0,
+            OnlineDateTime: null
         }
         _this.GetFontHomeList(_this.searchmodel);
     }
@@ -63,8 +70,47 @@ export default class FontHomeManagement extends Vue {
             PerPage: _this.Pagination.PerPage,
             CurrentPage: _this.Pagination.CurrentPage
         }
-        _this.GetFontHomeListItem(searchmodel, sendPagination);
+        _this.DefaultFontHomeListItem(searchmodel, sendPagination);
     }
+
+    DefaultFontHomeListItem(searchmodel, sendPagination) {
+        const _this = this;
+
+        service.GetFontHomeList(searchmodel, sendPagination).then(res => {
+            if (!res.Success) {
+                console.log(res);
+            }
+            if (res.Data) {
+                _this.ListItem = res.Data;
+                _this.Pagination = res.Pagination;
+
+                _this.LimitDate(res.Data);
+                _this.CheckOnlineDate();
+
+            }
+        }).catch(err => {
+            console.log(err);
+        })
+    }
+
+    LimitDate(Data) {
+        const _this = this;
+
+        var MaxDate = Data.map(s => moment(s.CreateTime));
+        _this.MaxDate = moment.max(MaxDate).format("YYYY-MM-DD");
+        _this.EndDateTime = _this.MaxDate;
+
+        var MinDate = Data.map(s => moment(s.CreateTime));
+        _this.MinDate = moment.min(MinDate).format("YYYY-MM-DD");
+        _this.StartDateTime = _this.MinDate;
+
+        var OnlineMaxDate = Data.map(s => moment(s.EndDateTime));
+        _this.OnlineMaxDate = moment.max(OnlineMaxDate).format("YYYY-MM-DD");
+
+        var OnlineMinDate = Data.map(s => moment(s.StartDateTime));
+        _this.OnlineMinDate = moment.min(OnlineMinDate).format("YYYY-MM-DD");
+    }
+
 
     SetSearchDate() {
         const _this = this;
@@ -77,7 +123,8 @@ export default class FontHomeManagement extends Vue {
             SearchEnum: _this.Selectd,
             StartDateTime: moment(_this.StartDateTime).startOf('day').toDate(),
             EndDateTime: moment(_this.EndDateTime).endOf('day').toDate(),
-            Query: _this.Query
+            Query: _this.Query,
+            OnlineDateTime: moment(_this.OnlineDateTime).toDate()
         }
 
         console.log(_this.searchmodel);
@@ -95,10 +142,27 @@ export default class FontHomeManagement extends Vue {
             if (res.Data) {
                 _this.ListItem = res.Data;
                 _this.Pagination = res.Pagination;
+
+                _this.CheckOnlineDate();
             }
         }).catch(err => {
             console.log(err);
         })
+    }
+
+    CheckOnlineDate() {
+        const _this = this;
+        if (_this.ListItem) {
+            const length = _this.ListItem.length;
+            for (var i = 0; i < length; i++) {
+                const nowDate = moment().toDate();
+                if (moment(_this.ListItem[i].StartDateTime).toDate() <= nowDate && moment(_this.ListItem[i].EndDateTime).toDate() >= nowDate && _this.ListItem[i].Status == true) {
+                    _this.ListItem[i].CheckOnlineDate = true;
+                } else {
+                    _this.ListItem[i].CheckOnlineDate = false;
+                }
+            }
+        }
     }
 
     @Watch('ListItem')
@@ -156,8 +220,33 @@ export default class FontHomeManagement extends Vue {
     }
 
     GetEditFontHome(FontHomeId: number) {
-        console.log("a");
         var url = '/FontHome/GetEditFontHome?FontHomeId=' + FontHomeId;
         window.location.href = url;
+    }
+
+    DeleteFontHome(FontHomeId: number) {
+        const _this = this;
+        service.DeleteFontHome(FontHomeId).then(res => {
+            if (!res.Success) {
+                console.log(res);
+                _this.$bvToast.toast('刪除前台首頁圖片失敗', {
+                    title: '前台首頁圖片',
+                    variant: 'warning',
+                })
+            }
+            if (res.Success) {
+                _this.$bvToast.toast('刪除前台首頁圖片成功', {
+                    title: '前台首頁圖片',
+                    variant:'success',
+                })
+                _this.SetSearchDate();
+            }
+        }).catch(err => {
+            console.log(err);
+            _this.$bvToast.toast('與伺服器連接發生錯誤', {
+                title: '前台首頁圖片',
+                variant: 'danger',
+            })
+        })
     }
 }

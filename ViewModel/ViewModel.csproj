@@ -48,9 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BackOperationRecord\BackOperationRecordViewModel.cs" />
+    <Compile Include="Case\CaseViewModel.cs" />
     <Compile Include="FontHome\FontHomeViewModel.cs" />
     <Compile Include="Home\WebMenuViewModel.cs" />
+    <Compile Include="LatestNews\LatestNewsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceItem\ServiceItemViewModel.cs" />
     <Compile Include="Share\PaginationViewModel.cs" />
     <Compile Include="Share\ResponseViewModel.cs" />
     <Compile Include="Share\ResWithPaginationViewModel.cs" />

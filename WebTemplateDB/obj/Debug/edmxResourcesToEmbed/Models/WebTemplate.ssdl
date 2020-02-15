@@ -66,6 +66,22 @@
     <Property Name="AccessFailedCount" Type="int" Nullable="false" />
     <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
   </EntityType>
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="CaseId" />
+    </Key>
+    <Property Name="CaseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CaseUrl" Type="nvarchar(max)" />
+    <Property Name="CaseEnum" Type="int" Nullable="false" />
+    <Property Name="CaseName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CaseContent" Type="nvarchar(max)" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="FontHome">
     <Key>
       <PropertyRef Name="FontHomeId" />
@@ -82,15 +98,44 @@
     <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
   </EntityType>
+  <EntityType Name="LatestNews">
+    <Key>
+      <PropertyRef Name="LatestNewsId" />
+    </Key>
+    <Property Name="LatestNewsId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LatestNewsEnum" Type="int" />
+    <Property Name="StartDateTime" Type="datetime" Nullable="false" />
+    <Property Name="LatestNewsTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="LatestNewsContent" Type="nvarchar(max)" />
+    <Property Name="Remark" Type="nvarchar" MaxLength="250" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ServiceItem">
+    <Key>
+      <PropertyRef Name="ServiceItemId" />
+    </Key>
+    <Property Name="ServiceItemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceItemName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" />
+    <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="UpdateTime" Type="datetime" />
+    <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+  </EntityType>
   <EntityType Name="StaticPage">
     <Key>
       <PropertyRef Name="StaticPageId" />
     </Key>
     <Property Name="StaticPageId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="StaticPageEnum" Type="int" />
+    <Property Name="StaticPageEnum" Type="int" Nullable="false" />
     <Property Name="PageContent" Type="nvarchar(max)" />
-    <Property Name="CreateTime" Type="datetime" />
-    <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="CreateTime" Type="datetime" Nullable="false" />
+    <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" />
     <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
   </EntityType>
@@ -157,7 +202,10 @@
     <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Case" EntityType="Self.Case" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="FontHome" EntityType="Self.FontHome" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LatestNews" EntityType="Self.LatestNews" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ServiceItem" EntityType="Self.ServiceItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="StaticPage" EntityType="Self.StaticPage" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />

@@ -57,7 +57,7 @@ namespace WebTemplateDB.Service
 
             StaticPage staticpage = new StaticPage
             {
-                StaticPageEnum = model.StaticPageEnum,
+                StaticPageEnum = (int)model.StaticPageEnum,
                 PageContent = model.PageContent,
                 CreateTime = DateTime.Now,
                 CreateUser = model.CreateUser

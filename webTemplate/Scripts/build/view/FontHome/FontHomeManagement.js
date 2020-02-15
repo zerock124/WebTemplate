@@ -31,7 +31,12 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             _this_1.ListItem = [];
             _this_1.StartDateTime = moment().startOf('day').format('YYYY-MM-DD');
             _this_1.EndDateTime = moment().endOf('day').format('YYYY-MM-DD');
+            _this_1.OnlineDateTime = moment().format('YYYY-MM-DD');
             _this_1.Query = '';
+            _this_1.MaxDate = '';
+            _this_1.MinDate = '';
+            _this_1.OnlineMaxDate = '';
+            _this_1.OnlineMinDate = '';
             _this_1.PerPage = 10;
             _this_1.CurrentPage = 1;
             _this_1.TotalPage = 1;
@@ -62,6 +67,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 StartDateTime: null,
                 EndDateTime: null,
                 SearchEnum: 0,
+                OnlineDateTime: null
             };
             _this.GetFontHomeList(_this.searchmodel);
         };
@@ -71,7 +77,36 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 PerPage: _this.Pagination.PerPage,
                 CurrentPage: _this.Pagination.CurrentPage
             };
-            _this.GetFontHomeListItem(searchmodel, sendPagination);
+            _this.DefaultFontHomeListItem(searchmodel, sendPagination);
+        };
+        FontHomeManagement.prototype.DefaultFontHomeListItem = function (searchmodel, sendPagination) {
+            var _this = this;
+            service_1.default.GetFontHomeList(searchmodel, sendPagination).then(function (res) {
+                if (!res.Success) {
+                    console.log(res);
+                }
+                if (res.Data) {
+                    _this.ListItem = res.Data;
+                    _this.Pagination = res.Pagination;
+                    _this.LimitDate(res.Data);
+                    _this.CheckOnlineDate();
+                }
+            }).catch(function (err) {
+                console.log(err);
+            });
+        };
+        FontHomeManagement.prototype.LimitDate = function (Data) {
+            var _this = this;
+            var MaxDate = Data.map(function (s) { return moment(s.CreateTime); });
+            _this.MaxDate = moment.max(MaxDate).format("YYYY-MM-DD");
+            _this.EndDateTime = _this.MaxDate;
+            var MinDate = Data.map(function (s) { return moment(s.CreateTime); });
+            _this.MinDate = moment.min(MinDate).format("YYYY-MM-DD");
+            _this.StartDateTime = _this.MinDate;
+            var OnlineMaxDate = Data.map(function (s) { return moment(s.EndDateTime); });
+            _this.OnlineMaxDate = moment.max(OnlineMaxDate).format("YYYY-MM-DD");
+            var OnlineMinDate = Data.map(function (s) { return moment(s.StartDateTime); });
+            _this.OnlineMinDate = moment.min(OnlineMinDate).format("YYYY-MM-DD");
         };
         FontHomeManagement.prototype.SetSearchDate = function () {
             var _this = this;
@@ -83,7 +118,8 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 SearchEnum: _this.Selectd,
                 StartDateTime: moment(_this.StartDateTime).startOf('day').toDate(),
                 EndDateTime: moment(_this.EndDateTime).endOf('day').toDate(),
-                Query: _this.Query
+                Query: _this.Query,
+                OnlineDateTime: moment(_this.OnlineDateTime).toDate()
             };
             console.log(_this.searchmodel);
             _this.GetFontHomeListItem(_this.searchmodel, sendPagination);
@@ -97,10 +133,26 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 if (res.Data) {
                     _this.ListItem = res.Data;
                     _this.Pagination = res.Pagination;
+                    _this.CheckOnlineDate();
                 }
             }).catch(function (err) {
                 console.log(err);
             });
+        };
+        FontHomeManagement.prototype.CheckOnlineDate = function () {
+            var _this = this;
+            if (_this.ListItem) {
+                var length_1 = _this.ListItem.length;
+                for (var i = 0; i < length_1; i++) {
+                    var nowDate = moment().toDate();
+                    if (moment(_this.ListItem[i].StartDateTime).toDate() <= nowDate && moment(_this.ListItem[i].EndDateTime).toDate() >= nowDate && _this.ListItem[i].Status == true) {
+                        _this.ListItem[i].CheckOnlineDate = true;
+                    }
+                    else {
+                        _this.ListItem[i].CheckOnlineDate = false;
+                    }
+                }
+            }
         };
         FontHomeManagement.prototype.GetImageUrl = function () {
             var _this = this;
@@ -147,9 +199,33 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             _this.GetFontHomeList(_this.searchmodel);
         };
         FontHomeManagement.prototype.GetEditFontHome = function (FontHomeId) {
-            console.log("a");
             var url = '/FontHome/GetEditFontHome?FontHomeId=' + FontHomeId;
             window.location.href = url;
+        };
+        FontHomeManagement.prototype.DeleteFontHome = function (FontHomeId) {
+            var _this = this;
+            service_1.default.DeleteFontHome(FontHomeId).then(function (res) {
+                if (!res.Success) {
+                    console.log(res);
+                    _this.$bvToast.toast('刪除前台首頁圖片失敗', {
+                        title: '前台首頁圖片',
+                        variant: 'warning',
+                    });
+                }
+                if (res.Success) {
+                    _this.$bvToast.toast('刪除前台首頁圖片成功', {
+                        title: '前台首頁圖片',
+                        variant: 'success',
+                    });
+                    _this.SetSearchDate();
+                }
+            }).catch(function (err) {
+                console.log(err);
+                _this.$bvToast.toast('與伺服器連接發生錯誤', {
+                    title: '前台首頁圖片',
+                    variant: 'danger',
+                });
+            });
         };
         __decorate([
             vue_property_decorator_1.Watch('ListItem')

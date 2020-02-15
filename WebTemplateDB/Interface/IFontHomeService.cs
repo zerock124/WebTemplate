@@ -32,5 +32,11 @@ namespace WebTemplateDB.Interface
         /// </summary>
         /// <returns></returns>
         Task<DataVerityResult<FontHomeViewModel>> EditFontHome(FontHomeViewModel model);
+        /// <summary>
+        /// 刪除前台首頁圖片
+        /// </summary>
+        /// <param name="FontHomeId"></param>
+        /// <returns></returns>
+        Task<DataVerityResult> DeleteFontHome(int FontHomeId);
     }
 }

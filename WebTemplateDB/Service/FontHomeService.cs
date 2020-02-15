@@ -78,7 +78,7 @@ namespace WebTemplateDB.Service
             PageDataVerityResult pageData = new PageDataVerityResult();
             List<FontHomeViewModel> fonthome = new List<FontHomeViewModel>();
 
-            var query = from a in _fontHome.GetAll()
+            var query = from a in _fontHome.GetAll().ToList()
                         select new FontHomeViewModel
                         {
                             FontHomeId = a.FontHomeId,
@@ -96,11 +96,15 @@ namespace WebTemplateDB.Service
 
             if (model.StartDateTime != null)
             {
-                query = query.Where(x => x.StartDateTime >= model.StartDateTime);
+                query = query.Where(x => x.CreateTime >= model.StartDateTime).ToList();
             }
             if (model.EndDateTime != null)
             {
-                query = query.Where(x => x.EndDateTime <= model.EndDateTime);
+                query = query.Where(x => x.CreateTime <= model.EndDateTime).ToList();
+            }
+            if (model.OnlineDateTime != null) 
+            {
+                query = query.Where(x => x.StartDateTime <= model.OnlineDateTime && x.EndDateTime >= model.OnlineDateTime).ToList();
             }
             if (!string.IsNullOrEmpty(model.Query))
             {
@@ -109,13 +113,13 @@ namespace WebTemplateDB.Service
                 switch (model.SearchEnum)
                 {
                     case 0:
-                        query = query.Where(x => x.ImageName.Trim().Contains(QueryString));
+                        query = query.Where(x => x.ImageName.Trim().Contains(QueryString)).ToList();
                         break;
                     case 1:
-                        query = query.Where(x => x.FontHomeUrl.ToLower().Contains(model.Query));
+                        query = query.Where(x => x.FontHomeUrl.ToLower().Contains(model.Query)).ToList();
                         break;
                     case 2:
-                        query = query.Where(x => x.Remark.ToLower().Contains(model.Query));
+                        query = query.Where(x => x.Remark.ToLower().Contains(model.Query)).ToList();
                         break;
                     default:
                         break;
@@ -139,7 +143,7 @@ namespace WebTemplateDB.Service
 
             if (query.Any())
             {
-                var list = await query.OrderBy(x=>x.FontHomeId).ToListAsync();
+                var list = query.OrderBy(x=>x.StartDateTime).ToList();
                 fonthome = list;
             }
 
@@ -217,5 +221,27 @@ namespace WebTemplateDB.Service
 
         }
 
+        public async Task<DataVerityResult> DeleteFontHome(int FontHomeId) 
+        {
+            DataVerityResult result = new DataVerityResult();
+
+            try
+            {
+                var data = _fontHome.FindBy(x => x.FontHomeId == FontHomeId).FirstOrDefault();
+                if (data != null) {
+                    _fontHome.Delete(data);
+                    result.Success = true;
+                    result.Message = "刪除前台首頁圖片成功";
+                }
+            }
+            catch (Exception ex)
+            {
+                result.Success = false;
+                result.Message = "刪除前台首頁圖片失敗";
+            }
+
+            return await Task.Run(() => result);
+
+        }
     }
 }

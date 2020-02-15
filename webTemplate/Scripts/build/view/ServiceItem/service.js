@@ -11,6 +11,14 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
             };
             return PublicFunction_1.AjaxReturn(setting);
         };
+        ServiceItemService.prototype.CreateServiceItemList = function (model) {
+            var setting = {
+                url: '/ServiceItem/CreateServiceItemList',
+                type: 'POST',
+                data: model
+            };
+            return PublicFunction_1.AjaxReturn(setting, 'FormData');
+        };
         return ServiceItemService;
     }());
     var fonthome_service = new ServiceItemService();

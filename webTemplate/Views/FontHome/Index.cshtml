@@ -41,6 +41,30 @@
                     </div>
                     <div class="row m-3">
                         <div class="col-auto">
+                            <label class="h5">建立日期：</label>
+                        </div>
+                        <div class="col-auto">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                                <input type="date" v-model="StartDateTime" class="form-control float-right" :min="MinDate" :max="EndDateTime" v-on:change="SetSearchDate">
+                                <h4>
+                                    ~
+                                </h4>
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                        <i class="far fa-calendar-alt"></i>
+                                    </span>
+                                </div>
+                                <input type="date" v-model="EndDateTime" class="form-control float-right" :max="MaxDate" :min="StartDateTime" v-on:change="SetSearchDate">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-3">
+                        <div class="col-auto">
                             <label class="h5">上線日期：</label>
                         </div>
                         <div class="col-auto">
@@ -50,16 +74,7 @@
                                         <i class="far fa-calendar-alt"></i>
                                     </span>
                                 </div>
-                                <input type="date" v-model="StartDateTime" class="form-control float-right">
-                                <h4>
-                                    ~
-                                </h4>
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">
-                                        <i class="far fa-calendar-alt"></i>
-                                    </span>
-                                </div>
-                                <input type="date" v-model="EndDateTime" class="form-control float-right">
+                                <input type="date" v-model="OnlineDateTime" class="form-control float-right" :min="OnlineMinDate" :max="OnlineMaxDate" v-on:change="SetSearchDate">
                             </div>
                         </div>
                     </div>
@@ -105,14 +120,14 @@
                                 <tbody v-for="(Item, index) in ListItem">
                                     <tr>
                                         <td>{{Item.FontHomeId}}</td>
-                                        <td><b-img :src="Item.ImgUrl" alt="Alternate Text" /></td>
+                                        <td><b-img :src="Item.ImgUrl" alt="Alternate Text" style="height:100px" /></td>
                                         <td>
                                             {{Item.ImageName}}
                                         </td>
                                         <td>
                                             {{Item.FontHomeUrl}}
                                         </td>
-                                        <td>
+                                        <td :class="{'bg-red': !Item.CheckOnlineDate, 'bg-success': Item.CheckOnlineDate }">
                                             {{Item.StartDateTime | dateToDateTimeString}}<br />~<br />
                                             {{Item.EndDateTime |dateToDateTimeString}}
                                         </td>
@@ -129,7 +144,7 @@
                                             <button class="btn-sm btn-primary" v-on:click="GetEditFontHome(Item.FontHomeId)">
                                                 <i class="fas fa-pen"></i>
                                             </button>
-                                            <button class="btn-sm btn-danger">
+                                            <button class="btn-sm btn-danger" v-on:click="DeleteFontHome(Item.FontHomeId)">
                                                 <i class="fas fa-trash-alt"></i>
                                             </button>
                                         </td>

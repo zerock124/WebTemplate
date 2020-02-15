@@ -2,7 +2,11 @@
 export enum UrlPathEnum {
     FontHomePhoto = 'FontHome/FontHomePhotos',
 
-    ServiceItemPhoto = 'ServiceItem/ServiceItemPhoto'
+    ServiceItemPhoto = 'ServiceItem/ServiceItemPhoto',
+
+    LatestNewsPhoto = 'LatestNews/LatestNewsPhoto',
+
+    CasePhoto = 'Case/CasePhoto'
 }
 
 export enum BookingStatusEnum {

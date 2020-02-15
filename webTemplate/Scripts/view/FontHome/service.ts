@@ -52,6 +52,15 @@ class FontHomeService implements IFontHomeService {
         return AjaxReturn(setting, "FormData");
     }
 
+    DeleteFontHome(FontHomeId: number): JQuery.jqXHR<ResponseViewModel> {
+        const setting: JQueryAjaxSettings = {
+            url: `/FontHome/DeleteFontHome`,
+            type: 'POST',
+            data: { FontHomeId }
+        };
+
+        return AjaxReturn(setting);
+    }
 }
 
 const fonthome_service: IFontHomeService = new FontHomeService();

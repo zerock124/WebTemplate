@@ -32,5 +32,8 @@ namespace WebTemplateDB.Models
         public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<FontHome> FontHome { get; set; }
         public virtual DbSet<StaticPage> StaticPage { get; set; }
+        public virtual DbSet<ServiceItem> ServiceItem { get; set; }
+        public virtual DbSet<LatestNews> LatestNews { get; set; }
+        public virtual DbSet<Case> Case { get; set; }
     }
 }

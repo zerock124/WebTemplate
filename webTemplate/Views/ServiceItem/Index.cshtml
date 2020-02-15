@@ -9,7 +9,7 @@
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-concierge-bell"></i>
                         @ViewBag.Title
                     </h1>
                 </div><!-- /.col -->
@@ -66,7 +66,9 @@
             <div class="col">
                 <div class="info-box-content">
                     <div class="h5 m-2 text-right">
-                        <button class="btn btn-primary btn-sm">送出</button>
+                        <form action="/" method="post" enctype="multipart/form-data" v-on:submit.prevent="CreateFormDateList">
+                            <button class="btn btn-primary btn-sm" type="submit">送出</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -79,10 +81,10 @@
 
         <div class="row mb-3 justify-content-center">
             <div v-if="!image">
-                <img :src="DefaultImage" alt="Alternate Text" class="animated fadeInRightBig" />
+                <img :src="DefaultImage" alt="Alternate Text" class="animated fadeInRightBig" style="width:60px"/>
             </div>
             <div v-if="image">
-                <img :src="image" alt="Alternate Text" class="animated fadeInRightBig" />
+                <img :src="image" alt="Alternate Text" class="animated fadeInRightBig" style="width:60px"/>
             </div>
         </div>
 
@@ -114,7 +116,7 @@
                 <div class="col">
                     <b-form-input type="text"
                                   name="ServiceItemName"
-                                  v-model="ServiceItemName">
+                                  v-model="ListItem.ServiceItemName">
                     </b-form-input>
                 </div>
             </div>

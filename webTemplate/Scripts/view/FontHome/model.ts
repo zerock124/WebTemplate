@@ -24,6 +24,11 @@
      * @param model
      */
     EditFontHomeItem(model: FontHomeViewModel): JQuery.jqXHR<ResponseViewModel> 
+    /**
+     * 刪除前台首頁圖片
+     * @param FontHomeId
+     */
+    DeleteFontHome(FontHomeId: number): JQuery.jqXHR<ResponseViewModel>
 }
 
 export interface FontHomeViewModel {
@@ -49,11 +54,14 @@ export interface FontHomeViewModel {
     PhotoFile: File | null;
     /**圖片URL */
     ImgUrl: string;
+    /**確認是否為上限 */
+    CheckOnlineDate: boolean;
 }
 
 export interface SearchModel {
     SearchEnum: number;
     StartDateTime: Date | null;
     EndDateTime: Date | null;
+    OnlineDateTime: Date | null;
     Query: string;
 }

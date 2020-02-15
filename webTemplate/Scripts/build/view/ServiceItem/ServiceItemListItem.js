@@ -17,9 +17,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "vue-property-decorator", "../Share/Enums"], function (require, exports, vue_property_decorator_1, Enums_1) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+define(["require", "exports", "vue-property-decorator", "../Share/Enums", "./ServiceItemEvent"], function (require, exports, vue_property_decorator_1, Enums_1, ServiceItemEvent_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    ServiceItemEvent_1 = __importDefault(ServiceItemEvent_1);
     var ServiceItemListItem = (function (_super) {
         __extends(ServiceItemListItem, _super);
         function ServiceItemListItem() {
@@ -37,9 +41,11 @@ define(["require", "exports", "vue-property-decorator", "../Share/Enums"], funct
         };
         ServiceItemListItem.prototype.GetDefaultFontHomeUrl = function () {
             var _this = this;
-            var BasePath = window.BasePath;
-            var photo = "NoImage.png";
-            _this.DefaultImage = BasePath + Enums_1.UrlPathEnum.ServiceItemPhoto + '?filename=' + photo;
+            if (_this.ListItem) {
+                var BasePath = window.BasePath;
+                var photo = _this.ListItem.ImageName;
+                _this.DefaultImage = BasePath + Enums_1.UrlPathEnum.ServiceItemPhoto + '?filename=' + photo;
+            }
         };
         ;
         ServiceItemListItem.prototype.fileSelected = function (event) {
@@ -53,9 +59,39 @@ define(["require", "exports", "vue-property-decorator", "../Share/Enums"], funct
         ServiceItemListItem.prototype.imageLoader = function (event) {
             this.image = event.target.result;
         };
+        ServiceItemListItem.prototype.OnServiceItemNameChange = function () {
+            var _this = this;
+            if (_this.ListItem) {
+                var ServiceItem = {
+                    ServiceItemId: _this.ListItem.ServiceItemId,
+                    ImageName: _this.ImageName,
+                    PhotoFile: _this.PhotoFile,
+                    ServiceItemName: _this.ServiceItemName
+                };
+                ServiceItemEvent_1.default.$emit('EmitServiceItem', ServiceItem);
+            }
+        };
+        ServiceItemListItem.prototype.OnListItemChange = function () {
+            var _this = this;
+            if (_this.ListItem) {
+                var ServiceItem = {
+                    ServiceItemId: _this.ListItem.ServiceItemId,
+                    ImageName: _this.ImageName,
+                    PhotoFile: _this.PhotoFile,
+                    ServiceItemName: _this.ServiceItemName
+                };
+                ServiceItemEvent_1.default.$emit('EmitServiceItem', ServiceItem);
+            }
+        };
         __decorate([
             vue_property_decorator_1.Prop(Object)
         ], ServiceItemListItem.prototype, "ListItem", void 0);
+        __decorate([
+            vue_property_decorator_1.Watch('ServiceItemName')
+        ], ServiceItemListItem.prototype, "OnServiceItemNameChange", null);
+        __decorate([
+            vue_property_decorator_1.Watch('PhotoFile')
+        ], ServiceItemListItem.prototype, "OnListItemChange", null);
         ServiceItemListItem = __decorate([
             vue_property_decorator_1.Component({
                 template: '#ServiceItemListItem'

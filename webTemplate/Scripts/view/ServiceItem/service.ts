@@ -11,6 +11,16 @@ class ServiceItemService implements IServiceItemService {
 
         return AjaxReturn(setting);
     }
+
+    CreateServiceItemList(model: ServiceItemViewModel[]): JQuery.jqXHR<ResponseViewModel<ServiceItemViewModel[]>> {
+        const setting: JQueryAjaxSettings = {
+            url: '/ServiceItem/CreateServiceItemList',
+            type: 'POST',
+            data: model
+        }
+
+        return AjaxReturn(setting, 'FormData');
+    }
 }
 
 const fonthome_service: IServiceItemService = new ServiceItemService();

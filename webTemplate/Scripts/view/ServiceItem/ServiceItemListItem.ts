@@ -1,6 +1,7 @@
-﻿import { Vue, Component, Prop } from 'vue-property-decorator'
+﻿import { Vue, Component, Prop, Watch } from 'vue-property-decorator'
 import { ServiceItemViewModel } from './model'
 import { UrlPathEnum } from '../Share/Enums';
+import serviceItem_event from './ServiceItemEvent'
 
 @Component({
     template: '#ServiceItemListItem'
@@ -22,9 +23,11 @@ export default class ServiceItemListItem extends Vue {
 
     GetDefaultFontHomeUrl() {
         const _this = this;
-        const BasePath = window.BasePath; // _Layout.cshtml
-        const photo = "NoImage.png";
-        _this.DefaultImage = BasePath + UrlPathEnum.ServiceItemPhoto + '?filename=' + photo;
+        if (_this.ListItem) {
+            const BasePath = window.BasePath; // _Layout.cshtml
+            const photo = _this.ListItem.ImageName;
+            _this.DefaultImage = BasePath + UrlPathEnum.ServiceItemPhoto + '?filename=' + photo;
+        }
     };
 
     fileSelected(event) {
@@ -37,5 +40,33 @@ export default class ServiceItemListItem extends Vue {
 
     imageLoader(event) {
         this.image = event.target.result;
+    }
+
+    @Watch('ServiceItemName')
+    OnServiceItemNameChange() {
+        const _this = this;
+        if (_this.ListItem) {
+            const ServiceItem = {
+                ServiceItemId: _this.ListItem.ServiceItemId,
+                ImageName: _this.ImageName,
+                PhotoFile: _this.PhotoFile,
+                ServiceItemName: _this.ServiceItemName
+            }
+            serviceItem_event.$emit('EmitServiceItem', ServiceItem);
+        }
+    }
+
+    @Watch('PhotoFile')
+    OnListItemChange() {
+        const _this = this;
+        if (_this.ListItem) {
+            const ServiceItem = {
+                ServiceItemId: _this.ListItem.ServiceItemId,
+                ImageName: _this.ImageName,
+                PhotoFile: _this.PhotoFile,
+                ServiceItemName: _this.ServiceItemName
+            }
+            serviceItem_event.$emit('EmitServiceItem', ServiceItem);
+        }
     }
 }

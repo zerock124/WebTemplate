@@ -132,16 +132,64 @@
       <End Role="AspNetUsers" EntitySet="AspNetUsers" />
     </AssociationSet>
     <EntitySet Name="StaticPage" EntityType="WebTemplateModel.StaticPage" />
+    <EntitySet Name="ServiceItem" EntityType="WebTemplateModel.ServiceItem" />
+    <EntitySet Name="LatestNews" EntityType="WebTemplateModel.LatestNews" />
+    <EntitySet Name="Case" EntityType="WebTemplateModel.Case" />
   </EntityContainer>
   <EntityType Name="StaticPage">
     <Key>
       <PropertyRef Name="StaticPageId" />
     </Key>
     <Property Name="StaticPageId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="StaticPageEnum" Type="Int32" />
+    <Property Name="StaticPageEnum" Type="Int32" Nullable="false" />
     <Property Name="PageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ServiceItem">
+    <Key>
+      <PropertyRef Name="ServiceItemId" />
+    </Key>
+    <Property Name="ServiceItemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceItemName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CreateTime" Type="DateTime" Precision="3" />
     <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="LatestNews">
+    <Key>
+      <PropertyRef Name="LatestNewsId" />
+    </Key>
+    <Property Name="LatestNewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LatestNewsEnum" Type="Int32" />
+    <Property Name="StartDateTime" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="LatestNewsTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LatestNewsContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Remark" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUser" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateTime" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Case">
+    <Key>
+      <PropertyRef Name="CaseId" />
+    </Key>
+    <Property Name="CaseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CaseUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CaseEnum" Type="Int32" Nullable="false" />
+    <Property Name="CaseName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CaseContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>

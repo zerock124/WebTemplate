@@ -20,21 +20,29 @@ define(["require", "exports", "moment"], function (require, exports, moment) {
             return moment(date).format('HH:mm:ss');
         return emptystr;
     };
-    exports.ValueOrHyphen = function (val) {
-        if (val === null || val === undefined || val === "")
-            return "-";
-        return val;
-    };
-    exports.CurrencyFormat = function (num) {
-        if (typeof (num) !== 'number') {
-            return num;
+    exports.GetLatestNewsEnum = function (date) {
+        switch (date) {
+            case 0:
+                return '媒體報導';
+            case 1:
+                return '新聞報導';
+            case 2:
+                return '測試報導';
+            default:
+                return '-';
         }
-        var _num = num.toString().split('.');
-        _num[0] = _num[0].replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
-        return _num.join('.');
     };
-    exports.MeterToKm = function (meter) {
-        return (meter / 1000).toFixed(1);
+    exports.GetCaseEnum = function (date) {
+        switch (date) {
+            case 0:
+                return '行銷活動';
+            case 1:
+                return '臉書機器人';
+            case 2:
+                return '官網';
+            default:
+                return '-';
+        }
     };
 });
 //# sourceMappingURL=FilterFunction.js.map

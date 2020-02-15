@@ -15,9 +15,9 @@ namespace WebTemplateDB.Models
     public partial class StaticPage
     {
         public int StaticPageId { get; set; }
-        public Nullable<int> StaticPageEnum { get; set; }
+        public int StaticPageEnum { get; set; }
         public string PageContent { get; set; }
-        public Nullable<System.DateTime> CreateTime { get; set; }
+        public System.DateTime CreateTime { get; set; }
         public string CreateUser { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
         public string UpdateUser { get; set; }

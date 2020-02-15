@@ -1,0 +1,164 @@
+﻿@{
+    ViewBag.Title = "最新消息管理";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="nav-icon fas fa-bullhorn"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div id="v_app"></div>
+</div>
+
+<template id="LatestNewsEditManagement">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card card-default color-palette-box">
+                <div class="card-blue">
+                    <div style="border-top: 5px solid black;border-bottom: 1px solid">
+                        <div class="col">
+                            <div class="info-box-content">
+                                <div class="h5 m-2">
+                                    編輯
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center">
+                        <div class="col-auto col-md-6">
+                            <div class="row mt-3 justify-content-center">
+                                <div v-if="!image">
+                                    <img :src="DefaultImage" alt="Alternate Text" class="animated fadeInRightBig" style="width:400px" />
+                                </div>
+                                <div v-if="image" class="animated fadeInRightBig">
+                                    <img :src="image" alt="Alternate Text" class="animated fadeInRightBig" style="width:400px" />
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 justify-content-center">
+                                <h6>( 圖片 / 寬度800 / JPG 格式 )</h6>
+                            </div>
+
+                            <form action="\" enctype="multipart/form-data" method="post" v-on:submit.prevent="SetEditFontHome">
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        圖片檔案：
+                                    </small>
+                                    <div class="col">
+                                        <b-form-file name="PhotoFile"
+                                                     v-model="PhotoFile"
+                                                     v-on:change="fileSelected"
+                                                     placeholder="上傳圖片"></b-form-file>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        類　　型：
+                                    </small>
+
+                                    <div class="col">
+                                        <b-form-select type="text"
+                                                       name="LatestNewsEnum"
+                                                       :options="Options"
+                                                       v-model="LatestNewsEnum"></b-form-select>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        上架日期：
+                                    </small>
+                                    <div class="col">
+                                        <b-form-input type="datetime"
+                                                      name="StartDateTime"
+                                                      v-model="StartDateTime"></b-form-input>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        標　　題：
+                                    </small>
+                                    <div class="col">
+                                        <b-form-input type="text"
+                                                      name="LatestNewsTitle"
+                                                      v-model="LatestNewsTitle"></b-form-input>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        內　　文：
+                                    </small>
+                                    <div class="col">
+                                        <b-form-input type="text"
+                                                      name="LatestNewsContent"
+                                                      v-model="LatestNewsContent"></b-form-input>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        備　　註：
+                                    </small>
+                                    <div class="col">
+                                        <b-form-input type="text"
+                                                      name="Remark"
+                                                      v-model="Remark"></b-form-input>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        狀　　態：
+                                    </small>
+
+                                    <div class="col">
+                                        <toggle-button v-if="LatestNewsItem"
+                                                       v-model="Status"
+                                                       :sync="LatestNewsItem.Status"
+                                                       :labels="{checked: '正常', unchecked: '停用'}"
+                                                       :width="100"
+                                                       :color="{checked: '#25EF02', unchecked: '#E3170D'}">
+                                        </toggle-button>
+                                    </div>
+                                </div>
+
+                                <div class="row justify-content-end">
+                                    <div class="col-auto p-3">
+                                        <button class="btn btn-primary" type="submit">
+                                            送出
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+@section Scripts {
+    <script>
+
+    </script>
+    <script>
+        requirejs.config({
+            baseUrl: "@Url.Content("~/Scripts/build/view/LatestNews/Edit")"
+        });
+        require(["index"]);
+    </script>
+
+}

@@ -86,5 +86,49 @@
         <ScalarProperty Name="Id" ColumnName="UserId" />
       </EndProperty>
     </AssociationSetMapping>
+    <EntitySetMapping Name="StaticPage">
+      <EntityTypeMapping TypeName="WebTemplateModel.StaticPage">
+        <MappingFragment StoreEntitySet="StaticPage">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+          <ScalarProperty Name="StaticPageEnum" ColumnName="StaticPageEnum" />
+          <ScalarProperty Name="StaticPageId" ColumnName="StaticPageId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceItem">
+      <EntityTypeMapping TypeName="WebTemplateModel.ServiceItem">
+        <MappingFragment StoreEntitySet="ServiceItem">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="ServiceItemName" ColumnName="ServiceItemName" />
+          <ScalarProperty Name="ServiceItemId" ColumnName="ServiceItemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LatestNews">
+      <EntityTypeMapping TypeName="WebTemplateModel.LatestNews">
+        <MappingFragment StoreEntitySet="LatestNews">
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="LatestNewsContent" ColumnName="LatestNewsContent" />
+          <ScalarProperty Name="LatestNewsTitle" ColumnName="LatestNewsTitle" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="LatestNewsEnum" ColumnName="LatestNewsEnum" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="LatestNewsId" ColumnName="LatestNewsId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

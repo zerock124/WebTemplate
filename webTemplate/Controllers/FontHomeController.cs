@@ -207,5 +207,26 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+
+        public async Task<JsonResult> DeleteFontHome(int FontHomeId) 
+        {
+            ResponseViewModel res = new ResponseViewModel();
+
+            try
+            {
+                var data = await _fontHomeService.DeleteFontHome(FontHomeId);
+                res.Data = data;
+                res.Success = true;
+                res.Message = "取得首頁管理內容成功";
+            }
+            catch
+            {
+                res.Success = false;
+                res.Message = "伺服器連線發生錯誤";
+                res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
+            }
+            res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
+            return Json(res, JsonRequestBehavior.AllowGet);
+        }
     }
 }

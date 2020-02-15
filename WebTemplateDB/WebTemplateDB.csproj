@@ -56,8 +56,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interface\IBackOperationRecordService.cs" />
+    <Compile Include="Interface\ICaseService.cs" />
     <Compile Include="Interface\IFontHomeService.cs" />
+    <Compile Include="Interface\ILatestNewsService.cs" />
     <Compile Include="Interface\IMenuUIService.cs" />
+    <Compile Include="Interface\IServiceItemService.cs" />
     <Compile Include="Interface\IStaticPageService.cs" />
     <Compile Include="Models\AspNetRoles.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
@@ -71,10 +74,19 @@
     <Compile Include="Models\AspNetUsers.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Case.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FontHome.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LatestNews.cs">
+      <DependentUpon>WebTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ServiceItem.cs">
       <DependentUpon>WebTemplate.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\StaticPage.cs">
@@ -99,8 +111,11 @@
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\IGenericRepository.cs" />
     <Compile Include="Service\BackOperationRecordService.cs" />
+    <Compile Include="Service\CaseService.cs" />
     <Compile Include="Service\FontHomeService.cs" />
+    <Compile Include="Service\LatestNewsService.cs" />
     <Compile Include="Service\MenuUIService.cs" />
+    <Compile Include="Service\ServiceItemService.cs" />
     <Compile Include="Service\StaticPageService.cs" />
   </ItemGroup>
   <ItemGroup>

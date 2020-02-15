@@ -207,8 +207,17 @@
     <File Include="bin/Serilog.dll">
       <publishTime>10/13/2019 21:02:42</publishTime>
     </File>
+    <File Include="bin/System.Net.Http.Formatting.dll">
+      <publishTime>11/28/2018 13:00:36</publishTime>
+    </File>
     <File Include="bin/System.Web.Helpers.dll">
       <publishTime>11/28/2018 13:04:24</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.dll">
+      <publishTime>11/28/2018 13:01:00</publishTime>
+    </File>
+    <File Include="bin/System.Web.Http.WebHost.dll">
+      <publishTime>11/28/2018 13:02:56</publishTime>
     </File>
     <File Include="bin/System.Web.Mvc.dll">
       <publishTime>11/28/2018 12:59:46</publishTime>
@@ -229,31 +238,31 @@
       <publishTime>11/28/2018 13:04:24</publishTime>
     </File>
     <File Include="bin/ViewModel.dll">
-      <publishTime>02/11/2020 10:37:50</publishTime>
+      <publishTime>02/14/2020 11:30:52</publishTime>
     </File>
     <File Include="bin/ViewModel.dll.config">
       <publishTime>02/03/2020 17:31:38</publishTime>
     </File>
     <File Include="bin/ViewModel.pdb">
-      <publishTime>02/11/2020 10:37:50</publishTime>
+      <publishTime>02/14/2020 11:30:52</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="bin/webTemplate.dll">
-      <publishTime>02/11/2020 14:14:53</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="bin/webTemplate.pdb">
-      <publishTime>02/11/2020 14:14:53</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="bin/WebTemplateDB.dll">
-      <publishTime>02/11/2020 12:14:31</publishTime>
+      <publishTime>02/14/2020 11:47:15</publishTime>
     </File>
     <File Include="bin/WebTemplateDB.dll.config">
       <publishTime>02/11/2020 11:43:45</publishTime>
     </File>
     <File Include="bin/WebTemplateDB.pdb">
-      <publishTime>02/11/2020 12:14:31</publishTime>
+      <publishTime>02/14/2020 11:47:15</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Helpers.resources.dll">
       <publishTime>11/28/2018 13:04:32</publishTime>
@@ -5334,8 +5343,32 @@
     <File Include="Global.asax">
       <publishTime>02/03/2020 15:52:49</publishTime>
     </File>
+    <File Include="Image/FontHome/Dog.jpg">
+      <publishTime>02/11/2020 11:46:56</publishTime>
+    </File>
     <File Include="Image/FontHome/NoImage.jpg">
       <publishTime>02/06/2020 17:08:11</publishTime>
+    </File>
+    <File Include="Image/FontHome/twitter.jpg">
+      <publishTime>02/14/2020 11:24:03</publishTime>
+    </File>
+    <File Include="Image/FontHome/老皮.jpg">
+      <publishTime>02/11/2020 14:30:48</publishTime>
+    </File>
+    <File Include="Image/LatestNews/file-1.jpeg">
+      <publishTime>02/13/2020 15:50:54</publishTime>
+    </File>
+    <File Include="Image/LatestNews/new-1.jpg">
+      <publishTime>02/14/2020 10:39:03</publishTime>
+    </File>
+    <File Include="Image/ServiceItem/JaketheDog.png">
+      <publishTime>02/13/2020 13:43:30</publishTime>
+    </File>
+    <File Include="Image/ServiceItem/NoImage.png">
+      <publishTime>02/12/2020 17:29:00</publishTime>
+    </File>
+    <File Include="Image/ServiceItem/RBO.png">
+      <publishTime>02/13/2020 13:43:30</publishTime>
     </File>
     <File Include="node_modules/bootstrap-vue/CHANGELOG.md">
       <publishTime>10/26/1985 16:15:00</publishTime>
@@ -8967,6 +9000,480 @@
     <File Include="node_modules/moment/src/moment.js">
       <publishTime>10/26/1985 16:15:00</publishTime>
     </File>
+    <File Include="node_modules/quill-delta/.travis.yml">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/CHANGELOG.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/lib/delta.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/lib/op.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/LICENSE">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/package.json">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/README.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/attributes.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/delta/builder.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/delta/compose.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/delta/diff.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/delta/helpers.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/delta/transform-position.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/delta/transform.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill-delta/test/op.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/base.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/bubble.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/bubble/toolbar.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/bubble/tooltip.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/core.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/favicon.png">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/align-center.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/align-justify.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/align-left.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/align-right.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/attachment.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/audio.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/authorship.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/background.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/blockquote.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/bold.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/clean.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/code.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/color.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/comment.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/direction-ltr.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/direction-rtl.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/dropdown.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/embed.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/emoji.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/float-center.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/float-full.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/float-left.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/float-right.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/font.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/formula.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/hashtag.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/header-2.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/header-3.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/header-4.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/header-5.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/header-6.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/header.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/horizontal-rule.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/image.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/indent.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/italic.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/link.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/list-bullet.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/list-check.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/list-ordered.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/map.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/mention.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/more.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/outdent.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/redo.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/size-decrease.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/size-increase.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/size.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/spacing.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/speech.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/strike.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/subscript.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/superscript.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-border-all.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-border-bottom.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-border-left.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-border-none.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-border-outside.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-border-right.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-border-top.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-delete-cells.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-delete-columns.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-delete-rows.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-insert-cells.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-insert-columns.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-insert-rows.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-merge-cells.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table-unmerge-cells.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/table.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/underline.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/undo.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/icons/video.svg">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/snow.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/snow/toolbar.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/assets/snow/tooltip.styl">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/block.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/break.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/container.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/cursor.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/embed.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/inline.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/scroll.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/blots/text.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/CHANGELOG.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/editor.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/emitter.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/logger.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/module.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/polyfill.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/quill.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/selection.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/core/theme.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/dist/quill.bubble.css">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/dist/quill.core.css">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/dist/quill.core.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/dist/quill.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/dist/quill.min.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/dist/quill.min.js.map">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/dist/quill.snow.css">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/align.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/background.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/blockquote.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/bold.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/code.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/color.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/direction.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/font.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/header.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/image.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/indent.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/italic.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/link.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/list.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/script.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/size.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/strike.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/underline.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/formats/video.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/LICENSE">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/modules/clipboard.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/modules/formula.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/modules/history.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/modules/keyboard.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/modules/syntax.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/modules/toolbar.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/package.json">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/quill/quill.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/README.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/themes/base.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/themes/bubble.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/themes/snow.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/ui/color-picker.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/ui/icon-picker.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/ui/icons.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/ui/picker.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/quill/ui/tooltip.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
     <File Include="node_modules/requirejs/require.js">
       <publishTime>08/27/2018 14:00:39</publishTime>
     </File>
@@ -9073,6 +9580,69 @@
       <publishTime>02/06/2020 09:52:01</publishTime>
     </File>
     <File Include="node_modules/vue-property-decorator/README.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/CHANGELOG.md">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/dist/ssr.js">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/dist/vue-quill-editor.js">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/LICENSE">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/package.json">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/README.md">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/src/.DS_Store">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/src/editor.vue">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/src/index.js">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/src/options.js">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-quill-editor/src/ssr.js">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg-2/dist/vueWysiwyg.css">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg-2/dist/vueWysiwyg.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg-2/LICENSE">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg-2/package.json">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg-2/README.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg/dist/vueWysiwyg.css">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg/dist/vueWysiwyg.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg/LICENSE">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg/package.json">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue-wysiwyg/README.md">
       <publishTime>10/26/1985 16:15:00</publishTime>
     </File>
     <File Include="node_modules/vue/dist/README.md">
@@ -9726,6 +10296,57 @@
     <File Include="node_modules/vue/src/shared/util.js">
       <publishTime>10/26/1985 16:15:00</publishTime>
     </File>
+    <File Include="node_modules/vue2-dropzone/dist/vue2Dropzone.js">
+      <publishTime>07/05/2019 16:43:28</publishTime>
+    </File>
+    <File Include="node_modules/vue2-dropzone/dist/vue2Dropzone.js.map">
+      <publishTime>07/05/2019 16:43:28</publishTime>
+    </File>
+    <File Include="node_modules/vue2-dropzone/dist/vue2Dropzone.min.css">
+      <publishTime>07/05/2019 16:43:28</publishTime>
+    </File>
+    <File Include="node_modules/vue2-dropzone/LICENSE">
+      <publishTime>08/31/2018 16:50:51</publishTime>
+    </File>
+    <File Include="node_modules/vue2-dropzone/package.json">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue2-dropzone/README.md">
+      <publishTime>07/05/2019 15:02:04</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/CHANGELOG.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/dist/.DS_Store">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/dist/vue2-editor.common.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/dist/vue2-editor.core.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/dist/vue2-editor.css">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/dist/vue2-editor.esm.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/dist/vue2-editor.umd.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/dist/vue2-editor.umd.min.js">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/LICENSE">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/package.json">
+      <publishTime>02/12/2020 11:50:42</publishTime>
+    </File>
+    <File Include="node_modules/vue2-editor/README.md">
+      <publishTime>10/26/1985 16:15:00</publishTime>
+    </File>
     <File Include="Scripts/bootstrap/bootstrap.js">
       <publishTime>12/19/2019 12:13:33</publishTime>
     </File>
@@ -9733,106 +10354,226 @@
       <publishTime>12/19/2019 12:13:33</publishTime>
     </File>
     <File Include="Scripts/build/view/components/Aside.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/components/Aside.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/FontHomeCreateManagement.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/FontHomeCreateManagement.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/index.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/index.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/FontHomeEditManagement.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/FontHomeEditManagement.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/index.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/index.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeListItem.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeListItem.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeManagement.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeManagement.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/index.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/index.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/model.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/model.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/service.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/service.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Create/index.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Create/index.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Create/LatestNewsCreateManagement.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Create/LatestNewsCreateManagement.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Edit/FontHomeEditManagement.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Edit/FontHomeEditManagement.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Edit/index.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/Edit/index.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/index.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/index.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/LatestNewsManagement.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/LatestNewsManagement.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/model.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/model.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/service.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/LatestNews/service.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/index.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/index.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/Model.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/Model.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/PermissionManagement.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/PermissionManagement.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/Service.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/Service.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/index.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/index.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/model.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/model.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/service.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/service.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemEvent.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemEvent.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemList.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemList.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemListItem.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemListItem.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemManagement.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/ServiceItem/ServiceItemManagement.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/Enums.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/Enums.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/FilterFunction.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/FilterFunction.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/PublicFunction.js">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/PublicFunction.js.map">
-      <publishTime>02/11/2020 14:14:52</publishTime>
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/index.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/index.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/model.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/model.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/service.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/service.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/StaticPageItem.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/StaticPageItem.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/StaticPageManagement.js">
+      <publishTime>02/14/2020 11:47:21</publishTime>
+    </File>
+    <File Include="Scripts/build/view/StaticPage/StaticPageManagement.js.map">
+      <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/jquery.validate/jquery.validate.js">
       <publishTime>02/03/2020 15:52:54</publishTime>
@@ -9865,7 +10606,7 @@
       <publishTime>02/06/2020 10:22:57</publishTime>
     </File>
     <File Include="Views/Account/SignIn.cshtml">
-      <publishTime>02/05/2020 17:22:24</publishTime>
+      <publishTime>02/11/2020 15:08:56</publishTime>
     </File>
     <File Include="Views/BackOperationRecord/Index.cshtml">
       <publishTime>02/05/2020 17:33:47</publishTime>
@@ -9877,19 +10618,31 @@
       <publishTime>02/10/2020 16:30:05</publishTime>
     </File>
     <File Include="Views/FontHome/Index.cshtml">
-      <publishTime>02/10/2020 16:31:03</publishTime>
+      <publishTime>02/14/2020 11:42:52</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>02/06/2020 14:40:28</publishTime>
+      <publishTime>02/13/2020 14:38:41</publishTime>
     </File>
     <File Include="Views/Home/MainMenu.cshtml">
       <publishTime>02/05/2020 13:13:24</publishTime>
+    </File>
+    <File Include="Views/LatestNews/Create.cshtml">
+      <publishTime>02/13/2020 15:50:37</publishTime>
+    </File>
+    <File Include="Views/LatestNews/Edit.cshtml">
+      <publishTime>02/14/2020 11:30:31</publishTime>
+    </File>
+    <File Include="Views/LatestNews/Index.cshtml">
+      <publishTime>02/14/2020 11:30:15</publishTime>
     </File>
     <File Include="Views/NewMessage/Index.cshtml">
       <publishTime>02/06/2020 16:32:41</publishTime>
     </File>
     <File Include="Views/Permission/Index.cshtml">
       <publishTime>02/06/2020 16:15:40</publishTime>
+    </File>
+    <File Include="Views/ServiceItem/Index.cshtml">
+      <publishTime>02/13/2020 14:22:43</publishTime>
     </File>
     <File Include="Views/Shared/Error.cshtml">
       <publishTime>02/03/2020 15:52:49</publishTime>
@@ -9901,13 +10654,16 @@
       <publishTime>02/05/2020 13:17:22</publishTime>
     </File>
     <File Include="Views/Shared/_Header.cshtml">
-      <publishTime>02/05/2020 17:10:43</publishTime>
+      <publishTime>02/13/2020 14:38:02</publishTime>
     </File>
     <File Include="Views/Shared/_Layout.cshtml">
-      <publishTime>02/11/2020 14:05:49</publishTime>
+      <publishTime>02/12/2020 12:02:07</publishTime>
     </File>
     <File Include="Views/Shared/_Sidebar.cshtml">
-      <publishTime>02/10/2020 16:34:04</publishTime>
+      <publishTime>02/13/2020 14:24:28</publishTime>
+    </File>
+    <File Include="Views/StaticPage/Index.cshtml">
+      <publishTime>02/13/2020 14:22:07</publishTime>
     </File>
     <File Include="Views/Web.config">
       <publishTime>02/03/2020 15:52:49</publishTime>
@@ -9916,7 +10672,7 @@
       <publishTime>02/03/2020 15:52:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>02/11/2020 13:32:28</publishTime>
+      <publishTime>02/13/2020 16:38:50</publishTime>
     </File>
   </ItemGroup>
 </Project>

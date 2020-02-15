@@ -52,4 +52,5 @@ namespace ViewModel.Home
         /// </summary>
         public string iclassTag { get; set; }
     }
+
 }

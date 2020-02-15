@@ -2,14 +2,22 @@
     ViewBag.Title = "Home";
 }
 <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-
+<style>
+    .small-box .icon > i {
+        font-size: 90px;
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        transition: all 0.1s linear;
+    }
+</style>
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
                     <h1 class="m-0 text-dark">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-home"></i>
                         @ViewBag.Title
                     </h1>
                 </div><!-- /.col -->
@@ -30,7 +38,7 @@
                         <div class="icon">
                             <i class="far fa-comment-alt"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="@Url.Action("Index","LatestNews")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -44,7 +52,7 @@
                         <div class="icon">
                             <i class="fas fa-folder-open"></i>
                         </div>
-                        <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="@Url.Action("Index","Case")" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
