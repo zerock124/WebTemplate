@@ -14,3 +14,5 @@ C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.csproj.CopyCo
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.dll
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Debug\WebTemplateDB.pdb
 C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\zh-Hant\EntityFramework.SqlServer.resources.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Debug\Microsoft.AspNet.Identity.Core.xml

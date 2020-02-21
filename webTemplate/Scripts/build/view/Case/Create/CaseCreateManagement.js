@@ -17,9 +17,14 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-define(["require", "exports", "vue-property-decorator", "../../Share/Enums"], function (require, exports, vue_property_decorator_1, Enums_1) {
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "vue2-editor"], function (require, exports, vue_property_decorator_1, Enums_1, vue2_editor_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
+    vue2_editor_1 = __importDefault(vue2_editor_1);
+    vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var CaseCreateManagement = (function (_super) {
         __extends(CaseCreateManagement, _super);
         function CaseCreateManagement() {
@@ -43,6 +48,11 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums"], fu
             _this_1.CaseName = '';
             _this_1.CaseContent = '';
             _this_1.Status = false;
+            _this_1.customToolbar = [
+                ["bold", "italic", "underline"],
+                [{ list: "ordered" },
+                    { list: "bullet" }]
+            ];
             return _this_1;
         }
         CaseCreateManagement.prototype.created = function () {

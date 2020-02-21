@@ -49,7 +49,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                     text: '圖片名稱'
                 }, {
                     value: 1,
-                    text: '圖片連結'
+                    text: '連結網址'
                 }, {
                     value: 2,
                     text: '備註'
@@ -88,7 +88,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 if (res.Data) {
                     _this.ListItem = res.Data;
                     _this.Pagination = res.Pagination;
-                    _this.LimitDate(res.Data);
+                    _this.LimitDate(res);
                     _this.CheckOnlineDate();
                 }
             }).catch(function (err) {
@@ -97,16 +97,10 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
         };
         FontHomeManagement.prototype.LimitDate = function (Data) {
             var _this = this;
-            var MaxDate = Data.map(function (s) { return moment(s.CreateTime); });
-            _this.MaxDate = moment.max(MaxDate).format("YYYY-MM-DD");
-            _this.EndDateTime = _this.MaxDate;
-            var MinDate = Data.map(function (s) { return moment(s.CreateTime); });
-            _this.MinDate = moment.min(MinDate).format("YYYY-MM-DD");
-            _this.StartDateTime = _this.MinDate;
-            var OnlineMaxDate = Data.map(function (s) { return moment(s.EndDateTime); });
-            _this.OnlineMaxDate = moment.max(OnlineMaxDate).format("YYYY-MM-DD");
-            var OnlineMinDate = Data.map(function (s) { return moment(s.StartDateTime); });
-            _this.OnlineMinDate = moment.min(OnlineMinDate).format("YYYY-MM-DD");
+            _this.StartDateTime = moment(Data.MinDateTime).startOf('day').format("YYYY-MM-DD");
+            _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
+            _this.MinDate = _this.StartDateTime;
+            _this.MaxDate = _this.EndDateTime;
         };
         FontHomeManagement.prototype.SetSearchDate = function () {
             var _this = this;
@@ -195,7 +189,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             }
             _this.searchmodel.Query = _this.Query;
             _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).startOf('day').toDate();
+            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
             _this.GetFontHomeList(_this.searchmodel);
         };
         FontHomeManagement.prototype.GetEditFontHome = function (FontHomeId) {
@@ -231,7 +225,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             vue_property_decorator_1.Watch('ListItem')
         ], FontHomeManagement.prototype, "GetImageUrl", null);
         __decorate([
-            vue_property_decorator_1.Watch('RideRecordList')
+            vue_property_decorator_1.Watch('ListItem')
         ], FontHomeManagement.prototype, "OnRideRecordListChange", null);
         __decorate([
             vue_property_decorator_1.Watch('Pagination')

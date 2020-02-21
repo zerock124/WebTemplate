@@ -102,9 +102,9 @@
                                         案例敘述：
                                     </small>
                                     <div class="col">
-                                        <b-form-input type="text"
-                                                      name="CaseContent"
-                                                      v-model="CaseContent"></b-form-input>
+                                        <vue-editor name="CaseContent"
+                                                    :editor-toolbar="customToolbar"
+                                                    v-model="CaseContent"></vue-editor>
                                     </div>
                                 </div>
 

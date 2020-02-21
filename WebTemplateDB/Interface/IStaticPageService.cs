@@ -31,5 +31,14 @@ namespace WebTemplateDB.Interface
         /// <returns></returns>
         Task<DataVerityResult<StaticPageViewModel>> EditStaticPage(StaticPageViewModel model);
 
+        ///-------------------------API---------------------------
+
+        /// <summary>
+        /// 取得靜態頁內容
+        /// </summary>
+        /// <returns></returns>
+        Task<StaticPageViewModel> GetStaticPage(int StaticPageEnum);
+
+        ///-------------------------------------------------------
     }
 }

@@ -44,3 +44,47 @@ export const GetCaseEnum = (date: number | null) => {
             return '-'
     }
 }
+
+export const GetBackOperationResult = (date: boolean | null) => {
+    switch (date) {
+        case true:
+            return '成功';
+        case false:
+            return '失敗';
+    }
+}
+
+export const GetSexEnum = (date: number | null) => {
+    switch (date) {
+        case 0:
+            return '先生';
+        case 1:
+            return '小姐';
+    }
+}
+
+export const GetContactEnum = (date: number | null) => {
+    switch (date) {
+        case 0:
+            return '網站建置';
+        case 1:
+            return '聊天機器人';
+        case 2:
+            return '客製化抽獎';
+        case 3:
+            return '其他';
+        default:
+            return '-';
+    }
+}
+
+export const GetContactStatus = (date: number | null) => {
+    switch (date) {
+        case 0:
+            return '全新專案';
+        case 1:
+            return '改版增修';
+        default:
+            return '-';
+    }
+}

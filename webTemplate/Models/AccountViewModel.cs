@@ -6,8 +6,11 @@ using System.Web;
 
 namespace webTemplate.Models
 {
-    public class AccountViewModel
+    public class ExternalLoginConfirmationViewModel
     {
+        [Required]
+        [Display(Name = "電子郵件")]
+        public string Email { get; set; }
     }
 
     /// <summary>
@@ -34,7 +37,6 @@ namespace webTemplate.Models
 
     public class RegisterViewModel 
     {
-        [Required]
         [EmailAddress]
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
@@ -43,11 +45,10 @@ namespace webTemplate.Models
         [Display(Name = "帳號")]
         public string UserName { get; set; }
 
-        [Required]
         [Display(Name = "真實姓名")]
         public string RealName { get; set; }
 
-        [RegularExpression(@"(^[09]{2}[0-9]{8}$|^[+886]{4}[0-9]{9}$)", ErrorMessage = "必須為手機號碼格式，例如：0987654321、+886987654321")]
+        //[RegularExpression(@"(^[09]{2}[0-9]{8}$|^[+886]{4}[0-9]{9}$)", ErrorMessage = "必須為手機號碼格式，例如：0987654321、+886987654321")]
         [Display(Name = "行動電話")]
         public string PhoneNumber { get; set; }
 
@@ -62,9 +63,11 @@ namespace webTemplate.Models
         [Compare("Password", ErrorMessage = "密碼和確認密碼不相符。")]
         public string ConfirmPassword { get; set; }
 
-        [Required]
         [Display(Name = "角色名稱")]
         public string RoleName { get; set; }
+
+        [Display(Name = "角色Id")]
+        public string RoleId { get; set; }
     }
 
     public class SendCodeViewModel

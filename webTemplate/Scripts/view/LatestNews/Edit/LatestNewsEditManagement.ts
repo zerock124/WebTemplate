@@ -3,6 +3,9 @@ import { LatestNewsViewModel } from '../model';
 import { UrlPathEnum } from '../../Share/Enums';
 import service from '../service'
 import moment = require('moment');
+import VueEditor from 'vue2-editor'
+
+Vue.use(VueEditor);
 
 @Component({
     template: '#LatestNewsEditManagement'
@@ -33,6 +36,12 @@ export default class LatestNewsEditManagement extends Vue {
     LatestNewsId: number = 0;
 
     DefaultImage: string = '';
+
+    customToolbar = [
+        ["bold", "italic", "underline"],
+        [{ list: "ordered" },
+        { list: "bullet" }]
+    ]
 
     created() {
         const _this = this;

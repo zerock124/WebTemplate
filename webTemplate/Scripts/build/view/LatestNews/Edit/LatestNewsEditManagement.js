@@ -20,10 +20,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service", "moment"], function (require, exports, vue_property_decorator_1, Enums_1, service_1, moment) {
+define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service", "moment", "vue2-editor"], function (require, exports, vue_property_decorator_1, Enums_1, service_1, moment, vue2_editor_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
+    vue2_editor_1 = __importDefault(vue2_editor_1);
+    vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var LatestNewsEditManagement = (function (_super) {
         __extends(LatestNewsEditManagement, _super);
         function LatestNewsEditManagement() {
@@ -45,6 +47,11 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                 }];
             _this_1.LatestNewsId = 0;
             _this_1.DefaultImage = '';
+            _this_1.customToolbar = [
+                ["bold", "italic", "underline"],
+                [{ list: "ordered" },
+                    { list: "bullet" }]
+            ];
             return _this_1;
         }
         LatestNewsEditManagement.prototype.created = function () {

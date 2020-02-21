@@ -23,7 +23,7 @@ namespace WebTemplateDB.Interface
         /// <param name="model"></param>
         /// <param name="pagination"></param>
         /// <returns></returns>
-        Task<PageDataVerityResult> GetCaseList(SearchModel model, PaginationViewModel pagination);
+        Task<ResWithPaginationViewModel> GetCaseList(SearchModel model, PaginationViewModel pagination);
         /// <summary>
         /// 取得變更案例介紹圖片
         /// </summary>
@@ -41,5 +41,16 @@ namespace WebTemplateDB.Interface
         /// <param name="model"></param>
         /// <returns></returns>
         Task<VerityResult> DeleteCaseItem(int CaseId);
+
+        ///-------------------------API---------------------------
+
+        /// <summary>
+        /// 取得案例介紹列表
+        /// </summary>
+        /// <returns></returns>
+        Task<List<CaseViewModel>> GetCaseList();
+
+        ///-------------------------------------------------------
+
     }
 }

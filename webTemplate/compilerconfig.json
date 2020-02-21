@@ -1,0 +1,10 @@
+﻿[
+  {
+    "outputFile": "Content/WebConfing.css",
+    "inputFile": "Content/WebConfing.scss"
+  },
+  {
+    "outputFile": "Content/SignIn.css",
+    "inputFile": "Content/SignIn.scss"
+  }
+]

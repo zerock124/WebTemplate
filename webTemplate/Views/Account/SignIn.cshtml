@@ -1,6 +1,8 @@
 ﻿@{
     Layout = null;
 }
+@using Microsoft.Owin.Security
+
 
 <!DOCTYPE html>
 <html>
@@ -20,6 +22,7 @@
     @Styles.Render("~/Style/SiginStyles")
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    <link href="@Url.Content("~/Content/SignIn.css")" rel="stylesheet" />
 </head>
 <body class="hold-transition login-page">
     <div class="text-primary">
@@ -29,7 +32,7 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <form action="@Url.Action("SignIn","Account")" method="post">
+                <form action="@Url.Action("SignIn", "Account")" method="post">
                     @Html.AntiForgeryToken()
                     <div class="input-group mb-3">
                         <input type="text" name="UserName" class="form-control" placeholder="使用者帳號">
@@ -48,7 +51,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-8">
+                        <div class="col">
                             <div class="icheck-primary">
                                 <input type="checkbox" id="remember" name="RememberMe" value="true">
                                 <label for="remember">
@@ -57,13 +60,33 @@
                             </div>
                         </div>
                         <!-- /.col -->
-                        <div class="col-4">
+                        <div class="col">
                             <button type="submit" class="btn btn-primary btn-block">Sign In</button>
                         </div>
                         <!-- /.col -->
                     </div>
                 </form>
+                <div class="row justify-content-center">
+                    @{
+                        var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
 
+                        <form action="@Url.Action("ExternalLogin", "Account")" method="post">
+                            @Html.AntiForgeryToken()
+                            <div id="socialLoginList">
+                                <p>
+                                    @foreach (AuthenticationDescription p in loginProviders)
+                                    {
+                                        <div class="col">
+                                            <a onclick="Submit()" class="social-btn entypo-facebook bg-primary">
+                                            </a>
+                                            <button id="submitButton"type="submit" class="btn d-none" name="provider" value="@p.AuthenticationType" title="使用 @p.Caption 帳戶登入">@p.AuthenticationType</button>
+                                        </div>
+                                    }
+                                </p>
+                            </div>
+                        </form>
+                    }
+                </div>
             </div>
             <!-- /.login-card-body -->
         </div>
@@ -73,6 +96,15 @@
     <!-- Bootstrap 4 -->
     <!-- AdminLTE App -->
     @Scripts.Render("~/Script/MainScripts")
+    <script>
+        function Submit() {
+            var submit = document.getElementById("submitButton");
+            submit.click();
+        }
+        $('.btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span><span></span></div>');
+
+        $('.social-btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span></div>');
+    </script>
 
 </body>
 </html>

@@ -10,20 +10,33 @@ using WebTemplateDB.Interface;
 using WebTemplateDB.Service;
 using WebTemplateDB.Repositories;
 using WebTemplateDB.Models;
+using System.Security.Claims;
+using System.Net;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace webTemplate.Controllers
 {
     [Authorize]
     public class HomeController : BaseController
     {
+        protected IGenericRepository<WebConfig> _webconfing;
         protected IHomeService _homeService;
         protected IBackOperationService _backOperationService;
         string OperationName = "Home頁，";
 
         public HomeController()
         {
+            _webconfing = new GenericRepository<WebConfig>();
             _homeService = new HomeService();
             _backOperationService = new BackOperationService();
+        }
+
+        public class AccessUser
+        {
+            public string access_token { get; set; }
+            public string token_type { get; set; }
+            public string expires_in { get; set; }
         }
 
         public ActionResult Index()

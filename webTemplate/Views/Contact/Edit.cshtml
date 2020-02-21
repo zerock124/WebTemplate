@@ -1,0 +1,183 @@
+﻿@{
+    ViewBag.Title = "聯絡我們管理";
+}
+
+    <style>
+        .ql-editor {
+            min-height:0px;        
+        }
+    </style>
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="nav-icon fas fa-envelope"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div id="v_app"></div>
+</div>
+
+<template id="ContactEditManagement">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card card-default color-palette-box">
+                <div class="card-blue">
+                    <div style="border-top: 5px solid black;border-bottom: 1px solid">
+                        <div class="col">
+                            <div class="info-box-content">
+                                <div class="h5 m-2">
+                                    編輯
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form enctype="multipart/form-data" v-if="ContactItem">
+                        <div class="row mx-5 my-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>公司名稱：
+                            </small>
+                            <div class="col-12 col-md-6">
+                                <b-form-input name="CompanyName"
+                                              v-model="ContactItem.CompanyName"></b-form-input>
+                            </div>
+                        </div>
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>聯絡人姓名：
+                            </small>
+                            <div class="col-6 col-md-3 pr-0">
+                                <b-form-input name="Name"
+                                              v-model="ContactItem.Name"></b-form-input>
+                            </div>
+                            <div class="col-6 col-md-3 pl-0">
+                                <b-form-select name="Sex"
+                                               :options="SexOptions"
+                                               v-model="ContactItem.Sex"></b-form-select>
+                            </div>
+                        </div>
+
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>Email：
+                            </small>
+
+                            <div class="col-12 col-md-6">
+                                <b-form-input type="text"
+                                              name="Email"
+                                              v-model="ContactItem.Email"></b-form-input>
+                            </div>
+                        </div>
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>連絡電話：
+                            </small>
+
+                            <div class="col-12 col-md-6">
+                                <b-form-input type="text"
+                                              name="ContactPhone"
+                                              v-model="ContactItem.ContactPhone"></b-form-input>
+                            </div>
+                        </div>
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>類型：
+                            </small>
+                            <div class="col-12 col-md-3">
+                                <b-form-select name="StartDateTime"
+                                               :options="EnumOptions"
+                                               v-model="ContactItem.ContactEnum"></b-form-select>
+                            </div>
+
+                            <small class="col-12 col-md-auto h6 px-3 align-self-center">
+                                <span class="text-red">*</span>狀態：
+                            </small>
+                            <div class="col-12 col-md-3">
+                                <b-form-select name="EndDateTime"
+                                               :options="StatusOptions"
+                                               v-model="ContactItem.ContactStatus"></b-form-select>
+                            </div>
+                        </div>
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>預算：
+                            </small>
+                            <div class="col-12 col-md-6">
+                                <b-form-input type="text"
+                                              name="Budget"
+                                              v-model="ContactItem.Budget"></b-form-input>
+                            </div>
+                        </div>
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-3 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>預計上線日期區間：
+                            </small>
+                            <div class="col-12 col-md-6">
+                                <b-form-input type="text"
+                                              name="OnlineDate"
+                                              v-model="ContactItem.OnlineDate"></b-form-input>
+                            </div>
+                        </div>
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                <span class="text-red">*</span>需求說名：
+                            </small>
+                            <div class="col-12 col-md-6">
+                                <vue-editor name="Demand"
+                                            :editor-toolbar="customToolbar"
+                                            v-model="ContactItem.Demand"></vue-editor>
+                            </div>
+                        </div>
+
+                        <div class="row mx-5 mb-3">
+                            <small class="col-12 col-md-2 h6 px-3 align-self-center">
+                                備註：
+                            </small>
+                            <div class="col-12 col-md-6">
+                                <vue-editor name="Remark"
+                                            :editor-toolbar="customToolbar"
+                                            v-model="ContactItem.Remark"></vue-editor>
+
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-end">
+                            <div class="col-auto p-3">
+                                <button class="btn btn-primary" v-on:click.prevent="SetEditFontHome">
+                                    送出
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+@section Scripts {
+    <script>
+
+    </script>
+    <script>
+        requirejs.config({
+            baseUrl: "@Url.Content("~/Scripts/build/view/Contact/Edit")"
+        });
+        require(["index"]);
+    </script>
+
+}

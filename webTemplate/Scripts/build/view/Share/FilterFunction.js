@@ -44,5 +44,45 @@ define(["require", "exports", "moment"], function (require, exports, moment) {
                 return '-';
         }
     };
+    exports.GetBackOperationResult = function (date) {
+        switch (date) {
+            case true:
+                return '成功';
+            case false:
+                return '失敗';
+        }
+    };
+    exports.GetSexEnum = function (date) {
+        switch (date) {
+            case 0:
+                return '先生';
+            case 1:
+                return '小姐';
+        }
+    };
+    exports.GetContactEnum = function (date) {
+        switch (date) {
+            case 0:
+                return '網站建置';
+            case 1:
+                return '聊天機器人';
+            case 2:
+                return '客製化抽獎';
+            case 3:
+                return '其他';
+            default:
+                return '-';
+        }
+    };
+    exports.GetContactStatus = function (date) {
+        switch (date) {
+            case 0:
+                return '全新專案';
+            case 1:
+                return '改版增修';
+            default:
+                return '-';
+        }
+    };
 });
 //# sourceMappingURL=FilterFunction.js.map

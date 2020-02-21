@@ -107,7 +107,7 @@ export default class LatestNewsManagement extends Vue {
                 _this.ListItem = res.Data;
                 _this.Pagination = res.Pagination;
 
-                _this.LimitDate(res.Data);
+                _this.LimitDate(res);
             }
         }).catch(err => {
             console.log(err);
@@ -133,14 +133,10 @@ export default class LatestNewsManagement extends Vue {
 
     LimitDate(Data) {
         const _this = this;
-
-        var MaxDate = Data.map(s => moment(s.CreateTime));
-        _this.EndDateTime = moment.max(MaxDate).format("YYYY-MM-DD");
-        _this.MaxDate = _this.EndDateTime;
-
-        var MinDate = Data.map(s => moment(s.CreateTime));
-        _this.StartDateTime = moment.min(MinDate).format("YYYY-MM-DD");
+        _this.StartDateTime = moment(Data.MinDateTime).startOf('day').format("YYYY-MM-DD");
+        _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
         _this.MinDate = _this.StartDateTime;
+        _this.MaxDate = _this.EndDateTime;
     }
 
     @Watch('ListItem')

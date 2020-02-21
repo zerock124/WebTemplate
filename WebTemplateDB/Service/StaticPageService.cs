@@ -132,6 +132,35 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
+        /// <summary>
+        /// 取得靜態頁內容
+        /// </summary>
+        /// <param name="StaticPageEnum"></param>
+        /// <returns></returns>
+        public async Task<StaticPageViewModel> GetStaticPage(int StaticPageEnum) 
+        {
+            StaticPageViewModel item = new StaticPageViewModel();
 
+            var query = from a in _staticPage.GetAll()
+                        where a.StaticPageEnum == StaticPageEnum
+                        select new StaticPageViewModel
+                        {
+                            StaticPageId = a.StaticPageId,
+                            StaticPageEnum = a.StaticPageEnum,
+                            PageContent = a.PageContent,
+                            CreateTime = a.CreateTime,
+                            CreateUser = a.CreateUser,
+                            UpdateTime = a.UpdateTime,
+                            UpdateUser = a.UpdateUser
+                        };
+
+            if (query.Any()) 
+            {
+                var data = query.FirstOrDefault();
+                item = data;
+            }
+
+            return await Task.Run(() => item);
+        }
     }
 }

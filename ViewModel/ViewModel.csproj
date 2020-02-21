@@ -47,8 +47,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authority\AuthorityViewModel.cs" />
     <Compile Include="BackOperation\BackOperationViewModel.cs" />
     <Compile Include="Case\CaseViewModel.cs" />
+    <Compile Include="Contact\ContactViewModel.cs" />
     <Compile Include="FontHome\FontHomeViewModel.cs" />
     <Compile Include="Home\HomeViewModel.cs" />
     <Compile Include="LatestNews\LatestNewsViewModel.cs" />
@@ -62,6 +64,7 @@
     <Compile Include="Verity\PageDataVerityResult.cs" />
     <Compile Include="Verity\SaveFileVerityResult.cs" />
     <Compile Include="Verity\VerityResult.cs" />
+    <Compile Include="WebConfig\WebConfigViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

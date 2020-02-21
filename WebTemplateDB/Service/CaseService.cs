@@ -56,9 +56,9 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
         }
 
-        public async Task<PageDataVerityResult> GetCaseList(SearchModel model, PaginationViewModel pagination)
+        public async Task<ResWithPaginationViewModel> GetCaseList(SearchModel model, PaginationViewModel pagination)
         {
-            PageDataVerityResult pageData = new PageDataVerityResult();
+            ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
             List<CaseViewModel> caseList = new List<CaseViewModel>();
 
             var query = from a in _case.GetAll()
@@ -76,6 +76,9 @@ namespace WebTemplateDB.Service
                             UpdateTime = a.UpdateTime,
                             UpdateUser = a.UpdateUser
                         };
+
+            pageData.MaxDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
+            pageData.MinDateTime = query.OrderBy(x => x.CreateTime).FirstOrDefault().CreateTime;
 
             if (model.StartDateTime != null)
             {
@@ -157,7 +160,7 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => caseitem);
         }
 
-        public async Task<VerityResult> EditCaseItem(CaseViewModel model) 
+        public async Task<VerityResult> EditCaseItem(CaseViewModel model)
         {
             VerityResult result = new VerityResult();
 
@@ -165,7 +168,7 @@ namespace WebTemplateDB.Service
             {
                 var query = _case.FindBy(x => x.CaseId == model.CaseId);
 
-                if (query.Any()) 
+                if (query.Any())
                 {
                     Case caseitem = query.FirstOrDefault();
                     caseitem.CaseUrl = model.CaseUrl;
@@ -181,7 +184,7 @@ namespace WebTemplateDB.Service
                     result.Message = "變更案列介紹成功";
                 }
             }
-            catch 
+            catch
             {
                 result.Success = false;
                 result.Message = "變更案列介紹失敗";
@@ -190,7 +193,7 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
         }
 
-        public async Task<VerityResult> DeleteCaseItem(int CaseId) 
+        public async Task<VerityResult> DeleteCaseItem(int CaseId)
         {
             VerityResult result = new VerityResult();
 
@@ -214,6 +217,34 @@ namespace WebTemplateDB.Service
             }
 
             return await Task.Run(() => result);
+        }
+
+        public async Task<List<CaseViewModel>> GetCaseList()
+        {
+            List<CaseViewModel> list = new List<CaseViewModel>();
+
+            var query = from a in _case.GetAll()
+                        select new CaseViewModel
+                        {
+                            CaseId = a.CaseId,
+                            ImageName = a.ImageName,
+                            CaseUrl = a.CaseUrl,
+                            CaseEnum = a.CaseEnum,
+                            CaseName = a.CaseName,
+                            CaseContent = a.CaseContent,
+                            Status = a.Status,
+                            CreateTime = a.CreateTime,
+                            CreateUser = a.CreateUser,
+                            UpdateTime = a.UpdateTime,
+                            UpdateUser = a.UpdateUser
+                        };
+
+            if (query.Any())
+            {
+                var data = query.ToList();
+                list = data;
+            }
+            return await Task.Run(() => list);
         }
     }
 }

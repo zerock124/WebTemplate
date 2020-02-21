@@ -23,6 +23,13 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
             };
             return PublicFunction_1.AjaxReturn(setting);
         };
+        CaseService.prototype.CheckAuthority = function (CaseId) {
+            var setting = {
+                url: "/Case/GetEditCaseItem?CaseId=" + CaseId,
+                type: 'GET',
+            };
+            return PublicFunction_1.AjaxReturn(setting);
+        };
         CaseService.prototype.GetEditCaseItem = function (CaseId) {
             var setting = {
                 url: "/Case/GetEditCaseItem?CaseId=" + CaseId,
@@ -34,9 +41,9 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
             var setting = {
                 url: "/Case/EditCaseItem",
                 type: 'POST',
-                data: model
+                data: model,
             };
-            return PublicFunction_1.AjaxReturn(setting, "FormData");
+            return PublicFunction_1.AjaxReturn(setting, 'FormData');
         };
         CaseService.prototype.DeleteCaseItem = function (CaseId) {
             var setting = {

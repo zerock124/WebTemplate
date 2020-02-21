@@ -21,7 +21,7 @@ namespace WebTemplateDB.Interface
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<PageDataVerityResult> GetFontHomeList(SearchModel model, PaginationViewModel pagination);
+        Task<ResWithPaginationViewModel> GetFontHomeList(SearchModel model, PaginationViewModel pagination);
         /// <summary>
         /// 取得變更前台首頁圖片
         /// </summary>
@@ -38,5 +38,15 @@ namespace WebTemplateDB.Interface
         /// <param name="FontHomeId"></param>
         /// <returns></returns>
         Task<DataVerityResult> DeleteFontHome(int FontHomeId);
+
+        ///-------------------------API---------------------------
+
+        /// <summary>
+        /// 取得Banner圖片
+        /// </summary>
+        /// <returns></returns>
+        Task<List<FontHomeViewModel>> GetFontHomeList();
+
+        ///-------------------------------------------------------
     }
 }

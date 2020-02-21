@@ -21,7 +21,7 @@ namespace WebTemplateDB.Interface
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        Task<PageDataVerityResult> GetLatestNewsList(SearchModel model, PaginationViewModel pagination);
+        Task<ResWithPaginationViewModel> GetLatestNewsList(SearchModel model, PaginationViewModel pagination);
         /// <summary>
         /// 取得變更最新消息圖片
         /// </summary>
@@ -38,5 +38,15 @@ namespace WebTemplateDB.Interface
         /// <param name="LatestNewsId"></param>
         /// <returns></returns>
         Task<VerityResult> DeleteLatestNewsItem(int LatestNewsId);
+
+        ///-------------------------API---------------------------
+
+        /// <summary>
+        /// 取得最新消息文章
+        /// </summary>
+        /// <returns></returns>
+        Task<List<LatestNewsViewModel>> GetLatestNewsList();
+
+        ///-------------------------------------------------------
     }
 }

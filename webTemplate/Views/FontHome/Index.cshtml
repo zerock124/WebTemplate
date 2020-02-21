@@ -29,7 +29,7 @@
                     <div class="row m-3">
                         <div class="col">
                             <div class="info-box-content">
-                                <div class="h5">
+                                <div class="TotalText">
                                     總筆數：
                                     <span class="badge badge-primary">{{TotalCounts}}</span>
                                 </div>
@@ -39,9 +39,9 @@
                             <a href="@Url.Action("Create","FontHome")" class="btn btn-primary">新增</a>
                         </div>
                     </div>
-                    <div class="row m-3">
+                    <div class="form-group row m-3">
                         <div class="col-auto">
-                            <label class="h5">建立日期：</label>
+                            <div class="col-form-label">建立日期：</div>
                         </div>
                         <div class="col-auto">
                             <div class="input-group">
@@ -63,9 +63,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row m-3">
+                    <div class="form-group row m-3">
                         <div class="col-auto">
-                            <label class="h5">上線日期：</label>
+                            <div class="col-form-label">上線日期：</div>
                         </div>
                         <div class="col-auto">
                             <div class="input-group">
@@ -78,9 +78,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row m-3">
+                    <div class="form-group row m-3">
                         <div class="col-auto">
-                            <label class="h5">關鍵字：</label>
+                            <div class="col-form-label">關鍵字：</div>
                         </div>
                         <div class="col-auto navbar-expand navbar-white navbar-light">
                             <div class="input-group">
@@ -106,15 +106,15 @@
                             <table class="table">
                                 <thead class="table-bordered">
                                     <tr>
-                                        <th>#</th>
-                                        <th>圖片</th>
-                                        <th>圖片名稱</th>
-                                        <th>連結網址</th>
-                                        <th>上線期間</th>
-                                        <th>備註</th>
-                                        <th>狀態</th>
-                                        <th>建立日期/更新日期</th>
-                                        <th>操作</th>
+                                        <th class="text-nowrap">#</th>
+                                        <th class="text-nowrap">圖片</th>
+                                        <th class="text-nowrap">圖片名稱</th>
+                                        <th class="text-nowrap">連結網址</th>
+                                        <th class="text-nowrap">上線期間</th>
+                                        <th class="text-nowrap">備註</th>
+                                        <th class="text-nowrap">狀態</th>
+                                        <th class="text-nowrap">建立日期/更新日期</th>
+                                        <th class="text-nowrap">操作</th>
                                     </tr>
                                 </thead>
                                 <tbody v-for="(Item, index) in ListItem">

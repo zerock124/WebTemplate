@@ -29,7 +29,7 @@
                     <div class="row m-3">
                         <div class="col">
                             <div class="info-box-content">
-                                <div class="h5">
+                                <div class="TotalText">
                                     總筆數：
                                     <span class="badge badge-primary">{{TotalCounts}}</span>
                                 </div>
@@ -40,9 +40,9 @@
                         </div>
                     </div>
 
-                    <div class="row m-3">
+                    <div class="form-group row m-3">
                         <div class="col-auto">
-                            <label class="h5">建立日期：</label>
+                            <div class="col-form-label">建立日期：</div>
                         </div>
                         <div class="col-auto">
                             <div class="input-group">
@@ -65,9 +65,9 @@
                         </div>
                     </div>
 
-                    <div class="row m-3">
+                    <div class="form-group row m-3">
                         <div class="col-auto">
-                            <label class="h5">關鍵字：</label>
+                            <div class="col-form-label">關鍵字：</div>
                         </div>
                         <div class="col-auto navbar-expand navbar-white navbar-light">
                             <div class="input-group">
@@ -93,19 +93,19 @@
                             <table class="table">
                                 <thead class="table-bordered">
                                     <tr>
-                                        <th>#</th>
-                                        <th>圖片</th>
-                                        <th>連結網址</th>
-                                        <th>案例類別</th>
-                                        <th>案例名稱</th>
-                                        <th>案例敘述</th>
-                                        <th>狀態</th>
-                                        <th>建立日期/更新日期</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
+                                        <th class="text-nowrap">#</th>
+                                        <th class="text-nowrap">圖片</th>
+                                        <th class="text-nowrap">連結網址</th>
+                                        <th class="text-nowrap">案例類別</th>
+                                        <th class="text-nowrap">案例名稱</th>
+                                        <th class="text-nowrap">案例敘述</th>
+                                        <th class="text-nowrap">狀態</th>
+                                        <th class="text-nowrap">建立日期/更新日期</th>
+                                        <th class="text-nowrap">操作</th>
+                                    </tr>   
+                                </thead>    
                                 <tbody v-for="(Item, index) in ListItem">
-                                    <tr>
+                                    <tr>    
                                         <td>
                                             {{Item.CaseId}}
                                         </td>
@@ -118,11 +118,11 @@
                                         <td>
                                             {{Item.CaseEnum | GetCaseEnum }}
                                         </td>
-                                        <td>
+                                        <td class="text-nowrap">
                                             {{Item.CaseName}}
                                         </td>
-                                        <td>
-                                            {{Item.CaseContent}}
+                                        <td class="text-nowrap">
+                                            <div v-html="Item.CaseContent"></div>
                                         </td>
                                         <td>
                                             <button class="btn btn-success" v-if="Item.Status">正常</button>

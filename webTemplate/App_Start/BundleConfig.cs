@@ -33,8 +33,7 @@ namespace webTemplate
                 "~/Content/plugins/bootstrap-switch/js/bootstrap-switch.js"));
 
             bundles.Add(new ScriptBundle("~/Script/LayoutComponents").Include(
-                "~/Scripts/build/components/Aside.js",
-                "~/Scripts/build/components/SideBarManu.js"
+                "~/Scripts/build/components/Aside.js"
                 ));
 
             bundles.Add(new ScriptBundle("~/Scripts/Requirejs").Include(

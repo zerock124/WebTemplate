@@ -2,6 +2,9 @@
 import { LatestNewsViewModel } from '../model';
 import { UrlPathEnum } from '../../Share/Enums';
 import moment = require('moment');
+import VueEditor from 'vue2-editor'
+
+Vue.use(VueEditor);
 
 @Component({
     template: '#LatestNewsCreateManagement'
@@ -28,7 +31,11 @@ export default class LatestNewsCreateManagement extends Vue {
     Remark: string = '';
     Status: boolean = false;
 
-
+    customToolbar = [
+        ["bold", "italic", "underline"],
+        [{ list: "ordered" },
+        { list: "bullet" }]
+    ]
 
     created() {
         const _this = this;

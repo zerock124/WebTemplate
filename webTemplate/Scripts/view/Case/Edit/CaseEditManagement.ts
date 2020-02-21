@@ -3,6 +3,9 @@ import { CaseViewModel } from '../model';
 import { UrlPathEnum } from '../../Share/Enums';
 import service from '../service'
 import moment = require('moment');
+import VueEditor from 'vue2-editor'
+
+Vue.use(VueEditor);
 
 @Component({
     template: '#CaseEditManagement'
@@ -39,6 +42,12 @@ export default class CaseEditManagement extends Vue {
     Status: boolean = false;
 
     CaseId: number = 0;
+
+    customToolbar = [
+        ["bold", "italic", "underline"],
+        [{ list: "ordered" },
+        { list: "bullet" }]
+    ]
 
     created() {
         const _this = this;
@@ -88,7 +97,7 @@ export default class CaseEditManagement extends Vue {
         this.image = event.target.result;
     }
 
-    SetEditFontHome() {
+    SetEditCase() {
         const _this = this;
         if (_this.CaseItem) {
             const {
@@ -108,10 +117,10 @@ export default class CaseEditManagement extends Vue {
             _formdata.append('ImageName', ImageName)
             _formdata.append('CaseUrl', CaseUrl)
             _formdata.append('CaseName', CaseName)
-            _formdata.append('CaseName', CaseName)
             _formdata.append('CaseContent', CaseContent)
             _formdata.append('CaseEnum', CaseEnum.toString())
             _formdata.append('Status', JSON.stringify(Status))
+
 
             _this.EditCase(_formdata);
 

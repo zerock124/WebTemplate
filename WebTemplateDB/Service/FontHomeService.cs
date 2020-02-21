@@ -73,9 +73,9 @@ namespace WebTemplateDB.Service
         /// <param name="model"></param>
         /// <param name="pagination"></param>
         /// <returns></returns>
-        public async Task<PageDataVerityResult> GetFontHomeList(SearchModel model, PaginationViewModel pagination)
+        public async Task<ResWithPaginationViewModel> GetFontHomeList(SearchModel model, PaginationViewModel pagination)
         {
-            PageDataVerityResult pageData = new PageDataVerityResult();
+            ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
             List<FontHomeViewModel> fonthome = new List<FontHomeViewModel>();
 
             var query = from a in _fontHome.GetAll().ToList()
@@ -94,6 +94,9 @@ namespace WebTemplateDB.Service
                             UpdateUser = a.UpdateUser
                         };
 
+            pageData.MaxDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
+            pageData.MinDateTime = query.OrderBy(x => x.CreateTime).FirstOrDefault().CreateTime;
+
             if (model.StartDateTime != null)
             {
                 query = query.Where(x => x.CreateTime >= model.StartDateTime).ToList();
@@ -102,7 +105,7 @@ namespace WebTemplateDB.Service
             {
                 query = query.Where(x => x.CreateTime <= model.EndDateTime).ToList();
             }
-            if (model.OnlineDateTime != null) 
+            if (model.OnlineDateTime != null)
             {
                 query = query.Where(x => x.StartDateTime <= model.OnlineDateTime && x.EndDateTime >= model.OnlineDateTime).ToList();
             }
@@ -143,7 +146,7 @@ namespace WebTemplateDB.Service
 
             if (query.Any())
             {
-                var list = query.OrderBy(x=>x.StartDateTime).ToList();
+                var list = query.OrderBy(x => x.StartDateTime).ToList();
                 fonthome = list;
             }
 
@@ -221,14 +224,15 @@ namespace WebTemplateDB.Service
 
         }
 
-        public async Task<DataVerityResult> DeleteFontHome(int FontHomeId) 
+        public async Task<DataVerityResult> DeleteFontHome(int FontHomeId)
         {
             DataVerityResult result = new DataVerityResult();
 
             try
             {
                 var data = _fontHome.FindBy(x => x.FontHomeId == FontHomeId).FirstOrDefault();
-                if (data != null) {
+                if (data != null)
+                {
                     _fontHome.Delete(data);
                     result.Success = true;
                     result.Message = "刪除前台首頁圖片成功";
@@ -242,6 +246,35 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
 
+        }
+
+        public async Task<List<FontHomeViewModel>> GetFontHomeList()
+        {
+            List<FontHomeViewModel> list = new List<FontHomeViewModel>();
+
+            var query = from a in _fontHome.GetAll()
+                        select new FontHomeViewModel
+                        {
+                            FontHomeId = a.FontHomeId,
+                            ImageName = a.ImageName,
+                            FontHomeUrl = a.FontHomeUrl,
+                            StartDateTime = a.StartDateTime,
+                            EndDateTime = a.EndDateTime,
+                            Remark = a.Remark,
+                            Status = a.Status,
+                            CreateTime = a.CreateTime,
+                            CreateUser = a.CreateUser,
+                            UpdateTime = a.UpdateTime,
+                            UpdateUser = a.UpdateUser
+                        };
+
+            if (query.Any())
+            {
+                var data = query.ToList();
+                list = data;
+            }
+
+            return await Task.Run(() => list);
         }
     }
 }

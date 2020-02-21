@@ -48,7 +48,7 @@ namespace webTemplate.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() : base("data source=VC-102;initial catalog=WebTemplate;user id=sa;password=29044512;MultipleActiveResultSets=True;App=EntityFramework", throwIfV1Schema: false)
+        public ApplicationDbContext() : base("data source=VC-102;initial catalog=Web_testDb;user id=sa;password=29044512;MultipleActiveResultSets=True;App=EntityFramework", throwIfV1Schema: false)
         {
         }
 

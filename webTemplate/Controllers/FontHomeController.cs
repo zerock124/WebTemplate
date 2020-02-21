@@ -70,6 +70,8 @@ namespace webTemplate.Controllers
                 var result = await _fontHomeService.GetFontHomeList(model, pagination);
                 res.Data = result.Data;
                 res.Pagination = result.Pagination;
+                res.MinDateTime = result.MinDateTime;
+                res.MaxDateTime = result.MaxDateTime;
                 res.Success = true;
                 res.Message = "成功取得前台首頁管理清單";
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
@@ -78,7 +80,6 @@ namespace webTemplate.Controllers
             catch
             {
                 res.Success = false;
-                res.Message = "取得前台首頁管理清單";
                 res.Message = "伺服器發生錯誤";
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }

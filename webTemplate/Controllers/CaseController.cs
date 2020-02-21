@@ -66,6 +66,7 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+        [ValidateInput(false)]
         [HttpPost]
         public async Task<ActionResult> CreateCase(CaseViewModel model)
         {
@@ -112,6 +113,8 @@ namespace webTemplate.Controllers
                 var result = await _caseServuce.GetCaseList(model, pagination);
                 res.Data = result.Data;
                 res.Pagination = result.Pagination;
+                res.MinDateTime = result.MinDateTime;
+                res.MaxDateTime = result.MaxDateTime;
                 res.Success = result.Success;
                 res.Message = result.Message;
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
@@ -150,7 +153,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        [ValidateInput(false)]
+        [HttpPost]
         public async Task<JsonResult> EditCaseItem(CaseViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -169,6 +173,7 @@ namespace webTemplate.Controllers
 
                     model.ImageName = model.PhotoFile.FileName;
                 }
+                model.UpdateUser = UpdateUser;
                 var result = await _caseServuce.EditCaseItem(model);
                 res.Success = result.Success;
                 res.Message = result.Message;
@@ -182,7 +187,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
 
         public async Task<JsonResult> DeleteCaseItem(int CaseId)

@@ -14,3 +14,5 @@ C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Release\WebTemplateDB.csprojAssem
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Release\WebTemplateDB.csproj.CopyComplete
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Release\WebTemplateDB.dll
 C:\xinyu\Project\webTemplate\WebTemplateDB\obj\Release\WebTemplateDB.pdb
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Release\Microsoft.AspNet.Identity.Core.dll
+C:\xinyu\Project\webTemplate\WebTemplateDB\bin\Release\Microsoft.AspNet.Identity.Core.xml

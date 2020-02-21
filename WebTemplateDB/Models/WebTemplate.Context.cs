@@ -25,7 +25,6 @@ namespace WebTemplateDB.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
@@ -37,5 +36,7 @@ namespace WebTemplateDB.Models
         public virtual DbSet<LatestNews> LatestNews { get; set; }
         public virtual DbSet<ServiceItem> ServiceItem { get; set; }
         public virtual DbSet<StaticPage> StaticPage { get; set; }
+        public virtual DbSet<Contact> Contact { get; set; }
+        public virtual DbSet<WebConfig> WebConfig { get; set; }
     }
 }

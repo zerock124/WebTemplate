@@ -66,6 +66,7 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
+        [ValidateInput(false)]
         [HttpPost]
         public async Task<ActionResult> CreateLatestNews(LatestNewsViewModel model)
         {
@@ -112,6 +113,10 @@ namespace webTemplate.Controllers
                 var data = await _latestnewsService.GetLatestNewsList(model, pagination);
                 res.Data = data.Data;
                 res.Pagination = data.Pagination;
+                res.MinDateTime = data.MinDateTime;
+                res.MaxDateTime = data.MaxDateTime;
+                res.MinStartDate = data.MinStartDate;
+                res.MaxStartDate = data.MaxStartDate;
                 res.Success = true;
                 res.Message = data.Success ? "新增前台首頁成功" : "新增前台首頁失敗";
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
@@ -149,6 +154,7 @@ namespace webTemplate.Controllers
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
+        [ValidateInput(false)]
         public async Task<JsonResult> EditLatestNewsItem(LatestNewsViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();

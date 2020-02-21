@@ -48,7 +48,11 @@ namespace webTemplate
             // 核取此選項之後，將會在用來登入的裝置上記住登入程序期間的第二個驗證步驟。
             // 這類似於登入時的 RememberMe 選項。
             app.UseTwoFactorRememberBrowserCookie(DefaultAuthenticationTypes.TwoFactorRememberBrowserCookie);
+
+            app.UseFacebookAuthentication(
+               appId: "308543876767980",
+               appSecret: "689e57b1ef62d01b49cf2c91bf1b4b4e");
         }
 
-	}
+    }
 }

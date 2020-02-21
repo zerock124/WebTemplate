@@ -76,6 +76,9 @@
     <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.1.0\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
@@ -170,16 +173,24 @@
     <Compile Include="App_Start\IdnetityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllerApi\CaseController.cs" />
+    <Compile Include="ControllerApi\ContactController.cs" />
+    <Compile Include="ControllerApi\FontHomeController.cs" />
+    <Compile Include="ControllerApi\LatestNewsController.cs" />
+    <Compile Include="ControllerApi\ServiceItemController.cs" />
+    <Compile Include="ControllerApi\StaticPageController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ApiStaticPageController.cs" />
+    <Compile Include="Controllers\AuthorityController.cs" />
     <Compile Include="Controllers\BackOperationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaseController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\FontHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LatestNewsController.cs" />
     <Compile Include="Controllers\ServiceItemController.cs" />
     <Compile Include="Controllers\StaticPageController.cs" />
+    <Compile Include="Controllers\WebConfigController.cs" />
     <Compile Include="Extensions\ImageExtensions.cs" />
     <Compile Include="Extensions\ImageHttpPostedFileBase.cs" />
     <Compile Include="Global.asax.cs">
@@ -207,14 +218,6 @@
     <Content Include="Content\dist\css\alt\adminlte.pages.min.css" />
     <Content Include="Content\dist\css\alt\adminlte.plugins.css" />
     <Content Include="Content\dist\css\alt\adminlte.plugins.min.css" />
-    <Content Include="Content\dist\img\AdminLTELogo.png" />
-    <Content Include="Content\dist\img\avatar.png" />
-    <Content Include="Content\dist\img\avatar04.png" />
-    <Content Include="Content\dist\img\avatar2.png" />
-    <Content Include="Content\dist\img\avatar3.png" />
-    <Content Include="Content\dist\img\avatar5.png" />
-    <Content Include="Content\dist\img\boxed-bg.jpg" />
-    <Content Include="Content\dist\img\boxed-bg.png" />
     <Content Include="Content\dist\img\credit\american-express.png" />
     <Content Include="Content\dist\img\credit\cirrus.png" />
     <Content Include="Content\dist\img\credit\mastercard.png" />
@@ -222,25 +225,7 @@
     <Content Include="Content\dist\img\credit\paypal.png" />
     <Content Include="Content\dist\img\credit\paypal2.png" />
     <Content Include="Content\dist\img\credit\visa.png" />
-    <Content Include="Content\dist\img\default-150x150.png" />
-    <Content Include="Content\dist\img\icons.png" />
-    <Content Include="Content\dist\img\photo1.png" />
-    <Content Include="Content\dist\img\photo2.png" />
-    <Content Include="Content\dist\img\photo3.jpg" />
-    <Content Include="Content\dist\img\photo4.jpg" />
-    <Content Include="Content\dist\img\prod-1.jpg" />
-    <Content Include="Content\dist\img\prod-2.jpg" />
-    <Content Include="Content\dist\img\prod-3.jpg" />
-    <Content Include="Content\dist\img\prod-4.jpg" />
-    <Content Include="Content\dist\img\prod-5.jpg" />
-    <Content Include="Content\dist\img\user1-128x128.jpg" />
-    <Content Include="Content\dist\img\user2-160x160.jpg" />
-    <Content Include="Content\dist\img\user3-128x128.jpg" />
-    <Content Include="Content\dist\img\user4-128x128.jpg" />
-    <Content Include="Content\dist\img\user5-128x128.jpg" />
-    <Content Include="Content\dist\img\user6-128x128.jpg" />
-    <Content Include="Content\dist\img\user7-128x128.jpg" />
-    <Content Include="Content\dist\img\user8-128x128.jpg" />
+    <Content Include="Content\dist\img\user.png" />
     <Content Include="Content\dist\js\adminlte.js" />
     <Content Include="Content\dist\js\adminlte.min.js" />
     <Content Include="Content\dist\js\demo.js" />
@@ -1673,6 +1658,18 @@
     <Content Include="Content\plugins\toastr\toastr.css" />
     <Content Include="Content\plugins\toastr\toastr.min.css" />
     <Content Include="Content\plugins\toastr\toastr.min.js" />
+    <Content Include="Content\SignIn.css">
+      <DependentUpon>SignIn.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\SignIn.min.css">
+      <DependentUpon>SignIn.css</DependentUpon>
+    </Content>
+    <Content Include="Content\WebConfing.css">
+      <DependentUpon>WebConfing.scss</DependentUpon>
+    </Content>
+    <Content Include="Content\WebConfing.min.css">
+      <DependentUpon>WebConfing.css</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -1878,6 +1875,17 @@
     <Content Include="Content\dist\css\alt\adminlte.plugins.min.css.map" />
     <Content Include="Content\dist\js\adminlte.js.map" />
     <Content Include="Content\dist\js\adminlte.min.js.map" />
+    <Content Include="Image\Case\Case-1.jpg" />
+    <Content Include="Image\Case\case-10.jpg" />
+    <Content Include="Image\Case\case-11.jpg" />
+    <Content Include="Image\Case\case-2.jpg" />
+    <Content Include="Image\Case\case-3.jpg" />
+    <Content Include="Image\Case\case-4.jpg" />
+    <Content Include="Image\Case\case-5.jpg" />
+    <Content Include="Image\Case\case-6.jpg" />
+    <Content Include="Image\Case\case-7.jpg" />
+    <Content Include="Image\Case\case-8.jpg" />
+    <Content Include="Image\Case\case-9.jpg" />
     <Content Include="Image\Case\NoImage.jpg" />
     <Content Include="Image\FontHome\Dog.jpg" />
     <Content Include="Image\FontHome\NoImage.jpg" />
@@ -1889,6 +1897,89 @@
     <Content Include="Image\ServiceItem\JaketheDog.png" />
     <Content Include="Image\ServiceItem\NoImage.png" />
     <Content Include="Image\ServiceItem\RBO.png" />
+    <Content Include="node_modules\animate.css\animate.css" />
+    <Content Include="node_modules\animate.css\animate.min.css" />
+    <Content Include="node_modules\animate.css\gulpfile.js" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\bounce.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\flash.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\headShake.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\heartBeat.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\jello.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\pulse.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\rubberBand.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\shake.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\swing.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\tada.css" />
+    <Content Include="node_modules\animate.css\source\attention_seekers\wobble.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_entrances\bounceIn.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_entrances\bounceInDown.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_entrances\bounceInLeft.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_entrances\bounceInRight.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_entrances\bounceInUp.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_exits\bounceOut.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_exits\bounceOutDown.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_exits\bounceOutLeft.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_exits\bounceOutRight.css" />
+    <Content Include="node_modules\animate.css\source\bouncing_exits\bounceOutUp.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeIn.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInDown.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInDownBig.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInLeft.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInLeftBig.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInRight.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInRightBig.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInUp.css" />
+    <Content Include="node_modules\animate.css\source\fading_entrances\fadeInUpBig.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOut.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutDown.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutDownBig.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutLeft.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutLeftBig.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutRight.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutRightBig.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutUp.css" />
+    <Content Include="node_modules\animate.css\source\fading_exits\fadeOutUpBig.css" />
+    <Content Include="node_modules\animate.css\source\flippers\flip.css" />
+    <Content Include="node_modules\animate.css\source\flippers\flipInX.css" />
+    <Content Include="node_modules\animate.css\source\flippers\flipInY.css" />
+    <Content Include="node_modules\animate.css\source\flippers\flipOutX.css" />
+    <Content Include="node_modules\animate.css\source\flippers\flipOutY.css" />
+    <Content Include="node_modules\animate.css\source\lightspeed\lightSpeedIn.css" />
+    <Content Include="node_modules\animate.css\source\lightspeed\lightSpeedOut.css" />
+    <Content Include="node_modules\animate.css\source\rotating_entrances\rotateIn.css" />
+    <Content Include="node_modules\animate.css\source\rotating_entrances\rotateInDownLeft.css" />
+    <Content Include="node_modules\animate.css\source\rotating_entrances\rotateInDownRight.css" />
+    <Content Include="node_modules\animate.css\source\rotating_entrances\rotateInUpLeft.css" />
+    <Content Include="node_modules\animate.css\source\rotating_entrances\rotateInUpRight.css" />
+    <Content Include="node_modules\animate.css\source\rotating_exits\rotateOut.css" />
+    <Content Include="node_modules\animate.css\source\rotating_exits\rotateOutDownLeft.css" />
+    <Content Include="node_modules\animate.css\source\rotating_exits\rotateOutDownRight.css" />
+    <Content Include="node_modules\animate.css\source\rotating_exits\rotateOutUpLeft.css" />
+    <Content Include="node_modules\animate.css\source\rotating_exits\rotateOutUpRight.css" />
+    <Content Include="node_modules\animate.css\source\sliding_entrances\slideInDown.css" />
+    <Content Include="node_modules\animate.css\source\sliding_entrances\slideInLeft.css" />
+    <Content Include="node_modules\animate.css\source\sliding_entrances\slideInRight.css" />
+    <Content Include="node_modules\animate.css\source\sliding_entrances\slideInUp.css" />
+    <Content Include="node_modules\animate.css\source\sliding_exits\slideOutDown.css" />
+    <Content Include="node_modules\animate.css\source\sliding_exits\slideOutLeft.css" />
+    <Content Include="node_modules\animate.css\source\sliding_exits\slideOutRight.css" />
+    <Content Include="node_modules\animate.css\source\sliding_exits\slideOutUp.css" />
+    <Content Include="node_modules\animate.css\source\specials\hinge.css" />
+    <Content Include="node_modules\animate.css\source\specials\jackInTheBox.css" />
+    <Content Include="node_modules\animate.css\source\specials\rollIn.css" />
+    <Content Include="node_modules\animate.css\source\specials\rollOut.css" />
+    <Content Include="node_modules\animate.css\source\zooming_entrances\zoomIn.css" />
+    <Content Include="node_modules\animate.css\source\zooming_entrances\zoomInDown.css" />
+    <Content Include="node_modules\animate.css\source\zooming_entrances\zoomInLeft.css" />
+    <Content Include="node_modules\animate.css\source\zooming_entrances\zoomInRight.css" />
+    <Content Include="node_modules\animate.css\source\zooming_entrances\zoomInUp.css" />
+    <Content Include="node_modules\animate.css\source\zooming_exits\zoomOut.css" />
+    <Content Include="node_modules\animate.css\source\zooming_exits\zoomOutDown.css" />
+    <Content Include="node_modules\animate.css\source\zooming_exits\zoomOutLeft.css" />
+    <Content Include="node_modules\animate.css\source\zooming_exits\zoomOutRight.css" />
+    <Content Include="node_modules\animate.css\source\zooming_exits\zoomOutUp.css" />
+    <Content Include="node_modules\animate.css\source\_base.css" />
+    <Content Include="node_modules\animate.css\source\_vars.css" />
     <Content Include="node_modules\bootstrap-vue\dist\bootstrap-vue-icons.common.js" />
     <Content Include="node_modules\bootstrap-vue\dist\bootstrap-vue-icons.common.min.js" />
     <Content Include="node_modules\bootstrap-vue\dist\bootstrap-vue-icons.css" />
@@ -3550,6 +3641,21 @@
     <Content Include="node_modules\quill-delta\LICENSE" />
     <Content Include="node_modules\quill-delta\package.json" />
     <Content Include="node_modules\quill-delta\README.md" />
+    <Content Include="node_modules\animate.css\.editorconfig" />
+    <Content Include="node_modules\animate.css\.prettierignore" />
+    <Content Include="node_modules\animate.css\.travis.yml" />
+    <Content Include="node_modules\animate.css\animate-config.json" />
+    <Content Include="node_modules\animate.css\bower.json" />
+    <Content Include="node_modules\animate.css\CODE_OF_CONDUCT.md" />
+    <Content Include="node_modules\animate.css\LICENSE" />
+    <Content Include="node_modules\animate.css\package.json" />
+    <Content Include="node_modules\animate.css\README.md" />
+    <Content Include="Content\WebConfing.scss" />
+    <None Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="Content\SignIn.scss" />
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Scripts\jquery.validate\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate\jquery.validate.js" />
@@ -3580,8 +3686,6 @@
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
     <Content Include="tsconfig.json" />
-    <Content Include="Views\BackOperationRecord\Index.cshtml" />
-    <Content Include="Views\Permission\Index.cshtml" />
     <Content Include="Views\FontHome\Index.cshtml" />
     <Content Include="Views\FontHome\Create.cshtml" />
     <Content Include="Views\FontHome\Edit.cshtml" />
@@ -3593,6 +3697,14 @@
     <Content Include="Views\Case\Index.cshtml" />
     <Content Include="Views\Case\Create.cshtml" />
     <Content Include="Views\Case\Edit.cshtml" />
+    <Content Include="Views\BackOperation\Index.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Authority\Index.cshtml" />
+    <Content Include="Views\Authority\Create.cshtml" />
+    <Content Include="Views\Authority\Edit.cshtml" />
+    <Content Include="Views\Contact\Edit.cshtml" />
+    <Content Include="Views\WebConfig\Index.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\bv-config.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\alert\index.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\badge\index.d.ts" />
@@ -3714,6 +3826,18 @@
     <TypeScriptCompile Include="node_modules\vue\types\umd.d.ts" />
     <TypeScriptCompile Include="node_modules\vue\types\vnode.d.ts" />
     <TypeScriptCompile Include="node_modules\vue\types\vue.d.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\Create\index.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\Create\AuthorityCreateManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\Edit\AuthorityEditManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\Edit\index.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\index.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\AuthorityManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\model.ts" />
+    <TypeScriptCompile Include="Scripts\view\Authority\service.ts" />
+    <TypeScriptCompile Include="Scripts\view\BackOperation\BackOperationManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\BackOperation\index.ts" />
+    <TypeScriptCompile Include="Scripts\view\BackOperation\model.ts" />
+    <TypeScriptCompile Include="Scripts\view\BackOperation\service.ts" />
     <TypeScriptCompile Include="Scripts\view\Case\Create\index.ts" />
     <TypeScriptCompile Include="Scripts\view\Case\Create\CaseCreateManagement.ts" />
     <TypeScriptCompile Include="Scripts\view\Case\Edit\index.ts" />
@@ -3722,6 +3846,12 @@
     <TypeScriptCompile Include="Scripts\view\Case\CaseManagement.ts" />
     <TypeScriptCompile Include="Scripts\view\Case\model.ts" />
     <TypeScriptCompile Include="Scripts\view\Case\service.ts" />
+    <TypeScriptCompile Include="Scripts\view\Contact\Edit\ContactEditManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\Contact\Edit\index.ts" />
+    <TypeScriptCompile Include="Scripts\view\Contact\ContactManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\Contact\index.ts" />
+    <TypeScriptCompile Include="Scripts\view\Contact\model.ts" />
+    <TypeScriptCompile Include="Scripts\view\Contact\service.ts" />
     <TypeScriptCompile Include="Scripts\view\FontHome\Edit\index.ts" />
     <TypeScriptCompile Include="Scripts\view\Home\HomeManagement.ts" />
     <TypeScriptCompile Include="Scripts\view\Home\index.ts" />
@@ -3747,10 +3877,13 @@
     <TypeScriptCompile Include="Scripts\view\StaticPage\model.ts" />
     <TypeScriptCompile Include="Scripts\view\StaticPage\service.ts" />
     <TypeScriptCompile Include="Scripts\view\StaticPage\StaticPageManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\WebConfig\WebConfigManagement.ts" />
+    <TypeScriptCompile Include="Scripts\view\WebConfig\index.ts" />
+    <TypeScriptCompile Include="Scripts\view\WebConfig\model.ts" />
+    <TypeScriptCompile Include="Scripts\view\WebConfig\service.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Image\CKEditorImage\" />
     <Folder Include="Scripts\jquery.paging\" />
   </ItemGroup>
   <ItemGroup>

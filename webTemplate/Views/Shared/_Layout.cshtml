@@ -1,7 +1,6 @@
 ﻿@{
     string BasePath = Url.Content("~");
-    string WebTitle = "後臺管理系統";
-    string UserName = User.Identity.Name;
+    var meta_title = ViewBag.meta_title;
 }
 
 <!DOCTYPE html>
@@ -10,8 +9,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @*<link rel="icon" type="image/x-icon" href="@Url.Content("~/Images/icon/" + FavIconFileName)" />*@
-    <title>@ViewBag.Title - @WebTitle</title>
+    <link rel="icon" type="image/x-icon" href="https://www.sp88.com.tw/assets/images/logo-135x140-135x140.png" />
+    <title>@meta_title - @ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
     @Styles.Render("~/Style/MainStyles")
     @RenderSection("Styles", required: false)
@@ -39,10 +38,9 @@
         <div class="control-sidebar-bg"></div>
     </div>
 
-
     @Scripts.Render("~/Script/MainScripts")
-    <script src="~/Content/dist/js/demo.js"></script>
     @Scripts.Render("~/Script/LayoutComponents")
+    <script src="~/Content/dist/js/demo.js"></script>
     @Scripts.Render("~/Scripts/Requirejs")
 
     @RenderSection("Scripts", required: false)

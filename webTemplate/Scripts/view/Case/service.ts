@@ -14,6 +14,14 @@ class CaseService implements ICaseService {
         }
         return AjaxReturn(setting);
     }
+    CheckAuthority(CaseId: number): JQuery.jqXHR<ResponseViewModel> {
+        const setting: JQueryAjaxSettings = {
+            url: `/Case/GetEditCaseItem?CaseId=${CaseId}`,
+            type: 'GET',
+        };
+
+        return AjaxReturn(setting);
+    }
 
     GetEditCaseItem(CaseId: number): JQuery.jqXHR<ResponseViewModel> {
         const setting: JQueryAjaxSettings = {
@@ -28,10 +36,10 @@ class CaseService implements ICaseService {
         const setting: JQueryAjaxSettings = {
             url: `/Case/EditCaseItem`,
             type: 'POST',
-            data: model
+            data: model,
         };
 
-        return AjaxReturn(setting, "FormData");
+        return AjaxReturn(setting, 'FormData');
     }
 
     DeleteCaseItem(CaseId: number): JQuery.jqXHR<ResponseViewModel> {

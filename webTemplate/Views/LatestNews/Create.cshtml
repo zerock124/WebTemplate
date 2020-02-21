@@ -102,9 +102,9 @@
                                         內　　文：
                                     </small>
                                     <div class="col">
-                                        <b-form-input type="text"
-                                                      name="LatestNewsContent"
-                                                      v-model="LatestNewsContent"></b-form-input>
+                                        <vue-editor name="LatestNewsContent"
+                                                    :editor-toolbar="customToolbar"
+                                                    v-model="LatestNewsContent"></vue-editor>
                                     </div>
                                 </div>
 

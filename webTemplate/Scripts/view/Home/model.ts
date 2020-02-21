@@ -9,4 +9,5 @@
 export interface HomeViewModel {
     LatestNewsNumber: number;
     CaseNumber: number;
+    ContactNumber: number;
 }

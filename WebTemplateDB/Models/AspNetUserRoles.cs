@@ -14,11 +14,8 @@ namespace WebTemplateDB.Models
     
     public partial class AspNetUserRoles
     {
-        public int UserRoleId { get; set; }
+        public int Id { get; set; }
         public string UserId { get; set; }
         public string RoleId { get; set; }
-    
-        public virtual AspNetRoles AspNetRoles { get; set; }
-        public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }

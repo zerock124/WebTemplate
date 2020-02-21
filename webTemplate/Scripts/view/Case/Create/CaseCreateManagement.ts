@@ -2,6 +2,9 @@
 import { CaseViewModel } from '../model';
 import { UrlPathEnum } from '../../Share/Enums';
 import moment = require('moment');
+import VueEditor from 'vue2-editor'
+
+Vue.use(VueEditor);
 
 @Component({
     template: '#CaseCreateManagement'
@@ -33,7 +36,11 @@ export default class CaseCreateManagement extends Vue {
     CaseContent: string = '';
     Status: boolean = false;
 
-
+    customToolbar = [
+        ["bold", "italic", "underline"],
+        [{ list: "ordered" },
+        { list: "bullet" }]
+    ]
 
     created() {
         const _this = this;

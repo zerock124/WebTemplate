@@ -71,9 +71,9 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
         }
 
-        public async Task<PageDataVerityResult> GetLatestNewsList(SearchModel model, PaginationViewModel pagination)
+        public async Task<ResWithPaginationViewModel> GetLatestNewsList(SearchModel model, PaginationViewModel pagination)
         {
-            PageDataVerityResult pageData = new PageDataVerityResult();
+            ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
             List<LatestNewsViewModel> latestNews = new List<LatestNewsViewModel>();
 
             var query = from a in _latestnews.GetAll()
@@ -92,6 +92,11 @@ namespace WebTemplateDB.Service
                             UpdateTime = a.UpdateTime,
                             UpdateUser = a.UpdateUser
                         };
+
+            pageData.MaxDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
+            pageData.MinDateTime = query.OrderBy(x => x.CreateTime).FirstOrDefault().CreateTime;
+            pageData.MaxStartDate = query.OrderByDescending(x => x.StartDateTime).FirstOrDefault().StartDateTime;
+            pageData.MinStartDate = query.OrderBy(x => x.StartDateTime).FirstOrDefault().StartDateTime;
 
             if (model.StartDateTime != null)
             {
@@ -244,5 +249,34 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
         }
 
+        public async Task<List<LatestNewsViewModel>> GetLatestNewsList()
+        {
+            List<LatestNewsViewModel> list = new List<LatestNewsViewModel>();
+
+            var query = from a in _latestnews.GetAll()
+                        select new LatestNewsViewModel
+                        {
+                            LatestNewsId = a.LatestNewsId,
+                            ImageName = a.ImageName,
+                            LatestNewsEnum = (int)a.LatestNewsEnum,
+                            StartDateTime = a.StartDateTime,
+                            LatestNewsTitle = a.LatestNewsTitle,
+                            LatestNewsContent = a.LatestNewsContent,
+                            Remark = a.Remark,
+                            Status = a.Status,
+                            CreateTime = a.CreateTime,
+                            CreateUser = a.CreateUser,
+                            UpdateTime = a.UpdateTime,
+                            UpdateUser = a.UpdateUser
+                        };
+
+            if (query.Any())
+            {
+                var data = query.ToList();
+                list = data;
+            }
+
+            return await Task.Run(() => list);
+        }
     }
 }

@@ -1,0 +1,125 @@
+﻿@{
+    ViewBag.Title = "權限管理";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="nav-icon fas fa-lock"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div id="v_app"></div>
+</div>
+
+<template id="AuthorityEditManagement">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="card card-default color-palette-box">
+                <div class="card-blue">
+                    <div style="border-top: 5px solid black;border-bottom: 1px solid">
+                        <div class="col">
+                            <div class="info-box-content">
+                                <div class="h5 m-2">
+                                    新增
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row justify-content-center align-content-center" style="height:500px">
+                        <div class="col-auto col-md-6">
+
+                            <form action="/" enctype="multipart/form-data" method="post" v-on:submit.prevent="EditAuthorityItem">
+                                @Html.AntiForgeryToken()
+                                <input type="text" name="Id" v-model="AspNetUserId" class="d-none"/>
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        帳號：
+                                    </small>
+                                    <div class="col">
+                                        <b-form-input type="text"
+                                                      name="UserName"
+                                                      v-model="UserName"></b-form-input>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        密碼：
+                                    </small>
+                                    <div class="col input-group">
+                                        <b-form-input :type="PasswordTypes"
+                                                      name="Password"
+                                                      v-model="Password">
+                                        </b-form-input>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" v-on:click.prevent="ChangePasswordType">
+                                                <i v-if="!ShowPassword" class="fas fa-eye-slash"></i>
+                                                <i v-if="ShowPassword" class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        密碼：
+                                    </small>
+                                    <div class="col input-group">
+                                        <b-form-input :type="PasswordTypes"
+                                                      name="ConfirmPassword"
+                                                      v-model="ConfirmPassword">
+                                        </b-form-input>
+                                        <div class="input-group-append">
+                                            <span class="input-group-text" v-on:click.prevent="ChangePasswordType">
+                                                <i v-if="!ShowPassword" class="fas fa-eye-slash"></i>
+                                                <i v-if="ShowPassword" class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mx-2 mb-3">
+                                    <small class="h6 px-3 align-self-center">
+                                        角色：
+                                    </small>
+                                    <div class="col">
+                                        <b-form-select name="RoleId"
+                                                       :options="Options"
+                                                       v-model="Select"></b-form-select>
+                                    </div>
+                                </div>
+
+
+                                <div class="row justify-content-end">
+                                    <div class="col-auto p-3">
+                                        <button class="btn btn-primary" type="submit" :disabled="!VisibleStopAuthority">
+                                            送出
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+@section Scripts {
+    <script>
+        requirejs.config({
+            baseUrl: "@Url.Content("~/Scripts/build/view/Authority/Edit")"
+        });
+        require(["index"]);
+    </script>
+
+}

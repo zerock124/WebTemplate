@@ -20,10 +20,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service"], function (require, exports, vue_property_decorator_1, Enums_1, service_1) {
+define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service", "vue2-editor"], function (require, exports, vue_property_decorator_1, Enums_1, service_1, vue2_editor_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
+    vue2_editor_1 = __importDefault(vue2_editor_1);
+    vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var CaseEditManagement = (function (_super) {
         __extends(CaseEditManagement, _super);
         function CaseEditManagement() {
@@ -50,6 +52,11 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             _this_1.CaseContent = '';
             _this_1.Status = false;
             _this_1.CaseId = 0;
+            _this_1.customToolbar = [
+                ["bold", "italic", "underline"],
+                [{ list: "ordered" },
+                    { list: "bullet" }]
+            ];
             return _this_1;
         }
         CaseEditManagement.prototype.created = function () {
@@ -97,7 +104,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
         CaseEditManagement.prototype.imageLoader = function (event) {
             this.image = event.target.result;
         };
-        CaseEditManagement.prototype.SetEditFontHome = function () {
+        CaseEditManagement.prototype.SetEditCase = function () {
             var _this = this;
             if (_this.CaseItem) {
                 var _a = this, CaseId = _a.CaseId, PhotoFile = _a.PhotoFile, ImageName = _a.ImageName, CaseUrl = _a.CaseUrl, CaseName = _a.CaseName, CaseContent = _a.CaseContent, CaseEnum = _a.CaseEnum, Status = _a.Status;
@@ -106,7 +113,6 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                 _formdata.append('PhotoFile', PhotoFile ? PhotoFile : '');
                 _formdata.append('ImageName', ImageName);
                 _formdata.append('CaseUrl', CaseUrl);
-                _formdata.append('CaseName', CaseName);
                 _formdata.append('CaseName', CaseName);
                 _formdata.append('CaseContent', CaseContent);
                 _formdata.append('CaseEnum', CaseEnum.toString());

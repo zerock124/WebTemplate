@@ -101,7 +101,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 if (res.Data) {
                     _this.ListItem = res.Data;
                     _this.Pagination = res.Pagination;
-                    _this.LimitDate(res.Data);
+                    _this.LimitDate(res);
                 }
             }).catch(function (err) {
                 console.log(err);
@@ -123,18 +123,14 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
         };
         LatestNewsManagement.prototype.LimitDate = function (Data) {
             var _this = this;
-            var MaxDate = Data.map(function (s) { return moment(s.CreateTime); });
-            _this.EndDateTime = moment.max(MaxDate).format("YYYY-MM-DD");
-            _this.MaxDate = _this.EndDateTime;
-            var MinDate = Data.map(function (s) { return moment(s.CreateTime); });
-            _this.StartDateTime = moment.min(MinDate).format("YYYY-MM-DD");
+            _this.StartDateTime = moment(Data.MinDateTime).startOf('day').format("YYYY-MM-DD");
+            _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
             _this.MinDate = _this.StartDateTime;
-            var OnlineMaxDate = Data.map(function (s) { return moment(s.StartDateTime); });
-            _this.EndOnlineDateTime = moment.max(OnlineMaxDate).format("YYYY-MM-DD");
-            _this.OnlineMaxDate = _this.EndOnlineDateTime;
-            var OnlineMinDate = Data.map(function (s) { return moment(s.StartDateTime); });
-            _this.StartOnlineDateTime = moment.min(OnlineMinDate).format("YYYY-MM-DD");
-            _this.OnlineMinDate = _this.StartOnlineDateTime;
+            _this.MaxDate = _this.EndDateTime;
+            _this.StartOnlineDateTime = moment(Data.MinStartDate).startOf('day').format("YYYY-MM-DD");
+            _this.EndOnlineDateTime = moment(Data.MaxStartDate).endOf('day').format("YYYY-MM-DD");
+            _this.OnlineMinDate = _this.StartDateTime;
+            _this.OnlineMaxDate = _this.EndDateTime;
         };
         LatestNewsManagement.prototype.GetImageUrl = function () {
             var _this = this;
@@ -177,6 +173,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             }
             _this.searchmodel.Query = _this.Query;
             _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
             _this.GetLatestNewsList(_this.searchmodel);
         };
         LatestNewsManagement.prototype.GetEditLatestNews = function (LatestNewsId) {

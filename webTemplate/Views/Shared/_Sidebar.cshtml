@@ -1,15 +1,15 @@
 ﻿@{
-    ViewBag.Title = "光點數位科技";
     string UserName = User.Identity.Name;
+    var WebName = ViewBag.WebName;
 }
 
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-        <img src="~/Content/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+    <a href="@Url.Action("Index","Home")" class="brand-link">
+        <img src="https://www.sp88.com.tw/assets/images/logo-135x140-135x140.png" alt="AdminLTE Logo" class="brand-image"
              style="opacity: .8">
-        <span class="brand-text font-weight-light">@ViewBag.Title</span>
+        <span class="brand-text font-weight-light">@WebName</span>
     </a>
 
     <!-- Sidebar -->
@@ -17,7 +17,7 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="~/Content/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="~/Content/dist/img/user.png" class="img-circle bg-white" alt="User Image" style="opacity: .8">
             </div>
             <div class="info">
                 <a href="#" class="d-block">@UserName</a>
@@ -28,7 +28,7 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <!-- Add icons to the links using the .nav-icon class
-    with font-awesome or any other icon font library -->
+                with font-awesome or any other icon font library -->
                 <li class="nav-item">
                     <a href="@Url.Action("Index","Home")" class="nav-link">
                         <i class="nav-icon fas fa-home"></i>
@@ -78,15 +78,15 @@
                     </a>
                 </li>
                 <li class="nav-item has-treeview">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-edit"></i>
+                    <a href="@Url.Action("Index","Contact")" class="nav-link">
+                        <i class="nav-icon fas fa-envelope"></i>
                         <p>
                             聯絡我們管理
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="@Url.Action("Index","BackOperationRecord")" class="nav-link">
+                    <a href="@Url.Action("Index","BackOperation")" class="nav-link">
                         <i class="nav-icon fas fa-database"></i>
                         <p>
                             後台操作紀錄
@@ -94,7 +94,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="@Url.Action("Index","BackOperationRecord")" class="nav-link">
+                    <a href="@Url.Action("Index","Authority")" class="nav-link">
                         <i class="nav-icon fas fa-lock"></i>
                         <p>
                             權限管理
@@ -102,7 +102,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
+                    <a href="@Url.Action("Index","WebConfig")" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
                             網站設定

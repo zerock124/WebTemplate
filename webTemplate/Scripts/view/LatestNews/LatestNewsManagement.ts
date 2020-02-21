@@ -102,8 +102,7 @@ export default class LatestNewsManagement extends Vue {
                 _this.ListItem = res.Data;
                 _this.Pagination = res.Pagination;
 
-                _this.LimitDate(res.Data);
-                //_this.CheckOnlineDate();
+                _this.LimitDate(res);
 
             }
         }).catch(err => {
@@ -121,7 +120,6 @@ export default class LatestNewsManagement extends Vue {
             if (res.Data) {
                 _this.ListItem = res.Data;
                 _this.Pagination = res.Pagination;
-                //_this.CheckOnlineDate();
 
             }
         }).catch(err => {
@@ -131,22 +129,16 @@ export default class LatestNewsManagement extends Vue {
 
     LimitDate(Data) {
         const _this = this;
-
-        var MaxDate = Data.map(s => moment(s.CreateTime));
-        _this.EndDateTime = moment.max(MaxDate).format("YYYY-MM-DD");
+        _this.StartDateTime = moment(Data.MinDateTime).startOf('day').format("YYYY-MM-DD");
+        _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
+        _this.MinDate = _this.StartDateTime;
         _this.MaxDate = _this.EndDateTime;
 
-        var MinDate = Data.map(s => moment(s.CreateTime));
-        _this.StartDateTime = moment.min(MinDate).format("YYYY-MM-DD");
-        _this.MinDate = _this.StartDateTime;
+        _this.StartOnlineDateTime = moment(Data.MinStartDate).startOf('day').format("YYYY-MM-DD");
+        _this.EndOnlineDateTime = moment(Data.MaxStartDate).endOf('day').format("YYYY-MM-DD");
+        _this.OnlineMinDate = _this.StartDateTime;
+        _this.OnlineMaxDate = _this.EndDateTime;
 
-        var OnlineMaxDate = Data.map(s => moment(s.StartDateTime));
-        _this.EndOnlineDateTime = moment.max(OnlineMaxDate).format("YYYY-MM-DD");
-        _this.OnlineMaxDate = _this.EndOnlineDateTime;
-
-        var OnlineMinDate = Data.map(s => moment(s.StartDateTime));
-        _this.StartOnlineDateTime = moment.min(OnlineMinDate).format("YYYY-MM-DD");
-        _this.OnlineMinDate = _this.StartOnlineDateTime;
     }
 
     @Watch('ListItem')
@@ -198,6 +190,8 @@ export default class LatestNewsManagement extends Vue {
         _this.searchmodel.Query = _this.Query;
 
         _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+        _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+
         _this.GetLatestNewsList(_this.searchmodel);
     }
 

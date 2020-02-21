@@ -61,6 +61,8 @@ namespace WebTemplateDB.Service
                         ServiceItem updateItem = checkcreate.SingleOrDefault();
                         updateItem.ServiceItemName = modelItem.ServiceItemName;
                         updateItem.ImageName = modelItem.ImageName;
+                        updateItem.CreateTime = checkcreate.FirstOrDefault().CreateTime;
+                        updateItem.CreateUser = checkcreate.FirstOrDefault().CreateUser;
                         updateItem.UpdateTime = DateTime.Now;
                         updateItem.UpdateUser = CurrendUserid;
 

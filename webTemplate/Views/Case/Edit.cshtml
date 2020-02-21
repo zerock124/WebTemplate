@@ -48,7 +48,7 @@
                                 <h6>( 圖片 / 450*300 / JPG 格式 )</h6>
                             </div>
 
-                            <form action="/" enctype="multipart/form-data" method="post" v-on:submit.prevent="SetEditFontHome">
+                            <form action="/" enctype="multipart/form-data" method="post" v-on:submit.prevent="SetEditCase">
                                 <div class="row mx-2 mb-3">
                                     <small class="h6 px-3 align-self-center">
                                         圖片檔案：
@@ -101,9 +101,9 @@
                                         案例敘述：
                                     </small>
                                     <div class="col">
-                                        <b-form-input type="text"
-                                                      name="CaseContent"
-                                                      v-model="CaseContent"></b-form-input>
+                                        <vue-editor name="CaseContent"
+                                                    :editor-toolbar="customToolbar"
+                                                    v-model="CaseContent"></vue-editor>
                                     </div>
                                 </div>
 

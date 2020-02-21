@@ -15,7 +15,7 @@ namespace WebTemplateDB.Models
     public partial class BackOperation
     {
         public int BackOperationId { get; set; }
-        public string AspNerUserId { get; set; }
+        public string AspNetUserId { get; set; }
         public string RoleId { get; set; }
         public string ContentText { get; set; }
         public bool Result { get; set; }

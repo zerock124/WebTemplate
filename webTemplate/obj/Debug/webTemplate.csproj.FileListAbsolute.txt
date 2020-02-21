@@ -118,3 +118,5 @@ C:\xinyu\Project\webTemplate\webTemplate\bin\System.Web.Http.WebHost.dll
 C:\xinyu\Project\webTemplate\webTemplate\bin\System.Net.Http.Formatting.xml
 C:\xinyu\Project\webTemplate\webTemplate\bin\System.Web.Http.xml
 C:\xinyu\Project\webTemplate\webTemplate\bin\System.Web.Http.WebHost.xml
+C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Security.Facebook.dll
+C:\xinyu\Project\webTemplate\webTemplate\bin\Microsoft.Owin.Security.Facebook.xml

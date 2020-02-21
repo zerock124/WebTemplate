@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using webTemplate.Models;
+using WebTemplateDB.Interface;
+using WebTemplateDB.Models;
+using WebTemplateDB.Repositories;
+using WebTemplateDB.Service;
 
 namespace webTemplate.Controllers
 {
@@ -21,6 +25,14 @@ namespace webTemplate.Controllers
         */
         private ApplicationSignInManager _signInManager;
         private new ApplicationUserManager _userManager;
+
+        protected WebTemplateEntities _db;
+        protected IGenericRepository<AspNetRoles> _aspnetRoles;
+        protected IGenericRepository<AspNetUserRoles> _aspnetUserRoles;
+        protected IGenericRepository<AspNetUsers> _aspnetUser;
+        protected IBackOperationService _backOperationService;
+        string OperationName = "權限管理";
+
 
         public ApplicationSignInManager SignInManager
         {
@@ -36,6 +48,11 @@ namespace webTemplate.Controllers
 
         public AccountController() 
         {
+            _db = new WebTemplateEntities();
+            _aspnetRoles = new GenericRepository<AspNetRoles>();
+            _aspnetUserRoles = new GenericRepository<AspNetUserRoles>();
+            _aspnetUser = new GenericRepository<AspNetUsers>();
+            _backOperationService = new BackOperationService();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager) 
@@ -137,25 +154,139 @@ namespace webTemplate.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = model.UserName,
-                    Email = model.Email,
-                    RealName = model.RealName,
+                    Email = "test@sp88.com.tw",
+                    RealName = model.UserName,
                     CreateTime = DateTime.Now,
-                    PhoneNumber = model.PhoneNumber,
+                    PhoneNumber = "0912345678",
                     PhoneNumberConfirmed = true,
                     RegisterDate = DateTime.Now,
                     UpdateTime = DateTime.Now,
+                    CreateUser = CurrendUserid
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                    return RedirectToAction("Index", "Home");
+                    var role = _aspnetRoles.FindBy(x => x.Id == model.RoleId).FirstOrDefault();
+
+                    var aspnetuser = _aspnetUser.FindBy(x => x.UserName == model.UserName).FirstOrDefault();
+
+                    AspNetUserRoles userRoles = new AspNetUserRoles
+                    {
+                        UserId = aspnetuser.Id,
+                        RoleId = role.Id
+                    };
+
+                    _aspnetUserRoles.Create(userRoles);
+                    await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
                 }
                 AddErrors(result);
             }
+            return RedirectToAction("Index","Authority");
+        }
+
+        // POST: /Account/ExternalLogin
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public ActionResult ExternalLogin(string provider, string returnUrl)
+        {
+            // 要求重新導向至外部登入提供者
+            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+        }
+
+        //
+        // GET: /Account/SendCode
+        [AllowAnonymous]
+        public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
+        {
+            var userId = await SignInManager.GetVerifiedUserIdAsync();
+            if (userId == null)
+            {
+                return View("Error");
+            }
+            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
+            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
+            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+        }
+
+        // GET: /Account/ExternalLoginCallback
+        [AllowAnonymous]
+        public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
+        {
+            var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
+            if (loginInfo == null)
+            {
+                return RedirectToAction("Login");
+            }
+
+            // 若使用者已經有登入資料，請使用此外部登入提供者登入使用者
+            var result = await SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    return RedirectToLocal(returnUrl);
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+                case SignInStatus.Failure:
+                default:
+                    // 若使用者沒有帳戶，請提示使用者建立帳戶
+                    ViewBag.ReturnUrl = returnUrl;
+                    ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+            }
+        }
+
+        // POST: /Account/ExternalLoginConfirmation
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        {
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (ModelState.IsValid)
+            {
+                // 從外部登入提供者處取得使用者資訊
+                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+                if (info == null)
+                {
+                    return View("ExternalLoginFailure");
+                }
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = "test@sp88.com.tw",
+                    RealName = model.Email,
+                    CreateTime = DateTime.Now,
+                    PhoneNumber = "0912345678",
+                    PhoneNumberConfirmed = true,
+                    RegisterDate = DateTime.Now,
+                    UpdateTime = DateTime.Now,
+                    CreateUser = CurrendUserid
+                };
+                var result = await UserManager.CreateAsync(user);
+                if (result.Succeeded)
+                {
+                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    if (result.Succeeded)
+                    {
+                        await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        return RedirectToLocal(returnUrl);
+                    }
+                }
+                AddErrors(result);
+            }
+
+            ViewBag.ReturnUrl = returnUrl;
             return View(model);
         }
 
+        #region Helper
         // 新增外部登入時用來當做 XSRF 保護
         private const string XsrfKey = "XsrfId";
 
@@ -175,39 +306,43 @@ namespace webTemplate.Controllers
             }
         }
 
-        //
-        // GET: /Account/SendCode
-        [AllowAnonymous]
-        public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
+        private ActionResult RedirectToLocal(string returnUrl)
         {
-            var userId = await SignInManager.GetVerifiedUserIdAsync();
-            if (userId == null)
+            if (Url.IsLocalUrl(returnUrl))
             {
-                return View("Error");
+                return Redirect(returnUrl);
             }
-            var userFactors = await UserManager.GetValidTwoFactorProvidersAsync(userId);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+            return RedirectToAction("Index", "Home");
         }
 
-        //
-        // POST: /Account/SendCode
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> SendCode(SendCodeViewModel model)
+        internal class ChallengeResult : HttpUnauthorizedResult
         {
-            if (!ModelState.IsValid)
+            public ChallengeResult(string provider, string redirectUri)
+                : this(provider, redirectUri, null)
             {
-                return View();
             }
 
-            // 產生並傳送 Token
-            if (!await SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
+            public ChallengeResult(string provider, string redirectUri, string userId)
             {
-                return View("Error");
+                LoginProvider = provider;
+                RedirectUri = redirectUri;
+                UserId = userId;
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+
+            public string LoginProvider { get; set; }
+            public string RedirectUri { get; set; }
+            public string UserId { get; set; }
+
+            public override void ExecuteResult(ControllerContext context)
+            {
+                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
+                if (UserId != null)
+                {
+                    properties.Dictionary[XsrfKey] = UserId;
+                }
+                context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
+            }
         }
+        #endregion
     }
 }
