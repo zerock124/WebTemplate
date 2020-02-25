@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = "合圖測試";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="m-0 text-dark">
+                        <i class="nav-icon fas fa-images"></i>
+                        @ViewBag.Title
+                    </h1>
+                </div><!-- /.col -->
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="@Url.Action("ImageMerge","ImageMerge")" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <input type="file" name="UploadImage" value="" />
+                    <input type="text" name="Text" value="" />
+                    <input type="submit" name="送出" value="送出" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

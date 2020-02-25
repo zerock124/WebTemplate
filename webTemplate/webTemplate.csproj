@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\FontHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageMergeController.cs" />
     <Compile Include="Controllers\LatestNewsController.cs" />
     <Compile Include="Controllers\ServiceItemController.cs" />
     <Compile Include="Controllers\StaticPageController.cs" />
@@ -3705,6 +3706,7 @@
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\WebConfig\Index.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\ImageMerge\Index.cshtml" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\bv-config.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\alert\index.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\badge\index.d.ts" />

@@ -10,10 +10,6 @@ using WebTemplateDB.Interface;
 using WebTemplateDB.Service;
 using WebTemplateDB.Repositories;
 using WebTemplateDB.Models;
-using System.Security.Claims;
-using System.Net;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace webTemplate.Controllers
 {

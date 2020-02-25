@@ -8,9 +8,14 @@ namespace webTemplate.Models
 {
     public class ExternalLoginConfirmationViewModel
     {
+        public string RealName { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
         [Required]
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
+        public string returnUrl { get; set; }
     }
 
     /// <summary>

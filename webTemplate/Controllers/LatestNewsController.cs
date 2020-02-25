@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -191,7 +193,7 @@ namespace webTemplate.Controllers
             return Json(res, JsonRequestBehavior.DenyGet);
         }
 
-        public async Task<JsonResult> DeleteLatestNews(int LatestNewsId) 
+        public async Task<JsonResult> DeleteLatestNews(int LatestNewsId)
         {
             ResponseViewModel res = new ResponseViewModel();
 

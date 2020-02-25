@@ -46,7 +46,7 @@ namespace webTemplate.Controllers
             private set => _userManager = value;
         }
 
-        public AccountController() 
+        public AccountController()
         {
             _db = new WebTemplateEntities();
             _aspnetRoles = new GenericRepository<AspNetRoles>();
@@ -55,7 +55,7 @@ namespace webTemplate.Controllers
             _backOperationService = new BackOperationService();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager) 
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
@@ -181,7 +181,7 @@ namespace webTemplate.Controllers
                 }
                 AddErrors(result);
             }
-            return RedirectToAction("Index","Authority");
+            return RedirectToAction("Index", "Authority");
         }
 
         // POST: /Account/ExternalLogin
@@ -234,7 +234,13 @@ namespace webTemplate.Controllers
                     // 若使用者沒有帳戶，請提示使用者建立帳戶
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    ExternalLoginConfirmationViewModel model = new ExternalLoginConfirmationViewModel
+                    {
+                        RealName = loginInfo.DefaultUserName,
+                        Email = loginInfo.Email,
+                        returnUrl = returnUrl
+                    };
+                    return View("ExternalLoginConfirmation", model);
             }
         }
 
@@ -242,7 +248,7 @@ namespace webTemplate.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model)
         {
             if (User.Identity.IsAuthenticated)
             {
@@ -259,16 +265,17 @@ namespace webTemplate.Controllers
                 }
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
-                    Email = "test@sp88.com.tw",
-                    RealName = model.Email,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    RealName = model.RealName,
                     CreateTime = DateTime.Now,
-                    PhoneNumber = "0912345678",
+                    PhoneNumber = null,
                     PhoneNumberConfirmed = true,
                     RegisterDate = DateTime.Now,
                     UpdateTime = DateTime.Now,
                     CreateUser = CurrendUserid
                 };
+
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -276,13 +283,27 @@ namespace webTemplate.Controllers
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
+
+                        var role = _aspnetRoles.FindBy(x => x.Name == "user").FirstOrDefault();
+
+                        var aspnetuser = _aspnetUser.FindBy(x => x.UserName == model.UserName).FirstOrDefault();
+
+                        AspNetUserRoles userRoles = new AspNetUserRoles
+                        {
+                            UserId = aspnetuser.Id,
+                            RoleId = role.Id
+                        };
+
+                        _aspnetUserRoles.Create(userRoles);
+                        await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
+
+                        return RedirectToLocal(model.returnUrl);
                     }
                 }
                 AddErrors(result);
             }
 
-            ViewBag.ReturnUrl = returnUrl;
+            ViewBag.ReturnUrl = model.returnUrl;
             return View(model);
         }
 
