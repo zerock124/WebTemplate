@@ -79,6 +79,9 @@
     <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.1.0\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.1.0\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.1.0\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
     </Reference>
@@ -3707,6 +3710,7 @@
     <Content Include="Views\WebConfig\Index.cshtml" />
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\ImageMerge\Index.cshtml" />
+    <Content Include="Views\Account\LineLoginConfirmation.cshtml" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\bv-config.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\alert\index.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\badge\index.d.ts" />

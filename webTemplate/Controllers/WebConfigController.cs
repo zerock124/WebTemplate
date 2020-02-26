@@ -14,7 +14,7 @@ namespace webTemplate.Controllers
 {
     public class WebConfigController : BaseController
     {
-        WebTemplateEntities _db;
+        readonly WebTemplateEntities _db;
         protected IWebConfigService _webconfig;
 
         public WebConfigController()

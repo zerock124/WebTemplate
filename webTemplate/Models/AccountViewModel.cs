@@ -16,6 +16,7 @@ namespace webTemplate.Models
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
         public string returnUrl { get; set; }
+        public string Userid { get; set; }
     }
 
     /// <summary>

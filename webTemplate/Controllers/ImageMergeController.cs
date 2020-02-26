@@ -34,12 +34,13 @@ namespace webTemplate.Controllers
                 {
                     using (Font arialFont = new Font("微軟正黑體", 14))
                     {
+                        ///文字水平垂直
                         StringFormat stringFormat = new StringFormat();
                         stringFormat.Alignment = StringAlignment.Center;
                         stringFormat.LineAlignment = StringAlignment.Center;
-                        graphics.DrawImage(logomap, bitmap.Width -140, bitmap.Height -55 , 50, 50);
                         graphics.DrawString(firstText, arialFont, Brushes.Black, firstLocation, stringFormat);
                     }
+                    graphics.DrawImage(logomap, bitmap.Width - 140, bitmap.Height - 55, 50, 50);
                 }
                 bitmap.Save(imageFilePath);//save the image file   
                 inpustStream.Dispose();

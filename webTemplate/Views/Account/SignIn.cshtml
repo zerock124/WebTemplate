@@ -72,17 +72,19 @@
 
                         <form action="@Url.Action("ExternalLogin", "Account")" method="post">
                             @Html.AntiForgeryToken()
-                            <div id="socialLoginList">
-                                <p>
-                                    @foreach (AuthenticationDescription p in loginProviders)
-                                    {
-                                        <div class="col">
-                                            <a onclick="Submit()" class="social-btn entypo-facebook bg-primary">
-                                            </a>
-                                            <button id="submitButton"type="submit" class="btn d-none" name="provider" value="@p.AuthenticationType" title="使用 @p.Caption 帳戶登入">@p.AuthenticationType</button>
-                                        </div>
-                                    }
-                                </p>
+                            <div class="flex-center">
+                                <button id="FaceBook" type="submit" class="text-primary btn" name="provider" value="Facebook">
+                                    <i class="fab fa-facebook fa-4x icon-3d">
+                                    </i>
+                                </button>
+                                <button id="Google" type="submit" class="text-red btn" name="provider" value="Google">
+                                    <i class="fab fa-google-plus-g fa-4x icon-3d">
+                                    </i>
+                                </button>
+                                <a href="@Url.Action("LineLoginDirect","Account")">
+                                    <i class="fab fa-line fa-4x icon-3d text-success">
+                                    </i>
+                                </a>
                             </div>
                         </form>
                     }
@@ -97,13 +99,6 @@
     <!-- AdminLTE App -->
     @Scripts.Render("~/Script/MainScripts")
     <script>
-        function Submit() {
-            var submit = document.getElementById("submitButton");
-            submit.click();
-        }
-        $('.btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span><span></span></div>');
-
-        $('.social-btn').prepend('<div class="hover"><span></span><span></span><span></span><span></span></div>');
     </script>
 
 </body>

@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+using Microsoft.Owin.Security.Google;
 using Owin;
 using System;
 using System.Collections.Generic;
@@ -52,6 +53,12 @@ namespace webTemplate
             app.UseFacebookAuthentication(
                appId: "308543876767980",
                appSecret: "689e57b1ef62d01b49cf2c91bf1b4b4e");
+
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            { 
+              ClientId = "578804682234-4pklu69pkv9vj6qplr8s79mqthd1cg6k.apps.googleusercontent.com",
+              ClientSecret = "fNS4BSWR6JvY_q6zDcjA5x3S",
+            });     
         }
 
     }

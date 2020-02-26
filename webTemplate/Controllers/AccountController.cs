@@ -4,7 +4,10 @@ using Microsoft.Owin.Security;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
+using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -30,6 +33,7 @@ namespace webTemplate.Controllers
         protected IGenericRepository<AspNetRoles> _aspnetRoles;
         protected IGenericRepository<AspNetUserRoles> _aspnetUserRoles;
         protected IGenericRepository<AspNetUsers> _aspnetUser;
+        protected IGenericRepository<AspNetUserLogins> _login;
         protected IBackOperationService _backOperationService;
         string OperationName = "權限管理";
 
@@ -53,6 +57,7 @@ namespace webTemplate.Controllers
             _aspnetUserRoles = new GenericRepository<AspNetUserRoles>();
             _aspnetUser = new GenericRepository<AspNetUsers>();
             _backOperationService = new BackOperationService();
+            _login = new GenericRepository<AspNetUserLogins>();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
@@ -263,6 +268,7 @@ namespace webTemplate.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
+
                 var user = new ApplicationUser
                 {
                     UserName = model.UserName,
@@ -306,6 +312,133 @@ namespace webTemplate.Controllers
             ViewBag.ReturnUrl = model.returnUrl;
             return View(model);
         }
+
+        #region LineLogin
+        [AllowAnonymous]
+        public ActionResult LineLoginDirect()
+        {
+            string response_type = "code";
+            string client_id = "1653889097";
+            string redirect_uri = HttpUtility.UrlEncode("https://localhost:44378/Account/callback");
+            string state = "zerock851024";
+            string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile&nonce=09876xyz",
+                response_type,
+                client_id,
+                redirect_uri,
+                state
+                );
+            return Redirect(LineLoginUrl);
+        }
+
+        [AllowAnonymous]
+        public async Task<ActionResult> callback(string code, string state)
+        {
+            if (state == "zerock851024")
+            {
+                #region Api變數宣告
+                WebClient wc = new WebClient();
+                wc.Encoding = Encoding.UTF8;
+                wc.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
+                NameValueCollection nvc = new NameValueCollection();
+                #endregion
+                try
+                {
+                    //取回Token
+                    string ApiUrl_Token = "https://api.line.me/oauth2/v2.1/token";
+                    nvc.Add("grant_type", "authorization_code");
+                    nvc.Add("code", code);
+                    nvc.Add("redirect_uri", "https://localhost:44378/Account/callback");
+                    nvc.Add("client_id", "1653889097");
+                    nvc.Add("client_secret", "3ff7b35335ef06b1b50fca15d4fab9f8");
+                    string JsonStr = Encoding.UTF8.GetString(wc.UploadValues(ApiUrl_Token, "POST", nvc));
+                    LineLoginToken ToKenObj = JsonConvert.DeserializeObject<LineLoginToken>(JsonStr);
+                    wc.Headers.Clear();
+
+                    //取回User Profile
+                    string ApiUrl_Profile = "https://api.line.me/v2/profile";
+                    wc.Headers.Add("Authorization", "Bearer " + ToKenObj.access_token);
+                    string UserProfile = wc.DownloadString(ApiUrl_Profile);
+                    LineProfile ProfileObj = JsonConvert.DeserializeObject<LineProfile>(UserProfile);
+                    ExternalLoginConfirmationViewModel model = new ExternalLoginConfirmationViewModel
+                    {
+                        Userid = ProfileObj.userId,
+                        RealName = ProfileObj.displayName,
+                        Email = "",
+                        returnUrl = "",
+                        Password = ProfileObj.userId
+                    };
+                    var FindLineUser = _aspnetUser.FindBy(x => x.Id == model.Userid);
+                    if (FindLineUser.Any()) 
+                    {
+                        LoginViewModel LineLogin = new LoginViewModel
+                        {
+                            UserName = FindLineUser.FirstOrDefault().UserName,
+                            Password = FindLineUser.FirstOrDefault().Id,
+                            RememberMe = false
+                        };
+                        var result = await SignIn(LineLogin);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else 
+                    {
+                        return View("LineLoginConfirmation", model);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    string msg = ex.Message;
+                    throw;
+                }
+            }
+            return View("Login");
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> LineLoginConfirmation(ExternalLoginConfirmationViewModel model)
+        {
+            var FindUser = _aspnetUser.FindBy(x => x.Id == model.Userid);
+            if (!FindUser.Any())
+            {
+                var user = new ApplicationUser
+                {
+                    Id = model.Userid,
+                    UserName = model.UserName,
+                    Email = model.Email,
+                    RealName = model.RealName,
+                    CreateTime = DateTime.Now,
+                    PhoneNumber = null,
+                    PhoneNumberConfirmed = true,
+                    RegisterDate = DateTime.Now,
+                    UpdateTime = DateTime.Now,
+                    CreateUser = CurrendUserid
+                };
+
+                var result = await UserManager.CreateAsync(user, model.Userid);
+                if (result.Succeeded)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+                    var role = _aspnetRoles.FindBy(x => x.Name == "user").FirstOrDefault();
+
+                    var aspnetuser = _aspnetUser.FindBy(x => x.UserName == model.UserName).FirstOrDefault();
+
+                    AspNetUserRoles userRoles = new AspNetUserRoles
+                    {
+                        UserId = aspnetuser.Id,
+                        RoleId = role.Id
+                    };
+
+                    _aspnetUserRoles.Create(userRoles);
+                    await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
+
+                    return RedirectToLocal(model.returnUrl);
+                }
+            }
+            return View();
+        }
+        #endregion
 
         #region Helper
         // 新增外部登入時用來當做 XSRF 保護
