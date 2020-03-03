@@ -20,10 +20,21 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "./service"], function (require, exports, vue_property_decorator_1, service_1) {
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+define(["require", "exports", "vue-property-decorator", "./service", "vue2-editor", "quill-image-resize-module"], function (require, exports, vue_property_decorator_1, service_1, vue2_editor_1, quill_image_resize_module_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
+    vue2_editor_1 = __importStar(vue2_editor_1);
+    quill_image_resize_module_1 = __importDefault(quill_image_resize_module_1);
+    vue_property_decorator_1.Vue.use(vue2_editor_1.default);
+    vue2_editor_1.Quill.register('modules/imageResize', quill_image_resize_module_1.default);
     var StaticPageItem = (function (_super) {
         __extends(StaticPageItem, _super);
         function StaticPageItem() {
@@ -32,6 +43,29 @@ define(["require", "exports", "vue-property-decorator", "./service"], function (
             _this_1.StaticPageItem = null;
             return _this_1;
         }
+        StaticPageItem.prototype.created = function () {
+            var _this = this;
+            editorOption: {
+            }
+        };
+        StaticPageItem.prototype.mounted = function () {
+            var quill = new vue2_editor_1.Quill('#editor', {
+                theme: 'snow',
+                modules: {
+                    imageResize: {
+                        displaySize: true
+                    },
+                    toolbar: [
+                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'color': [] }, { 'background': [] }],
+                        [{ 'align': [] }],
+                        ['link', 'image'],
+                        ['clean']
+                    ]
+                }
+            });
+        };
         StaticPageItem.prototype.SubmitCompanyProfile = function () {
             var _this = this;
             _this.SubmitStaticPage(_this.PageContent);

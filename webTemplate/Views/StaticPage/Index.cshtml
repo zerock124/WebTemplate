@@ -57,7 +57,6 @@
 
 <template id="StaticPageItem">
     <div>
-
         <div class="row my-2">
             <div class="col-auto ml-4">
                 內容：
@@ -72,6 +71,24 @@
                 <b-button variant="primary" size="sm" v-on:click="SubmitCompanyProfile">送出</b-button>
             </div>
         </div>
+
+        <div class="row">
+
+            <h1>Quill Image Resize Module - Demo</h1>
+            <a href="https://github.com/kensnyder/quill-image-resize-module">Quill ImageResize Module</a>
+            <br /><br />
+
+            <div id="editor" style="max-height:400px;overflow:auto">
+                <p>Click on the Image Below to resize</p>
+                <p><img src="https://source.unsplash.com/random/200x200"></p>
+                <p>Some initial <strong>bold</strong> text</p>
+                <p><img src="https://source.unsplash.com/random/400x400"></p>
+            </div>
+            <p>
+                Also see <a href="https://github.com/kensnyder/quill-image-drop-module">quill-image-drop-module</a>,
+                a module that enables copy-paste and drag/drop for Quill.
+            </p>
+        </div>
     </div>
 
 </template>
@@ -82,5 +99,6 @@
             baseUrl: "@Url.Content("~/Scripts/build/view/StaticPage")"
         });
         require(["index"]);
+
     </script>
 }

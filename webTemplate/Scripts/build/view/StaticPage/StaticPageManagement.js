@@ -20,13 +20,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "./StaticPageItem", "vue2-editor", "./service"], function (require, exports, vue_property_decorator_1, StaticPageItem_1, vue2_editor_1, service_1) {
+define(["require", "exports", "vue-property-decorator", "./StaticPageItem", "./service"], function (require, exports, vue_property_decorator_1, StaticPageItem_1, service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     StaticPageItem_1 = __importDefault(StaticPageItem_1);
-    vue2_editor_1 = __importDefault(vue2_editor_1);
     service_1 = __importDefault(service_1);
-    vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var StaticPageManagement = (function (_super) {
         __extends(StaticPageManagement, _super);
         function StaticPageManagement() {

@@ -2,6 +2,12 @@
 import service from './service';
 import { StaticPageViewModel } from './model'
 import moment = require('moment');
+import VueEditor, { Quill } from 'vue2-editor';
+import ImageResize from 'quill-image-resize-module';
+
+Vue.use(VueEditor);
+
+Quill.register('modules/imageResize', ImageResize);
 
 @Component({
     template: '#StaticPageItem',
@@ -12,6 +18,33 @@ export default class StaticPageItem extends Vue {
 
     PageContent: string = '';
     StaticPageItem: StaticPageViewModel | null = null;
+
+    created() {
+        const _this = this;
+        editorOption: {
+
+        }
+    }
+
+    mounted() {
+        var quill = new Quill('#editor', {
+            theme: 'snow',
+            modules: {
+                imageResize: {
+                    displaySize: true
+                },
+                toolbar: [
+                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
+                    ['bold', 'italic', 'underline', 'strike'],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'align': [] }],
+                    ['link', 'image'],
+
+                    ['clean']
+                ]
+            }
+        });
+    }
 
     SubmitCompanyProfile() {
         const _this = this;
@@ -31,7 +64,7 @@ export default class StaticPageItem extends Vue {
                     _this.$bvToast.toast("變更'公司介紹'成功", {
                         title: '變更靜態頁',
                         autoHideDelay: 50,
-                        variant:'success'
+                        variant: 'success'
                     })
                 }
             }).catch(err => {

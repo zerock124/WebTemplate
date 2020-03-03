@@ -17,8 +17,14 @@ namespace webTemplate
 		// 如需設定驗證的詳細資訊，請瀏覽 https://go.microsoft.com/fwlink/?LinkId=301864
 		public void ConfigureAuth(IAppBuilder app) 
 		{
-			// 設定資料庫內容、使用者管理員和登入管理員，以針對每個要求使用單一執行個體
-			app.CreatePerOwinContext(ApplicationDbContext.Create);
+            app.Use((context, next) =>
+            {
+                context.Request.Scheme = "https";
+                return next();
+            });
+
+            // 設定資料庫內容、使用者管理員和登入管理員，以針對每個要求使用單一執行個體
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
 			app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
             //使用Role來判斷前後台使用者: 2.增加角色的OwinContext

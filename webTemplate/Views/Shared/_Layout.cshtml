@@ -12,9 +12,9 @@
     <link rel="icon" type="image/x-icon" href="https://www.sp88.com.tw/assets/images/logo-135x140-135x140.png" />
     <title>@meta_title - @ViewBag.Title</title>
     <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
+    @Styles.Render("~/Content/Home.css")
     @Styles.Render("~/Style/MainStyles")
     @RenderSection("Styles", required: false)
-
     @*正常全域模式下設定*@
     <script>
         window.BasePath = '@BasePath';
@@ -65,8 +65,9 @@
                 "vue-property-decorator": "@Url.Content("~/node_modules/vue-property-decorator/lib/vue-property-decorator.umd")",
                 "bootstrap-vue": "@Url.Content("~/node_modules/bootstrap-vue/dist/bootstrap-vue")",
                 "vue-js-toggle-button": "@Url.Content("~/node_modules/vue-js-toggle-button/dist/index")",
-                "quill": "@Url.Content("~/node_modules/quill/dist/quill")",
+                "quill": "@Url.Content("~/node_modules/quill/dist/quill.min")",
                 "vue2-editor": "@Url.Content("~/node_modules/vue2-editor/dist/vue2-editor.umd")",
+                "quill-image-resize-module": "@Url.Content("~/node_modules/quill-image-resize-module/image-resize.min")",
                 //"moment": "@Url.Content("~/node_modules/moment/moment")"
             },
             packages: [
@@ -93,7 +94,9 @@
                 "vue-js-toggle-button": "@Url.Content("~/node_modules/vue-js-toggle-button/dist/index")",
                 "vue-summernote": "@Url.Content("~/node_modules/vue-summernote/src/plugins/editer/index")",
                 "vue2-editor": "@Url.Content("~/node_modules/vue2-editor/dist/vue2-editor.umd")",
-                "quill": "@Url.Content("~/node_modules/quill/dist/quill")",
+                "vue-quill-editor": "@Url.Content("~/node_modules/vue-quill-editor/dist/vue-quill-editor")",
+                "quill": "@Url.Content("~/node_modules/quill/dist/quill.min")",
+                "quill-image-resize-module": "@Url.Content("~/node_modules/quill-image-resize-module/image-resize.min")",
                 //"moment": "@Url.Content("~/node_modules/moment/moment")"
             },
             packages: [

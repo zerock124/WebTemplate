@@ -21,6 +21,7 @@ namespace WebTemplateDB.Models
         public string Email { get; set; }
         public string ContactPhone { get; set; }
         public int ContactEnum { get; set; }
+        public int ContactStatus { get; set; }
         public string Budget { get; set; }
         public string OnlineDate { get; set; }
         public string Demand { get; set; }
@@ -28,6 +29,5 @@ namespace WebTemplateDB.Models
         public System.DateTime CreateTime { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
         public string UpdateUser { get; set; }
-        public int ContactStatus { get; set; }
     }
 }

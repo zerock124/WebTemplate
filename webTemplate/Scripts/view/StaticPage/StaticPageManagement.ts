@@ -1,10 +1,9 @@
 ﻿import { Vue, Component } from 'vue-property-decorator'
 import StaticPageItem from './StaticPageItem';
-import VueEditor from 'vue2-editor'
 import service from './service'
 import { StaticPageViewModel } from './model'
+import moment = require('moment');
 
-Vue.use(VueEditor);
 
 @Component({
     template: '#StaticPageManagement',
@@ -17,6 +16,7 @@ Vue.use(VueEditor);
 })
 
 export default class StaticPageManagement extends Vue {
+
     StaticPageList: StaticPageViewModel[] = []
     CompanyProfile: StaticPageViewModel | null = null
     TechnologyDevelopment: StaticPageViewModel | null = null
@@ -27,7 +27,7 @@ export default class StaticPageManagement extends Vue {
         const _this = this;
         _this.GetStaticPageList();
     }
-
+    
 
     GetStaticPageList() {
         const _this = this;

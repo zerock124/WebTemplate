@@ -4,20 +4,20 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="978fa1ad84414fc7b55afd86b53d86a7" Name="Diagram1">
-        <EntityTypeShape EntityType="Web_testDbModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.AspNetUserClaims" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.AspNetUserLogins" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.AspNetUserRoles" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.AspNetUsers" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.BackOperation" Width="1.5" PointX="4.75" PointY="5.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.Case" Width="1.5" PointX="6.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.FontHome" Width="1.5" PointX="0.75" PointY="6.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.LatestNews" Width="1.5" PointX="6.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.ServiceItem" Width="1.5" PointX="8.75" PointY="0.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.StaticPage" Width="1.5" PointX="8.75" PointY="4.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.Contact" Width="1.5" PointX="7.375" PointY="8.75" />
-        <EntityTypeShape EntityType="Web_testDbModel.WebConfig" Width="1.5" PointX="3.375" PointY="9.75" />
+      <Diagram DiagramId="84aef21d3d084dd4b8cd534588e88dc8" Name="Diagram1">
+        <EntityTypeShape EntityType="Web_testDbModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.AspNetUserClaims" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.AspNetUserRoles" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.AspNetUsers" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.BackOperation" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.Case" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.Contact" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.FontHome" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.LatestNews" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.ServiceItem" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.StaticPage" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.WebConfig" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Web_testDbModel.AspNetUserLogins" Width="1.5" PointX="3.375" PointY="9.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,189 +4,189 @@
     <EntitySetMapping Name="AspNetRoles">
       <EntityTypeMapping TypeName="Web_testDbModel.AspNetRoles">
         <MappingFragment StoreEntitySet="AspNetRoles">
-          <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
       <EntityTypeMapping TypeName="Web_testDbModel.AspNetUserClaims">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
-          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
-          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="Web_testDbModel.AspNetUserLogins">
-        <MappingFragment StoreEntitySet="AspNetUserLogins">
           <ScalarProperty Name="UserId" ColumnName="UserId" />
-          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
-          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserRoles">
       <EntityTypeMapping TypeName="Web_testDbModel.AspNetUserRoles">
         <MappingFragment StoreEntitySet="AspNetUserRoles">
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
       <EntityTypeMapping TypeName="Web_testDbModel.AspNetUsers">
         <MappingFragment StoreEntitySet="AspNetUsers">
-          <ScalarProperty Name="UserName" ColumnName="UserName" />
-          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
-          <ScalarProperty Name="RealName" ColumnName="RealName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="BackOperation">
       <EntityTypeMapping TypeName="Web_testDbModel.BackOperation">
         <MappingFragment StoreEntitySet="BackOperation">
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="IP" ColumnName="IP" />
-          <ScalarProperty Name="Result" ColumnName="Result" />
-          <ScalarProperty Name="ContentText" ColumnName="ContentText" />
-          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
-          <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
           <ScalarProperty Name="BackOperationId" ColumnName="BackOperationId" />
+          <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="ContentText" ColumnName="ContentText" />
+          <ScalarProperty Name="Result" ColumnName="Result" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Case">
       <EntityTypeMapping TypeName="Web_testDbModel.Case">
         <MappingFragment StoreEntitySet="Case">
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="CaseContent" ColumnName="CaseContent" />
-          <ScalarProperty Name="CaseName" ColumnName="CaseName" />
-          <ScalarProperty Name="CaseEnum" ColumnName="CaseEnum" />
-          <ScalarProperty Name="CaseUrl" ColumnName="CaseUrl" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
           <ScalarProperty Name="CaseId" ColumnName="CaseId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="FontHome">
-      <EntityTypeMapping TypeName="Web_testDbModel.FontHome">
-        <MappingFragment StoreEntitySet="FontHome">
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="CaseUrl" ColumnName="CaseUrl" />
+          <ScalarProperty Name="CaseEnum" ColumnName="CaseEnum" />
+          <ScalarProperty Name="CaseName" ColumnName="CaseName" />
+          <ScalarProperty Name="CaseContent" ColumnName="CaseContent" />
           <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
-          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
-          <ScalarProperty Name="FontHomeUrl" ColumnName="FontHomeUrl" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-          <ScalarProperty Name="FontHomeId" ColumnName="FontHomeId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="LatestNews">
-      <EntityTypeMapping TypeName="Web_testDbModel.LatestNews">
-        <MappingFragment StoreEntitySet="LatestNews">
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
           <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="LatestNewsContent" ColumnName="LatestNewsContent" />
-          <ScalarProperty Name="LatestNewsTitle" ColumnName="LatestNewsTitle" />
-          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
-          <ScalarProperty Name="LatestNewsEnum" ColumnName="LatestNewsEnum" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-          <ScalarProperty Name="LatestNewsId" ColumnName="LatestNewsId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="ServiceItem">
-      <EntityTypeMapping TypeName="Web_testDbModel.ServiceItem">
-        <MappingFragment StoreEntitySet="ServiceItem">
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
           <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-          <ScalarProperty Name="ServiceItemName" ColumnName="ServiceItemName" />
-          <ScalarProperty Name="ServiceItemId" ColumnName="ServiceItemId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="StaticPage">
-      <EntityTypeMapping TypeName="Web_testDbModel.StaticPage">
-        <MappingFragment StoreEntitySet="StaticPage">
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
           <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="PageContent" ColumnName="PageContent" />
-          <ScalarProperty Name="StaticPageEnum" ColumnName="StaticPageEnum" />
-          <ScalarProperty Name="StaticPageId" ColumnName="StaticPageId" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Contact">
       <EntityTypeMapping TypeName="Web_testDbModel.Contact">
         <MappingFragment StoreEntitySet="Contact">
-          <ScalarProperty Name="ContactStatus" ColumnName="ContactStatus" />
-          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
-          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="Demand" ColumnName="Demand" />
-          <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
-          <ScalarProperty Name="Budget" ColumnName="Budget" />
-          <ScalarProperty Name="ContactEnum" ColumnName="ContactEnum" />
-          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Sex" ColumnName="Sex" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
           <ScalarProperty Name="ContactId" ColumnName="ContactId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Sex" ColumnName="Sex" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactPhone" ColumnName="ContactPhone" />
+          <ScalarProperty Name="ContactEnum" ColumnName="ContactEnum" />
+          <ScalarProperty Name="ContactStatus" ColumnName="ContactStatus" />
+          <ScalarProperty Name="Budget" ColumnName="Budget" />
+          <ScalarProperty Name="OnlineDate" ColumnName="OnlineDate" />
+          <ScalarProperty Name="Demand" ColumnName="Demand" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FontHome">
+      <EntityTypeMapping TypeName="Web_testDbModel.FontHome">
+        <MappingFragment StoreEntitySet="FontHome">
+          <ScalarProperty Name="FontHomeId" ColumnName="FontHomeId" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="FontHomeUrl" ColumnName="FontHomeUrl" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="EndDateTime" ColumnName="EndDateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LatestNews">
+      <EntityTypeMapping TypeName="Web_testDbModel.LatestNews">
+        <MappingFragment StoreEntitySet="LatestNews">
+          <ScalarProperty Name="LatestNewsId" ColumnName="LatestNewsId" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="LatestNewsEnum" ColumnName="LatestNewsEnum" />
+          <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+          <ScalarProperty Name="LatestNewsTitle" ColumnName="LatestNewsTitle" />
+          <ScalarProperty Name="LatestNewsContent" ColumnName="LatestNewsContent" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceItem">
+      <EntityTypeMapping TypeName="Web_testDbModel.ServiceItem">
+        <MappingFragment StoreEntitySet="ServiceItem">
+          <ScalarProperty Name="ServiceItemId" ColumnName="ServiceItemId" />
+          <ScalarProperty Name="ServiceItemName" ColumnName="ServiceItemName" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StaticPage">
+      <EntityTypeMapping TypeName="Web_testDbModel.StaticPage">
+        <MappingFragment StoreEntitySet="StaticPage">
+          <ScalarProperty Name="StaticPageId" ColumnName="StaticPageId" />
+          <ScalarProperty Name="StaticPageEnum" ColumnName="StaticPageEnum" />
+          <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="UpdateUser" ColumnName="UpdateUser" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="WebConfig">
       <EntityTypeMapping TypeName="Web_testDbModel.WebConfig">
         <MappingFragment StoreEntitySet="WebConfig">
-          <ScalarProperty Name="meta_image" ColumnName="meta_image" />
-          <ScalarProperty Name="meta_url" ColumnName="meta_url" />
-          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
-          <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
-          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
-          <ScalarProperty Name="SystemEmail" ColumnName="SystemEmail" />
-          <ScalarProperty Name="SystemEmailName" ColumnName="SystemEmailName" />
-          <ScalarProperty Name="Copyright" ColumnName="Copyright" />
-          <ScalarProperty Name="ServiceMail" ColumnName="ServiceMail" />
-          <ScalarProperty Name="WebName" ColumnName="WebName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WebName" ColumnName="WebName" />
+          <ScalarProperty Name="ServiceMail" ColumnName="ServiceMail" />
+          <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+          <ScalarProperty Name="SystemEmailName" ColumnName="SystemEmailName" />
+          <ScalarProperty Name="SystemEmail" ColumnName="SystemEmail" />
+          <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+          <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
+          <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+          <ScalarProperty Name="meta_url" ColumnName="meta_url" />
+          <ScalarProperty Name="meta_image" ColumnName="meta_image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUserLogins">
+      <EntityTypeMapping TypeName="Web_testDbModel.AspNetUserLogins">
+        <MappingFragment StoreEntitySet="AspNetUserLogins">
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

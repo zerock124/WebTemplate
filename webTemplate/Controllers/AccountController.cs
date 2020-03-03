@@ -29,7 +29,6 @@ namespace webTemplate.Controllers
         private ApplicationSignInManager _signInManager;
         private new ApplicationUserManager _userManager;
 
-        protected WebTemplateEntities _db;
         protected IGenericRepository<AspNetRoles> _aspnetRoles;
         protected IGenericRepository<AspNetUserRoles> _aspnetUserRoles;
         protected IGenericRepository<AspNetUsers> _aspnetUser;
@@ -37,6 +36,13 @@ namespace webTemplate.Controllers
         protected IBackOperationService _backOperationService;
         string OperationName = "權限管理";
 
+        //---------------------LineAPI設定---------------------
+        string response_type = "code";
+        string client_id = "1653889097";
+        string redirect_uri = HttpUtility.UrlEncode("http://lab.sp88.com.tw/aspnet/project-release/Account/Linecallback");
+        string state = "zerock851024";
+        string client_secret = "d985d130a7464782a66e0737ba0bc827";
+        //----------------------------------------------------
 
         public ApplicationSignInManager SignInManager
         {
@@ -75,6 +81,12 @@ namespace webTemplate.Controllers
 
         [AllowAnonymous]
         public ActionResult Register()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult ExternalLoginConfirmation()
         {
             return View();
         }
@@ -133,7 +145,7 @@ namespace webTemplate.Controllers
             }
             catch (Exception e)
             {
-                //_logger.Error(e, "Account Login Exception:" + e.ToString());
+                _logger.Error(e, "Account Login Exception:" + e.ToString());
                 ModelState.AddModelError("", "登入失敗,請洽系統人員。");
                 return View(model);
             }
@@ -189,6 +201,12 @@ namespace webTemplate.Controllers
             return RedirectToAction("Index", "Authority");
         }
 
+        /// <summary>
+        /// 外部登入
+        /// </summary>
+        /// <param name="provider"></param>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         // POST: /Account/ExternalLogin
         [HttpPost]
         [AllowAnonymous]
@@ -199,7 +217,7 @@ namespace webTemplate.Controllers
             return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
-        //
+
         // GET: /Account/SendCode
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
@@ -214,6 +232,11 @@ namespace webTemplate.Controllers
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
+        /// <summary>
+        /// 外部登入的callback
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
         // GET: /Account/ExternalLoginCallback
         [AllowAnonymous]
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
@@ -221,7 +244,7 @@ namespace webTemplate.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("SignIn");
             }
 
             // 若使用者已經有登入資料，請使用此外部登入提供者登入使用者
@@ -249,6 +272,11 @@ namespace webTemplate.Controllers
             }
         }
 
+        /// <summary>
+        /// 外部登入註冊帳號
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         // POST: /Account/ExternalLoginConfirmation
         [HttpPost]
         [AllowAnonymous]
@@ -285,9 +313,17 @@ namespace webTemplate.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        AspNetUserLogins userLogin = new AspNetUserLogins
+                        {
+                            UserId = user.Id,
+                            LoginProvider = info.Login.LoginProvider,
+                            ProviderKey = info.Login.ProviderKey
+                        };
+
+                        _login.Create(userLogin);
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                         var role = _aspnetRoles.FindBy(x => x.Name == "user").FirstOrDefault();
@@ -313,15 +349,15 @@ namespace webTemplate.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// LineLogin
+        /// </summary>
+        /// <returns></returns>
         #region LineLogin
         [AllowAnonymous]
         public ActionResult LineLoginDirect()
         {
-            string response_type = "code";
-            string client_id = "1653889097";
-            string redirect_uri = HttpUtility.UrlEncode("https://localhost:44378/Account/callback");
-            string state = "zerock851024";
-            string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile&nonce=09876xyz",
+            string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile",
                 response_type,
                 client_id,
                 redirect_uri,
@@ -329,9 +365,14 @@ namespace webTemplate.Controllers
                 );
             return Redirect(LineLoginUrl);
         }
-
+        /// <summary>
+        /// LineLogincallback
+        /// </summary>
+        /// <param name="code"></param>
+        /// <param name="state"></param>
+        /// <returns></returns>
         [AllowAnonymous]
-        public async Task<ActionResult> callback(string code, string state)
+        public async Task<ActionResult> Linecallback(string code, string state)
         {
             if (state == "zerock851024")
             {
@@ -347,9 +388,9 @@ namespace webTemplate.Controllers
                     string ApiUrl_Token = "https://api.line.me/oauth2/v2.1/token";
                     nvc.Add("grant_type", "authorization_code");
                     nvc.Add("code", code);
-                    nvc.Add("redirect_uri", "https://localhost:44378/Account/callback");
+                    nvc.Add("redirect_uri", "http://lab.sp88.com.tw/aspnet/project-release/Account/Linecallback");
                     nvc.Add("client_id", "1653889097");
-                    nvc.Add("client_secret", "3ff7b35335ef06b1b50fca15d4fab9f8");
+                    nvc.Add("client_secret", "d985d130a7464782a66e0737ba0bc827");
                     string JsonStr = Encoding.UTF8.GetString(wc.UploadValues(ApiUrl_Token, "POST", nvc));
                     LineLoginToken ToKenObj = JsonConvert.DeserializeObject<LineLoginToken>(JsonStr);
                     wc.Headers.Clear();
@@ -368,7 +409,7 @@ namespace webTemplate.Controllers
                         Password = ProfileObj.userId
                     };
                     var FindLineUser = _aspnetUser.FindBy(x => x.Id == model.Userid);
-                    if (FindLineUser.Any()) 
+                    if (FindLineUser.Any())
                     {
                         LoginViewModel LineLogin = new LoginViewModel
                         {
@@ -379,7 +420,7 @@ namespace webTemplate.Controllers
                         var result = await SignIn(LineLogin);
                         return RedirectToAction("Index", "Home");
                     }
-                    else 
+                    else
                     {
                         return View("LineLoginConfirmation", model);
                     }
@@ -393,6 +434,11 @@ namespace webTemplate.Controllers
             return View("Login");
         }
 
+        /// <summary>
+        /// Line註冊帳號
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]

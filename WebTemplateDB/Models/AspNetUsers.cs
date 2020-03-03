@@ -16,6 +16,7 @@ namespace WebTemplateDB.Models
     {
         public string Id { get; set; }
         public string RealName { get; set; }
+        public string UserName { get; set; }
         public System.DateTime RegisterDate { get; set; }
         public System.DateTime CreateTime { get; set; }
         public string CreateUser { get; set; }
@@ -30,6 +31,5 @@ namespace WebTemplateDB.Models
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
-        public string UserName { get; set; }
     }
 }

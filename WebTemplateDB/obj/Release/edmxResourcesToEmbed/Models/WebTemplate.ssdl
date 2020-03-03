@@ -18,11 +18,11 @@
   </EntityType>
   <EntityType Name="AspNetUserLogins">
     <Key>
-      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="UserId" />
     </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
     <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
   </EntityType>
   <EntityType Name="AspNetUserRoles">
     <Key>
