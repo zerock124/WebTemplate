@@ -33,38 +33,30 @@ define(["require", "exports", "vue-property-decorator", "./service", "vue2-edito
     service_1 = __importDefault(service_1);
     vue2_editor_1 = __importStar(vue2_editor_1);
     quill_image_resize_module_1 = __importDefault(quill_image_resize_module_1);
-    vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     vue2_editor_1.Quill.register('modules/imageResize', quill_image_resize_module_1.default);
+    vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var StaticPageItem = (function (_super) {
         __extends(StaticPageItem, _super);
         function StaticPageItem() {
             var _this_1 = _super !== null && _super.apply(this, arguments) || this;
             _this_1.PageContent = '';
             _this_1.StaticPageItem = null;
+            _this_1.editorOption = {};
             return _this_1;
         }
         StaticPageItem.prototype.created = function () {
             var _this = this;
-            editorOption: {
-            }
+            _this.SetEditorOption();
         };
-        StaticPageItem.prototype.mounted = function () {
-            var quill = new vue2_editor_1.Quill('#editor', {
-                theme: 'snow',
+        StaticPageItem.prototype.SetEditorOption = function () {
+            var _this = this;
+            _this.editorOption = {
                 modules: {
                     imageResize: {
                         displaySize: true
-                    },
-                    toolbar: [
-                        [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                        ['bold', 'italic', 'underline', 'strike'],
-                        [{ 'color': [] }, { 'background': [] }],
-                        [{ 'align': [] }],
-                        ['link', 'image'],
-                        ['clean']
-                    ]
+                    }
                 }
-            });
+            };
         };
         StaticPageItem.prototype.SubmitCompanyProfile = function () {
             var _this = this;

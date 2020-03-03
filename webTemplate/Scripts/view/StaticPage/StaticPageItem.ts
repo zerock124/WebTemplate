@@ -5,9 +5,10 @@ import moment = require('moment');
 import VueEditor, { Quill } from 'vue2-editor';
 import ImageResize from 'quill-image-resize-module';
 
+Quill.register('modules/imageResize', ImageResize);
+
 Vue.use(VueEditor);
 
-Quill.register('modules/imageResize', ImageResize);
 
 @Component({
     template: '#StaticPageItem',
@@ -18,32 +19,23 @@ export default class StaticPageItem extends Vue {
 
     PageContent: string = '';
     StaticPageItem: StaticPageViewModel | null = null;
+    editorOption = {};
 
     created() {
         const _this = this;
-        editorOption: {
-
-        }
+        _this.SetEditorOption();
     }
 
-    mounted() {
-        var quill = new Quill('#editor', {
-            theme: 'snow',
+    SetEditorOption() {
+        const _this = this;
+        _this.editorOption = {
             modules: {
                 imageResize: {
                     displaySize: true
-                },
-                toolbar: [
-                    [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
-                    ['bold', 'italic', 'underline', 'strike'],
-                    [{ 'color': [] }, { 'background': [] }],
-                    [{ 'align': [] }],
-                    ['link', 'image'],
-
-                    ['clean']
-                ]
+                }
             }
-        });
+        }
+
     }
 
     SubmitCompanyProfile() {
