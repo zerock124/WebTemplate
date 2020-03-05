@@ -9,6 +9,8 @@ using ViewModels.Share;
 using ViewModels.Verity;
 using webTemplate.Models;
 using WebTemplateDB.Interface;
+using WebTemplateDB.Models;
+using WebTemplateDB.Repositories;
 using WebTemplateDB.Service;
 
 namespace webTemplate.Controllers
@@ -18,12 +20,20 @@ namespace webTemplate.Controllers
 
         protected IAuthorityService _authorityService;
         protected IBackOperationService _backOperationService;
+        protected IGenericRepository<AspNetRoles> _aspnetRoles;
+        protected IGenericRepository<AspNetUserRoles> _aspnetUserRoles;
+        protected IGenericRepository<AspNetUsers> _aspnetUser;
+
         string OperationName = "權限管理，";
 
         public AuthorityController()
         {
             _authorityService = new AuthorityService();
             _backOperationService = new BackOperationService();
+            _aspnetRoles = new GenericRepository<AspNetRoles>();
+            _aspnetUserRoles = new GenericRepository<AspNetUserRoles>();
+            _aspnetUser = new GenericRepository<AspNetUsers>();
+
         }
 
         // GET: Authority
@@ -112,6 +122,78 @@ namespace webTemplate.Controllers
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> CreateUser(CreateUserViewModel model)
+        {
+            ResponseViewModel res = new ResponseViewModel();
+
+            if (!ModelState.IsValid)
+            {
+                res.Success = false;
+                res.Data = ModelState.Values
+                    .SelectMany(state => state.Errors)
+                    .Select(error => error.ErrorMessage);
+                res.Message = "資料驗證有誤";
+                return Json(res, JsonRequestBehavior.DenyGet);
+            }
+
+            try
+            {
+                var hasUser = _repository.CheckHasUserByName(model.UserName);
+                if (hasUser)
+                {
+                    res.Success = false;
+                    res.Message = "已有此帳戶存在！";
+                    return Json(res, JsonRequestBehavior.DenyGet);
+                }
+
+                var CreateUser = new RegisterViewModel
+                {
+                    UserName = model.UserName,
+                    Email = "test@sp88.com.tw",
+                    RealName = model.UserName,
+                    PhoneNumber = "0912345678",
+                    Password = model.Password,
+                    ConfirmPassword = model.ConfirmPassword,
+                    RoleId = model.RoleId,
+                    CreateUser = CurrendUserid
+                };
+
+                var result = await _repository.RegisterUser(CreateUser);
+
+                if (result.Succeeded)
+                {
+                    var role = _aspnetRoles.FindBy(x => x.Id == model.RoleId).FirstOrDefault();
+
+                    var aspnetuser = _aspnetUser.FindBy(x => x.UserName == model.UserName).FirstOrDefault();
+
+                    AspNetUserRoles userRoles = new AspNetUserRoles
+                    {
+                        UserId = aspnetuser.Id,
+                        RoleId = role.Id
+                    };
+
+                    _aspnetUserRoles.Create(userRoles);
+
+                    var user = await _repository.FindByName(model.UserName);
+
+                    await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
+
+                    res.Data = user;
+                }
+
+                res.Message = result.Succeeded ? "註冊成功" : "註冊失敗";
+                res.Success = result.Succeeded;
+            }
+            catch (Exception ex)
+            {
+                res.Success = false;
+                res.Message = "伺服器發生錯誤";
+            }
+
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
 
         public async Task<JsonResult> GetEditAuthorityItem(string Id)

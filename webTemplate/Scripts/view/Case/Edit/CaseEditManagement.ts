@@ -4,11 +4,15 @@ import { UrlPathEnum } from '../../Share/Enums';
 import service from '../service'
 import moment = require('moment');
 import VueEditor from 'vue2-editor'
+import InputTag from 'vue-input-tag';
 
 Vue.use(VueEditor);
 
 @Component({
-    template: '#CaseEditManagement'
+    template: '#CaseEditManagement',
+    components: {
+        'input-tag': InputTag
+    }
 })
 
 export default class CaseEditManagement extends Vue {
@@ -24,6 +28,8 @@ export default class CaseEditManagement extends Vue {
 
     ImageName: string = '';
     CaseEnum: number = 0;
+    LimitNumber: number = 10;
+    tags: string[] = [];
 
     Options: object[] = [{
         value: 0,
@@ -42,6 +48,8 @@ export default class CaseEditManagement extends Vue {
     Status: boolean = false;
 
     CaseId: number = 0;
+
+    SaveForm: string = 'Loading';
 
     customToolbar = [
         ["bold", "italic", "underline"],
@@ -76,6 +84,9 @@ export default class CaseEditManagement extends Vue {
                 _this.CaseContent = res.Data.CaseContent;
                 _this.CaseEnum = res.Data.CaseEnum;
                 _this.Status = res.Data.Status;
+                if (res.Data.LabelTab) {
+                    _this.tags = res.Data.LabelTag.split(',');
+                }
                 const photo = _this.ImageName;
                 const BasePath = window.BasePath; // _Layout.cshtml
                 _this.DefaultImage = BasePath + UrlPathEnum.CasePhoto + '?filename=' + photo;
@@ -99,6 +110,8 @@ export default class CaseEditManagement extends Vue {
 
     SetEditCase() {
         const _this = this;
+        _this.$bvModal.show('CaseModal');
+        _this.SaveForm = 'Loading';
         if (_this.CaseItem) {
             const {
                 CaseId,
@@ -109,6 +122,7 @@ export default class CaseEditManagement extends Vue {
                 CaseContent,
                 CaseEnum,
                 Status,
+                tags
             } = this;
 
             const _formdata = new FormData();
@@ -120,6 +134,7 @@ export default class CaseEditManagement extends Vue {
             _formdata.append('CaseContent', CaseContent)
             _formdata.append('CaseEnum', CaseEnum.toString())
             _formdata.append('Status', JSON.stringify(Status))
+            _formdata.append('LabelTag', tags.toString())
 
 
             _this.EditCase(_formdata);
@@ -128,18 +143,32 @@ export default class CaseEditManagement extends Vue {
     }
 
     EditCase(data) {
+        const _this = this;
         service.EditCaseItem(data).then(res => {
             if (!res.Success) {
+                _this.SaveForm = 'Error';
                 console.log(res);
             }
             if (res.Success) {
-                const locationURL = this.httpURL.split("/Edit?")[0];
-                console.log(locationURL);
-                document.location.href = locationURL;
+                _this.SaveForm = 'Success';
+
             }
         }).catch(err => {
+            _this.SaveForm = 'Error';
             console.log(err);
         })
+    }
+
+    HideModal() {
+        const _this = this;
+        _this.$bvModal.hide('CaseModal');
+    }
+
+    CloseModal() {
+        const _this = this;
+        _this.$bvModal.hide('CaseModal');
+        const locationURL = this.httpURL.split("/Edit?")[0];
+        document.location.href = locationURL;
     }
 
     @Watch('Status')

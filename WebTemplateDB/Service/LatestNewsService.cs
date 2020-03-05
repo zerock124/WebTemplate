@@ -76,7 +76,7 @@ namespace WebTemplateDB.Service
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
             List<LatestNewsViewModel> latestNews = new List<LatestNewsViewModel>();
 
-            var query = from a in _latestnews.GetAll()
+            var query = from a in _latestnews.GetAll().ToList()
                         select new LatestNewsViewModel
                         {
                             LatestNewsId = a.LatestNewsId,
@@ -116,21 +116,18 @@ namespace WebTemplateDB.Service
             }
             if (!string.IsNullOrEmpty(model.Query))
             {
-                var QueryString = model.Query.Trim();
+                var QueryString = model.Query.ToLower().Trim();
 
                 switch (model.SearchEnum)
                 {
                     case 0:
-                        query = query.Where(x => x.LatestNewsEnum == 0);
+                        query = query.Where(x => x.LatestNewsTitle.ToLower().Trim().Contains(QueryString));
                         break;
                     case 1:
-                        query = query.Where(x => x.LatestNewsTitle.ToLower().Contains(model.Query));
+                        query = query.Where(x => x.LatestNewsContent.ToLower().Trim().Contains(QueryString));
                         break;
                     case 2:
-                        query = query.Where(x => x.LatestNewsContent.ToLower().Contains(model.Query));
-                        break;
-                    case 3:
-                        query = query.Where(x => x.Remark.ToLower().Contains(model.Query));
+                        query = query.Where(x => x.Remark.ToLower().Trim().Contains(QueryString));
                         break;
                     default:
                         break;
@@ -149,12 +146,28 @@ namespace WebTemplateDB.Service
             /**設置分頁資訊*/
             query = query
                 .OrderByDescending(o => o.CreateTime)
+                .Select((a, index) => new LatestNewsViewModel
+                {
+                    LatestNewsId = a.LatestNewsId,
+                    ImageName = a.ImageName,
+                    LatestNewsEnum = a.LatestNewsEnum,
+                    StartDateTime = a.StartDateTime,
+                    LatestNewsTitle = a.LatestNewsTitle,
+                    LatestNewsContent = a.LatestNewsContent,
+                    Remark = a.Remark,
+                    Status = a.Status,
+                    CreateTime = a.CreateTime,
+                    CreateUser = a.CreateUser,
+                    UpdateTime = a.UpdateTime,
+                    UpdateUser = a.UpdateUser,
+                    Number = index + 1
+                })
                 .Skip(pagination.GetSkipLength())
                 .Take(pagination.PerPage);
 
             if (query.Any())
             {
-                var list = await query.OrderByDescending(x => x.StartDateTime).ToListAsync();
+                var list = query.OrderByDescending(x => x.StartDateTime).ToList();
                 latestNews = list;
             }
 

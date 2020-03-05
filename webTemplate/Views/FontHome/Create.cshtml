@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "前台首頁管理";
 }
-
+<link href="@Url.Content("~/Content/Modal.css")" rel="stylesheet" />
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -35,18 +35,18 @@
 
                     <div class="row mt-3 justify-content-center">
                         <div v-if="!image">
-                            <img :src="DefaultImage" alt="Alternate Text" class="animated fadeInRightBig" />
+                            <img :src="DefaultImage" alt="Alternate Text" class="animated fadeInRightBig" style="width:760px"/>
                         </div>
                         <div v-if="image" class="animated fadeInRightBig">
-                            <img :src="image" alt="Alternate Text" class="animated fadeInRightBig" />
+                            <img :src="image" alt="Alternate Text" class="animated fadeInRightBig" style="width:760px"/>
                         </div>
                     </div>
                     <div class="row mb-3 justify-content-center">
                         <h6>( 圖片 / 760*100 / JPG 格式 )</h6>
                     </div>
 
-                    <form action="@Url.Action("CreateFontHome","FontHome")" enctype="multipart/form-data" method="post">
-                        <div class="row ml-5 mb-3">
+                    <form action="/" v-on:submit.prevent="SetCreateFontHome" enctype="multipart/form-data" method="post">
+                        <div class="row mx-5 mb-3">
                             <small class="h6 px-3 align-self-center">
                                 圖片檔案：
                             </small>
@@ -59,7 +59,7 @@
                             </div>
                         </div>
 
-                        <div class="row ml-5 mb-3">
+                        <div class="row mx-5 mb-3">
                             <small class="h6 px-3 align-self-center">
                                 圖片名稱：
                             </small>
@@ -71,7 +71,7 @@
                             </div>
                         </div>
 
-                        <div class="row ml-5 mb-3">
+                        <div class="row mx-5 mb-3">
                             <small class="h6 px-3 align-self-center">
                                 連結網址：
                             </small>
@@ -83,7 +83,7 @@
                             </div>
                         </div>
 
-                        <div class="row ml-5 mb-3">
+                        <div class="row mx-5 mb-3">
                             <small class="h6 px-3 align-self-center">
                                 上線時間：
                             </small>
@@ -103,7 +103,7 @@
                             </div>
                         </div>
 
-                        <div class="row ml-5 mb-3">
+                        <div class="row mx-5 mb-3">
                             <small class="h6 px-3 align-self-center">
                                 備　　註：
                             </small>
@@ -114,7 +114,7 @@
                             </div>
                         </div>
 
-                        <div class="row ml-5 mb-3">
+                        <div class="row mx-5 mb-3">
                             <small class="h6 px-3 align-self-center">
                                 狀　　態：
                             </small>
@@ -137,10 +137,71 @@
                                 </button>
                             </div>
                         </div>
+
                     </form>
                 </div>
             </div>
         </div>
+
+        <b-modal class="modal-content justify-content-center animated zoomIn"
+                 id="FontHomeModal"
+                 hide-header
+                 hide-footer>
+            <div class="modal-body">
+
+                <div v-if="SaveForm == 'Loading'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增中...請稍後
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Success'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4 load-complete">
+                                <div class="checkmark draw"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增完成
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Error'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="m-4 load-complete">
+                                <i class="fas fa-times fa-5x text-red"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增失敗
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" v-if="SaveForm == 'Success'" class="btn btn-success" v-on:click.prevent="CloseModal">確認</button>
+                        <button type="button" v-if="SaveForm == 'Error'" class="btn btn-danger" v-on:click.prevent="HideModal">確認</button>
+                    </div>
+                </div>
+            </div>
+        </b-modal>
+
     </div>
 </template>
 

@@ -2,8 +2,6 @@
 import { IWebConfigService, WebConfigViewModel } from './model'
 import service from './service'
 import moment = require('moment')
-import { UrlPathEnum } from '../Share/Enums'
-import $ from 'jQuery';
 
 @Component({
     template: '#WebConfigManagement',

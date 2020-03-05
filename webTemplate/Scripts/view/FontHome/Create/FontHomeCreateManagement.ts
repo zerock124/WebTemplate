@@ -2,12 +2,14 @@
 import { FontHomeViewModel } from '../model';
 import { UrlPathEnum } from '../../Share/Enums';
 import moment = require('moment');
+import service from '../service'
 
 @Component({
     template: '#FontHomeCreateManagement'
 })
 
 export default class FontHomeCreateManagement extends Vue {
+    httpURL: string = window.location.href;
 
     image: string = '';
 
@@ -20,6 +22,8 @@ export default class FontHomeCreateManagement extends Vue {
     Status: boolean = false;
 
     DefaultImage: string = '';
+
+    SaveForm: string = 'Loading';
 
     created() {
         const _this = this;
@@ -45,4 +49,60 @@ export default class FontHomeCreateManagement extends Vue {
     imageLoader(event) {
         this.image = event.target.result;
     }
+
+    SetCreateFontHome() {
+        const _this = this;
+        _this.$bvModal.show('FontHomeModal');
+        _this.SaveForm = 'Loading';
+        const {
+            PhotoFile,
+            ImageName,
+            FontHomeUrl,
+            StartDateTime,
+            EndDateTime,
+            Remark,
+            Status
+        } = this;
+
+        const _formdata = new FormData();
+        _formdata.append('PhotoFile', PhotoFile ? PhotoFile : '')
+        _formdata.append('ImageName', ImageName)
+        _formdata.append('FontHomeUrl', FontHomeUrl)
+        _formdata.append('StartDateTime', StartDateTime)
+        _formdata.append('EndDateTime', EndDateTime)
+        _formdata.append('Remark', Remark)
+        _formdata.append('Status', JSON.stringify(Status))
+
+        _this.CreateFontHome(_formdata);
+
+    }
+
+    CreateFontHome(data) {
+        const _this = this;
+        service.CreateFontHome(data).then(res => {
+            if (!res.Success) {
+                _this.SaveForm = 'Error';
+                console.log(res);
+            }
+            if (res.Data) {
+                _this.SaveForm = 'Success';
+            }
+        }).catch(err => {
+            _this.SaveForm = 'Error';
+            console.log(err);
+        })
+    }
+
+    HideModal() {
+        const _this = this;
+        _this.$bvModal.hide('FontHomeModal');
+    }
+
+    CloseModal() {
+        const _this = this;
+        _this.$bvModal.hide('FontHomeModal');
+        const locationURL = this.httpURL.split("/Create")[0];
+        document.location.href = locationURL;
+    }
+
 }

@@ -19,7 +19,7 @@ export default class StaticPageItem extends Vue {
 
     PageContent: string = '';
     StaticPageItem: StaticPageViewModel | null = null;
-    editorOption = {};
+    editorOption: object = {};
 
     created() {
         const _this = this;
@@ -35,7 +35,6 @@ export default class StaticPageItem extends Vue {
                 }
             }
         }
-
     }
 
     SubmitCompanyProfile() {

@@ -94,7 +94,7 @@ namespace webTemplate.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult> CreateFontHome(FontHomeViewModel model)
+        public async Task<JsonResult> CreateFontHome(FontHomeViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
 
@@ -126,7 +126,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return RedirectToAction("Index");
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
 
         /// <summary>

@@ -91,7 +91,7 @@ namespace WebTemplateDB.Service
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
                             UpdateTime = a.UpdateTime,
-                            UpdateUser = a.UpdateUser
+                            UpdateUser = a.UpdateUser,
                         };
 
             pageData.MaxDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
@@ -141,12 +141,27 @@ namespace WebTemplateDB.Service
             /**設置分頁資訊*/
             query = query
                 .OrderByDescending(o => o.CreateTime)
+                .Select((a, index) => new FontHomeViewModel
+                {
+                    FontHomeId = a.FontHomeId,
+                    ImageName = a.ImageName,
+                    FontHomeUrl = a.FontHomeUrl,
+                    StartDateTime = a.StartDateTime,
+                    EndDateTime = a.EndDateTime,
+                    Remark = a.Remark,
+                    Status = a.Status,
+                    CreateTime = a.CreateTime,
+                    CreateUser = a.CreateUser,
+                    UpdateTime = a.UpdateTime,
+                    UpdateUser = a.UpdateUser,
+                    Number = index + 1
+                })
                 .Skip(pagination.GetSkipLength())
                 .Take(pagination.PerPage);
 
             if (query.Any())
             {
-                var list = query.OrderBy(x => x.StartDateTime).ToList();
+                var list = query.OrderByDescending(x => x.CreateTime).ToList();
                 fonthome = list;
             }
 

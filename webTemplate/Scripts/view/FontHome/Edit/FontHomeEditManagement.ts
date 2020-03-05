@@ -27,6 +27,7 @@ export default class FontHomeEditManagement extends Vue {
     FontHomeId: number = 0;
 
     FontHomeImage: string = '';
+    SaveForm: string = 'Loading';
 
     created() {
         const _this = this;
@@ -78,6 +79,8 @@ export default class FontHomeEditManagement extends Vue {
 
     SetEditFontHome() {
         const _this = this;
+        _this.$bvModal.show('FontHomeModal');
+        _this.SaveForm = 'Loading';
         if (_this.FontHomeItem) {
             const {
                 FontHomeId,
@@ -106,16 +109,31 @@ export default class FontHomeEditManagement extends Vue {
     }
 
     EditFontHome(data) {
+        const _this = this;
         service.EditFontHomeItem(data).then(res => {
+            console.log(res);
             if (!res.Success) {
+                _this.SaveForm = 'Error';
                 console.log(res);
             }
             if (res.Success) {
-                const locationURL = this.httpURL.split("/GetEditFontHome")[0];
-                document.location.href = locationURL ;
+                _this.SaveForm = 'Success';
             }
         }).catch(err => {
+            _this.SaveForm = 'Error';
             console.log(err);
         })
+    }
+
+    HideModal() {
+        const _this = this;
+        _this.$bvModal.hide('FontHomeModal');
+    }
+
+    CloseModal() {
+        const _this = this;
+        _this.$bvModal.hide('FontHomeModal');
+        const locationURL = this.httpURL.split("/GetEditFontHome")[0];
+        document.location.href = locationURL;
     }
 }

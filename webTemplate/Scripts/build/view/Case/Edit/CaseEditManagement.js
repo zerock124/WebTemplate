@@ -20,11 +20,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service", "vue2-editor"], function (require, exports, vue_property_decorator_1, Enums_1, service_1, vue2_editor_1) {
+define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service", "vue2-editor", "vue-input-tag"], function (require, exports, vue_property_decorator_1, Enums_1, service_1, vue2_editor_1, vue_input_tag_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
     vue2_editor_1 = __importDefault(vue2_editor_1);
+    vue_input_tag_1 = __importDefault(vue_input_tag_1);
     vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var CaseEditManagement = (function (_super) {
         __extends(CaseEditManagement, _super);
@@ -37,6 +38,8 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             _this_1.DefaultImage = '';
             _this_1.ImageName = '';
             _this_1.CaseEnum = 0;
+            _this_1.LimitNumber = 10;
+            _this_1.tags = [];
             _this_1.Options = [{
                     value: 0,
                     text: '行銷活動'
@@ -52,6 +55,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             _this_1.CaseContent = '';
             _this_1.Status = false;
             _this_1.CaseId = 0;
+            _this_1.SaveForm = 'Loading';
             _this_1.customToolbar = [
                 ["bold", "italic", "underline"],
                 [{ list: "ordered" },
@@ -84,6 +88,9 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                     _this.CaseContent = res.Data.CaseContent;
                     _this.CaseEnum = res.Data.CaseEnum;
                     _this.Status = res.Data.Status;
+                    if (res.Data.LabelTab) {
+                        _this.tags = res.Data.LabelTag.split(',');
+                    }
                     var photo = _this.ImageName;
                     var BasePath = window.BasePath;
                     _this.DefaultImage = BasePath + Enums_1.UrlPathEnum.CasePhoto + '?filename=' + photo;
@@ -106,8 +113,10 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
         };
         CaseEditManagement.prototype.SetEditCase = function () {
             var _this = this;
+            _this.$bvModal.show('CaseModal');
+            _this.SaveForm = 'Loading';
             if (_this.CaseItem) {
-                var _a = this, CaseId = _a.CaseId, PhotoFile = _a.PhotoFile, ImageName = _a.ImageName, CaseUrl = _a.CaseUrl, CaseName = _a.CaseName, CaseContent = _a.CaseContent, CaseEnum = _a.CaseEnum, Status = _a.Status;
+                var _a = this, CaseId = _a.CaseId, PhotoFile = _a.PhotoFile, ImageName = _a.ImageName, CaseUrl = _a.CaseUrl, CaseName = _a.CaseName, CaseContent = _a.CaseContent, CaseEnum = _a.CaseEnum, Status = _a.Status, tags = _a.tags;
                 var _formdata = new FormData();
                 _formdata.append('CaseId', CaseId.toString());
                 _formdata.append('PhotoFile', PhotoFile ? PhotoFile : '');
@@ -117,23 +126,34 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                 _formdata.append('CaseContent', CaseContent);
                 _formdata.append('CaseEnum', CaseEnum.toString());
                 _formdata.append('Status', JSON.stringify(Status));
+                _formdata.append('LabelTag', tags.toString());
                 _this.EditCase(_formdata);
             }
         };
         CaseEditManagement.prototype.EditCase = function (data) {
-            var _this_1 = this;
+            var _this = this;
             service_1.default.EditCaseItem(data).then(function (res) {
                 if (!res.Success) {
+                    _this.SaveForm = 'Error';
                     console.log(res);
                 }
                 if (res.Success) {
-                    var locationURL = _this_1.httpURL.split("/Edit?")[0];
-                    console.log(locationURL);
-                    document.location.href = locationURL;
+                    _this.SaveForm = 'Success';
                 }
             }).catch(function (err) {
+                _this.SaveForm = 'Error';
                 console.log(err);
             });
+        };
+        CaseEditManagement.prototype.HideModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('CaseModal');
+        };
+        CaseEditManagement.prototype.CloseModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('CaseModal');
+            var locationURL = this.httpURL.split("/Edit?")[0];
+            document.location.href = locationURL;
         };
         CaseEditManagement.prototype.OnStatusChange = function () {
             this.$emit('change', { value: this.Status, srcEvent: event });
@@ -145,7 +165,10 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
         ], CaseEditManagement.prototype, "OnStatusChange", null);
         CaseEditManagement = __decorate([
             vue_property_decorator_1.Component({
-                template: '#CaseEditManagement'
+                template: '#CaseEditManagement',
+                components: {
+                    'input-tag': vue_input_tag_1.default
+                }
             })
         ], CaseEditManagement);
         return CaseEditManagement;

@@ -72,6 +72,10 @@ namespace ViewModel.Contact
         /// 選擇寄送方式
         /// </summary>
         public int SendMode { get; set; }
+        /// <summary>
+        /// 流水編號
+        /// </summary>
+        public int Number { get; set; }
     }
 
     public class SearchModel

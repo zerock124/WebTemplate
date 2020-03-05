@@ -40,8 +40,15 @@ export default class LatestNewsManagement extends Vue {
     Selectd: number = 0;
     Options: object[] = [{
         value: 0,
-        text: '媒體報導'
-    }];
+        text: '標題'
+    }, {
+        value: 1,
+        text: '內文'
+    }, {
+        value: 2,
+        text: '備註'
+    }
+    ];
 
     created() {
         const _this = this;
@@ -67,7 +74,7 @@ export default class LatestNewsManagement extends Vue {
             PerPage: _this.Pagination.PerPage,
             CurrentPage: _this.Pagination.CurrentPage
         }
-        _this.DefaultLatestNewsListItem(searchmodel, sendPagination);       
+        _this.DefaultLatestNewsListItem(searchmodel, sendPagination);
     }
 
     SetSearchDate() {
@@ -85,8 +92,6 @@ export default class LatestNewsManagement extends Vue {
             StartOnlineDateTime: moment(_this.StartOnlineDateTime).startOf('day').toDate(),
             EndOnlineDateTime: moment(_this.EndOnlineDateTime).endOf('day').toDate()
         }
-
-        console.log(_this.searchmodel);
 
         _this.GetLatestNewsListItem(_this.searchmodel, sendPagination);
     }
@@ -187,16 +192,20 @@ export default class LatestNewsManagement extends Vue {
         _this.Pagination.PerPage = _this.PerPage;
         _this.Pagination.CurrentPage = _this.CurrentPage;
         if (!_this.searchmodel) { return; }
-        _this.searchmodel.Query = _this.Query;
-
-        _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-        _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
-
-        _this.GetLatestNewsList(_this.searchmodel);
+        else {
+            if (_this.searchmodel.Query) {
+                _this.searchmodel.Query = _this.Query;
+            }
+            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+            _this.GetLatestNewsList(_this.searchmodel);
+        }
     }
 
     GetEditLatestNews(LatestNewsId: number) {
-        var url = '/LatestNews/Edit?LatestNewsId=' + LatestNewsId;
+        var baseurl = window.BasePath;
+        console.log(baseurl);
+        var url = baseurl + 'LatestNews/Edit?LatestNewsId=' + LatestNewsId;
         window.location.href = url;
     }
 
@@ -223,5 +232,6 @@ export default class LatestNewsManagement extends Vue {
                 title: '前台首頁圖片',
                 variant: 'danger',
             })
-        })    }
+        })
+    }
 }

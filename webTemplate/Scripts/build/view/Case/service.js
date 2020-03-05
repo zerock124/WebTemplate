@@ -30,6 +30,14 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
             };
             return PublicFunction_1.AjaxReturn(setting);
         };
+        CaseService.prototype.CreateCaseItem = function (model) {
+            var setting = {
+                url: "/Case/CreateCase",
+                type: 'POST',
+                data: model,
+            };
+            return PublicFunction_1.AjaxReturn(setting, 'FormData');
+        };
         CaseService.prototype.GetEditCaseItem = function (CaseId) {
             var setting = {
                 url: "/Case/GetEditCaseItem?CaseId=" + CaseId,

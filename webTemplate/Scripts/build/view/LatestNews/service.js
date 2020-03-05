@@ -23,6 +23,14 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
             };
             return PublicFunction_1.AjaxReturn(setting);
         };
+        LatestNewsService.prototype.CreateLatestNews = function (model) {
+            var setting = {
+                url: "/LatestNews/CreateLatestNews",
+                type: 'POST',
+                data: model
+            };
+            return PublicFunction_1.AjaxReturn(setting, "FormData");
+        };
         LatestNewsService.prototype.GetEditLatestNewsItem = function (LatestNewsId) {
             var setting = {
                 url: "/LatestNews/GetEditLatestNewsItem?LatestNewsId=" + LatestNewsId,

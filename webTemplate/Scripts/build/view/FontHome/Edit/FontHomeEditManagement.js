@@ -40,6 +40,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             _this_1.Status = false;
             _this_1.FontHomeId = 0;
             _this_1.FontHomeImage = '';
+            _this_1.SaveForm = 'Loading';
             return _this_1;
         }
         FontHomeEditManagement.prototype.created = function () {
@@ -89,6 +90,8 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
         };
         FontHomeEditManagement.prototype.SetEditFontHome = function () {
             var _this = this;
+            _this.$bvModal.show('FontHomeModal');
+            _this.SaveForm = 'Loading';
             if (_this.FontHomeItem) {
                 var _a = this, FontHomeId = _a.FontHomeId, PhotoFile = _a.PhotoFile, ImageName = _a.ImageName, FontHomeUrl = _a.FontHomeUrl, StartDateTime = _a.StartDateTime, EndDateTime = _a.EndDateTime, Status = _a.Status, Remark = _a.Remark;
                 var _formdata = new FormData();
@@ -104,18 +107,30 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             }
         };
         FontHomeEditManagement.prototype.EditFontHome = function (data) {
-            var _this_1 = this;
+            var _this = this;
             service_1.default.EditFontHomeItem(data).then(function (res) {
+                console.log(res);
                 if (!res.Success) {
+                    _this.SaveForm = 'Error';
                     console.log(res);
                 }
                 if (res.Success) {
-                    var locationURL = _this_1.httpURL.split("/GetEditFontHome")[0];
-                    document.location.href = locationURL;
+                    _this.SaveForm = 'Success';
                 }
             }).catch(function (err) {
+                _this.SaveForm = 'Error';
                 console.log(err);
             });
+        };
+        FontHomeEditManagement.prototype.HideModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('FontHomeModal');
+        };
+        FontHomeEditManagement.prototype.CloseModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('FontHomeModal');
+            var locationURL = this.httpURL.split("/GetEditFontHome")[0];
+            document.location.href = locationURL;
         };
         FontHomeEditManagement = __decorate([
             vue_property_decorator_1.Component({

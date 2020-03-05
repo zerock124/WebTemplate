@@ -52,6 +52,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                 [{ list: "ordered" },
                     { list: "bullet" }]
             ];
+            _this_1.SaveForm = 'Loading';
             return _this_1;
         }
         LatestNewsEditManagement.prototype.created = function () {
@@ -100,6 +101,8 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
         };
         LatestNewsEditManagement.prototype.SetEditFontHome = function () {
             var _this = this;
+            _this.$bvModal.show('LatestNewsModal');
+            _this.SaveForm = 'Loading';
             if (_this.LatestNewsItem) {
                 var _a = this, LatestNewsId = _a.LatestNewsId, PhotoFile = _a.PhotoFile, ImageName = _a.ImageName, LatestNewsEnum = _a.LatestNewsEnum, StartDateTime = _a.StartDateTime, LatestNewsTitle = _a.LatestNewsTitle, LatestNewsContent = _a.LatestNewsContent, Status = _a.Status, Remark = _a.Remark;
                 var _formdata = new FormData();
@@ -116,19 +119,29 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             }
         };
         LatestNewsEditManagement.prototype.EditFontHome = function (data) {
-            var _this_1 = this;
+            var _this = this;
             service_1.default.EditLatestNewsItem(data).then(function (res) {
                 if (!res.Success) {
+                    _this.SaveForm = 'Error';
                     console.log(res);
                 }
                 if (res.Success) {
-                    var locationURL = _this_1.httpURL.split("/Edit?")[0];
-                    console.log(locationURL);
-                    document.location.href = locationURL;
+                    _this.SaveForm = 'Success';
                 }
             }).catch(function (err) {
+                _this.SaveForm = 'Error';
                 console.log(err);
             });
+        };
+        LatestNewsEditManagement.prototype.HideModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('LatestNewsModal');
+        };
+        LatestNewsEditManagement.prototype.CloseModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('LatestNewsModal');
+            var locationURL = this.httpURL.split("/Edit?")[0];
+            document.location.href = locationURL;
         };
         LatestNewsEditManagement = __decorate([
             vue_property_decorator_1.Component({

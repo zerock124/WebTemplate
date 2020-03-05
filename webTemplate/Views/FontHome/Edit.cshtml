@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "前台首頁管理";
 }
-
+<link href="@Url.Content("~/Content/Modal.css")" rel="stylesheet" />
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -64,7 +64,7 @@
                             </small>
                             <div class="col">
                                 <b-form-input name="FontHomeId"
-                                             v-model="FontHomeId"></b-form-input>
+                                              v-model="FontHomeId"></b-form-input>
                             </div>
                         </div>
 
@@ -151,6 +151,65 @@
                 </div>
             </div>
         </div>
+
+        <b-modal class="modal-content justify-content-center animated zoomIn"
+                 id="FontHomeModal"
+                 hide-header
+                 hide-footer>
+            <div class="modal-body">
+
+                <div v-if="SaveForm == 'Loading'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增中...請稍後
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Success'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4 load-complete">
+                                <div class="checkmark draw"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增完成
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Error'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="m-4 load-complete">
+                                <i class="fas fa-times fa-5x text-red"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增失敗
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" v-if="SaveForm == 'Success'" class="btn btn-success" v-on:click.prevent="CloseModal">確認</button>
+                        <button type="button" v-if="SaveForm == 'Error'" class="btn btn-danger" v-on:click.prevent="HideModal">確認</button>
+                    </div>
+                </div>
+            </div>
+        </b-modal>
     </div>
 </template>
 

@@ -57,6 +57,10 @@ namespace ViewModel.FontHome
         /// 前台首頁圖片檔案
         /// </summary>
         public HttpPostedFileBase PhotoFile { get; set; }
+        /// <summary>
+        /// 編號
+        /// </summary>
+        public int Number { get; set; }
     }
 
     public class SearchModel {

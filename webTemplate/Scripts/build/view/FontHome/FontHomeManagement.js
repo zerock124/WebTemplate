@@ -187,13 +187,19 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             if (!_this.searchmodel) {
                 return;
             }
-            _this.searchmodel.Query = _this.Query;
-            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
-            _this.GetFontHomeList(_this.searchmodel);
+            else {
+                if (_this.searchmodel.Query) {
+                    _this.searchmodel.Query = _this.Query;
+                }
+                _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+                _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+                _this.GetFontHomeList(_this.searchmodel);
+            }
         };
         FontHomeManagement.prototype.GetEditFontHome = function (FontHomeId) {
-            var url = '/FontHome/GetEditFontHome?FontHomeId=' + FontHomeId;
+            var baseurl = window.BasePath;
+            console.log(baseurl);
+            var url = baseurl + 'FontHome/GetEditFontHome?FontHomeId=' + FontHomeId;
             window.location.href = url;
         };
         FontHomeManagement.prototype.DeleteFontHome = function (FontHomeId) {

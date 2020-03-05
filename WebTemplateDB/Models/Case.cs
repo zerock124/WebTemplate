@@ -25,5 +25,6 @@ namespace WebTemplateDB.Models
         public string CreateUser { get; set; }
         public Nullable<System.DateTime> UpdateTime { get; set; }
         public string UpdateUser { get; set; }
+        public string LabelTag { get; set; }
     }
 }

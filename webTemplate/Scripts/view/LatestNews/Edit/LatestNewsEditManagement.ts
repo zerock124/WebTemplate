@@ -43,6 +43,8 @@ export default class LatestNewsEditManagement extends Vue {
         { list: "bullet" }]
     ]
 
+    SaveForm: string = 'Loading';
+
     created() {
         const _this = this;
         _this.GetFontHomeId();
@@ -92,6 +94,8 @@ export default class LatestNewsEditManagement extends Vue {
 
     SetEditFontHome() {
         const _this = this;
+        _this.$bvModal.show('LatestNewsModal');
+        _this.SaveForm = 'Loading';
         if (_this.LatestNewsItem) {
             const {
                 LatestNewsId,
@@ -122,17 +126,30 @@ export default class LatestNewsEditManagement extends Vue {
     }
 
     EditFontHome(data) {
+        const _this = this;
         service.EditLatestNewsItem(data).then(res => {
             if (!res.Success) {
+                _this.SaveForm = 'Error';
                 console.log(res);
             }
             if (res.Success) {
-                const locationURL = this.httpURL.split("/Edit?")[0];
-                console.log(locationURL);
-                document.location.href = locationURL ;
+                _this.SaveForm = 'Success';
             }
         }).catch(err => {
+            _this.SaveForm = 'Error';
             console.log(err);
         })
+    }
+
+    HideModal() {
+        const _this = this;
+        _this.$bvModal.hide('LatestNewsModal');
+    }
+
+    CloseModal() {
+        const _this = this;
+        _this.$bvModal.hide('LatestNewsModal');
+        const locationURL = this.httpURL.split("/Edit?")[0];
+        document.location.href = locationURL;
     }
 }

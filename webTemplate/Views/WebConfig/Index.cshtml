@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "網站設定";
 }
-<link href="@Url.Content("~/Content/WebConfing.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/Modal.css")" rel="stylesheet" />
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -146,7 +146,7 @@
 
                         <div class="row justify-content-end">
                             <div class="col-auto p-3">
-                                <button class="btn btn-primary" type="submit" v-on:click.prevent="SubmitWebConfig" data-toggle="modal" data-target="#WebConfigModal">
+                                <button class="btn btn-primary" type="submit" v-on:click.prevent="SubmitWebConfig">
                                     送出
                                 </button>
                             </div>
@@ -156,51 +156,49 @@
             </div>
         </div>
 
-        <div class="modal animated zoomIn" id="WebConfigModal" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content justify-content-center">
-                    <div class="modal-body">
+        <b-modal class="modal-content justify-content-center animated zoomIn"
+                 id="WebConfigModal"
+                 hide-header
+                 hide-footer>
+            <div class="modal-body">
 
-                        <div v-if="SaveForm == 'Loading'">
-                            <div class="row">
-                                <div class="col text-center">
-                                    <div class="circle-loader m-4">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col text-center h4">
-                                    儲存中...請稍後
-                                </div>
-                            </div>
-                        </div>
-
-                        <div v-if="SaveForm == 'Success'">
-                            <div class="row">
-                                <div class="col text-center">
-                                    <div class="circle-loader m-4 load-complete">
-                                        <div class="checkmark draw"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-2">
-                                <div class="col text-center h4">
-                                    儲存完成
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="row">
-                            <div class="col text-center">
-                                <button type="button" class="btn btn-success" data-dismiss="modal">確認</button>
+                <div v-if="SaveForm == 'Loading'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4">
                             </div>
                         </div>
                     </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            儲存中...請稍後
+                        </div>
+                    </div>
+                </div>
 
+                <div v-if="SaveForm == 'Success'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4 load-complete">
+                                <div class="checkmark draw"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            儲存完成
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-success" v-on:click.prevent="CloseModel">確認</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </b-modal>
 
     </div>
 </template>

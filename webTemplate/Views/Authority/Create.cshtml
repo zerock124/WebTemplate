@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "權限管理";
 }
-
+<link href="@Url.Content("~/Content/Modal.css")" rel="stylesheet" />
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -36,7 +36,7 @@
                     <div class="row justify-content-center align-content-center" style="height:500px">
                         <div class="col-auto col-md-6">
 
-                            <form action="@Url.Action("Register","Account")" enctype="multipart/form-data" method="post">
+                            <form action="/" v-on:submit.prevent="SetCreateUser" enctype="multipart/form-data" method="post">
                                 @Html.AntiForgeryToken()
                                 <div class="row mx-2 mb-3">
                                     <small class="h6 px-3 align-self-center">
@@ -45,6 +45,7 @@
                                     <div class="col">
                                         <b-form-input type="text"
                                                       name="UserName"
+                                                      require
                                                       v-model="UserName"></b-form-input>
                                     </div>
                                 </div>
@@ -56,6 +57,7 @@
                                     <div class="col input-group">
                                         <b-form-input :type="PasswordTypes"
                                                       name="Password"
+                                                      require
                                                       v-model="Password">
                                         </b-form-input>
                                         <div class="input-group-append">
@@ -69,11 +71,12 @@
 
                                 <div class="row mx-2 mb-3">
                                     <small class="h6 px-3 align-self-center">
-                                        密碼：
+                                        確認密碼：
                                     </small>
                                     <div class="col input-group">
                                         <b-form-input :type="PasswordTypes"
                                                       name="ConfirmPassword"
+                                                      require
                                                       v-model="ConfirmPassword">
                                         </b-form-input>
                                         <div class="input-group-append">
@@ -92,7 +95,7 @@
                                     <div class="col">
                                         <b-form-select name="RoleId"
                                                        :options="Options"
-                                                       v-model="Select"></b-form-select>
+                                                       v-model="RoleId"></b-form-select>
                                     </div>
                                 </div>
 
@@ -110,13 +113,71 @@
                 </div>
             </div>
         </div>
+        <b-modal class="modal-content justify-content-center animated zoomIn"
+                 id="AuthorityModal"
+                 hide-header
+                 hide-footer>
+            <div class="modal-body">
+
+                <div v-if="SaveForm == 'Loading'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增中...請稍後
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Success'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4 load-complete">
+                                <div class="checkmark draw"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            {{Message}}
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Error'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="m-4 load-complete">
+                                <i class="fas fa-times fa-5x text-red"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            {{Message}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" v-if="SaveForm == 'Success'" class="btn btn-success" v-on:click.prevent="CloseModal">確認</button>
+                        <button type="button" v-if="SaveForm == 'Error'" class="btn btn-danger" v-on:click.prevent="HideModal">確認</button>
+                    </div>
+                </div>
+            </div>
+        </b-modal>
     </div>
 </template>
 
 @section Scripts {
     <script>
         requirejs.config({
-            baseUrl: "@Url.Content("~/Scripts/build/view/Authority/Create")"
+            baseUrl: "@Url.Content("~/Scripts/build/view/AuthorityManagement/Create")"
         });
         require(["index"]);
     </script>

@@ -20,15 +20,17 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "moment", "vue2-editor"], function (require, exports, vue_property_decorator_1, Enums_1, moment, vue2_editor_1) {
+define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "moment", "vue2-editor", "../service"], function (require, exports, vue_property_decorator_1, Enums_1, moment, vue2_editor_1, service_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     vue2_editor_1 = __importDefault(vue2_editor_1);
+    service_1 = __importDefault(service_1);
     vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var LatestNewsCreateManagement = (function (_super) {
         __extends(LatestNewsCreateManagement, _super);
         function LatestNewsCreateManagement() {
             var _this_1 = _super !== null && _super.apply(this, arguments) || this;
+            _this_1.httpURL = window.location.href;
             _this_1.image = '';
             _this_1.PhotoFile = null;
             _this_1.DefaultImage = '';
@@ -48,6 +50,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "mo
                 [{ list: "ordered" },
                     { list: "bullet" }]
             ];
+            _this_1.SaveForm = 'Loading';
             return _this_1;
         }
         LatestNewsCreateManagement.prototype.created = function () {
@@ -72,6 +75,46 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "mo
         ;
         LatestNewsCreateManagement.prototype.imageLoader = function (event) {
             this.image = event.target.result;
+        };
+        LatestNewsCreateManagement.prototype.SetCreateLatestNews = function () {
+            var _this = this;
+            _this.$bvModal.show('LatestNewsModal');
+            _this.SaveForm = 'Loading';
+            var _a = this, PhotoFile = _a.PhotoFile, LatestNewsEnum = _a.LatestNewsEnum, StartDateTime = _a.StartDateTime, LatestNewsTitle = _a.LatestNewsTitle, LatestNewsContent = _a.LatestNewsContent, Remark = _a.Remark, Status = _a.Status;
+            var _formdata = new FormData();
+            _formdata.append('PhotoFile', PhotoFile ? PhotoFile : '');
+            _formdata.append('LatestNewsEnum', LatestNewsEnum.toString());
+            _formdata.append('StartDateTime', StartDateTime);
+            _formdata.append('LatestNewsTitle', LatestNewsTitle);
+            _formdata.append('LatestNewsContent', LatestNewsContent);
+            _formdata.append('Remark', Remark);
+            _formdata.append('Status', JSON.stringify(Status));
+            _this.CreateFontHome(_formdata);
+        };
+        LatestNewsCreateManagement.prototype.CreateFontHome = function (data) {
+            var _this = this;
+            service_1.default.CreateLatestNews(data).then(function (res) {
+                if (!res.Success) {
+                    _this.SaveForm = 'Error';
+                    console.log(res);
+                }
+                if (res.Data) {
+                    _this.SaveForm = 'Success';
+                }
+            }).catch(function (err) {
+                _this.SaveForm = 'Error';
+                console.log(err);
+            });
+        };
+        LatestNewsCreateManagement.prototype.HideModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('LatestNewsModal');
+        };
+        LatestNewsCreateManagement.prototype.CloseModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('LatestNewsModal');
+            var locationURL = this.httpURL.split("/Create")[0];
+            document.location.href = locationURL;
         };
         LatestNewsCreateManagement = __decorate([
             vue_property_decorator_1.Component({

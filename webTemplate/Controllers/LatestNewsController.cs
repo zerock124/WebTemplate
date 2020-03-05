@@ -70,7 +70,7 @@ namespace webTemplate.Controllers
         /// <returns></returns>
         [ValidateInput(false)]
         [HttpPost]
-        public async Task<ActionResult> CreateLatestNews(LatestNewsViewModel model)
+        public async Task<JsonResult> CreateLatestNews(LatestNewsViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
 
@@ -103,7 +103,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return RedirectToAction("Index");
+            return Json(res,JsonRequestBehavior.DenyGet);
         }
 
         public async Task<JsonResult> GetLatestNewsList(SearchModel model, PaginationViewModel pagination)

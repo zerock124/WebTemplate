@@ -68,7 +68,7 @@ namespace webTemplate.Controllers
         /// <returns></returns>
         [ValidateInput(false)]
         [HttpPost]
-        public async Task<ActionResult> CreateCase(CaseViewModel model)
+        public async Task<JsonResult> CreateCase(CaseViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
 
@@ -86,6 +86,7 @@ namespace webTemplate.Controllers
 
                     model.ImageName = model.PhotoFile.FileName;
                 }
+
                 model.CreateUser = CreateUser;
                 var data = await _caseServuce.CreateCase(model);
                 res.Success = data.Success;
@@ -101,7 +102,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return RedirectToAction("Index");
+            return Json(res,JsonRequestBehavior.DenyGet);
         }
 
         public async Task<JsonResult> GetCaseList(SearchModel model, PaginationViewModel pagination)

@@ -74,6 +74,10 @@ namespace webTemplate.Models
 
         [Display(Name = "角色Id")]
         public string RoleId { get; set; }
+        /// <summary>
+        /// 建立的使用者
+        /// </summary>
+        public string CreateUser { get; set; }
     }
 
     public class SendCodeViewModel

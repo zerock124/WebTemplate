@@ -52,6 +52,7 @@ define(["require", "exports", "vue-property-decorator", "../service", "vue2-edit
                 [{ list: "ordered" },
                     { list: "bullet" }]
             ];
+            _this_1.SaveForm = 'Loading';
             return _this_1;
         }
         ContactEditManagement.prototype.created = function () {
@@ -79,21 +80,33 @@ define(["require", "exports", "vue-property-decorator", "../service", "vue2-edit
         };
         ;
         ContactEditManagement.prototype.SetEditFontHome = function () {
-            var _this_1 = this;
             var _this = this;
+            _this.$bvModal.show('ContactModal');
+            _this.SaveForm = 'Loading';
             if (_this.ContactItem) {
                 service_1.default.EditContactItem(_this.ContactItem).then(function (res) {
                     if (!res.Success) {
+                        _this.SaveForm = 'Error';
                         console.log(res);
                     }
                     if (res.Success) {
-                        var locationURL = _this_1.httpURL.split("/Edit?")[0];
-                        document.location.href = locationURL;
+                        _this.SaveForm = 'Success';
                     }
                 }).catch(function (err) {
+                    _this.SaveForm = 'Error';
                     console.log(err);
                 });
             }
+        };
+        ContactEditManagement.prototype.HideModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('ContactModal');
+        };
+        ContactEditManagement.prototype.CloseModal = function () {
+            var _this = this;
+            _this.$bvModal.hide('ContactModal');
+            var locationURL = this.httpURL.split("/Edit?")[0];
+            document.location.href = locationURL;
         };
         ContactEditManagement = __decorate([
             vue_property_decorator_1.Component({

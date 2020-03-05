@@ -50,6 +50,9 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                     text: '聯絡人姓名'
                 }, {
                     value: 2,
+                    text: '聯絡人電話'
+                }, {
+                    value: 3,
                     text: '類型'
                 }];
             return _this_1;
@@ -85,7 +88,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 if (res.Data) {
                     _this.ListItem = res.Data;
                     _this.Pagination = res.Pagination;
-                    _this.LimitDate(res.Data);
+                    _this.LimitDate(res);
                 }
             }).catch(function (err) {
                 console.log(err);
@@ -93,6 +96,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
         };
         ContactManagement.prototype.LimitDate = function (Data) {
             var _this = this;
+            console.log(Data);
             _this.StartDateTime = moment(Data.MinDateTime).startOf('day').format("YYYY-MM-DD");
             _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
             _this.MinDate = _this.StartDateTime;
@@ -156,13 +160,19 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             if (!_this.searchmodel) {
                 return;
             }
-            _this.searchmodel.Query = _this.Query;
-            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
-            _this.GetContactList(_this.searchmodel);
+            else {
+                if (_this.searchmodel.Query) {
+                    _this.searchmodel.Query = _this.Query;
+                }
+                _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+                _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+                _this.GetContactList(_this.searchmodel);
+            }
         };
         ContactManagement.prototype.GetEditContact = function (ContactId) {
-            var url = '/Contact/Edit?ContactId=' + ContactId;
+            var baseurl = window.BasePath;
+            console.log(baseurl);
+            var url = baseurl + 'Contact/Edit?ContactId=' + ContactId;
             window.location.href = url;
         };
         ContactManagement.prototype.DeleteContact = function (ContactId) {

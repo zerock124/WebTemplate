@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using webTemplate.Models;
 using WebTemplateDB.Models;
 namespace webTemplate.Controllers
 {
@@ -34,7 +35,7 @@ namespace webTemplate.Controllers
         /// Serilog 
         /// </summary>
         public readonly ILogger _logger = Log.Logger;
-
+        public readonly AuthRepository _repository = new AuthRepository();
         //public readonly AuthRepository _repository = new AuthRepository();
         public ApplicationUserManager _userManager => HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
         public ApplicationRoleManager _roleManager => HttpContext.GetOwinContext().Get<ApplicationRoleManager>();

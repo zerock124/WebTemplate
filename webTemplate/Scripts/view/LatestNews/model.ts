@@ -5,6 +5,11 @@
      */
     GetLatestNewsList(SearchModel: SearchModel, sendPagination: SendPaginationModel): JQuery.jqXHR<ResWithPaginationViewModel<LatestNewsViewModel[]>>
     /**
+     * 新增最新消息
+     * @param model
+     */
+    CreateLatestNews(model: LatestNewsViewModel): JQuery.jqXHR<ResponseViewModel>;
+    /**
      * 取得變更最新消息圖片
      * @param LatestNewsId
      */

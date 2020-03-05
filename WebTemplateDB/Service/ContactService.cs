@@ -31,7 +31,7 @@ namespace WebTemplateDB.Service
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
             List<ContactViewModel> contactlist = new List<ContactViewModel>();
 
-            var query = from a in _contact.GetAll()
+            var query = from a in _contact.GetAll().ToList()
                         select new ContactViewModel
                         {
                             ContactId = a.ContactId,
@@ -51,8 +51,8 @@ namespace WebTemplateDB.Service
                             UpdateUser = a.UpdateUser
                         };
 
-            pageData.MaxDateTime = query.OrderBy(x => x.CreateTime).FirstOrDefault().CreateTime;
-            pageData.MinDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
+            pageData.MinDateTime = query.OrderBy(x => x.CreateTime).FirstOrDefault().CreateTime;
+            pageData.MaxDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
 
             if (searchModel.StartDateTime != null)
             {
@@ -64,16 +64,41 @@ namespace WebTemplateDB.Service
             }
             if (!string.IsNullOrEmpty(searchModel.Query))
             {
+
+                var QueryString = searchModel.Query.ToLower().Trim();
+
                 switch (searchModel.SearchEnum)
                 {
                     case 0:
-                        query = query.Where(x => x.CompanyName.ToLower().Trim().Contains(searchModel.Query));
+                        query = query.Where(x => x.CompanyName.ToLower().Trim().Contains(QueryString));
                         break;
                     case 1:
-                        query = query.Where(x => x.Name.ToLower().Trim().Contains(searchModel.Query));
+                        query = query.Where(x => x.Name.ToLower().Trim().Contains(QueryString));
                         break;
                     case 2:
-                        query = query.Where(x => x.ContactPhone.ToLower().Trim().Contains(searchModel.Query));
+                        query = query.Where(x => x.ContactPhone.ToLower().Trim().Contains(QueryString));
+                        break;
+                    case 3:
+                        if ("網站建置".Contains(QueryString))
+                        {
+                            int Enum = 0;
+                            query = query.Where(x => x.ContactEnum == Enum);
+                        }
+                        if ("聊天機器人".Contains(QueryString))
+                        {
+                            int Enum = 1;
+                            query = query.Where(x => x.ContactEnum == Enum);
+                        }
+                        if ("客製化抽獎".Contains(QueryString))
+                        {
+                            int Enum = 2;
+                            query = query.Where(x => x.ContactEnum == Enum);
+                        }
+                        if ("其它".Contains(QueryString))
+                        {
+                            int Enum = 3;
+                            query = query.Where(x => x.ContactEnum == Enum);
+                        }
                         break;
                     default:
                         break;
@@ -91,13 +116,32 @@ namespace WebTemplateDB.Service
 
             /**設置分頁資訊*/
             query = query
-                .OrderBy(o => o.ContactId)
+                .OrderByDescending(o => o.CreateTime)
+                .Select((a, index) => new ContactViewModel
+                {
+                    ContactId = a.ContactId,
+                    CompanyName = a.CompanyName,
+                    Name = a.Name,
+                    Sex = (int)a.Sex,
+                    Email = a.Email,
+                    ContactPhone = a.ContactPhone,
+                    ContactEnum = (int)a.ContactEnum,
+                    ContactStatus = (int)a.ContactStatus,
+                    Budget = a.Budget,
+                    OnlineDate = a.OnlineDate,
+                    Demand = a.Demand,
+                    Remark = a.Remark,
+                    CreateTime = a.CreateTime,
+                    UpdateTime = a.UpdateTime,
+                    UpdateUser = a.UpdateUser,
+                    Number = index + 1
+                })
                 .Skip(pagination.GetSkipLength())
                 .Take(pagination.PerPage);
 
             if (query.Any())
             {
-                var list = await query.OrderBy(x => x.ContactId).ToListAsync();
+                var list = query.OrderByDescending(x => x.CreateTime).ToList();
                 contactlist = list;
             }
 

@@ -184,15 +184,21 @@ export default class LatestNewsManagement extends Vue {
         const _this = this;
         _this.Pagination.PerPage = _this.PerPage;
         _this.Pagination.CurrentPage = _this.CurrentPage;
-        if (!_this.searchmodel) { return; }
-        _this.searchmodel.Query = _this.Query;
-
-        _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-        _this.GetCaseList(_this.searchmodel);
+        if (!_this.searchmodel) {return;}
+        else {
+            if (_this.searchmodel.Query) {
+                _this.searchmodel.Query = _this.Query;
+            }
+            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+            _this.GetCaseList(_this.searchmodel);
+        }
     }
 
     GetEditCase(CaseId: number) {
-        var url = '/Case/Edit?CaseId=' + CaseId;
+        var baseurl = window.BasePath;
+        console.log(baseurl);
+        var url = baseurl + 'Case/Edit?CaseId=' + CaseId;
         window.location.href = url;
     }
 

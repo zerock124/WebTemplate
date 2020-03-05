@@ -61,6 +61,10 @@ namespace ViewModel.LatestNews
         /// 最新消息圖片檔案
         /// </summary>
         public HttpPostedFileBase PhotoFile { get; set; }
+        /// <summary>
+        /// 排序編號
+        /// </summary>
+        public int Number { get; set; }
     }
 
 

@@ -47,8 +47,15 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             _this_1.Selectd = 0;
             _this_1.Options = [{
                     value: 0,
-                    text: '媒體報導'
-                }];
+                    text: '標題'
+                }, {
+                    value: 1,
+                    text: '內文'
+                }, {
+                    value: 2,
+                    text: '備註'
+                }
+            ];
             return _this_1;
         }
         LatestNewsManagement.prototype.created = function () {
@@ -89,7 +96,6 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 StartOnlineDateTime: moment(_this.StartOnlineDateTime).startOf('day').toDate(),
                 EndOnlineDateTime: moment(_this.EndOnlineDateTime).endOf('day').toDate()
             };
-            console.log(_this.searchmodel);
             _this.GetLatestNewsListItem(_this.searchmodel, sendPagination);
         };
         LatestNewsManagement.prototype.DefaultLatestNewsListItem = function (searchmodel, sendPagination) {
@@ -171,13 +177,19 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             if (!_this.searchmodel) {
                 return;
             }
-            _this.searchmodel.Query = _this.Query;
-            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
-            _this.GetLatestNewsList(_this.searchmodel);
+            else {
+                if (_this.searchmodel.Query) {
+                    _this.searchmodel.Query = _this.Query;
+                }
+                _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+                _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+                _this.GetLatestNewsList(_this.searchmodel);
+            }
         };
         LatestNewsManagement.prototype.GetEditLatestNews = function (LatestNewsId) {
-            var url = '/LatestNews/Edit?LatestNewsId=' + LatestNewsId;
+            var baseurl = window.BasePath;
+            console.log(baseurl);
+            var url = baseurl + 'LatestNews/Edit?LatestNewsId=' + LatestNewsId;
             window.location.href = url;
         };
         LatestNewsManagement.prototype.DeleteLatestNews = function (LatestNewsId) {

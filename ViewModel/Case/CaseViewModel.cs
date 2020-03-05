@@ -58,6 +58,11 @@ namespace ViewModel.Case
         /// </summary>
         public HttpPostedFileBase PhotoFile { get; set; }
 
+        public string LabelTag { get; set; }
+        /// <summary>
+        /// 流水編號
+        /// </summary>
+        public int Number { get; set; }
     }
 
     public class SearchModel

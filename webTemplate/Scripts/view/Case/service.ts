@@ -23,6 +23,16 @@ class CaseService implements ICaseService {
         return AjaxReturn(setting);
     }
 
+    CreateCaseItem(model: CaseViewModel): JQuery.jqXHR<ResponseViewModel> {
+        const setting: JQueryAjaxSettings = {
+            url: `/Case/CreateCase`,
+            type: 'POST',
+            data: model,
+        };
+
+        return AjaxReturn(setting, 'FormData');
+    }
+
     GetEditCaseItem(CaseId: number): JQuery.jqXHR<ResponseViewModel> {
         const setting: JQueryAjaxSettings = {
             url: `/Case/GetEditCaseItem?CaseId=${CaseId}`,

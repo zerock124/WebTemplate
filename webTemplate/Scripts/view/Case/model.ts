@@ -5,6 +5,11 @@
      */
     GetCaseList(SearchModel: SearchModel, sendPagination: SendPaginationModel): JQuery.jqXHR<ResWithPaginationViewModel<CaseViewModel[]>>;
     /**
+     * 新增案例介紹
+     * @param model
+     */
+    CreateCaseItem(model: CaseViewModel): JQuery.jqXHR<ResponseViewModel>;
+    /**
      * 取得變更案例介紹圖片
      * @param LatestNewsId
      */
@@ -46,6 +51,7 @@ export interface CaseViewModel {
     UpdateUser: string;
     /**首頁圖片檔案 */
     PhotoFile: File | null;
+    LabelTag: string[];
 }
 
 export interface SearchModel {

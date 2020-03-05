@@ -39,6 +39,7 @@ namespace WebTemplateDB.Service
                 Status = model.Status,
                 CreateTime = DateTime.Now,
                 CreateUser = model.CreateUser,
+                LabelTag = model.LabelTag
             };
 
             try
@@ -61,7 +62,7 @@ namespace WebTemplateDB.Service
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
             List<CaseViewModel> caseList = new List<CaseViewModel>();
 
-            var query = from a in _case.GetAll()
+            var query = from a in _case.GetAll().ToList()
                         select new CaseViewModel
                         {
                             CaseId = a.CaseId,
@@ -90,17 +91,32 @@ namespace WebTemplateDB.Service
             }
             if (!string.IsNullOrEmpty(model.Query))
             {
-                var QueryString = model.Query.Trim();
+                var QueryString = model.Query.ToLower().Trim();
 
                 switch (model.SearchEnum)
                 {
                     case 0:
+                        if ("行銷活動".Contains(QueryString))
+                        {
+                            int Enum = 0;
+                            query = query.Where(x => x.CaseEnum == Enum);
+                        }
+                        if ("臉書機器人".Contains(QueryString))
+                        {
+                            int Enum = 1;
+                            query = query.Where(x => x.CaseEnum == Enum);
+                        }
+                        if ("官網".Contains(QueryString))
+                        {
+                            int Enum = 2;
+                            query = query.Where(x => x.CaseEnum == Enum);
+                        }
                         break;
                     case 1:
-                        query = query.Where(x => x.CaseName.ToLower().Contains(model.Query));
+                        query = query.Where(x => x.CaseName.ToLower().Trim().Contains(QueryString));
                         break;
                     case 2:
-                        query = query.Where(x => x.CaseContent.ToLower().Contains(model.Query));
+                        query = query.Where(x => x.CaseContent.ToLower().Trim().Contains(QueryString));
                         break;
                     default:
                         break;
@@ -118,13 +134,28 @@ namespace WebTemplateDB.Service
 
             /**設置分頁資訊*/
             query = query
-                .OrderBy(o => o.CaseId)
+                .OrderByDescending(o => o.CreateTime)
+                .Select((a, index) => new CaseViewModel
+                {
+                    CaseId = a.CaseId,
+                    ImageName = a.ImageName,
+                    CaseUrl = a.CaseUrl,
+                    CaseEnum = a.CaseEnum,
+                    CaseName = a.CaseName,
+                    CaseContent = a.CaseContent,
+                    Status = a.Status,
+                    CreateTime = a.CreateTime,
+                    CreateUser = a.CreateUser,
+                    UpdateTime = a.UpdateTime,
+                    UpdateUser = a.UpdateUser,
+                    Number = index + 1
+                })
                 .Skip(pagination.GetSkipLength())
                 .Take(pagination.PerPage);
 
             if (query.Any())
             {
-                var list = await query.OrderBy(x => x.CaseId).ToListAsync();
+                var list = query.OrderByDescending(x => x.CreateTime).ToList();
                 caseList = list;
             }
 
@@ -150,7 +181,8 @@ namespace WebTemplateDB.Service
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
                             UpdateTime = a.UpdateTime,
-                            UpdateUser = a.UpdateUser
+                            UpdateUser = a.UpdateUser,
+                            LabelTag = a.LabelTag
                         };
             if (query.Any())
             {
@@ -178,6 +210,7 @@ namespace WebTemplateDB.Service
                     caseitem.Status = model.Status;
                     caseitem.UpdateTime = DateTime.Now;
                     caseitem.UpdateUser = model.UpdateUser;
+                    caseitem.LabelTag = model.LabelTag;
 
                     _case.Update(caseitem);
                     result.Success = true;

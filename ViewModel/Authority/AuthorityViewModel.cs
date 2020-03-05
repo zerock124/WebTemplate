@@ -48,6 +48,10 @@ namespace ViewModel.Authority
         /// 更新日期
         /// </summary>
         public DateTime UpdateTime { get; set; }
+        /// <summary>
+        /// 流水編號
+        /// </summary>
+        public int Number { get; set; }
     }
 
     public class SearchModel
@@ -74,5 +78,13 @@ namespace ViewModel.Authority
     {
         public string Id { get; set; }
         public string Name { get; set; }
+    }
+
+    public class CreateUserViewModel
+    {
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
+        public string RoleId { get; set; }
     }
 }

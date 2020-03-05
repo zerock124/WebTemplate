@@ -2,7 +2,6 @@
 @{
     ViewBag.Title = "靜態頁管理";
 }
-<script src="~/node_modules/quill/dist/quill.min.js"></script>
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -62,7 +61,7 @@
             <div class="col-auto ml-4">
                 內容：
             </div>
-            <div class="col ml-2">
+            <div class="col ml-2" v-if="editorOption">
                 <vue-editor :editor-options="editorOption" v-model="PageContent"></vue-editor>
             </div>
         </div>

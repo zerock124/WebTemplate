@@ -172,12 +172,19 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             if (!_this.searchmodel) {
                 return;
             }
-            _this.searchmodel.Query = _this.Query;
-            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-            _this.GetCaseList(_this.searchmodel);
+            else {
+                if (_this.searchmodel.Query) {
+                    _this.searchmodel.Query = _this.Query;
+                }
+                _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+                _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+                _this.GetCaseList(_this.searchmodel);
+            }
         };
         LatestNewsManagement.prototype.GetEditCase = function (CaseId) {
-            var url = '/Case/Edit?CaseId=' + CaseId;
+            var baseurl = window.BasePath;
+            console.log(baseurl);
+            var url = baseurl + 'Case/Edit?CaseId=' + CaseId;
             window.location.href = url;
         };
         LatestNewsManagement.prototype.DeleteCaseItem = function (CaseId) {

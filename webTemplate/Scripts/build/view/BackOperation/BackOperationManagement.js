@@ -158,10 +158,14 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             if (!_this.searchmodel) {
                 return;
             }
-            _this.searchmodel.Query = _this.Query;
-            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
-            _this.GetBackOperationList(_this.searchmodel);
+            else {
+                if (_this.searchmodel.Query) {
+                    _this.searchmodel.Query = _this.Query;
+                }
+                _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+                _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+                _this.GetBackOperationList(_this.searchmodel);
+            }
         };
         __decorate([
             vue_property_decorator_1.Watch('ListItem')

@@ -170,10 +170,13 @@ export default class BackOperationManagement extends Vue {
         _this.Pagination.PerPage = _this.PerPage;
         _this.Pagination.CurrentPage = _this.CurrentPage;
         if (!_this.searchmodel) { return; }
-        _this.searchmodel.Query = _this.Query;
-
-        _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
-        _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
-        _this.GetBackOperationList(_this.searchmodel);
+        else {
+            if (_this.searchmodel.Query) {
+                _this.searchmodel.Query = _this.Query;
+            }
+            _this.searchmodel.StartDateTime = moment(_this.StartDateTime).startOf('day').toDate();
+            _this.searchmodel.EndDateTime = moment(_this.EndDateTime).endOf('day').toDate();
+            _this.GetBackOperationList(_this.searchmodel);
+        }
     }
 }

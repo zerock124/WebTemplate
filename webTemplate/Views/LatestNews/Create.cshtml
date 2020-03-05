@@ -1,7 +1,7 @@
 ﻿@{
     ViewBag.Title = "最新消息管理";
 }
-
+<link href="@Url.Content("~/Content/Modal.css")" rel="stylesheet" />
 <div class="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
@@ -48,7 +48,7 @@
                                 <h6>( 圖片 / 寬度800 / JPG 格式 )</h6>
                             </div>
 
-                            <form action="@Url.Action("CreateLatestNews","LatestNews")" enctype="multipart/form-data" method="post">
+                            <form action="/" enctype="multipart/form-data" method="post" v-on:submit.prevent="SetCreateLatestNews">
                                 <div class="row mx-2 mb-3">
                                     <small class="h6 px-3 align-self-center">
                                         圖片檔案：
@@ -130,7 +130,7 @@
                                                        :labels="{checked: '正常', unchecked: '停用'}"
                                                        :color="{checked: '#25EF02', unchecked: '#E3170D'}">
                                         </toggle-button>
-                                        <input type="checkbox" name="Status" v-model="Status" value="true" class="d-none"/>
+                                        <input type="checkbox" name="Status" v-model="Status" value="true" class="d-none" />
                                     </div>
                                 </div>
 
@@ -147,6 +147,66 @@
                 </div>
             </div>
         </div>
+
+        <b-modal class="modal-content justify-content-center animated zoomIn"
+                 id="LatestNewsModal"
+                 hide-header
+                 hide-footer>
+            <div class="modal-body">
+
+                <div v-if="SaveForm == 'Loading'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增中...請稍後
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Success'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="circle-loader m-4 load-complete">
+                                <div class="checkmark draw"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增完成
+                        </div>
+                    </div>
+                </div>
+
+                <div v-if="SaveForm == 'Error'">
+                    <div class="row">
+                        <div class="col text-center">
+                            <div class="m-4 load-complete">
+                                <i class="fas fa-times fa-5x text-red"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col text-center h4">
+                            新增失敗
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col text-center">
+                        <button type="button" v-if="SaveForm == 'Success'" class="btn btn-success" v-on:click.prevent="CloseModal">確認</button>
+                        <button type="button" v-if="SaveForm == 'Error'" class="btn btn-danger" v-on:click.prevent="HideModal">確認</button>
+                    </div>
+                </div>
+            </div>
+        </b-modal>
+
     </div>
 </template>
 

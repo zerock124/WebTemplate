@@ -37,6 +37,9 @@ export default class ContactEditManagement extends Vue {
         [{ list: "ordered" },
         { list: "bullet" }]
     ]
+
+    SaveForm: string = 'Loading';
+
     created() {
         const _this = this;
         _this.GetContactId();
@@ -65,19 +68,35 @@ export default class ContactEditManagement extends Vue {
 
     SetEditFontHome() {
         const _this = this;
+        _this.$bvModal.show('ContactModal');
+        _this.SaveForm = 'Loading';
         if (_this.ContactItem) {
             service.EditContactItem(_this.ContactItem).then(res => {
                 if (!res.Success) {
+                    _this.SaveForm = 'Error';
                     console.log(res);
                 }
                 if (res.Success) {
-                    const locationURL = this.httpURL.split("/Edit?")[0];
-                    document.location.href = locationURL;
+                    _this.SaveForm = 'Success';
 
                 }
             }).catch(err => {
+                _this.SaveForm = 'Error';
                 console.log(err);
             })
         }
     }
+
+    HideModal() {
+        const _this = this;
+        _this.$bvModal.hide('ContactModal');
+    }
+
+    CloseModal() {
+        const _this = this;
+        _this.$bvModal.hide('ContactModal');
+        const locationURL = this.httpURL.split("/Edit?")[0];
+        document.location.href = locationURL;
+    }
+
 }

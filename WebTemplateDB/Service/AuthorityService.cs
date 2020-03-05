@@ -96,13 +96,13 @@ namespace WebTemplateDB.Service
             };
 
             query = query
-                .OrderBy(x => x.CreateTime)
+                .OrderByDescending(x => x.CreateTime)
                 .Skip(pagination.GetSkipLength())
                 .Take(pagination.PerPage);
 
             if (query.Any())
             {
-                var list = await query.OrderBy(x => x.CreateTime).ToListAsync();
+                var list = query.OrderByDescending(x => x.CreateTime).ToList();
                 userlist = list;
             }
 
@@ -141,12 +141,12 @@ namespace WebTemplateDB.Service
                              where b.Name == "admin"
                              select a;
 
-            if (checkAdmin.Any()) 
+            if (checkAdmin.Any())
             {
                 IsAdmin = true;
             }
 
-            if (Id == CurrendUserid) 
+            if (Id == CurrendUserid)
             {
                 checkAuthority = true;
             }
@@ -156,7 +156,7 @@ namespace WebTemplateDB.Service
                 result.Success = true;
                 result.Message = "您有此權限";
             }
-            else 
+            else
             {
                 result.Success = false;
                 result.Message = "您無此權限";
