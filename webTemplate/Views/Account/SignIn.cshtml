@@ -1,8 +1,6 @@
 ﻿@{
     Layout = null;
 }
-@using Microsoft.Owin.Security
-
 
 <!DOCTYPE html>
 <html>
@@ -14,11 +12,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="~/Content/plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
-    @Styles.Render("~/Content/Home.css")
+    <link href="~/Content/Home.css" rel="stylesheet" />
     <!-- Google Font: Source Sans Pro -->
     <link href="~/Content/dist/css/adminlte.min.css" rel="stylesheet" />
     <link href="~/Content/plugins/icheck-bootstrap/icheck-bootstrap.min.css" rel="stylesheet">
-    <link href="@Url.Content("~/Content/SignIn.css")" rel="stylesheet" />
+    <link href="~/Content/SignIn.min.css" rel="stylesheet" />
 </head>
 <body class="hold-transition login-page">
     <div class="text-primary">
@@ -28,10 +26,10 @@
         <!-- /.login-logo -->
         <div class="card">
             <div class="card-body login-card-body">
-                <form action="@Url.Action("SignIn", "Account")" method="post">
+                <form action="@Url.Action("SignIn","Account")" method="post">
                     @Html.AntiForgeryToken()
                     <div class="input-group mb-3">
-                        <input type="text" name="UserName" class="form-control" placeholder="使用者帳號">
+                        <input type="text" name="UserName" class="form-control" placeholder="使用者帳號" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-user-alt"></span>
@@ -39,7 +37,7 @@
                         </div>
                     </div>
                     <div class="input-group mb-3">
-                        <input type="password" name="Password" class="form-control" placeholder="密碼">
+                        <input type="password" name="Password" class="form-control" placeholder="密碼" required>
                         <div class="input-group-append">
                             <div class="input-group-text">
                                 <span class="fas fa-key"></span>
@@ -49,41 +47,52 @@
                     <div class="row">
                         <div class="col">
                             <div class="icheck-primary">
-                                <input type="checkbox" id="remember" name="RememberMe" value="true">
+                                <input type="checkbox" name="RememberMe">
                                 <label for="remember">
                                     記住我
                                 </label>
                             </div>
                         </div>
-                        <!-- /.col -->
                         <div class="col">
-                            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+                            <input type="submit" name="Submit" class="btn btn-primary btn-block" value="登入" />
                         </div>
-                        <!-- /.col -->
                     </div>
                 </form>
                 <div class="row justify-content-center">
-                    @{
-                        var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes();
-
-                        <form action="@Url.Action("ExternalLogin", "Account")" method="post">
-                            @Html.AntiForgeryToken()
-                            <div class="flex-center">
-                                <button id="FaceBook" type="submit" class="text-primary btn" name="provider" value="Facebook">
-                                    <i class="fab fa-facebook fa-4x icon-3d">
-                                    </i>
-                                </button>
-                                <button id="Google" type="submit" class="text-red btn" name="provider" value="Google">
-                                    <i class="fab fa-google-plus-g fa-4x icon-3d">
-                                    </i>
-                                </button>
-                                <a href="@Url.Action("LineLoginDirect","Account")">
-                                    <i class="fab fa-line fa-4x icon-3d text-success">
-                                    </i>
-                                </a>
-                            </div>
-                        </form>
-                    }
+                    <form action="@Url.Action("ExternalLogin","Account")" method="post" id="ExternalLoginFacebook">
+                        @Html.AntiForgeryToken()
+                        <div class="flex-center">
+                            <input type="text" name="provider" hidden value="Facebook" />
+                            <input type="submit" name="Submit" hidden value="LineLoginIn" />
+                            <button id="FaceBook" type="button" onclick="document.getElementById('ExternalLoginFacebook').submit()"
+                                    class="text-primary btn" name="provider" value="Facebook">
+                                <i class="fab fa-facebook fa-4x icon-3d">
+                                </i>
+                            </button>
+                        </div>
+                    </form>
+                    <form action="@Url.Action("ExternalLogin","Account")" method="post" id="ExternalLoginGoogle">
+                        @Html.AntiForgeryToken()
+                        <div class="flex-center">
+                            <input type="text" name="provider" hidden value="Google" />
+                            <input type="submit" name="Submit" hidden value="LineLoginIn" />
+                            <button id="Google" type="button" onclick="document.getElementById('ExternalLoginGoogle').submit()"
+                                    class="text-red btn" name="provider" value="Google">
+                                <i class="fab fa-google-plus-g fa-4x icon-3d">
+                                </i>
+                            </button>
+                        </div>
+                    </form>
+                    <form action="@Url.Action("LineLoginDirect","Account")" method="post" id="LineLoginIn">
+                        @Html.AntiForgeryToken()
+                        <div class="flex-center">
+                            <input type="submit" name="Submit" hidden value="LineLoginIn" />
+                            <button type="button" onclick="document.getElementById('LineLoginIn').submit()" class="text-success btn">
+                                <i class="fab fa-line fa-4x icon-3d text-success">
+                                </i>
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
             <!-- /.login-card-body -->
@@ -93,10 +102,9 @@
     <!-- jQuery -->
     <!-- Bootstrap 4 -->
     <!-- AdminLTE App -->
-    @Scripts.Render("~/Script/MainScripts")
+    @*@Scripts.Render("~/Script/MainScripts")*@
     <script>
     </script>
-
 </body>
 </html>
 

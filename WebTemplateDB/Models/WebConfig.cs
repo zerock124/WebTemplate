@@ -25,5 +25,10 @@ namespace WebTemplateDB.Models
         public string meta_description { get; set; }
         public string meta_url { get; set; }
         public string meta_image { get; set; }
+        public string CompanyAddress { get; set; }
+        public Nullable<double> Lat { get; set; }
+        public Nullable<double> Lng { get; set; }
+        public string TaxIDNumber { get; set; }
+        public string Phone { get; set; }
     }
 }

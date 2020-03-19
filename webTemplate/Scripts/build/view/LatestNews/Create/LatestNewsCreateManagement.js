@@ -20,11 +20,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "moment", "vue2-editor", "../service"], function (require, exports, vue_property_decorator_1, Enums_1, moment, vue2_editor_1, service_1) {
+define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "moment", "vue2-editor", "../service", "vue-input-tag"], function (require, exports, vue_property_decorator_1, Enums_1, moment, vue2_editor_1, service_1, vue_input_tag_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     vue2_editor_1 = __importDefault(vue2_editor_1);
     service_1 = __importDefault(service_1);
+    vue_input_tag_1 = __importDefault(vue_input_tag_1);
     vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var LatestNewsCreateManagement = (function (_super) {
         __extends(LatestNewsCreateManagement, _super);
@@ -36,6 +37,8 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "mo
             _this_1.DefaultImage = '';
             _this_1.ImageName = '';
             _this_1.LatestNewsEnum = 0;
+            _this_1.LimitNumber = 10;
+            _this_1.tags = [];
             _this_1.Options = [{
                     value: 0,
                     text: '媒體報導'
@@ -80,7 +83,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "mo
             var _this = this;
             _this.$bvModal.show('LatestNewsModal');
             _this.SaveForm = 'Loading';
-            var _a = this, PhotoFile = _a.PhotoFile, LatestNewsEnum = _a.LatestNewsEnum, StartDateTime = _a.StartDateTime, LatestNewsTitle = _a.LatestNewsTitle, LatestNewsContent = _a.LatestNewsContent, Remark = _a.Remark, Status = _a.Status;
+            var _a = this, PhotoFile = _a.PhotoFile, LatestNewsEnum = _a.LatestNewsEnum, StartDateTime = _a.StartDateTime, LatestNewsTitle = _a.LatestNewsTitle, LatestNewsContent = _a.LatestNewsContent, Remark = _a.Remark, Status = _a.Status, tags = _a.tags;
             var _formdata = new FormData();
             _formdata.append('PhotoFile', PhotoFile ? PhotoFile : '');
             _formdata.append('LatestNewsEnum', LatestNewsEnum.toString());
@@ -89,6 +92,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "mo
             _formdata.append('LatestNewsContent', LatestNewsContent);
             _formdata.append('Remark', Remark);
             _formdata.append('Status', JSON.stringify(Status));
+            _formdata.append('LabelTag', tags.toString());
             _this.CreateFontHome(_formdata);
         };
         LatestNewsCreateManagement.prototype.CreateFontHome = function (data) {
@@ -118,7 +122,10 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "mo
         };
         LatestNewsCreateManagement = __decorate([
             vue_property_decorator_1.Component({
-                template: '#LatestNewsCreateManagement'
+                template: '#LatestNewsCreateManagement',
+                components: {
+                    'input-tag': vue_input_tag_1.default
+                }
             })
         ], LatestNewsCreateManagement);
         return LatestNewsCreateManagement;

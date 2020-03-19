@@ -4,6 +4,9 @@ import service from './service'
 import moment = require('moment')
 import { UrlPathEnum } from '../Share/Enums'
 import { dateToDateTimeString, GetLatestNewsEnum } from "../Share/FilterFunction";
+import Lightbox from 'vue-easy-lightbox'
+
+Vue.use(Lightbox)
 
 @Component({
     template: '#LatestNewsManagement',
@@ -47,8 +50,21 @@ export default class LatestNewsManagement extends Vue {
     }, {
         value: 2,
         text: '備註'
+    }];
+
+    visible: boolean = false;
+    index: number = 0;
+
+    imgs: string[] = [];
+
+    showImg(index) {
+        this.index = index
+        this.visible = true
     }
-    ];
+
+    handleHide() {
+        this.visible = false
+    }
 
     created() {
         const _this = this;
@@ -154,6 +170,7 @@ export default class LatestNewsManagement extends Vue {
             var length = _this.ListItem.length;
             for (var i = 0; i < length; i++) {
                 _this.ListItem[i].ImageName = BasePath + UrlPathEnum.LatestNewsPhoto + '?filename=' + _this.ListItem[i].ImageName;
+                _this.imgs.push(_this.ListItem[i].ImageName);
             }
         }
     }

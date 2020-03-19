@@ -80,6 +80,7 @@
           <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
           <Property Name="CaseUrl" Type="nvarchar(max)" />
           <Property Name="CaseEnum" Type="int" Nullable="false" />
+          <Property Name="LabelTag" Type="nvarchar(max)" />
           <Property Name="CaseName" Type="nvarchar" MaxLength="50" />
           <Property Name="CaseContent" Type="nvarchar(max)" />
           <Property Name="Status" Type="bit" Nullable="false" />
@@ -87,7 +88,6 @@
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
-          <Property Name="LabelTag" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Contact">
           <Key>
@@ -141,6 +141,7 @@
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UpdateTime" Type="datetime" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="LabelTag" Type="nvarchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="ServiceItem">
           <Key>
@@ -181,6 +182,11 @@
           <Property Name="meta_description" Type="nvarchar(max)" />
           <Property Name="meta_url" Type="nvarchar(max)" />
           <Property Name="meta_image" Type="nvarchar(max)" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="250" />
+          <Property Name="Lat" Type="float" />
+          <Property Name="Lng" Type="float" />
+          <Property Name="TaxIDNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityContainer Name="Web_testDbModelStoreContainer">
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
@@ -329,6 +335,7 @@
           <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LabelTag" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="ServiceItem">
           <Key>
@@ -354,6 +361,29 @@
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityContainer Name="WebTemplateEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="BackOperation" EntityType="Self.BackOperation" />
+          <EntitySet Name="Case" EntityType="Self.Case" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="FontHome" EntityType="Self.FontHome" />
+          <EntitySet Name="LatestNews" EntityType="Self.LatestNews" />
+          <EntitySet Name="ServiceItem" EntityType="Self.ServiceItem" />
+          <EntitySet Name="StaticPage" EntityType="Self.StaticPage" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Web_testDbModel.AspNetUserLogins" />
+          <EntitySet Name="WebConfig" EntityType="Web_testDbModel.WebConfig" />
+        </EntityContainer>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="WebConfig">
           <Key>
             <PropertyRef Name="Id" />
@@ -369,29 +399,11 @@
           <Property Name="meta_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="meta_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="meta_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityContainer Name="WebTemplateEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-          <EntitySet Name="BackOperation" EntityType="Self.BackOperation" />
-          <EntitySet Name="Case" EntityType="Self.Case" />
-          <EntitySet Name="Contact" EntityType="Self.Contact" />
-          <EntitySet Name="FontHome" EntityType="Self.FontHome" />
-          <EntitySet Name="LatestNews" EntityType="Self.LatestNews" />
-          <EntitySet Name="ServiceItem" EntityType="Self.ServiceItem" />
-          <EntitySet Name="StaticPage" EntityType="Self.StaticPage" />
-          <EntitySet Name="WebConfig" EntityType="Self.WebConfig" />
-          <EntitySet Name="AspNetUserLogins" EntityType="Web_testDbModel.AspNetUserLogins" />
-        </EntityContainer>
-        <EntityType Name="AspNetUserLogins">
-          <Key>
-            <PropertyRef Name="UserId" />
-          </Key>
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Lat" Type="Double" />
+          <Property Name="Lng" Type="Double" />
+          <Property Name="TaxIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -522,6 +534,7 @@
           <EntitySetMapping Name="LatestNews">
             <EntityTypeMapping TypeName="Web_testDbModel.LatestNews">
               <MappingFragment StoreEntitySet="LatestNews">
+                <ScalarProperty Name="LabelTag" ColumnName="LabelTag" />
                 <ScalarProperty Name="LatestNewsId" ColumnName="LatestNewsId" />
                 <ScalarProperty Name="ImageName" ColumnName="ImageName" />
                 <ScalarProperty Name="LatestNewsEnum" ColumnName="LatestNewsEnum" />
@@ -563,29 +576,34 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WebConfig">
-            <EntityTypeMapping TypeName="Web_testDbModel.WebConfig">
-              <MappingFragment StoreEntitySet="WebConfig">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="WebName" ColumnName="WebName" />
-                <ScalarProperty Name="ServiceMail" ColumnName="ServiceMail" />
-                <ScalarProperty Name="Copyright" ColumnName="Copyright" />
-                <ScalarProperty Name="SystemEmailName" ColumnName="SystemEmailName" />
-                <ScalarProperty Name="SystemEmail" ColumnName="SystemEmail" />
-                <ScalarProperty Name="meta_title" ColumnName="meta_title" />
-                <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
-                <ScalarProperty Name="meta_description" ColumnName="meta_description" />
-                <ScalarProperty Name="meta_url" ColumnName="meta_url" />
-                <ScalarProperty Name="meta_image" ColumnName="meta_image" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
             <EntityTypeMapping TypeName="Web_testDbModel.AspNetUserLogins">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebConfig">
+            <EntityTypeMapping TypeName="Web_testDbModel.WebConfig">
+              <MappingFragment StoreEntitySet="WebConfig">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="TaxIDNumber" ColumnName="TaxIDNumber" />
+                <ScalarProperty Name="Lng" ColumnName="Lng" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="meta_image" ColumnName="meta_image" />
+                <ScalarProperty Name="meta_url" ColumnName="meta_url" />
+                <ScalarProperty Name="meta_description" ColumnName="meta_description" />
+                <ScalarProperty Name="meta_keyword" ColumnName="meta_keyword" />
+                <ScalarProperty Name="meta_title" ColumnName="meta_title" />
+                <ScalarProperty Name="SystemEmail" ColumnName="SystemEmail" />
+                <ScalarProperty Name="SystemEmailName" ColumnName="SystemEmailName" />
+                <ScalarProperty Name="Copyright" ColumnName="Copyright" />
+                <ScalarProperty Name="ServiceMail" ColumnName="ServiceMail" />
+                <ScalarProperty Name="WebName" ColumnName="WebName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

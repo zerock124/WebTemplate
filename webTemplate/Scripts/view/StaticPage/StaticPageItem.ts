@@ -9,6 +9,8 @@ Quill.register('modules/imageResize', ImageResize);
 
 Vue.use(VueEditor);
 
+var icons = Quill.import('ui/icons');
+icons['html'] = '<i class="fas fa-code"></i>'
 
 @Component({
     template: '#StaticPageItem',
@@ -20,10 +22,78 @@ export default class StaticPageItem extends Vue {
     PageContent: string = '';
     StaticPageItem: StaticPageViewModel | null = null;
     editorOption: object = {};
+    htmlFromEditor: boolean = true;
+    customToolbar = [[{
+        header: [false, 1, 2, 3, 4, 5, 6]
+    }], ["bold", "italic", "underline", "strike"], // toggled buttons
+    [{
+        align: ""
+    }, {
+        align: "center"
+    }, {
+        align: "right"
+    }, {
+        align: "justify"
+    }], ["blockquote"], [{
+        list: "ordered"
+    }, {
+        list: "bullet"
+    }, {
+        list: "check"
+    }], [{
+        indent: "-1"
+    }, {
+        indent: "+1"
+    }], // outdent/indent
+    [{
+        color: []
+    }, {
+        background: []
+    }], // dropdown with defaults from theme
+    ["link", "image", "video"], ["clean"], ["html"] // remove formatting button
+    ];
 
     created() {
         const _this = this;
         _this.SetEditorOption();
+    }
+
+    mounted() {
+        const _this = this;
+        const htmlButton = _this.$el.querySelector('.ql-html');
+        if (htmlButton != null) {
+            htmlButton.addEventListener('click', function () {
+                var htmlEditor = _this.$el.querySelector('.ql-html-editor');
+                if (htmlEditor) {
+                    const qlEditor = _this.$el.querySelector(".ql-editor");
+                    if (qlEditor) {
+                        let qlHTMLEditor = $('.ql-html-editor').val();
+                        if (qlHTMLEditor) {
+                            let qlChange = qlHTMLEditor.toString();
+                            qlHTMLEditor = qlChange.replace(/\n/g, "");
+                            qlEditor.innerHTML = qlHTMLEditor;
+                        }
+                        const qlContainerEditor = _this.$el.querySelector(".ql-container");
+                        if (qlContainerEditor) {
+                            qlContainerEditor.removeChild(htmlEditor);
+                        }
+                    }
+                } else {
+                    htmlEditor = document.createElement("textarea");
+                    htmlEditor.className = 'ql-editor ql-html-editor';
+                    const qlEditor = _this.$el.querySelector(".ql-editor");
+                    if (qlEditor) {
+                        const qlHTMLEditor = qlEditor.innerHTML;
+                        htmlEditor.innerHTML = qlHTMLEditor.replace(/\n\n/g, "\n");
+                        const qlContainerEditor = _this.$el.querySelector(".ql-container");
+                        if (qlContainerEditor) {
+                            qlContainerEditor.appendChild(htmlEditor);
+                        }
+                    }
+                };
+            })
+        };
+
     }
 
     SetEditorOption() {
@@ -98,4 +168,5 @@ export default class StaticPageItem extends Vue {
             _this.PageContent = _this.ListItem.PageContent;
         }
     }
+
 }

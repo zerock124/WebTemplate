@@ -38,7 +38,8 @@ namespace WebTemplateDB.Service
                 Remark = model.Remark,
                 Status = model.Status,
                 CreateTime = DateTime.Now,
-                CreateUser = model.CreateUser
+                CreateUser = model.CreateUser,
+                LabelTag = model.LabelTag
             };
 
             LatestNewsViewModel LatestNews = new LatestNewsViewModel
@@ -51,7 +52,8 @@ namespace WebTemplateDB.Service
                 Remark = model.Remark,
                 Status = model.Status,
                 CreateTime = DateTime.Now,
-                CreateUser = model.CreateUser
+                CreateUser = model.CreateUser,
+                LabelTag = model.LabelTag
             };
 
             try
@@ -90,7 +92,8 @@ namespace WebTemplateDB.Service
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
                             UpdateTime = a.UpdateTime,
-                            UpdateUser = a.UpdateUser
+                            UpdateUser = a.UpdateUser,
+                            LabelTag = a.LabelTag
                         };
 
             pageData.MaxDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
@@ -194,7 +197,8 @@ namespace WebTemplateDB.Service
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
                             UpdateTime = a.UpdateTime,
-                            UpdateUser = a.UpdateUser
+                            UpdateUser = a.UpdateUser,
+                            LabelTag = a.LabelTag
                         };
             if (query.Any())
             {
@@ -214,6 +218,7 @@ namespace WebTemplateDB.Service
                 if (query.Any())
                 {
                     LatestNews latestNews = query.FirstOrDefault();
+                    latestNews.ImageName = model.ImageName;
                     latestNews.LatestNewsEnum = model.LatestNewsEnum;
                     latestNews.StartDateTime = model.StartDateTime;
                     latestNews.LatestNewsTitle = model.LatestNewsTitle;
@@ -222,6 +227,7 @@ namespace WebTemplateDB.Service
                     latestNews.Status = model.Status;
                     latestNews.UpdateTime = DateTime.Now;
                     latestNews.UpdateUser = model.UpdateUser;
+                    latestNews.LabelTag = model.LabelTag;
 
                     _latestnews.Update(latestNews);
 
@@ -280,7 +286,8 @@ namespace WebTemplateDB.Service
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
                             UpdateTime = a.UpdateTime,
-                            UpdateUser = a.UpdateUser
+                            UpdateUser = a.UpdateUser,
+                            LabelTag = a.LabelTag
                         };
 
             if (query.Any())

@@ -4,11 +4,15 @@ import { UrlPathEnum } from '../../Share/Enums';
 import service from '../service'
 import moment = require('moment');
 import VueEditor from 'vue2-editor'
+import InputTag from 'vue-input-tag';
 
 Vue.use(VueEditor);
 
 @Component({
-    template: '#LatestNewsEditManagement'
+    template: '#LatestNewsEditManagement',
+    components: {
+        'input-tag': InputTag
+    }
 })
 
 export default class LatestNewsEditManagement extends Vue {
@@ -36,6 +40,9 @@ export default class LatestNewsEditManagement extends Vue {
     LatestNewsId: number = 0;
 
     DefaultImage: string = '';
+
+    LimitNumber: number = 10;
+    tags: string[] = [];
 
     customToolbar = [
         ["bold", "italic", "underline"],
@@ -71,6 +78,9 @@ export default class LatestNewsEditManagement extends Vue {
                 _this.LatestNewsContent = res.Data.LatestNewsContent;
                 _this.Remark = res.Data.Remark;
                 _this.Status = res.Data.Status;
+                if (res.Data.LabelTag) {
+                    _this.tags = res.Data.LabelTag.split(',');
+                }
                 const photo = _this.ImageName;
                 const BasePath = window.BasePath; // _Layout.cshtml
                 _this.DefaultImage = BasePath + UrlPathEnum.LatestNewsPhoto + '?filename=' + photo;
@@ -107,6 +117,7 @@ export default class LatestNewsEditManagement extends Vue {
                 LatestNewsContent,
                 Status,
                 Remark,
+                tags
             } = this;
 
             const _formdata = new FormData();
@@ -116,9 +127,10 @@ export default class LatestNewsEditManagement extends Vue {
             _formdata.append('LatestNewsEnum', LatestNewsEnum.toString())
             _formdata.append('StartDateTime', StartDateTime)
             _formdata.append('LatestNewsTitle', LatestNewsTitle)
-            _formdata.append('LatestNewsContent', LatestNewsContent)
+            _formdata.append('LatestNewsContent', LatestNewsContent.toString())
             _formdata.append('Remark', Remark)
             _formdata.append('Status', JSON.stringify(Status))
+            _formdata.append('LabelTag', tags.toString())
 
             _this.EditFontHome(_formdata);
 

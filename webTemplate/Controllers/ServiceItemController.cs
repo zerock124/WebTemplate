@@ -39,6 +39,7 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="filesname"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task<FileResult> ServiceItemPhoto(string filename)
         {
             string path = Server.MapPath(_ServiceItemPath) + filename;
@@ -53,6 +54,7 @@ namespace webTemplate.Controllers
         /// 取得服務項目列表
         /// </summary>
         /// <returns></returns>
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetServiceItemList() 
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -82,6 +84,7 @@ namespace webTemplate.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateServiceItemList(List<ServiceItemViewModel> model) 
         {
             ResponseViewModel res = new ResponseViewModel();

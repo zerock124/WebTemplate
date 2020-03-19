@@ -35,4 +35,14 @@ export interface WebConfigViewModel {
     meta_url: string;
     /**meta_image */
     meta_image: string;
+    /**公司地址 */
+    CompanyAddress: string;
+    /**公司緯度 */
+    Lat: number;
+    /**公司經度 */
+    Lng: number;
+    /**統編 */
+    TaxIDNumber: string;
+    /**電話 */
+    Phone: string;
 }

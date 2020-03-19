@@ -55,7 +55,7 @@ class CaseService implements ICaseService {
     DeleteCaseItem(CaseId: number): JQuery.jqXHR<ResponseViewModel> {
         const setting: JQueryAjaxSettings = {
             url: `/Case/DeleteCaseItem?CaseId=${CaseId}`,
-            type: 'GET',
+            type: 'POST',
         }
         return AjaxReturn(setting);
     }

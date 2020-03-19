@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ViewModel.LatestNews
 {
@@ -32,6 +33,7 @@ namespace ViewModel.LatestNews
         /// <summary>
         /// 最新消息內文
         /// </summary>
+        [AllowHtml]
         public string LatestNewsContent { get; set; }
         /// <summary>
         /// 備註
@@ -61,6 +63,7 @@ namespace ViewModel.LatestNews
         /// 最新消息圖片檔案
         /// </summary>
         public HttpPostedFileBase PhotoFile { get; set; }
+        public string LabelTag { get; set; }
         /// <summary>
         /// 排序編號
         /// </summary>

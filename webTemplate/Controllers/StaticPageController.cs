@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ViewModel.StaticPage;
 using ViewModels.Share;
+using webTemplate.Utility;
 using WebTemplateDB.Interface;
 using WebTemplateDB.Service;
 
@@ -30,6 +31,7 @@ namespace webTemplate.Controllers
             return View();
         }
 
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetStaticPageList()
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -55,6 +57,7 @@ namespace webTemplate.Controllers
         }
 
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateStaticPage(StaticPageViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -90,6 +93,7 @@ namespace webTemplate.Controllers
         }
 
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditStaticPage(StaticPageViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();

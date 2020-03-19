@@ -28,17 +28,17 @@ namespace webTemplate.Controllers
             _fontHomeService = new FontHomeService();
             _backOperationService = new BackOperationService();
         }
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Edit()
         {
             return View();
@@ -49,6 +49,7 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="filesname"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task<FileResult> FontHomePhotos(string filename)
         {
             string path = Server.MapPath(_HomeImagePath) + filename;
@@ -61,6 +62,7 @@ namespace webTemplate.Controllers
         }
 
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetFontHomeList(SearchModel model, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel res = new ResWithPaginationViewModel();
@@ -72,6 +74,8 @@ namespace webTemplate.Controllers
                 res.Pagination = result.Pagination;
                 res.MinDateTime = result.MinDateTime;
                 res.MaxDateTime = result.MaxDateTime;
+                res.MinStartDate = result.MinStartDate;
+                res.MaxStartDate = result.MaxStartDate;
                 res.Success = true;
                 res.Message = "成功取得前台首頁管理清單";
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
@@ -94,6 +98,7 @@ namespace webTemplate.Controllers
         /// <param name="model"></param>
         /// <returns></returns>
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateFontHome(FontHomeViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -147,6 +152,7 @@ namespace webTemplate.Controllers
         /// <param name="FontHomeId"></param>
         /// <returns></returns>
         [HttpGet]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetEditFontHomeItem(int FontHomeId)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -172,6 +178,7 @@ namespace webTemplate.Controllers
         /// 變更前台圖片內容
         /// </summary>
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<ActionResult> EditFontHomeItem(FontHomeViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -216,7 +223,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteFontHome(int FontHomeId) 
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -236,7 +244,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
     }
 }

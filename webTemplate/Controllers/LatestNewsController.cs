@@ -36,12 +36,12 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Edit()
         {
             return View();
@@ -52,6 +52,7 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="filesname"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task<FileResult> LatestNewsPhoto(string filename)
         {
             string path = Server.MapPath(_LatestNewsImagePath) + filename;
@@ -68,8 +69,9 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [ValidateInput(false)]
+        //[ValidateInput(false)]
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateLatestNews(LatestNewsViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -105,7 +107,7 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res,JsonRequestBehavior.DenyGet);
         }
-
+        [HttpGet]
         public async Task<JsonResult> GetLatestNewsList(SearchModel model, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel res = new ResWithPaginationViewModel();
@@ -131,9 +133,9 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return Json(res, JsonRequestBehavior.DenyGet);
+            return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpGet]
         public async Task<JsonResult> GetEditLatestNewsItem(int LatestNewsId)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -155,8 +157,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
-        [ValidateInput(false)]
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditLatestNewsItem(LatestNewsViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -192,7 +194,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteLatestNews(int LatestNewsId)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -214,5 +217,6 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+
     }
 }

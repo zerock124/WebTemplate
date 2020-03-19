@@ -8,6 +8,7 @@ using ViewModel.Authority;
 using ViewModels.Share;
 using ViewModels.Verity;
 using webTemplate.Models;
+using webTemplate.Utility;
 using WebTemplateDB.Interface;
 using WebTemplateDB.Models;
 using WebTemplateDB.Repositories;
@@ -42,17 +43,17 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Edit()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
-
+        [HttpGet]
         public async Task<JsonResult> GetRoleOptions()
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -75,7 +76,9 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetAuthorityList(SearchModel searchModel, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel res = new ResWithPaginationViewModel();
@@ -101,7 +104,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        [HttpGet]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CheckAuthority(string Id)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -125,6 +129,7 @@ namespace webTemplate.Controllers
         }
 
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateUser(CreateUserViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -195,7 +200,8 @@ namespace webTemplate.Controllers
 
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        [HttpGet]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetEditAuthorityItem(string Id)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -220,6 +226,7 @@ namespace webTemplate.Controllers
         }
 
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditAuthorityItem(AuthorityViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -241,7 +248,9 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteAuthorityItem(string Id) 
         {
             ResponseViewModel res = new ResponseViewModel();

@@ -35,12 +35,12 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Create()
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Edit()
         {
             return View();
@@ -50,6 +50,7 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="filesname"></param>
         /// <returns></returns>
+        [AllowAnonymous]
         public async Task<FileResult> CasePhoto(string filename)
         {
             string path = Server.MapPath(_CasePath) + filename;
@@ -66,8 +67,9 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        [ValidateInput(false)]
+        //[ValidateInput(false)]
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateCase(CaseViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -104,7 +106,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res,JsonRequestBehavior.DenyGet);
         }
-
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetCaseList(SearchModel model, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel res = new ResWithPaginationViewModel();
@@ -131,7 +134,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        [HttpGet]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetEditCaseItem(int CaseId)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -154,8 +158,9 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-        [ValidateInput(false)]
+
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditCaseItem(CaseViewModel model)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -190,7 +195,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteCaseItem(int CaseId)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -210,7 +216,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
     }
 }

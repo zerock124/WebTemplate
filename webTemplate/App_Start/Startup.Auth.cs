@@ -44,7 +44,9 @@ namespace webTemplate
                     OnValidateIdentity = SecurityStampValidator.OnValidateIdentity<ApplicationUserManager, ApplicationUser>(
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
-                }
+                },
+                SlidingExpiration = false,
+                ExpireTimeSpan = TimeSpan.FromMinutes(30)
             });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
@@ -62,8 +64,8 @@ namespace webTemplate
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             { 
-              ClientId = "578804682234-4pklu69pkv9vj6qplr8s79mqthd1cg6k.apps.googleusercontent.com",
-              ClientSecret = "fNS4BSWR6JvY_q6zDcjA5x3S",
+              ClientId = "786376027558-gjnf5ma10cofl6ivpr8lbh8k0pe0i0pk.apps.googleusercontent.com",
+              ClientSecret = "2QL68UzzXDQs4-Lz-A_iG5Fg",
             });     
         }
 

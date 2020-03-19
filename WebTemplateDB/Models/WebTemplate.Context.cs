@@ -36,7 +36,7 @@ namespace WebTemplateDB.Models
         public virtual DbSet<LatestNews> LatestNews { get; set; }
         public virtual DbSet<ServiceItem> ServiceItem { get; set; }
         public virtual DbSet<StaticPage> StaticPage { get; set; }
-        public virtual DbSet<WebConfig> WebConfig { get; set; }
         public virtual DbSet<AspNetUserLogins> AspNetUserLogins { get; set; }
+        public virtual DbSet<WebConfig> WebConfig { get; set; }
     }
 }

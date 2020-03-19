@@ -4,11 +4,15 @@ import { UrlPathEnum } from '../../Share/Enums';
 import moment = require('moment');
 import VueEditor from 'vue2-editor'
 import service from '../service'
+import InputTag from 'vue-input-tag';
 
 Vue.use(VueEditor);
 
 @Component({
-    template: '#LatestNewsCreateManagement'
+    template: '#LatestNewsCreateManagement',
+    components: {
+        'input-tag': InputTag
+    }
 })
 
 export default class LatestNewsCreateManagement extends Vue {
@@ -21,6 +25,9 @@ export default class LatestNewsCreateManagement extends Vue {
 
     ImageName: string = '';
     LatestNewsEnum: number = 0;
+
+    LimitNumber: number = 10;
+    tags: string[] = [];
 
     Options: object[] = [{
         value: 0,
@@ -77,7 +84,8 @@ export default class LatestNewsCreateManagement extends Vue {
             LatestNewsTitle,
             LatestNewsContent,
             Remark,
-            Status
+            Status,
+            tags
         } = this;
 
         const _formdata = new FormData();
@@ -88,6 +96,7 @@ export default class LatestNewsCreateManagement extends Vue {
         _formdata.append('LatestNewsContent', LatestNewsContent)
         _formdata.append('Remark', Remark)
         _formdata.append('Status', JSON.stringify(Status))
+        _formdata.append('LabelTag', tags.toString())
 
         _this.CreateFontHome(_formdata);
 

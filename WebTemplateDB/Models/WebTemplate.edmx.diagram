@@ -16,8 +16,8 @@
         <EntityTypeShape EntityType="Web_testDbModel.LatestNews" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Web_testDbModel.ServiceItem" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Web_testDbModel.StaticPage" Width="1.5" PointX="6.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Web_testDbModel.WebConfig" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Web_testDbModel.AspNetUserLogins" Width="1.5" PointX="3.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Web_testDbModel.WebConfig" Width="1.5" PointX="9.375" PointY="8.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

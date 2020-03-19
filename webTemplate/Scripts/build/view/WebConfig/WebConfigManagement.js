@@ -36,6 +36,9 @@ define(["require", "exports", "vue-property-decorator", "./service"], function (
             var _this = this;
             _this.GetWebConfig();
         };
+        WebConfigManagement.prototype.updated = function () {
+            this.setAutocomplete('input-address');
+        };
         WebConfigManagement.prototype.GetWebConfig = function () {
             var _this = this;
             service_1.default.GetWebConfig(1).then(function (res) {
@@ -77,6 +80,60 @@ define(["require", "exports", "vue-property-decorator", "./service"], function (
         WebConfigManagement.prototype.CloseModel = function () {
             var _this = this;
             _this.$bvModal.hide("WebConfigModal");
+        };
+        WebConfigManagement.prototype.setAutocomplete = function (id) {
+            var _this_1 = this;
+            var input = document.getElementById(id);
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            enableEnterKey(input);
+            function enableEnterKey(input) {
+                var _addEventListener = input.addEventListener;
+                var addEventListenerWrapper = function (type, listener) {
+                    if (type === "keydown") {
+                        var _listener_1 = listener;
+                        listener = function (event) {
+                            var suggestionSelected = document.getElementsByClassName('pac-item-selected').length;
+                            if (event.key === 'Enter' && !suggestionSelected) {
+                                var e = new $.Event("keydown", { key: "ArrowDown", code: "ArrowDown", keyCode: 40 });
+                                _listener_1.apply(input, [e]);
+                            }
+                            _listener_1.apply(input, [event]);
+                        };
+                    }
+                    _addEventListener.apply(input, [type, listener]);
+                };
+                input.addEventListener = addEventListenerWrapper;
+            }
+            autocomplete.setFields(['address_components', 'geometry', 'icon', 'name', 'formatted_address']);
+            autocomplete.setComponentRestrictions({ country: "tw" });
+            autocomplete.addListener('place_changed', function () {
+                _this_1.place_changed(autocomplete.getPlace());
+            });
+        };
+        WebConfigManagement.prototype.place_changed = function (place) {
+            console.log(place);
+            if (!place.geometry) {
+                this.$bvToast.toast('「' + place.name + '」並不再範圍內', {
+                    title: '地點錯誤',
+                    variant: 'danger',
+                });
+                return;
+            }
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[6] && place.address_components[6].short_name || ''),
+                    (place.address_components[4] && place.address_components[4].short_name || ''),
+                    (place.address_components[3] && place.address_components[3].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                ].join(' ');
+            }
+            if (this.WebConfigItem && place.formatted_address) {
+                this.WebConfigItem.CompanyAddress = place.formatted_address;
+                this.WebConfigItem.Lat = place.geometry.location.lat();
+                this.WebConfigItem.Lng = place.geometry.location.lng();
+            }
         };
         WebConfigManagement = __decorate([
             vue_property_decorator_1.Component({

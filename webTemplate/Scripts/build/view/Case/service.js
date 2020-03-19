@@ -56,7 +56,7 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
         CaseService.prototype.DeleteCaseItem = function (CaseId) {
             var setting = {
                 url: "/Case/DeleteCaseItem?CaseId=" + CaseId,
-                type: 'GET',
+                type: 'POST',
             };
             return PublicFunction_1.AjaxReturn(setting);
         };

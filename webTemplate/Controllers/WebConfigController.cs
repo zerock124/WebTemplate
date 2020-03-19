@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ViewModel.WebConfig;
 using ViewModels.Share;
+using webTemplate.Utility;
 using WebTemplateDB.Interface;
 using WebTemplateDB.Models;
 using WebTemplateDB.Service;
@@ -29,6 +30,7 @@ namespace webTemplate.Controllers
             return View();
         }
 
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetWebConfig(int Id) 
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -50,7 +52,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditWebConfig(WebConfigViewModel model) 
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -69,7 +72,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
     }
 }

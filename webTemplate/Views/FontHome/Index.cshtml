@@ -117,13 +117,12 @@
                                         <th class="text-nowrap">操作</th>
                                     </tr>
                                 </thead>
+
                                 <tbody v-for="(Item, index) in ListItem">
                                     <tr>
                                         <td>{{Item.Number }}</td>
                                         <td>
-                                            <a :href="Item.ImgUrl">
-                                                <b-img :src="Item.ImgUrl" alt="Alternate Text" style="height:100px" />
-                                            </a>
+                                            <img :src="Item.ImgUrl" alt="Alternate Text" style="height:100px;cursor:pointer" v-on:click="showImg(index)" />
                                         </td>
                                         <td>
                                             {{Item.ImageName}}
@@ -166,7 +165,8 @@
                             <b-pagination class="pagination pagination-sm m-0 float-right"
                                           v-model="CurrentPage"
                                           :total-rows="TotalCounts"
-                                          :per-page="PerPage"></b-pagination>
+                                          :per-page="PerPage">
+                            </b-pagination>
                         </div>
                     </div>
                     <!-- /.card -->
@@ -174,6 +174,12 @@
                 </div>
             </div>
         </div>
+
+        <vue-easy-lightbox :visible="visible"
+                           :imgs="imgs"
+                           :index="index"
+                           v-on:hide="handleHide">
+        </vue-easy-lightbox>
     </div>
 </template>
 

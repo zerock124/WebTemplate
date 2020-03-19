@@ -75,6 +75,7 @@
     <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
     <Property Name="CaseUrl" Type="nvarchar(max)" />
     <Property Name="CaseEnum" Type="int" Nullable="false" />
+    <Property Name="LabelTag" Type="nvarchar(max)" />
     <Property Name="CaseName" Type="nvarchar" MaxLength="50" />
     <Property Name="CaseContent" Type="nvarchar(max)" />
     <Property Name="Status" Type="bit" Nullable="false" />
@@ -82,7 +83,6 @@
     <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" />
     <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
-    <Property Name="LabelTag" Type="nvarchar(max)" />
   </EntityType>
   <EntityType Name="Contact">
     <Key>
@@ -136,6 +136,7 @@
     <Property Name="CreateUser" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="UpdateTime" Type="datetime" />
     <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+    <Property Name="LabelTag" Type="nvarchar" MaxLength="250" />
   </EntityType>
   <EntityType Name="ServiceItem">
     <Key>
@@ -176,6 +177,11 @@
     <Property Name="meta_description" Type="nvarchar(max)" />
     <Property Name="meta_url" Type="nvarchar(max)" />
     <Property Name="meta_image" Type="nvarchar(max)" />
+    <Property Name="CompanyAddress" Type="nvarchar" MaxLength="250" />
+    <Property Name="Lat" Type="float" />
+    <Property Name="Lng" Type="float" />
+    <Property Name="TaxIDNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityContainer Name="Web_testDbModelStoreContainer">
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />

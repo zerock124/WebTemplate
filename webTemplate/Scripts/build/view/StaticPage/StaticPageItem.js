@@ -35,6 +35,8 @@ define(["require", "exports", "vue-property-decorator", "./service", "vue2-edito
     quill_image_resize_module_1 = __importDefault(quill_image_resize_module_1);
     vue2_editor_1.Quill.register('modules/imageResize', quill_image_resize_module_1.default);
     vue_property_decorator_1.Vue.use(vue2_editor_1.default);
+    var icons = vue2_editor_1.Quill.import('ui/icons');
+    icons['html'] = '<i class="fas fa-code"></i>';
     var StaticPageItem = (function (_super) {
         __extends(StaticPageItem, _super);
         function StaticPageItem() {
@@ -42,11 +44,80 @@ define(["require", "exports", "vue-property-decorator", "./service", "vue2-edito
             _this_1.PageContent = '';
             _this_1.StaticPageItem = null;
             _this_1.editorOption = {};
+            _this_1.htmlFromEditor = true;
+            _this_1.customToolbar = [[{
+                        header: [false, 1, 2, 3, 4, 5, 6]
+                    }], ["bold", "italic", "underline", "strike"],
+                [{
+                        align: ""
+                    }, {
+                        align: "center"
+                    }, {
+                        align: "right"
+                    }, {
+                        align: "justify"
+                    }], ["blockquote"], [{
+                        list: "ordered"
+                    }, {
+                        list: "bullet"
+                    }, {
+                        list: "check"
+                    }], [{
+                        indent: "-1"
+                    }, {
+                        indent: "+1"
+                    }],
+                [{
+                        color: []
+                    }, {
+                        background: []
+                    }],
+                ["link", "image", "video"], ["clean"], ["html"]
+            ];
             return _this_1;
         }
         StaticPageItem.prototype.created = function () {
             var _this = this;
             _this.SetEditorOption();
+        };
+        StaticPageItem.prototype.mounted = function () {
+            var _this = this;
+            var htmlButton = _this.$el.querySelector('.ql-html');
+            if (htmlButton != null) {
+                htmlButton.addEventListener('click', function () {
+                    var htmlEditor = _this.$el.querySelector('.ql-html-editor');
+                    if (htmlEditor) {
+                        var qlEditor = _this.$el.querySelector(".ql-editor");
+                        if (qlEditor) {
+                            var qlHTMLEditor = $('.ql-html-editor').val();
+                            if (qlHTMLEditor) {
+                                var qlChange = qlHTMLEditor.toString();
+                                qlHTMLEditor = qlChange.replace(/\n/g, "");
+                                qlEditor.innerHTML = qlHTMLEditor;
+                            }
+                            var qlContainerEditor = _this.$el.querySelector(".ql-container");
+                            if (qlContainerEditor) {
+                                qlContainerEditor.removeChild(htmlEditor);
+                            }
+                        }
+                    }
+                    else {
+                        htmlEditor = document.createElement("textarea");
+                        htmlEditor.className = 'ql-editor ql-html-editor';
+                        var qlEditor = _this.$el.querySelector(".ql-editor");
+                        if (qlEditor) {
+                            var qlHTMLEditor = qlEditor.innerHTML;
+                            htmlEditor.innerHTML = qlHTMLEditor.replace(/\n\n/g, "\n");
+                            var qlContainerEditor = _this.$el.querySelector(".ql-container");
+                            if (qlContainerEditor) {
+                                qlContainerEditor.appendChild(htmlEditor);
+                            }
+                        }
+                    }
+                    ;
+                });
+            }
+            ;
         };
         StaticPageItem.prototype.SetEditorOption = function () {
             var _this = this;

@@ -128,6 +128,7 @@
     <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LabelTag" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="ServiceItem">
     <Key>
@@ -153,6 +154,29 @@
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
+  <EntityContainer Name="WebTemplateEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
+    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+    <EntitySet Name="BackOperation" EntityType="Self.BackOperation" />
+    <EntitySet Name="Case" EntityType="Self.Case" />
+    <EntitySet Name="Contact" EntityType="Self.Contact" />
+    <EntitySet Name="FontHome" EntityType="Self.FontHome" />
+    <EntitySet Name="LatestNews" EntityType="Self.LatestNews" />
+    <EntitySet Name="ServiceItem" EntityType="Self.ServiceItem" />
+    <EntitySet Name="StaticPage" EntityType="Self.StaticPage" />
+    <EntitySet Name="AspNetUserLogins" EntityType="Web_testDbModel.AspNetUserLogins" />
+    <EntitySet Name="WebConfig" EntityType="Web_testDbModel.WebConfig" />
+  </EntityContainer>
+  <EntityType Name="AspNetUserLogins">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
   <EntityType Name="WebConfig">
     <Key>
       <PropertyRef Name="Id" />
@@ -168,28 +192,10 @@
     <Property Name="meta_description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="meta_url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="meta_image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-  </EntityType>
-  <EntityContainer Name="WebTemplateEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
-    <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
-    <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" />
-    <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
-    <EntitySet Name="BackOperation" EntityType="Self.BackOperation" />
-    <EntitySet Name="Case" EntityType="Self.Case" />
-    <EntitySet Name="Contact" EntityType="Self.Contact" />
-    <EntitySet Name="FontHome" EntityType="Self.FontHome" />
-    <EntitySet Name="LatestNews" EntityType="Self.LatestNews" />
-    <EntitySet Name="ServiceItem" EntityType="Self.ServiceItem" />
-    <EntitySet Name="StaticPage" EntityType="Self.StaticPage" />
-    <EntitySet Name="WebConfig" EntityType="Self.WebConfig" />
-    <EntitySet Name="AspNetUserLogins" EntityType="Web_testDbModel.AspNetUserLogins" />
-  </EntityContainer>
-  <EntityType Name="AspNetUserLogins">
-    <Key>
-      <PropertyRef Name="UserId" />
-    </Key>
-    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyAddress" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Lat" Type="Double" />
+    <Property Name="Lng" Type="Double" />
+    <Property Name="TaxIDNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

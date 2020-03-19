@@ -34,5 +34,5 @@ class StaticPageService implements IStaticPageService {
 
 }
 
-const fonthome_service: IStaticPageService = new StaticPageService();
-export default fonthome_service;
+const static_service: IStaticPageService = new StaticPageService();
+export default static_service;

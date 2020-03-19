@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using ViewModel.BackOperationRecord;
 using ViewModels.Share;
+using webTemplate.Utility;
 using WebTemplateDB.Interface;
 using WebTemplateDB.Service;
 
@@ -26,8 +27,8 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetBackOperationList(SearchModel searchModel, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel res = new ResWithPaginationViewModel();

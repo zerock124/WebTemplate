@@ -29,7 +29,7 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
         };
         return StaticPageService;
     }());
-    var fonthome_service = new StaticPageService();
-    exports.default = fonthome_service;
+    var static_service = new StaticPageService();
+    exports.default = static_service;
 });
 //# sourceMappingURL=service.js.map

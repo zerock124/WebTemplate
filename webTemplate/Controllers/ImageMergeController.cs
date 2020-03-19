@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
+using webTemplate.Utility;
 
 namespace webTemplate.Controllers
 {
@@ -18,6 +19,7 @@ namespace webTemplate.Controllers
         }
 
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public ActionResult ImageMerge(HttpPostedFileBase UploadImage, string Text)
         {
             //-----------------------

@@ -22,8 +22,9 @@
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
 
-    <div class="wrapper">
+    @Html.AntiForgeryToken();
 
+    <div class="wrapper">
         @Html.Partial("_Header")
 
         @Html.Partial("_Sidebar")
@@ -44,6 +45,15 @@
     @Scripts.Render("~/Scripts/Requirejs")
 
     @RenderSection("Scripts", required: false)
+    <script>
+        $.ajaxPrefilter(function (options) {
+            if (!options.beforeSend && options.type === 'Post') {
+                options.beforeSend = function (xhr) {
+                    xhr.setRequestHeader("__RequestVerificationToken", $('[name=__RequestVerificationToken]').val());
+                }
+            }
+        });
+    </script>
     @*
         require全域設定(可在內頁重複設定)
 
@@ -69,7 +79,8 @@
                 "vue2-editor": "@Url.Content("~/node_modules/vue2-editor/dist/vue2-editor.umd")",
                 "quill-image-resize-module": "@Url.Content("~/node_modules/quill-image-resize-module/image-resize.min")",
                 "vue-input-tag": "@Url.Content("~/node_modules/vue-input-tag/dist/vueInputTag.umd")",
-                //"moment": "@Url.Content("~/node_modules/moment/moment")"
+                "vue-image-lightbox": "@Url.Content("~/node_modules/vue-image-lightbox/dist/vue-image-lightbox.min")",
+                "vue-easy-lightbox":"@Url.Content("~/node_modules/vue-easy-lightbox/dist/vue-easy-lightbox.umd.min")"
             },
             packages: [
                 {
@@ -99,7 +110,8 @@
                 "quill": "@Url.Content("~/node_modules/quill/dist/quill.min")",
                 "quill-image-resize-module": "@Url.Content("~/node_modules/quill-image-resize-module/image-resize.min")",
                 "vue-input-tag": "@Url.Content("~/node_modules/vue-input-tag/dist/vueInputTag.umd")",
-                //"moment": "@Url.Content("~/node_modules/moment/moment")"
+                "vue-image-lightbox": "@Url.Content("~/node_modules/vue-image-lightbox/dist/vue-image-lightbox.min")",
+                "vue-easy-lightbox":"@Url.Content("~/node_modules/vue-easy-lightbox/dist/vue-easy-lightbox.umd.min")"
             },
             packages: [
                 {

@@ -38,8 +38,8 @@ namespace webTemplate.Utility
             var fullFilePath = Path.Combine(path, filename);
             HttpPostedFileBase fileBase = new ImageHttpPostedFileBase(
                 file, new Size(300, 300), 90, ImageResizeMode.ByWidth);
-            fileBase.SaveAs(fullFilePath);
-
+            //fileBase.SaveAs(fullFilePath);
+            file.SaveAs(fullFilePath);
             result.Success = true;
             result.Message += "儲存與壓縮圖片成功";
             result.FileName = filename;

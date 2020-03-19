@@ -18,9 +18,10 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
         LatestNewsService.prototype.GetLatestNewsList = function (SearchModel, sendPagination) {
             var setting = {
                 url: '/LatestNews/GetLatestNewsList',
-                type: 'POST',
+                type: 'GET',
                 data: __assign(__assign({}, SearchModel), sendPagination)
             };
+            console.log(setting.data);
             return PublicFunction_1.AjaxReturn(setting);
         };
         LatestNewsService.prototype.CreateLatestNews = function (model) {
@@ -29,6 +30,7 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
                 type: 'POST',
                 data: model
             };
+            console.log(setting.data);
             return PublicFunction_1.AjaxReturn(setting, "FormData");
         };
         LatestNewsService.prototype.GetEditLatestNewsItem = function (LatestNewsId) {

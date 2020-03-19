@@ -77,14 +77,14 @@
 </template>
 
 <template id="ServiceItemListItem">
-    <div class="col-auto col-sm-6 col-md-4 animated fadeInRightBig px-3">
+    <div class="col-auto col-sm-6 col-md-4 px-3">
 
         <div class="row mb-3 justify-content-center">
             <div v-if="!image">
-                <img :src="DefaultImage" alt="Alternate Text" class="animated fadeInRightBig" style="width:60px;height:60px" />
+                <img :src="DefaultImage" alt="Alternate Text" style="width:60px;height:60px" />
             </div>
             <div v-if="image">
-                <img :src="image" alt="Alternate Text" class="animated fadeInRightBig" style="width:60px;height:60px" />
+                <img :src="image" alt="Alternate Text" style="width:60px;height:60px" />
             </div>
         </div>
 

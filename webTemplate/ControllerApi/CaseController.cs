@@ -28,13 +28,13 @@ namespace webTemplate.ControllerApi
             _caseService = new CaseService();
         }
 
-        // GET: api/Case
-        public async Task<IHttpActionResult> Get()
+        // POST: api/Case
+        public async Task<IHttpActionResult> Post(APISearchModel model)
         {
             try
             {
                 List<CaseViewModel> data = new List<CaseViewModel>();
-                data = await _caseService.GetCaseList();
+                data = await _caseService.GetCaseList(model);
                 return new ResponseMessageResult(Request.CreateResponse(HttpStatusCode.OK, data));
             }
             catch (Exception ex)

@@ -102,15 +102,15 @@
                                         <th class="text-nowrap">狀態</th>
                                         <th class="text-nowrap">建立日期/更新日期</th>
                                         <th class="text-nowrap">操作</th>
-                                    </tr>   
-                                </thead>    
+                                    </tr>
+                                </thead>
                                 <tbody v-for="(Item, index) in ListItem">
-                                    <tr>    
+                                    <tr>
                                         <td>
                                             {{Item.Number}}
                                         </td>
                                         <td>
-                                            <b-img :src="Item.ImageName" alt="Alternate Text" style="height:100px" />
+                                            <b-img :src="Item.ImageName" alt="Alternate Text" style="height:100px;cursor:pointer" v-on:click="showImg(index)" />
                                         </td>
                                         <td>
                                             {{Item.CaseUrl}}
@@ -166,6 +166,11 @@
                 </div>
             </div>
         </div>
+        <vue-easy-lightbox :visible="visible"
+                           :imgs="imgs"
+                           :index="index"
+                           v-on:hide="handleHide">
+        </vue-easy-lightbox>
     </div>
 </template>
 

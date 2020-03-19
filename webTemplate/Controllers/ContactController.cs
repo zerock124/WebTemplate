@@ -11,6 +11,7 @@ using ViewModel.Contact;
 using WebTemplateDB.Interface;
 using WebTemplateDB.Service;
 using ViewModels.Verity;
+using webTemplate.Utility;
 
 namespace webTemplate.Controllers
 {
@@ -32,13 +33,14 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        [Authorize]
         public ActionResult Edit()
         {
             return View();
         }
 
         [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetContactList(SearchModel searchModel, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel res = new ResWithPaginationViewModel();
@@ -67,6 +69,7 @@ namespace webTemplate.Controllers
             return Json(res, JsonRequestBehavior.DenyGet);
         }
 
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetEditContactItem(int ContactId)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -88,7 +91,8 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditContactItem(ContactViewModel model) 
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -108,9 +112,10 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteContact(int ContactId)
         {
             ResponseViewModel res = new ResponseViewModel();
@@ -130,7 +135,7 @@ namespace webTemplate.Controllers
                 res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
             }
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
-            return Json(res, JsonRequestBehavior.AllowGet);
+            return Json(res, JsonRequestBehavior.DenyGet);
         }
     }
 }

@@ -96,6 +96,8 @@ namespace WebTemplateDB.Service
 
             pageData.MaxDateTime = query.OrderByDescending(x => x.CreateTime).FirstOrDefault().CreateTime;
             pageData.MinDateTime = query.OrderBy(x => x.CreateTime).FirstOrDefault().CreateTime;
+            pageData.MaxStartDate = query.OrderByDescending(x => x.StartDateTime).FirstOrDefault().StartDateTime;
+            pageData.MinStartDate = query.OrderBy(x => x.EndDateTime).FirstOrDefault().EndDateTime;
 
             if (model.StartDateTime != null)
             {

@@ -20,10 +20,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "./service", "moment", "../Share/Enums", "../Share/FilterFunction"], function (require, exports, vue_property_decorator_1, service_1, moment, Enums_1, FilterFunction_1) {
+define(["require", "exports", "vue-property-decorator", "./service", "moment", "../Share/Enums", "../Share/FilterFunction", "vue-easy-lightbox"], function (require, exports, vue_property_decorator_1, service_1, moment, Enums_1, FilterFunction_1, vue_easy_lightbox_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
+    vue_easy_lightbox_1 = __importDefault(vue_easy_lightbox_1);
+    vue_property_decorator_1.Vue.use(vue_easy_lightbox_1.default);
     var LatestNewsManagement = (function (_super) {
         __extends(LatestNewsManagement, _super);
         function LatestNewsManagement() {
@@ -54,10 +56,19 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 }, {
                     value: 2,
                     text: '備註'
-                }
-            ];
+                }];
+            _this_1.visible = false;
+            _this_1.index = 0;
+            _this_1.imgs = [];
             return _this_1;
         }
+        LatestNewsManagement.prototype.showImg = function (index) {
+            this.index = index;
+            this.visible = true;
+        };
+        LatestNewsManagement.prototype.handleHide = function () {
+            this.visible = false;
+        };
         LatestNewsManagement.prototype.created = function () {
             var _this = this;
             _this.SetDefaultSearchModel();
@@ -145,6 +156,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 var length = _this.ListItem.length;
                 for (var i = 0; i < length; i++) {
                     _this.ListItem[i].ImageName = BasePath + Enums_1.UrlPathEnum.LatestNewsPhoto + '?filename=' + _this.ListItem[i].ImageName;
+                    _this.imgs.push(_this.ListItem[i].ImageName);
                 }
             }
         };

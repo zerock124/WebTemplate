@@ -20,10 +20,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "./service", "moment", "../Share/Enums", "../Share/FilterFunction"], function (require, exports, vue_property_decorator_1, service_1, moment, Enums_1, FilterFunction_1) {
+define(["require", "exports", "vue-property-decorator", "./service", "moment", "../Share/Enums", "../Share/FilterFunction", "vue-easy-lightbox"], function (require, exports, vue_property_decorator_1, service_1, moment, Enums_1, FilterFunction_1, vue_easy_lightbox_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
+    vue_easy_lightbox_1 = __importDefault(vue_easy_lightbox_1);
+    vue_property_decorator_1.Vue.use(vue_easy_lightbox_1.default);
     var FontHomeManagement = (function (_super) {
         __extends(FontHomeManagement, _super);
         function FontHomeManagement() {
@@ -54,8 +56,18 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                     value: 2,
                     text: '備註'
                 }];
+            _this_1.visible = false;
+            _this_1.index = 0;
+            _this_1.imgs = [];
             return _this_1;
         }
+        FontHomeManagement.prototype.showImg = function (index) {
+            this.index = index;
+            this.visible = true;
+        };
+        FontHomeManagement.prototype.handleHide = function () {
+            this.visible = false;
+        };
         FontHomeManagement.prototype.created = function () {
             var _this = this;
             _this.SetDefaultSearchModel();
@@ -101,6 +113,8 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
             _this.MinDate = _this.StartDateTime;
             _this.MaxDate = _this.EndDateTime;
+            _this.OnlineMinDate = moment(Data.MinStartDate).startOf('day').format("YYYY-MM-DD");
+            _this.OnlineMaxDate = moment(Data.MaxStartDate).endOf('day').format("YYYY-MM-DD");
         };
         FontHomeManagement.prototype.SetSearchDate = function () {
             var _this = this;
@@ -155,6 +169,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 var length = _this.ListItem.length;
                 for (var i = 0; i < length; i++) {
                     _this.ListItem[i].ImgUrl = BasePath + Enums_1.UrlPathEnum.FontHomePhoto + '?filename=' + _this.ListItem[i].ImageName;
+                    _this.imgs.push(_this.ListItem[i].ImgUrl);
                 }
             }
         };
@@ -217,7 +232,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                         title: '前台首頁圖片',
                         variant: 'success',
                     });
-                    _this.SetSearchDate();
+                    _this.SetDefaultSearchModel();
                 }
             }).catch(function (err) {
                 console.log(err);

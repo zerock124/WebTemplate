@@ -32,9 +32,14 @@ namespace webTemplate.ControllerApi
         {
             try
             {
-                var url = HttpContext.Current.Request.Url.AbsoluteUri + "/ResponseMessage";
-                var result = await _contactService.CreateContact(model, url);
-                return new ResponseMessageResult(Request.CreateResponse(HttpStatusCode.OK, result));
+                if (ModelState.IsValid)
+                {
+                    var url = HttpContext.Current.Request.Url.AbsoluteUri + "/ResponseMessage";
+                    var result = await _contactService.CreateContact(model, url);
+                    return new ResponseMessageResult(Request.CreateResponse(HttpStatusCode.OK, result));
+                }
+                var IsValid = false;
+                return new ResponseMessageResult(Request.CreateResponse(HttpStatusCode.OK, IsValid));
             }
             catch (Exception ex)
             {
@@ -53,7 +58,7 @@ namespace webTemplate.ControllerApi
             var dl = dlvtime;
             var dn = donetime;
 
-            return await Task.Run(() => dstaddr) ;
+            return await Task.Run(() => dstaddr);
 
         }
     }

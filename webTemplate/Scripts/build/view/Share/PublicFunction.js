@@ -4,9 +4,13 @@ define(["require", "exports"], function (require, exports) {
     function AjaxReturn(_setting, _datatype) {
         if (_datatype === void 0) { _datatype = 'JSON'; }
         var BasePath = window.BasePath;
+        var headers = {};
+        var token = $("input[name='__RequestVerificationToken']").val();
+        headers["__RequestVerificationToken"] = token;
         var defSetting = {
             contentType: "application/json; charset=utf-8",
-            cache: false
+            cache: false,
+            headers: headers
         };
         if (_datatype == 'JSON')
             _setting.data = JSON.stringify(_setting.data);
@@ -19,6 +23,14 @@ define(["require", "exports"], function (require, exports) {
         return jQuery.ajax(Object.assign(defSetting, _setting));
     }
     exports.AjaxReturn = AjaxReturn;
+    function AddAntiForgeryToken(data) {
+        if ($.isEmptyObject(data)) {
+            data = {};
+        }
+        data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+        return data;
+    }
+    exports.AddAntiForgeryToken = AddAntiForgeryToken;
     function RemoveUrlPathDoubleSlash(urlPath) {
         return urlPath.replace(/\/\//gm, "/");
     }

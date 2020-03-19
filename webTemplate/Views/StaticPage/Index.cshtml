@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "靜態頁管理";
 }
+@*<script src="~/node_modules/tidy-html5/tidy.js"></script>*@
 
 <div class="content-wrapper">
     <div class="content-header">
@@ -62,7 +63,11 @@
                 內容：
             </div>
             <div class="col ml-2" v-if="editorOption">
-                <vue-editor :editor-options="editorOption" v-model="PageContent"></vue-editor>
+                <vue-editor id="editor" 
+                            :editor-options="editorOption" 
+                            :editor-toolbar="customToolbar" 
+                            editor-updated="handleUpdatedContent" 
+                            v-model="PageContent"></vue-editor>
             </div>
         </div>
 
@@ -76,6 +81,23 @@
 
 </template>
 
+<style>
+    #editor {
+        height: 300px;
+    }
+
+    #editor .ql-html-editor {
+        position: absolute;
+        background: #fffff0;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        border: 0;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+</style>
 @section Scripts {
     <script>
         requirejs.config({

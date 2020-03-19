@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using webTemplate.Models;
+using webTemplate.Utility;
 using WebTemplateDB.Interface;
 using WebTemplateDB.Models;
 using WebTemplateDB.Repositories;
@@ -19,7 +20,6 @@ using WebTemplateDB.Service;
 
 namespace webTemplate.Controllers
 {
-    [Authorize]
     public class AccountController : BaseController
     {
         /*
@@ -39,7 +39,7 @@ namespace webTemplate.Controllers
         //---------------------LineAPI設定---------------------
         string response_type = "code";
         string client_id = "1653889097";
-        string redirect_uri = HttpUtility.UrlEncode("http://lab.sp88.com.tw/aspnet/project-release/Account/Linecallback");
+        string redirect_uri = HttpUtility.UrlEncode("http://www.sp88.com.tw/aspnet-v2/Account/Linecallback");
         string state = "zerock851024";
         string client_secret = "d985d130a7464782a66e0737ba0bc827";
         //----------------------------------------------------
@@ -76,13 +76,16 @@ namespace webTemplate.Controllers
         [AllowAnonymous]
         public ActionResult SignIn()
         {
-            return View("SignIn");
+            return View();
         }
 
+        [HttpPost]
         [AllowAnonymous]
-        public ActionResult Register()
+        [ValidateAntiForgeryToken]
+        public ActionResult PPOST(string TTTT)
         {
-            return View();
+            ViewBag.Message = "Your contact page.";
+            return View("SignIn");
         }
 
         [AllowAnonymous]
@@ -94,11 +97,12 @@ namespace webTemplate.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [HandleError(ExceptionType = typeof(HttpAntiForgeryException), View = "/NotFound.html")]
         public async Task<ActionResult> SignIn(LoginViewModel model)
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("SignIn");
             }
 
             try
@@ -140,14 +144,15 @@ namespace webTemplate.Controllers
                     case SignInStatus.Failure:
                     default:
                         ModelState.AddModelError("", "登入嘗試失試。");
-                        return View(model);
+                        return View("Login"); ;
                 }
             }
             catch (Exception e)
             {
                 _logger.Error(e, "Account Login Exception:" + e.ToString());
                 ModelState.AddModelError("", "登入失敗,請洽系統人員。");
-                return View(model);
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                throw;
             }
         }
 
@@ -220,6 +225,7 @@ namespace webTemplate.Controllers
 
         // GET: /Account/SendCode
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await SignInManager.GetVerifiedUserIdAsync();
@@ -244,7 +250,7 @@ namespace webTemplate.Controllers
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
             if (loginInfo == null)
             {
-                return RedirectToAction("SignIn");
+                return RedirectToAction("Login");
             }
 
             // 若使用者已經有登入資料，請使用此外部登入提供者登入使用者
@@ -355,15 +361,24 @@ namespace webTemplate.Controllers
         /// <returns></returns>
         #region LineLogin
         [AllowAnonymous]
+        [ValidateAntiForgeryToken]
         public ActionResult LineLoginDirect()
         {
-            string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile",
-                response_type,
-                client_id,
-                redirect_uri,
-                state
-                );
-            return Redirect(LineLoginUrl);
+            try
+            {
+                string LineLoginUrl = string.Format("https://access.line.me/oauth2/v2.1/authorize?response_type={0}&client_id={1}&redirect_uri={2}&state={3}&scope=openid%20profile",
+                    response_type,
+                    client_id,
+                    redirect_uri,
+                    state
+                    );
+                return Redirect(LineLoginUrl);
+            }
+            catch (Exception ex)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+                throw;
+            }
         }
         /// <summary>
         /// LineLogincallback
@@ -388,9 +403,9 @@ namespace webTemplate.Controllers
                     string ApiUrl_Token = "https://api.line.me/oauth2/v2.1/token";
                     nvc.Add("grant_type", "authorization_code");
                     nvc.Add("code", code);
-                    nvc.Add("redirect_uri", "http://lab.sp88.com.tw/aspnet/project-release/Account/Linecallback");
-                    nvc.Add("client_id", "1653889097");
-                    nvc.Add("client_secret", "d985d130a7464782a66e0737ba0bc827");
+                    nvc.Add("redirect_uri", redirect_uri);
+                    nvc.Add("client_id", client_id);
+                    nvc.Add("client_secret", client_secret);
                     string JsonStr = Encoding.UTF8.GetString(wc.UploadValues(ApiUrl_Token, "POST", nvc));
                     LineLoginToken ToKenObj = JsonConvert.DeserializeObject<LineLoginToken>(JsonStr);
                     wc.Headers.Clear();
@@ -428,6 +443,7 @@ namespace webTemplate.Controllers
                 catch (Exception ex)
                 {
                     string msg = ex.Message;
+                    return new HttpStatusCodeResult(HttpStatusCode.NotFound);
                     throw;
                 }
             }
@@ -441,7 +457,6 @@ namespace webTemplate.Controllers
         /// <returns></returns>
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> LineLoginConfirmation(ExternalLoginConfirmationViewModel model)
         {
             var FindUser = _aspnetUser.FindBy(x => x.Id == model.Userid);

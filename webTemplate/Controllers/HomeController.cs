@@ -13,7 +13,6 @@ using WebTemplateDB.Models;
 
 namespace webTemplate.Controllers
 {
-    [Authorize]
     public class HomeController : BaseController
     {
         protected IGenericRepository<WebConfig> _webconfing;
@@ -34,12 +33,12 @@ namespace webTemplate.Controllers
             public string token_type { get; set; }
             public string expires_in { get; set; }
         }
-
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
-
+        [HttpGet]
         public async Task<JsonResult> GetHomeDate()
         {
             ResponseViewModel res = new ResponseViewModel();

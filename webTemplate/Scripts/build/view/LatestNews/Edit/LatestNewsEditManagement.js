@@ -20,11 +20,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service", "moment", "vue2-editor"], function (require, exports, vue_property_decorator_1, Enums_1, service_1, moment, vue2_editor_1) {
+define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "../service", "moment", "vue2-editor", "vue-input-tag"], function (require, exports, vue_property_decorator_1, Enums_1, service_1, moment, vue2_editor_1, vue_input_tag_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
     vue2_editor_1 = __importDefault(vue2_editor_1);
+    vue_input_tag_1 = __importDefault(vue_input_tag_1);
     vue_property_decorator_1.Vue.use(vue2_editor_1.default);
     var LatestNewsEditManagement = (function (_super) {
         __extends(LatestNewsEditManagement, _super);
@@ -47,6 +48,8 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                 }];
             _this_1.LatestNewsId = 0;
             _this_1.DefaultImage = '';
+            _this_1.LimitNumber = 10;
+            _this_1.tags = [];
             _this_1.customToolbar = [
                 ["bold", "italic", "underline"],
                 [{ list: "ordered" },
@@ -79,6 +82,9 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                     _this.LatestNewsContent = res.Data.LatestNewsContent;
                     _this.Remark = res.Data.Remark;
                     _this.Status = res.Data.Status;
+                    if (res.Data.LabelTag) {
+                        _this.tags = res.Data.LabelTag.split(',');
+                    }
                     var photo = _this.ImageName;
                     var BasePath = window.BasePath;
                     _this.DefaultImage = BasePath + Enums_1.UrlPathEnum.LatestNewsPhoto + '?filename=' + photo;
@@ -104,7 +110,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
             _this.$bvModal.show('LatestNewsModal');
             _this.SaveForm = 'Loading';
             if (_this.LatestNewsItem) {
-                var _a = this, LatestNewsId = _a.LatestNewsId, PhotoFile = _a.PhotoFile, ImageName = _a.ImageName, LatestNewsEnum = _a.LatestNewsEnum, StartDateTime = _a.StartDateTime, LatestNewsTitle = _a.LatestNewsTitle, LatestNewsContent = _a.LatestNewsContent, Status = _a.Status, Remark = _a.Remark;
+                var _a = this, LatestNewsId = _a.LatestNewsId, PhotoFile = _a.PhotoFile, ImageName = _a.ImageName, LatestNewsEnum = _a.LatestNewsEnum, StartDateTime = _a.StartDateTime, LatestNewsTitle = _a.LatestNewsTitle, LatestNewsContent = _a.LatestNewsContent, Status = _a.Status, Remark = _a.Remark, tags = _a.tags;
                 var _formdata = new FormData();
                 _formdata.append('LatestNewsId', LatestNewsId.toString());
                 _formdata.append('PhotoFile', PhotoFile ? PhotoFile : '');
@@ -112,9 +118,10 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                 _formdata.append('LatestNewsEnum', LatestNewsEnum.toString());
                 _formdata.append('StartDateTime', StartDateTime);
                 _formdata.append('LatestNewsTitle', LatestNewsTitle);
-                _formdata.append('LatestNewsContent', LatestNewsContent);
+                _formdata.append('LatestNewsContent', LatestNewsContent.toString());
                 _formdata.append('Remark', Remark);
                 _formdata.append('Status', JSON.stringify(Status));
+                _formdata.append('LabelTag', tags.toString());
                 _this.EditFontHome(_formdata);
             }
         };
@@ -145,7 +152,10 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
         };
         LatestNewsEditManagement = __decorate([
             vue_property_decorator_1.Component({
-                template: '#LatestNewsEditManagement'
+                template: '#LatestNewsEditManagement',
+                components: {
+                    'input-tag': vue_input_tag_1.default
+                }
             })
         ], LatestNewsEditManagement);
         return LatestNewsEditManagement;

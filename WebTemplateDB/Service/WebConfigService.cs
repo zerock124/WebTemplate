@@ -37,7 +37,12 @@ namespace WebTemplateDB.Service
                             meta_keyword = a.meta_keyword,
                             meta_description = a.meta_description,
                             meta_url = a.meta_url,
-                            meta_image = a.meta_image
+                            meta_image = a.meta_image,
+                            CompanyAddress = a.CompanyAddress,
+                            Lat = (float)a.Lat,
+                            Lng = (float)a.Lng,
+                            TaxIDNumber = a.TaxIDNumber,
+                            Phone = a.Phone
                         };
 
             if (query.Any())
@@ -69,6 +74,11 @@ namespace WebTemplateDB.Service
                     item.meta_description = model.meta_description;
                     item.meta_url = model.meta_url;
                     item.meta_image = model.meta_image;
+                    item.CompanyAddress = model.CompanyAddress;
+                    item.Lat = model.Lat;
+                    item.Lng = model.Lng;
+                    item.Phone = model.Phone;
+                    item.TaxIDNumber = model.TaxIDNumber;
 
                     _webconfig.Update(item);
                     result.Success = true;

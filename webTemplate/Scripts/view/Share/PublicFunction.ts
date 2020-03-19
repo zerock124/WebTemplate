@@ -5,9 +5,15 @@
  */
 export function AjaxReturn(_setting: JQueryAjaxSettings, _datatype: AjaxConvertDataType = 'JSON'): JQuery.jqXHR {
 	const BasePath = window.BasePath; // _Layout.cshtml
+
+	var headers = {};
+	var token = $("input[name='__RequestVerificationToken']").val();
+	headers["__RequestVerificationToken"] = token;
+
 	const defSetting: JQueryAjaxSettings = {
 		contentType: "application/json; charset=utf-8",
-		cache: false
+		cache: false,
+		headers: headers
 	}
 	if (_datatype == 'JSON')
 		_setting.data = JSON.stringify(_setting.data);
@@ -19,8 +25,17 @@ export function AjaxReturn(_setting: JQueryAjaxSettings, _datatype: AjaxConvertD
 	// 如果網址未包含主機位置 (代表使用相對路徑或當前路徑)，加上網站基底位置
 	if (!CheckURLHasOrigin(_setting.url))
 		_setting.url = RemoveUrlPathDoubleSlash(BasePath + _setting.url);
-
+	
 	return jQuery.ajax(Object.assign(defSetting, _setting));
+}
+
+export function AddAntiForgeryToken(data) {
+	if ($.isEmptyObject(data)) {
+		data = {};
+	}
+	//回傳防偽基元得值
+	data.__RequestVerificationToken = $('input[name=__RequestVerificationToken]').val();
+	return data;
 }
 
 /**

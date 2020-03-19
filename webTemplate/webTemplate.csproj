@@ -97,6 +97,9 @@
     <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Cors.5.2.7\lib\net45\System.Web.Cors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -105,6 +108,9 @@
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.Cors, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Cors.5.2.7\lib\net45\System.Web.Http.Cors.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
@@ -176,9 +182,11 @@
     <Compile Include="App_Start\IdnetityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="ControllerApi\BaseApiController.cs" />
     <Compile Include="ControllerApi\CaseController.cs" />
     <Compile Include="ControllerApi\ContactController.cs" />
     <Compile Include="ControllerApi\FontHomeController.cs" />
+    <Compile Include="ControllerApi\FooterController.cs" />
     <Compile Include="ControllerApi\LatestNewsController.cs" />
     <Compile Include="ControllerApi\ServiceItemController.cs" />
     <Compile Include="ControllerApi\StaticPageController.cs" />
@@ -188,6 +196,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CaseController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\FontHomeController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageMergeController.cs" />
@@ -209,6 +218,7 @@
     <Compile Include="Utility\ImageHandler.cs" />
     <Compile Include="Utility\MimeTypeMapUtils.cs" />
     <Compile Include="Utility\PathUtils.cs" />
+    <Compile Include="Utility\ValidateJsonAntiForgeryTokenAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\dist\css\adminlte.css" />
@@ -1375,16 +1385,25 @@
     <Content Include="Image\Case\case-8.jpg" />
     <Content Include="Image\Case\case-9.jpg" />
     <Content Include="Image\Case\NoImage.jpg" />
+    <Content Include="Image\FontHome\-1600x900.jpg" />
+    <Content Include="Image\FontHome\banner.jpg" />
     <Content Include="Image\FontHome\Dog.jpg" />
+    <Content Include="Image\FontHome\mbr-2-1600x900.jpg" />
     <Content Include="Image\FontHome\NoImage.jpg" />
     <Content Include="Image\FontHome\twitter.jpg" />
     <Content Include="Image\FontHome\老皮.jpg" />
     <Content Include="Image\LatestNews\file-1.jpeg" />
+    <Content Include="Image\LatestNews\lastestnew-1.jpg" />
+    <Content Include="Image\LatestNews\lastestnew-2.jpg" />
     <Content Include="Image\LatestNews\new-1.jpg" />
     <Content Include="Image\LatestNews\NoImage.jpg" />
     <Content Include="Image\ServiceItem\JaketheDog.png" />
+    <Content Include="Image\ServiceItem\kol網紅系統.png" />
+    <Content Include="Image\ServiceItem\line機器人.png" />
     <Content Include="Image\ServiceItem\NoImage.png" />
     <Content Include="Image\ServiceItem\RBO.png" />
+    <Content Include="Image\ServiceItem\官網建置.png" />
+    <Content Include="Image\ServiceItem\臉書機器人.png" />
     <Content Include="node_modules\animate.css\animate.css" />
     <Content Include="node_modules\animate.css\animate.min.css" />
     <Content Include="node_modules\animate.css\gulpfile.js" />
@@ -9147,6 +9166,20 @@
     <Content Include="node_modules\vue-class-component\lib\index.js" />
     <Content Include="node_modules\vue-class-component\lib\reflect.js" />
     <Content Include="node_modules\vue-class-component\lib\util.js" />
+    <Content Include="node_modules\vue-easy-lightbox\dist\vue-easy-lightbox.common.min.js" />
+    <Content Include="node_modules\vue-easy-lightbox\dist\vue-easy-lightbox.es5.common.min.js" />
+    <Content Include="node_modules\vue-easy-lightbox\dist\vue-easy-lightbox.es5.esm.min.js" />
+    <Content Include="node_modules\vue-easy-lightbox\dist\vue-easy-lightbox.es5.umd.min.js" />
+    <Content Include="node_modules\vue-easy-lightbox\dist\vue-easy-lightbox.esm.min.js" />
+    <Content Include="node_modules\vue-easy-lightbox\dist\vue-easy-lightbox.umd.min.js" />
+    <Content Include="node_modules\vue-easy-lightbox\src\assets\svg\iconfont.js" />
+    <Content Include="node_modules\vue-image-lightbox\dist\vue-image-lightbox.min.css" />
+    <Content Include="node_modules\vue-image-lightbox\dist\vue-image-lightbox.min.js" />
+    <Content Include="node_modules\vue-image-lightbox\src\components\style.css" />
+    <Content Include="node_modules\vue-image-lightbox\src\dummy.js" />
+    <Content Include="node_modules\vue-image-lightbox\src\index.html" />
+    <Content Include="node_modules\vue-image-lightbox\src\main.js" />
+    <Content Include="node_modules\vue-image-lightbox\src\siteloading.gif" />
     <Content Include="node_modules\vue-input-tag\.eslintrc.js" />
     <Content Include="node_modules\vue-input-tag\babel.config.js" />
     <Content Include="node_modules\vue-input-tag\dist\demo.html" />
@@ -12376,6 +12409,39 @@
     <Content Include="node_modules\vue-input-tag\README.md" />
     <Content Include="node_modules\vue-input-tag\src\App.vue" />
     <Content Include="node_modules\vue-input-tag\src\components\InputTag.vue" />
+    <Content Include="node_modules\vue-image-lightbox\dist\vetur\attributes.json" />
+    <Content Include="node_modules\vue-image-lightbox\dist\vetur\tags.json" />
+    <Content Include="node_modules\vue-image-lightbox\dist\vue-image-lightbox.min.js.LICENSE" />
+    <Content Include="node_modules\vue-image-lightbox\dist\vue-image-lightbox.min.js.map" />
+    <Content Include="node_modules\vue-image-lightbox\package.json" />
+    <Content Include="node_modules\vue-image-lightbox\README.md" />
+    <Content Include="node_modules\vue-image-lightbox\src\App.vue" />
+    <Content Include="node_modules\vue-image-lightbox\src\components\CloseIcon.vue" />
+    <Content Include="node_modules\vue-image-lightbox\src\components\LeftArrowIcon.vue" />
+    <Content Include="node_modules\vue-image-lightbox\src\components\LightBox.vue" />
+    <Content Include="node_modules\vue-image-lightbox\src\components\RightArrowIcon.vue" />
+    <Content Include="node_modules\vue-image-lightbox\src\components\VideoIcon.vue" />
+    <Content Include="node_modules\vue-image-lightbox\src\vetur\attributes.json" />
+    <Content Include="node_modules\vue-image-lightbox\src\vetur\tags.json" />
+    <Content Include="node_modules\vue-easy-lightbox\.prettierrc" />
+    <Content Include="node_modules\vue-easy-lightbox\CHANGELOG.md" />
+    <Content Include="node_modules\vue-easy-lightbox\LICENSE" />
+    <Content Include="node_modules\vue-easy-lightbox\package.json" />
+    <Content Include="node_modules\vue-easy-lightbox\README-CN.md" />
+    <Content Include="node_modules\vue-easy-lightbox\README.md" />
+    <Content Include="node_modules\vue-easy-lightbox\src\assets\styles\variables.scss" />
+    <Content Include="node_modules\vue-easy-lightbox\src\components\img-loading.vue" />
+    <Content Include="node_modules\vue-easy-lightbox\src\components\img-on-error.vue" />
+    <Content Include="node_modules\vue-easy-lightbox\src\components\img-title.vue" />
+    <Content Include="node_modules\vue-easy-lightbox\src\components\svg-icon.vue" />
+    <Content Include="node_modules\vue-easy-lightbox\src\components\toobar.vue" />
+    <Content Include="node_modules\vue-easy-lightbox\src\vue-easy-lightbox.vue" />
+    <Content Include="node_modules\vue-easy-lightbox\tsconfig.json" />
+    <Content Include="node_modules\vue-easy-lightbox\types\test\tsconfig.json" />
+    <Content Include="node_modules\vue-easy-lightbox\vetur\attributes.json" />
+    <Content Include="node_modules\vue-easy-lightbox\vetur\tags.json" />
+    <Content Include="NotFound.html" />
+    <Content Include="InternalServerError.html" />
     <None Include="Properties\PublishProfiles\Publish--localhost.pubxml" />
     <None Include="Properties\PublishProfiles\Publish-TPOS.pubxml" />
     <None Include="Scripts\jquery.validate\jquery.validate-vsdoc.js" />
@@ -12395,12 +12461,10 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\jquery\jquery-3.4.1.min.map" />
     <Content Include="Views\Home\MainMenu.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\SignIn.cshtml" />
     <Content Include="Views\Shared\_Aside.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
@@ -12428,6 +12492,8 @@
     <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Views\ImageMerge\Index.cshtml" />
     <Content Include="Views\Account\LineLoginConfirmation.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Error\InternalServerError.cshtml" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\bv-config.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\alert\index.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\badge\index.d.ts" />
@@ -12578,6 +12644,14 @@
     <TypeScriptCompile Include="node_modules\vue-class-component\lib\index.d.ts" />
     <TypeScriptCompile Include="node_modules\vue-class-component\lib\reflect.d.ts" />
     <TypeScriptCompile Include="node_modules\vue-class-component\lib\util.d.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\src\constant\index.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\src\index.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\src\types\index.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\src\types\shims-tsx.d.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\src\types\shims-vue.d.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\src\utils\index.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\types\index.d.ts" />
+    <TypeScriptCompile Include="node_modules\vue-easy-lightbox\types\test\test.ts" />
     <TypeScriptCompile Include="node_modules\vue-js-toggle-button\index.d.ts" />
     <TypeScriptCompile Include="node_modules\vue-property-decorator\lib\vue-property-decorator.d.ts" />
     <TypeScriptCompile Include="node_modules\vue-wysiwyg-2\lib\vue-wysiwyg-2.d.ts" />
@@ -12715,6 +12789,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
+      <UserProperties tsconfig_1json__JsonSchema="http://json.schemastore.org/avro-avsc" />
     </VisualStudio>
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

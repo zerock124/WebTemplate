@@ -6,12 +6,13 @@ class LatestNewsService implements ILatestNewsService {
     GetLatestNewsList(SearchModel: SearchModel, sendPagination: SendPaginationModel): JQuery.jqXHR<ResWithPaginationViewModel<LatestNewsViewModel[]>> {
         const setting: JQueryAjaxSettings = {
             url: '/LatestNews/GetLatestNewsList',
-            type: 'POST',
+            type: 'GET',
             data: {
                 ...SearchModel,
-                ...sendPagination
+                ...sendPagination,
             }
         }
+        console.log(setting.data);
         return AjaxReturn(setting);
     }
 
@@ -21,7 +22,7 @@ class LatestNewsService implements ILatestNewsService {
             type: 'POST',
             data: model
         };
-
+        console.log(setting.data);
         return AjaxReturn(setting, "FormData");
     }
 

@@ -4,6 +4,9 @@ import service from './service'
 import moment = require('moment')
 import { UrlPathEnum } from '../Share/Enums'
 import { dateToDateTimeString, dateToDateString } from "../Share/FilterFunction";
+import Lightbox from 'vue-easy-lightbox'
+
+Vue.use(Lightbox)
 
 @Component({
     template: '#FontHomeManagement',
@@ -46,6 +49,20 @@ export default class FontHomeManagement extends Vue {
         value: 2,
         text: '備註'
     }];
+
+    visible: boolean = false;
+    index: number = 0;
+
+    imgs: string[] = [];
+
+    showImg(index) {
+        this.index = index
+        this.visible = true
+    }
+
+    handleHide() {
+        this.visible = false
+    }
 
     created() {
         const _this = this;
@@ -99,6 +116,8 @@ export default class FontHomeManagement extends Vue {
         _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
         _this.MinDate = _this.StartDateTime;
         _this.MaxDate = _this.EndDateTime;
+        _this.OnlineMinDate = moment(Data.MinStartDate).startOf('day').format("YYYY-MM-DD");
+        _this.OnlineMaxDate = moment(Data.MaxStartDate).endOf('day').format("YYYY-MM-DD");
     }
 
     SetSearchDate() {
@@ -162,6 +181,7 @@ export default class FontHomeManagement extends Vue {
             var length = _this.ListItem.length;
             for (var i = 0; i < length; i++) {
                 _this.ListItem[i].ImgUrl = BasePath + UrlPathEnum.FontHomePhoto + '?filename=' + _this.ListItem[i].ImageName;
+                _this.imgs.push(_this.ListItem[i].ImgUrl);
             }
         }
     }
@@ -231,9 +251,9 @@ export default class FontHomeManagement extends Vue {
             if (res.Success) {
                 _this.$bvToast.toast('刪除前台首頁圖片成功', {
                     title: '前台首頁圖片',
-                    variant:'success',
+                    variant: 'success',
                 })
-                _this.SetSearchDate();
+                _this.SetDefaultSearchModel();
             }
         }).catch(err => {
             console.log(err);
@@ -243,4 +263,5 @@ export default class FontHomeManagement extends Vue {
             })
         })
     }
+
 }

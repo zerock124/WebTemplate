@@ -252,7 +252,7 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
         }
 
-        public async Task<List<CaseViewModel>> GetCaseList()
+        public async Task<List<CaseViewModel>> GetCaseList(APISearchModel model)
         {
             List<CaseViewModel> list = new List<CaseViewModel>();
 
@@ -272,6 +272,15 @@ namespace WebTemplateDB.Service
                             UpdateUser = a.UpdateUser
                         };
 
+            if (!string.IsNullOrEmpty(model.LabelTag))
+            {
+                query = query.Where(x => x.LabelTag.Trim().ToLower().Contains(model.LabelTag));
+            }
+            if (!string.IsNullOrEmpty(model.CaseEnum))
+            {
+                var Casenumber = Convert.ToInt32(model.CaseEnum);
+                query = query.Where(x => x.CaseEnum == Casenumber);
+            }
             if (query.Any())
             {
                 var data = query.ToList();

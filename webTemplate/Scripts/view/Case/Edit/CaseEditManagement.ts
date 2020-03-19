@@ -84,7 +84,7 @@ export default class CaseEditManagement extends Vue {
                 _this.CaseContent = res.Data.CaseContent;
                 _this.CaseEnum = res.Data.CaseEnum;
                 _this.Status = res.Data.Status;
-                if (res.Data.LabelTab) {
+                if (res.Data.LabelTag) {
                     _this.tags = res.Data.LabelTag.split(',');
                 }
                 const photo = _this.ImageName;

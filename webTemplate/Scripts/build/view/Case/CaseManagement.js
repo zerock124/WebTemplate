@@ -20,13 +20,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-define(["require", "exports", "vue-property-decorator", "./service", "moment", "../Share/Enums", "../Share/FilterFunction"], function (require, exports, vue_property_decorator_1, service_1, moment, Enums_1, FilterFunction_1) {
+define(["require", "exports", "vue-property-decorator", "./service", "moment", "../Share/Enums", "../Share/FilterFunction", "vue-easy-lightbox"], function (require, exports, vue_property_decorator_1, service_1, moment, Enums_1, FilterFunction_1, vue_easy_lightbox_1) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     service_1 = __importDefault(service_1);
-    var LatestNewsManagement = (function (_super) {
-        __extends(LatestNewsManagement, _super);
-        function LatestNewsManagement() {
+    vue_easy_lightbox_1 = __importDefault(vue_easy_lightbox_1);
+    vue_property_decorator_1.Vue.use(vue_easy_lightbox_1.default);
+    var CaseManagement = (function (_super) {
+        __extends(CaseManagement, _super);
+        function CaseManagement() {
             var _this_1 = _super !== null && _super.apply(this, arguments) || this;
             _this_1.ListItem = [];
             _this_1.StartDateTime = moment().startOf('day').format('YYYY-MM-DD');
@@ -58,13 +60,23 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                     value: null,
                     text: '全部',
                 }];
+            _this_1.visible = false;
+            _this_1.index = 0;
+            _this_1.imgs = [];
             return _this_1;
         }
-        LatestNewsManagement.prototype.created = function () {
+        CaseManagement.prototype.showImg = function (index) {
+            this.index = index;
+            this.visible = true;
+        };
+        CaseManagement.prototype.handleHide = function () {
+            this.visible = false;
+        };
+        CaseManagement.prototype.created = function () {
             var _this = this;
             _this.SetDefaultSearchModel();
         };
-        LatestNewsManagement.prototype.SetDefaultSearchModel = function () {
+        CaseManagement.prototype.SetDefaultSearchModel = function () {
             var _this = this;
             _this.searchmodel = {
                 Query: "",
@@ -74,7 +86,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             };
             _this.GetCaseList(_this.searchmodel);
         };
-        LatestNewsManagement.prototype.GetCaseList = function (searchmodel) {
+        CaseManagement.prototype.GetCaseList = function (searchmodel) {
             var _this = this;
             var sendPagination = {
                 PerPage: _this.Pagination.PerPage,
@@ -82,7 +94,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             };
             _this.DefaultCaseItem(searchmodel, sendPagination);
         };
-        LatestNewsManagement.prototype.SetSearchDate = function () {
+        CaseManagement.prototype.SetSearchDate = function () {
             var _this = this;
             var sendPagination = {
                 PerPage: _this.Pagination.PerPage,
@@ -97,7 +109,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
             console.log(_this.searchmodel);
             _this.GetCaseListItem(_this.searchmodel, sendPagination);
         };
-        LatestNewsManagement.prototype.DefaultCaseItem = function (searchmodel, sendPagination) {
+        CaseManagement.prototype.DefaultCaseItem = function (searchmodel, sendPagination) {
             var _this = this;
             service_1.default.GetCaseList(searchmodel, sendPagination).then(function (res) {
                 if (!res.Success) {
@@ -112,7 +124,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 console.log(err);
             });
         };
-        LatestNewsManagement.prototype.GetCaseListItem = function (searchmodel, sendPagination) {
+        CaseManagement.prototype.GetCaseListItem = function (searchmodel, sendPagination) {
             var _this = this;
             service_1.default.GetCaseList(searchmodel, sendPagination).then(function (res) {
                 if (!res.Success) {
@@ -126,31 +138,32 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 console.log(err);
             });
         };
-        LatestNewsManagement.prototype.LimitDate = function (Data) {
+        CaseManagement.prototype.LimitDate = function (Data) {
             var _this = this;
             _this.StartDateTime = moment(Data.MinDateTime).startOf('day').format("YYYY-MM-DD");
             _this.EndDateTime = moment(Data.MaxDateTime).endOf('day').format("YYYY-MM-DD");
             _this.MinDate = _this.StartDateTime;
             _this.MaxDate = _this.EndDateTime;
         };
-        LatestNewsManagement.prototype.GetImageUrl = function () {
+        CaseManagement.prototype.GetImageUrl = function () {
             var _this = this;
             if (_this.ListItem) {
                 var BasePath = window.BasePath;
                 var length = _this.ListItem.length;
                 for (var i = 0; i < length; i++) {
                     _this.ListItem[i].ImageName = BasePath + Enums_1.UrlPathEnum.CasePhoto + '?filename=' + _this.ListItem[i].ImageName;
+                    _this.imgs.push(_this.ListItem[i].ImageName);
                 }
             }
         };
-        LatestNewsManagement.prototype.OnRideRecordListChange = function () {
+        CaseManagement.prototype.OnRideRecordListChange = function () {
             var _this = this;
             var _TotalCounts = _this.Pagination ? _this.Pagination.TotalCounts : 0;
             var _TotalPage = _this.Pagination ? Math.ceil(_this.Pagination.TotalCounts / _this.Pagination.PerPage) : 0;
             _this.TotalCounts = _TotalCounts;
             _this.TotalPage = _TotalPage === 0 ? 1 : _TotalPage;
         };
-        LatestNewsManagement.prototype.OnPaginationChange = function () {
+        CaseManagement.prototype.OnPaginationChange = function () {
             var _this = this;
             if (_this.Pagination) {
                 _this.PerPage = _this.Pagination.PerPage;
@@ -159,13 +172,13 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 _this.TotalCounts = _this.Pagination.TotalCounts;
             }
         };
-        LatestNewsManagement.prototype.OnPerPageChange = function () {
+        CaseManagement.prototype.OnPerPageChange = function () {
             this.SetSendPagination();
         };
-        LatestNewsManagement.prototype.OnCurrentPageChange = function () {
+        CaseManagement.prototype.OnCurrentPageChange = function () {
             this.SetSendPagination();
         };
-        LatestNewsManagement.prototype.SetSendPagination = function () {
+        CaseManagement.prototype.SetSendPagination = function () {
             var _this = this;
             _this.Pagination.PerPage = _this.PerPage;
             _this.Pagination.CurrentPage = _this.CurrentPage;
@@ -181,13 +194,13 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                 _this.GetCaseList(_this.searchmodel);
             }
         };
-        LatestNewsManagement.prototype.GetEditCase = function (CaseId) {
+        CaseManagement.prototype.GetEditCase = function (CaseId) {
             var baseurl = window.BasePath;
             console.log(baseurl);
             var url = baseurl + 'Case/Edit?CaseId=' + CaseId;
             window.location.href = url;
         };
-        LatestNewsManagement.prototype.DeleteCaseItem = function (CaseId) {
+        CaseManagement.prototype.DeleteCaseItem = function (CaseId) {
             var _this = this;
             service_1.default.DeleteCaseItem(CaseId).then(function (res) {
                 if (!res.Success) {
@@ -214,20 +227,20 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
         };
         __decorate([
             vue_property_decorator_1.Watch('ListItem')
-        ], LatestNewsManagement.prototype, "GetImageUrl", null);
+        ], CaseManagement.prototype, "GetImageUrl", null);
         __decorate([
             vue_property_decorator_1.Watch('ListItem')
-        ], LatestNewsManagement.prototype, "OnRideRecordListChange", null);
+        ], CaseManagement.prototype, "OnRideRecordListChange", null);
         __decorate([
             vue_property_decorator_1.Watch('Pagination')
-        ], LatestNewsManagement.prototype, "OnPaginationChange", null);
+        ], CaseManagement.prototype, "OnPaginationChange", null);
         __decorate([
             vue_property_decorator_1.Watch('PerPage')
-        ], LatestNewsManagement.prototype, "OnPerPageChange", null);
+        ], CaseManagement.prototype, "OnPerPageChange", null);
         __decorate([
             vue_property_decorator_1.Watch('CurrentPage')
-        ], LatestNewsManagement.prototype, "OnCurrentPageChange", null);
-        LatestNewsManagement = __decorate([
+        ], CaseManagement.prototype, "OnCurrentPageChange", null);
+        CaseManagement = __decorate([
             vue_property_decorator_1.Component({
                 template: '#CaseManagement',
                 filters: {
@@ -235,9 +248,9 @@ define(["require", "exports", "vue-property-decorator", "./service", "moment", "
                     GetCaseEnum: FilterFunction_1.GetCaseEnum
                 }
             })
-        ], LatestNewsManagement);
-        return LatestNewsManagement;
+        ], CaseManagement);
+        return CaseManagement;
     }(vue_property_decorator_1.Vue));
-    exports.default = LatestNewsManagement;
+    exports.default = CaseManagement;
 });
 //# sourceMappingURL=CaseManagement.js.map

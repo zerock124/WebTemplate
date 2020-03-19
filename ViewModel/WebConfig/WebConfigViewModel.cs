@@ -52,6 +52,10 @@ namespace ViewModel.WebConfig
         /// meta_image
         /// </summary>
         public string meta_image { get; set; }
-
+        public string CompanyAddress { get; set; }
+        public float Lat { get; set; }
+        public float Lng { get; set; }
+        public string TaxIDNumber { get; set; }
+        public string Phone { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ViewModel.Case
 {
@@ -32,6 +33,7 @@ namespace ViewModel.Case
         /// <summary>
         /// 案例內容
         /// </summary>
+        [AllowHtml]
         public string CaseContent { get; set; }
         /// <summary>
         /// 案例狀態
@@ -83,5 +85,18 @@ namespace ViewModel.Case
         /// 搜尋字串
         /// </summary>
         public string Query { get; set; }
+    }
+
+
+    public class APISearchModel
+    {
+        /// <summary>
+        /// 搜尋類別
+        /// </summary>
+        public string CaseEnum { get; set; }
+        /// <summary>
+        /// Tag名稱
+        /// </summary>
+        public string LabelTag { get; set; }
     }
 }

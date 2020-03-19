@@ -88,7 +88,7 @@ define(["require", "exports", "vue-property-decorator", "../../Share/Enums", "..
                     _this.CaseContent = res.Data.CaseContent;
                     _this.CaseEnum = res.Data.CaseEnum;
                     _this.Status = res.Data.Status;
-                    if (res.Data.LabelTab) {
+                    if (res.Data.LabelTag) {
                         _this.tags = res.Data.LabelTag.split(',');
                     }
                     var photo = _this.ImageName;

@@ -16,6 +16,8 @@ using webTemplate.Models;
 using WebTemplateDB.Models;
 namespace webTemplate.Controllers
 {
+    [HandleError]
+    [Authorize]
     public class BaseController : Controller
     {
         protected WebTemplateEntities _db;

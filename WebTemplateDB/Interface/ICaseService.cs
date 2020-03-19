@@ -48,7 +48,7 @@ namespace WebTemplateDB.Interface
         /// 取得案例介紹列表
         /// </summary>
         /// <returns></returns>
-        Task<List<CaseViewModel>> GetCaseList();
+        Task<List<CaseViewModel>> GetCaseList(APISearchModel model);
 
         ///-------------------------------------------------------
 

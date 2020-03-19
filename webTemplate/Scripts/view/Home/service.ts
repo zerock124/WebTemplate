@@ -1,6 +1,8 @@
 ﻿import { IHomeService, HomeViewModel } from './model'
 import { AjaxReturn } from '../Share/PublicFunction';
 
+
+
 class HomeService implements IHomeService {
 
     GetHomeDate(): JQuery.jqXHR<ResWithPaginationViewModel<HomeViewModel>> {

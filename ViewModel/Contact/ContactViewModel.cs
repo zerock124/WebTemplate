@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ViewModel.Contact
 {
@@ -15,10 +16,12 @@ namespace ViewModel.Contact
         /// <summary>
         /// 公司名稱
         /// </summary>
+        [Required]
         public string CompanyName { get; set; }
         /// <summary>
         /// 聯絡人姓名
         /// </summary>
+        [Required]
         public string Name { get; set; }
         /// <summary>
         /// 性別
@@ -27,10 +30,13 @@ namespace ViewModel.Contact
         /// <summary>
         /// Email
         /// </summary>
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
         /// <summary>
         /// 連絡電話
         /// </summary>
+        [Required]
         public string ContactPhone { get; set; }
         /// <summary>
         /// 類型
@@ -55,6 +61,7 @@ namespace ViewModel.Contact
         /// <summary>
         /// 備註
         /// </summary>
+        [Required]
         public string Remark { get; set; }
         /// <summary>
         /// 新建時間
