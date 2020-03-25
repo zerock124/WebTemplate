@@ -20,7 +20,14 @@ export default class ServiceItemList extends Vue {
     created() {
         const _this = this;
         _this.GetServiceItemList();
+        
         serviceItem_event.$on('EmitServiceItem', _this.EmitServiceItem.bind(_this));
+        serviceItem_event.$on('GetServiceItemList', _this.GetServiceItemList);
+    }
+
+    beforeDestroy() {
+        serviceItem_event.$off('EmitServiceItem');
+        serviceItem_event.$off('GetServiceItemList');
     }
 
     CreateSpaceItem() {
@@ -34,7 +41,9 @@ export default class ServiceItemList extends Vue {
             CreateUser: '',
             UpdateTime: moment().toDate(),
             UpdateUser: '',
-            PhotoFile: null
+            PhotoFile: null,
+            IconName: '',
+            Mode: 'Images'
         }
         _this.ServiceItemList.push(spaceItem);
     }
@@ -63,6 +72,8 @@ export default class ServiceItemList extends Vue {
                     _this.ServiceItemList[i].PhotoFile = data.PhotoFile;
                     _this.ServiceItemList[i].ImageName = data.ImageName;
                     _this.ServiceItemList[i].ServiceItemName = data.ServiceItemName;
+                    _this.ServiceItemList[i].IconName = data.IconName;
+                    _this.ServiceItemList[i].Mode = data.Mode;
                 }
             }
         }
@@ -79,6 +90,9 @@ export default class ServiceItemList extends Vue {
                 _formdate.append('model[' + i + '].ServiceItemId', _this.ServiceItemList[i].ServiceItemId.toString());
                 _formdate.append('model[' + i + '].ServiceItemName', _this.ServiceItemList[i].ServiceItemName);
                 _formdate.append('model[' + i + '].ImageName', _this.ServiceItemList[i].ImageName);
+
+                _formdate.append('model[' + i + '].IconName', _this.ServiceItemList[i].IconName);
+                _formdate.append('model[' + i + '].Mode', _this.ServiceItemList[i].Mode);
 
                 photoFile = _this.ServiceItemList[i].PhotoFile;
                 _formdate.append('model[' + i + '].PhotoFile', photoFile ? photoFile : '');

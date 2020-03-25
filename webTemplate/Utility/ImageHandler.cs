@@ -36,8 +36,8 @@ namespace webTemplate.Utility
 
             /** 壓縮與儲存圖片 */
             var fullFilePath = Path.Combine(path, filename);
-            HttpPostedFileBase fileBase = new ImageHttpPostedFileBase(
-                file, new Size(300, 300), 90, ImageResizeMode.ByWidth);
+            //HttpPostedFileBase fileBase = new ImageHttpPostedFileBase(
+            //    file, new Size(300, 300), 90, ImageResizeMode.ByWidth);
             //fileBase.SaveAs(fullFilePath);
             file.SaveAs(fullFilePath);
             result.Success = true;

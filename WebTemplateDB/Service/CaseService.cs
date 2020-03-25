@@ -211,6 +211,7 @@ namespace WebTemplateDB.Service
                     caseitem.UpdateTime = DateTime.Now;
                     caseitem.UpdateUser = model.UpdateUser;
                     caseitem.LabelTag = model.LabelTag;
+                    caseitem.ImageName = model.ImageName;
 
                     _case.Update(caseitem);
                     result.Success = true;

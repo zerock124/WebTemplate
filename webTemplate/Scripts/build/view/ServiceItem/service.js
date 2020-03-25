@@ -19,6 +19,14 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
             };
             return PublicFunction_1.AjaxReturn(setting, 'FormData');
         };
+        ServiceItemService.prototype.DeleteServiceItem = function (model) {
+            var setting = {
+                url: '/ServiceItem/DeleteServiceItem',
+                type: 'POST',
+                data: model
+            };
+            return PublicFunction_1.AjaxReturn(setting);
+        };
         return ServiceItemService;
     }());
     var fonthome_service = new ServiceItemService();

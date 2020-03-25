@@ -1,4 +1,6 @@
-﻿export interface IServiceItemService {
+﻿import { AuthorityViewModel } from "../AuthorityManagement/model";
+
+export interface IServiceItemService {
 
     /**取得靜態頁內容 */
     GetServiceItemList(): JQuery.jqXHR<ResponseViewModel<ServiceItemViewModel[]>>
@@ -8,6 +10,13 @@
      * @param model
      */
     CreateServiceItemList(model: ServiceItemViewModel[]): JQuery.jqXHR<ResponseViewModel<ServiceItemViewModel[]>> 
+
+
+    /**
+     * 刪除服務項目
+     * @param model
+     */
+    DeleteServiceItem(model: ServiceItemViewModel): JQuery.jqXHR<ResponseViewModel> 
 
 }
 
@@ -28,4 +37,8 @@ export interface ServiceItemViewModel {
     UpdateUser: string;
     /**服務項目圖片檔案 */
     PhotoFile: File | null;
+    /**Icon名稱 */
+    IconName: string;
+    /**模式選擇 */
+    Mode: string;
 }

@@ -13,5 +13,7 @@ namespace WebTemplateDB.Interface
         Task<List<ServiceItemViewModel>> GetServiceItemList();
 
         Task<VerityResult> CreateServiceItemList(List<ServiceItemViewModel> model, string CurrendUserid);
+
+        Task<VerityResult> DeleteServiceItem(ServiceItemViewModel model);
     }
 }

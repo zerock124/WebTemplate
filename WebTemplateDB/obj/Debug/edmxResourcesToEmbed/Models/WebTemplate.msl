@@ -143,6 +143,8 @@
     <EntitySetMapping Name="ServiceItem">
       <EntityTypeMapping TypeName="Web_testDbModel.ServiceItem">
         <MappingFragment StoreEntitySet="ServiceItem">
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="IconName" ColumnName="IconName" />
           <ScalarProperty Name="ServiceItemId" ColumnName="ServiceItemId" />
           <ScalarProperty Name="ServiceItemName" ColumnName="ServiceItemName" />
           <ScalarProperty Name="ImageName" ColumnName="ImageName" />

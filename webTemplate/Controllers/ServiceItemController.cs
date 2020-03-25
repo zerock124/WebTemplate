@@ -22,7 +22,8 @@ namespace webTemplate.Controllers
         protected IBackOperationService _backOperationService;
         string OperationName = "服務項目，";
 
-        public ServiceItemController() {
+        public ServiceItemController()
+        {
             _serviceItem = new ServiceItemService();
             _backOperationService = new BackOperationService();
         }
@@ -55,7 +56,7 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <returns></returns>
         [ValidateJsonAntiForgeryToken]
-        public async Task<JsonResult> GetServiceItemList() 
+        public async Task<JsonResult> GetServiceItemList()
         {
             ResponseViewModel res = new ResponseViewModel();
 
@@ -85,7 +86,7 @@ namespace webTemplate.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
-        public async Task<JsonResult> CreateServiceItemList(List<ServiceItemViewModel> model) 
+        public async Task<JsonResult> CreateServiceItemList(List<ServiceItemViewModel> model)
         {
             ResponseViewModel res = new ResponseViewModel();
 
@@ -103,13 +104,45 @@ namespace webTemplate.Controllers
                     }
                 }
 
-                var result = await _serviceItem.CreateServiceItemList(model ,CurrendUserid);
+                var result = await _serviceItem.CreateServiceItemList(model, CurrendUserid);
                 res.Success = result.Success;
                 res.Message = result.Message;
                 res.HttpStatusCode = System.Net.HttpStatusCode.OK;
                 await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
             }
-            catch 
+            catch
+            {
+                res.Success = false;
+                res.Message = "與伺服器連線失敗";
+                res.HttpStatusCode = System.Net.HttpStatusCode.InternalServerError;
+            }
+
+            res.ResponseTime = DateTime.Now.ToString("yyyy-MM-DD hh:mm:ss");
+            return Json(res, JsonRequestBehavior.DenyGet);
+        }
+
+        /// <summary>
+        /// 刪除服務項目
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [ValidateJsonAntiForgeryToken]
+        public async Task<JsonResult> DeleteServiceItem(ServiceItemViewModel model)
+        {
+            ResponseViewModel res = new ResponseViewModel();
+
+            string _path = Server.MapPath(_ServiceItemPath);
+
+            try
+            {
+                var result = await _serviceItem.DeleteServiceItem(model);
+                res.Success = result.Success;
+                res.Message = result.Message;
+                res.HttpStatusCode = System.Net.HttpStatusCode.OK;
+                await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "新增", CurrendUserIp);
+            }
+            catch
             {
                 res.Success = false;
                 res.Message = "與伺服器連線失敗";

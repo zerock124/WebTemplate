@@ -38,6 +38,11 @@ define(["require", "exports", "vue-property-decorator", "./service", "./ServiceI
             var _this = this;
             _this.GetServiceItemList();
             ServiceItemEvent_1.default.$on('EmitServiceItem', _this.EmitServiceItem.bind(_this));
+            ServiceItemEvent_1.default.$on('GetServiceItemList', _this.GetServiceItemList);
+        };
+        ServiceItemList.prototype.beforeDestroy = function () {
+            ServiceItemEvent_1.default.$off('EmitServiceItem');
+            ServiceItemEvent_1.default.$off('GetServiceItemList');
         };
         ServiceItemList.prototype.CreateSpaceItem = function () {
             var _this = this;
@@ -50,7 +55,9 @@ define(["require", "exports", "vue-property-decorator", "./service", "./ServiceI
                 CreateUser: '',
                 UpdateTime: moment().toDate(),
                 UpdateUser: '',
-                PhotoFile: null
+                PhotoFile: null,
+                IconName: '',
+                Mode: 'Images'
             };
             _this.ServiceItemList.push(spaceItem);
         };
@@ -77,6 +84,8 @@ define(["require", "exports", "vue-property-decorator", "./service", "./ServiceI
                         _this.ServiceItemList[i].PhotoFile = data.PhotoFile;
                         _this.ServiceItemList[i].ImageName = data.ImageName;
                         _this.ServiceItemList[i].ServiceItemName = data.ServiceItemName;
+                        _this.ServiceItemList[i].IconName = data.IconName;
+                        _this.ServiceItemList[i].Mode = data.Mode;
                     }
                 }
             }
@@ -91,6 +100,8 @@ define(["require", "exports", "vue-property-decorator", "./service", "./ServiceI
                     _formdate.append('model[' + i + '].ServiceItemId', _this.ServiceItemList[i].ServiceItemId.toString());
                     _formdate.append('model[' + i + '].ServiceItemName', _this.ServiceItemList[i].ServiceItemName);
                     _formdate.append('model[' + i + '].ImageName', _this.ServiceItemList[i].ImageName);
+                    _formdate.append('model[' + i + '].IconName', _this.ServiceItemList[i].IconName);
+                    _formdate.append('model[' + i + '].Mode', _this.ServiceItemList[i].Mode);
                     photoFile = _this.ServiceItemList[i].PhotoFile;
                     _formdate.append('model[' + i + '].PhotoFile', photoFile ? photoFile : '');
                 }

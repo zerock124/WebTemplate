@@ -41,5 +41,13 @@ namespace ViewModel.ServiceItem
         /// 服務項目上傳圖片
         /// </summary>
         public HttpPostedFileBase PhotoFile { get; set; }
+        /// <summary>
+        /// IconName
+        /// </summary>
+        public string IconName { get; set; }
+        /// <summary>
+        /// 模式選擇
+        /// </summary>
+        public string Mode { get; set; }
     }
 }

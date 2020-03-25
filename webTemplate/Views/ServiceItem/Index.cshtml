@@ -79,49 +79,125 @@
 <template id="ServiceItemListItem">
     <div class="col-auto col-sm-6 col-md-4 px-3">
 
-        <div class="row mb-3 justify-content-center">
-            <div v-if="!image">
-                <img :src="DefaultImage" alt="Alternate Text" style="width:60px;height:60px" />
+        <div v-if="Mode == 'Images'">
+            <div class="row mb-3 justify-content-end mr-1">
+                <button class="btn text-danger" v-on:click.prevent="DeleteServiceItem">
+                    <i class="fas fa-times fa-2x"></i>
+                </button>
             </div>
-            <div v-if="image">
-                <img :src="image" alt="Alternate Text" style="width:60px;height:60px" />
-            </div>
-        </div>
 
-        <div class="row mb-3 justify-content-center">
-            <h6 class="m-1">( 圖片 / 60*60 / PNG 格式 )</h6>
-        </div>
-
-        <form action="\" enctype="multipart/form-data" method="post">
-
-            <div class="row mb-3">
-                <small class="h6 pl-3 align-self-center">
-                    圖片檔案：
-                </small>
-                <div class="col">
-                    <b-form-file required
-                                 name="PhotoFile"
-                                 v-model="PhotoFile"
-                                 v-on:change="fileSelected"
-                                 placeholder="上傳圖片">
-                    </b-form-file>
+            <div class="row mb-3 justify-content-center">
+                <div v-if="!image">
+                    <img :src="DefaultImage" alt="Alternate Text" style="width:60px;height:60px" />
+                </div>
+                <div v-if="image">
+                    <img :src="image" alt="Alternate Text" style="width:60px;height:60px" />
                 </div>
             </div>
 
-            <div class="row mb-3">
-                <small class="h6 pl-3 align-self-center">
-                    項目名稱：
-                </small>
+            <div class="row mb-3 justify-content-center">
+                <h6 class="m-1">( 圖片 / 60*60 / PNG 格式 )</h6>
+            </div>
 
-                <div class="col">
-                    <b-form-input type="text"
-                                  name="ServiceItemName"
-                                  v-model="ListItem.ServiceItemName">
-                    </b-form-input>
+            <div class="row mb-3 justify-content-center">
+                <button type="button" class="btn btn-outline-primary m-2" v-on:click="ChangeMode('Images')">
+                    圖片 <span class="badge badge-light"><i class="fas fa-image fa-2x"></i></span>
+                </button>
+
+                <button type="button" class="btn btn-outline-primary m-2" v-on:click="ChangeMode('Icon')">
+                    Icon <span class="badge badge-light"><i class="fas fa-icons fa-2x"></i></span>
+                </button>
+            </div>
+
+            <form action="\" enctype="multipart/form-data" method="post">
+
+                <div class="row mb-3">
+                    <small class="h6 pl-3 align-self-center">
+                        圖片檔案：
+                    </small>
+                    <div class="col">
+                        <b-form-file required
+                                     name="PhotoFile"
+                                     v-model="PhotoFile"
+                                     v-on:change="fileSelected"
+                                     placeholder="上傳圖片">
+                        </b-form-file>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <small class="h6 pl-3 align-self-center">
+                        項目名稱：
+                    </small>
+
+                    <div class="col">
+                        <b-form-input type="text"
+                                      name="ServiceItemName"
+                                      v-model="ServiceItemName">
+                        </b-form-input>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div v-if="Mode == 'Icon'">
+            <div class="row mb-3 justify-content-end mr-1" v-on:click.prevent="DeleteServiceItem">
+                <button class="btn text-danger">
+                    <i class="fas fa-times fa-2x"></i>
+                </button>
+            </div>
+
+            <div class="row mb-3 justify-content-center">
+                <div style="width:60px;height:60px">
+                    <i class="fa-4x text-center" :class="IconName" style="font-size:60px;"></i>
                 </div>
             </div>
 
-        </form>
+            <div class="row mb-3 justify-content-center">
+                <h6 class="m-1">( Icon / Font-Awesome )</h6>
+            </div>
+
+            <div class="row mb-3 justify-content-center">
+                <button type="button" class="btn btn-outline-primary m-2" v-on:click="ChangeMode('Images')">
+                    圖片 <span class="badge badge-light"><i class="fas fa-image fa-2x"></i></span>
+                </button>
+
+                <button type="button" class="btn btn-outline-primary m-2" v-on:click="ChangeMode('Icon')">
+                    Icon <span class="badge badge-light"><i class="fas fa-icons fa-2x"></i></span>
+                </button>
+            </div>
+
+            <form action="\" enctype="multipart/form-data" method="post">
+
+                <div class="row mb-3">
+                    <small class="h6 pl-3 align-self-center">
+                        Icon名稱：
+                    </small>
+                    <div class="col">
+                        <b-form-input type="text"
+                                      name="IconName"
+                                      placeholder="Awesome Icon"
+                                      v-model="IconName">
+                        </b-form-input>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <small class="h6 pl-3 align-self-center">
+                        項目名稱：
+                    </small>
+
+                    <div class="col">
+                        <b-form-input type="text"
+                                      name="ServiceItemName"
+                                      v-model="ServiceItemName">
+                        </b-form-input>
+                    </div>
+                </div>
+
+            </form>
+        </div>
     </div>
 </template>
 

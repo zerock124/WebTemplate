@@ -21,6 +21,17 @@ class ServiceItemService implements IServiceItemService {
 
         return AjaxReturn(setting, 'FormData');
     }
+
+    DeleteServiceItem(model: ServiceItemViewModel): JQuery.jqXHR<ResponseViewModel> {
+        const setting: JQueryAjaxSettings = {
+            url: '/ServiceItem/DeleteServiceItem',
+            type: 'POST',
+            data: model
+        }
+
+        return AjaxReturn(setting);
+    }
+
 }
 
 const fonthome_service: IServiceItemService = new ServiceItemService();

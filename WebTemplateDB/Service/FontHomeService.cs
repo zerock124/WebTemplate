@@ -285,6 +285,11 @@ namespace WebTemplateDB.Service
                             UpdateUser = a.UpdateUser
                         };
 
+            var DateNow = Convert.ToDateTime(DateTime.Now.ToString("yyyy-MM-dd"));
+            
+            query = query.Where(x => x.StartDateTime <= DateNow);
+            query = query.Where(x => x.EndDateTime >= DateNow);
+
             if (query.Any())
             {
                 var data = query.ToList();

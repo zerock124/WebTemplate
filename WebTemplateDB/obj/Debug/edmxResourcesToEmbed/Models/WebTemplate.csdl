@@ -101,7 +101,7 @@
       <PropertyRef Name="FontHomeId" />
     </Key>
     <Property Name="FontHomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="FontHomeUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -141,6 +141,8 @@
     <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="UpdateTime" Type="DateTime" Precision="3" />
     <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IconName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="StaticPage">
     <Key>

@@ -35,7 +35,9 @@ namespace WebTemplateDB.Service
                             CreateTime = a.CreateTime,
                             CreateUser = a.CreateUser,
                             UpdateTime = a.UpdateTime,
-                            UpdateUser = a.UpdateUser
+                            UpdateUser = a.UpdateUser,
+                            IconName = a.IconName,
+                            Mode = a.Mode
                         };
             if (query.Any())
             {
@@ -65,6 +67,8 @@ namespace WebTemplateDB.Service
                         updateItem.CreateUser = checkcreate.FirstOrDefault().CreateUser;
                         updateItem.UpdateTime = DateTime.Now;
                         updateItem.UpdateUser = CurrendUserid;
+                        updateItem.IconName = modelItem.IconName;
+                        updateItem.Mode = modelItem.Mode;
 
                         updateItemList.Add(updateItem);
                     }
@@ -76,6 +80,8 @@ namespace WebTemplateDB.Service
                             ImageName = modelItem.ImageName,
                             CreateTime = DateTime.Now,
                             CreateUser = CurrendUserid,
+                            IconName = modelItem.IconName,
+                            Mode = modelItem.Mode
                         };
                         createItemList.Add(createItem);
                     }
@@ -101,5 +107,21 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
+
+        public async Task<VerityResult> DeleteServiceItem(ServiceItemViewModel model) 
+        {
+            VerityResult result = new VerityResult();
+
+            var FindserviceItem = _serviceItem.FindBy(x => x.ServiceItemId == model.ServiceItemId);
+
+            if (FindserviceItem.Any())
+            {
+                var Item = FindserviceItem.FirstOrDefault();
+                _serviceItem.Delete(Item);
+            }
+
+            return await Task.Run(() => result);
+        }
+
     }
 }

@@ -114,7 +114,7 @@
             <PropertyRef Name="FontHomeId" />
           </Key>
           <Property Name="FontHomeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ImageName" Type="nvarchar" MaxLength="50" />
+          <Property Name="ImageName" Type="nvarchar(max)" />
           <Property Name="FontHomeUrl" Type="nvarchar(max)" />
           <Property Name="StartDateTime" Type="datetime" Nullable="false" />
           <Property Name="EndDateTime" Type="datetime" Nullable="false" />
@@ -154,6 +154,8 @@
           <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
           <Property Name="UpdateTime" Type="datetime" />
           <Property Name="UpdateUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="IconName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mode" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="StaticPage">
           <Key>
@@ -308,7 +310,7 @@
             <PropertyRef Name="FontHomeId" />
           </Key>
           <Property Name="FontHomeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ImageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="FontHomeUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="StartDateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="EndDateTime" Type="DateTime" Nullable="false" Precision="3" />
@@ -348,6 +350,8 @@
           <Property Name="CreateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="UpdateTime" Type="DateTime" Precision="3" />
           <Property Name="UpdateUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IconName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="StaticPage">
           <Key>
@@ -553,6 +557,8 @@
           <EntitySetMapping Name="ServiceItem">
             <EntityTypeMapping TypeName="Web_testDbModel.ServiceItem">
               <MappingFragment StoreEntitySet="ServiceItem">
+                <ScalarProperty Name="Mode" ColumnName="Mode" />
+                <ScalarProperty Name="IconName" ColumnName="IconName" />
                 <ScalarProperty Name="ServiceItemId" ColumnName="ServiceItemId" />
                 <ScalarProperty Name="ServiceItemName" ColumnName="ServiceItemName" />
                 <ScalarProperty Name="ImageName" ColumnName="ImageName" />

@@ -93,7 +93,7 @@ namespace webTemplate.Controllers
         }
 
         /// <summary>
-        /// 新增首頁圖片
+        /// 新增首頁圖
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
@@ -197,8 +197,8 @@ namespace webTemplate.Controllers
                     model.UpdateUser = CreateUser;
                     var data = await _fontHomeService.EditFontHome(model);
                     res.Data = data.Data;
-                    res.Success = true;
-                    res.Message = data.Success ? "變更前台首頁成功" : "變更前台首頁失敗";
+                    res.Success = data.Success;
+                    res.Message = data.Message;
                     res.HttpStatusCode = System.Net.HttpStatusCode.OK;
                     await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "編輯", CurrendUserIp);
                 }
@@ -207,8 +207,8 @@ namespace webTemplate.Controllers
                     model.UpdateUser = CreateUser;
                     var data = await _fontHomeService.EditFontHome(model);
                     res.Data = data.Data;
-                    res.Success = true;
-                    res.Message = data.Success ? "變更前台首頁成功" : "變更前台首頁失敗";
+                    res.Success = data.Success;
+                    res.Message = data.Message;
                     res.HttpStatusCode = System.Net.HttpStatusCode.OK;
                     await _backOperationService.CreateBackOperation(CurrendUserid, OperationName + "編輯", CurrendUserIp);
                 }
