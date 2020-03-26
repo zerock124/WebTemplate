@@ -13,7 +13,7 @@ var icons = Quill.import('ui/icons');
 icons['html'] = '<i class="fas fa-code"></i>'
 
 @Component({
-    template: '#StaticPageItem',
+    template: '#StaticPageItem'
 })
 
 export default class StaticPageItem extends Vue {

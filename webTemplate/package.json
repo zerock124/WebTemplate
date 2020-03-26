@@ -12,7 +12,7 @@
     "@types/googlemaps": "^3.39.3",
     "@types/webpack-env": "^1.15.1",
     "animate.css": "^3.7.2",
-    "bootstrap-vue": "^2.4.0",
+    "bootstrap-vue": "^2.8.0",
     "moment": "^2.24.0",
     "quill-image-resize-module": "^3.0.0",
     "requirejs": "^2.3.6",

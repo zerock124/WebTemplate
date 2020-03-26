@@ -167,7 +167,7 @@ define(["require", "exports", "vue-property-decorator", "./service", "vue2-edito
         ], StaticPageItem.prototype, "OnListItemChange", null);
         StaticPageItem = __decorate([
             vue_property_decorator_1.Component({
-                template: '#StaticPageItem',
+                template: '#StaticPageItem'
             })
         ], StaticPageItem);
         return StaticPageItem;
