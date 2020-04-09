@@ -14,6 +14,7 @@ namespace webTemplate
         protected void Application_Start()
         {
             AreaRegistration.RegisterAllAreas();
+            //沒有以下設定，無法使用WebApi
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
