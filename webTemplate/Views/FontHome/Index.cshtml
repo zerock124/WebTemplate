@@ -164,6 +164,7 @@
                         <div class="card-footer clearfix">
                             <b-pagination class="pagination pagination-sm m-0 float-right"
                                           v-model="CurrentPage"
+                                          v-on:input="SetSendPagination"
                                           :total-rows="TotalCounts"
                                           :per-page="PerPage">
                             </b-pagination>

@@ -106,6 +106,8 @@ export default class ContactManagement extends Vue {
 
     SetSearchDate() {
         const _this = this;
+        _this.Pagination.PerPage = 10;
+        _this.Pagination.CurrentPage = 1;
         const sendPagination: SendPaginationModel = {
             PerPage: _this.Pagination.PerPage,
             CurrentPage: _this.Pagination.CurrentPage
@@ -161,14 +163,14 @@ export default class ContactManagement extends Vue {
     }
 
 
-    @Watch('PerPage')
-    OnPerPageChange() {
-        this.SetSendPagination();
-    }
-    @Watch('CurrentPage')
-    OnCurrentPageChange() {
-        this.SetSendPagination();
-    }
+    //@Watch('PerPage')
+    //OnPerPageChange() {
+    //    this.SetSendPagination();
+    //}
+    //@Watch('CurrentPage')
+    //OnCurrentPageChange() {
+    //    this.SetSendPagination();
+    //}
 
     SetSendPagination() {
         const _this = this;
