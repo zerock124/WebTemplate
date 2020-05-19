@@ -137,14 +137,15 @@ namespace webTemplate.Controllers
                         return RedirectToAction("Index", "Home", new { area = "" });
                     #endregion
                     //return RedirectToLocal(returnUrl);
-                    case SignInStatus.LockedOut:
-                        return View("Lockout");
-                    case SignInStatus.RequiresVerification:
-                        return RedirectToAction("SendCode", new { RememberMe = model.RememberMe });
+                    //case SignInStatus.LockedOut:
+                    //    return View("Lockout");
+                    //case SignInStatus.RequiresVerification:
+                    //    return RedirectToAction("SendCode", new { RememberMe = model.RememberMe });
                     case SignInStatus.Failure:
                     default:
-                        ModelState.AddModelError("", "登入嘗試失試。");
-                        return View("Login"); ;
+                        ModelState.AddModelError("SignInError", "登入嘗試失試。");
+                        ViewBag.LoginError = "帳號密碼錯誤";
+                        return View("SignIn"); ;
                 }
             }
             catch (Exception e)
