@@ -6,7 +6,7 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <TimeStampOfAssociatedLegacyPublishXmlFile />
-    <_PublishTargetUrl>C:\xinyu\project-release</_PublishTargetUrl>
+    <_PublishTargetUrl>C:\xinyu\內部專案\Release\webTemplate-release</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/Antlr3.Runtime.dll">
@@ -250,31 +250,31 @@
       <publishTime>11/28/2018 13:04:24</publishTime>
     </File>
     <File Include="bin/ViewModel.dll">
-      <publishTime>03/25/2020 11:11:47</publishTime>
+      <publishTime>05/20/2020 13:19:21</publishTime>
     </File>
     <File Include="bin/ViewModel.dll.config">
       <publishTime>02/03/2020 17:31:38</publishTime>
     </File>
     <File Include="bin/ViewModel.pdb">
-      <publishTime>03/25/2020 11:11:47</publishTime>
+      <publishTime>05/20/2020 13:19:21</publishTime>
     </File>
     <File Include="bin/WebGrease.dll">
       <publishTime>01/23/2014 13:57:34</publishTime>
     </File>
     <File Include="bin/webTemplate.dll">
-      <publishTime>03/26/2020 17:09:44</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="bin/webTemplate.pdb">
-      <publishTime>03/26/2020 17:09:44</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="bin/WebTemplateDB.dll">
-      <publishTime>03/25/2020 11:11:47</publishTime>
+      <publishTime>05/20/2020 13:19:22</publishTime>
     </File>
     <File Include="bin/WebTemplateDB.dll.config">
       <publishTime>02/27/2020 10:46:02</publishTime>
     </File>
     <File Include="bin/WebTemplateDB.pdb">
-      <publishTime>03/25/2020 11:11:47</publishTime>
+      <publishTime>05/20/2020 13:19:22</publishTime>
     </File>
     <File Include="bin/zh-Hant/System.Web.Helpers.resources.dll">
       <publishTime>11/28/2018 13:04:32</publishTime>
@@ -5385,6 +5385,15 @@
     <File Include="Global.asax">
       <publishTime>02/03/2020 15:52:49</publishTime>
     </File>
+    <File Include="Image/Case/1024 x 1024.png">
+      <publishTime>03/19/2020 15:23:59</publishTime>
+    </File>
+    <File Include="Image/Case/77.jpg">
+      <publishTime>03/19/2020 14:40:43</publishTime>
+    </File>
+    <File Include="Image/Case/airwaves.jpg">
+      <publishTime>03/19/2020 17:11:53</publishTime>
+    </File>
     <File Include="Image/Case/Case-1.jpg">
       <publishTime>02/18/2020 14:56:12</publishTime>
     </File>
@@ -5418,17 +5427,128 @@
     <File Include="Image/Case/case-9.jpg">
       <publishTime>03/05/2020 15:23:48</publishTime>
     </File>
+    <File Include="Image/Case/logo_135x140_ 反白.png">
+      <publishTime>03/05/2020 15:22:30</publishTime>
+    </File>
+    <File Include="Image/Case/nike.jpg">
+      <publishTime>03/19/2020 15:25:32</publishTime>
+    </File>
     <File Include="Image/Case/NoImage.jpg">
       <publishTime>02/14/2020 15:22:56</publishTime>
+    </File>
+    <File Include="Image/Case/sofina扭蛋.jpg">
+      <publishTime>03/19/2020 14:41:31</publishTime>
+    </File>
+    <File Include="Image/Case/twitter.jpg">
+      <publishTime>03/05/2020 15:18:07</publishTime>
+    </File>
+    <File Include="Image/Case/三菱.jpg">
+      <publishTime>03/19/2020 14:58:25</publishTime>
+    </File>
+    <File Include="Image/Case/三菱.png">
+      <publishTime>03/19/2020 10:45:49</publishTime>
+    </File>
+    <File Include="Image/Case/三菱家電.jpg">
+      <publishTime>03/19/2020 15:20:47</publishTime>
+    </File>
+    <File Include="Image/Case/元宵.jpg">
+      <publishTime>03/24/2020 10:13:20</publishTime>
+    </File>
+    <File Include="Image/Case/全家.jpg">
+      <publishTime>03/19/2020 15:40:27</publishTime>
+    </File>
+    <File Include="Image/Case/全家沙拉動一夏.jpg">
+      <publishTime>03/24/2020 09:57:34</publishTime>
+    </File>
+    <File Include="Image/Case/全聯.jpg">
+      <publishTime>03/19/2020 15:50:29</publishTime>
+    </File>
+    <File Include="Image/Case/宇宙人.jpg">
+      <publishTime>03/19/2020 14:40:16</publishTime>
+    </File>
+    <File Include="Image/Case/宇宙人1.jpg">
+      <publishTime>03/19/2020 16:00:10</publishTime>
+    </File>
+    <File Include="Image/Case/玉山.jpg">
+      <publishTime>03/19/2020 14:41:17</publishTime>
+    </File>
+    <File Include="Image/Case/老皮.jpg">
+      <publishTime>03/04/2020 11:42:08</publishTime>
     </File>
     <File Include="Image/FontHome/-1600x900.jpg">
       <publishTime>03/09/2020 17:22:21</publishTime>
     </File>
+    <File Include="Image/FontHome/1.jpg">
+      <publishTime>03/25/2020 11:57:00</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9alex-radelich-2gYsZUmockw-unsplash.jpg">
+      <publishTime>03/25/2020 13:09:42</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9brad-barmore-IQxcuHBF7Uo-unsplash.jpg">
+      <publishTime>03/25/2020 13:10:56</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9jef-willemyns-mluUYXoTotY-unsplash.jpg">
+      <publishTime>03/25/2020 13:09:59</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9jeremy-bishop-_CFv3bntQlQ-unsplash.jpg">
+      <publishTime>03/25/2020 13:10:12</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9jorg-angeli-eW7v3RTVnqM-unsplash.jpg">
+      <publishTime>03/25/2020 13:10:33</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9mountain-climber-1840220.jpg">
+      <publishTime>03/25/2020 13:08:58</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9mountaineer-2481635.jpg">
+      <publishTime>03/25/2020 13:09:13</publishTime>
+    </File>
+    <File Include="Image/FontHome/16-9parkour-2258115.jpg">
+      <publishTime>03/25/2020 13:09:26</publishTime>
+    </File>
+    <File Include="Image/FontHome/2020-3-4 下午 09-19-18.png">
+      <publishTime>03/05/2020 11:27:17</publishTime>
+    </File>
+    <File Include="Image/FontHome/247343758.jpg">
+      <publishTime>03/24/2020 13:15:58</publishTime>
+    </File>
+    <File Include="Image/FontHome/357027100c43.jpg">
+      <publishTime>03/24/2020 13:18:30</publishTime>
+    </File>
+    <File Include="Image/FontHome/58c7adab772ca.jpg">
+      <publishTime>03/05/2020 10:09:59</publishTime>
+    </File>
+    <File Include="Image/FontHome/AH001.JPG">
+      <publishTime>03/24/2020 11:33:24</publishTime>
+    </File>
+    <File Include="Image/FontHome/AH016.JPG">
+      <publishTime>03/24/2020 11:35:59</publishTime>
+    </File>
     <File Include="Image/FontHome/banner.jpg">
       <publishTime>03/09/2020 15:28:45</publishTime>
     </File>
+    <File Include="Image/FontHome/daniel-weiss-n97KlV2Wxlc-unsplash.jpg">
+      <publishTime>03/20/2020 15:34:36</publishTime>
+    </File>
     <File Include="Image/FontHome/Dog.jpg">
       <publishTime>03/05/2020 11:49:17</publishTime>
+    </File>
+    <File Include="Image/FontHome/engin-akyurt-RxwVBer6P8g-unsplash.jpg">
+      <publishTime>03/20/2020 15:29:44</publishTime>
+    </File>
+    <File Include="Image/FontHome/harley-davidson-AyH9hAmiX9Y-unsplash.jpg">
+      <publishTime>03/19/2020 17:08:55</publishTime>
+    </File>
+    <File Include="Image/FontHome/jeremy-bishop-xaZSE0h7yIY-unsplash.jpg">
+      <publishTime>03/19/2020 16:57:05</publishTime>
+    </File>
+    <File Include="Image/FontHome/joshua-earle-C6duwascOEA-unsplash.jpg">
+      <publishTime>03/19/2020 17:04:37</publishTime>
+    </File>
+    <File Include="Image/FontHome/man-standing-on-mountain-against-sky-314703.jpg">
+      <publishTime>03/25/2020 11:55:35</publishTime>
+    </File>
+    <File Include="Image/FontHome/marc-olivier-jodoin-NqOInJ-ttqM-unsplash.jpg">
+      <publishTime>03/19/2020 17:02:23</publishTime>
     </File>
     <File Include="Image/FontHome/mbr-2-1600x900.jpg">
       <publishTime>03/09/2020 17:23:01</publishTime>
@@ -5436,14 +5556,53 @@
     <File Include="Image/FontHome/NoImage.jpg">
       <publishTime>02/06/2020 17:08:11</publishTime>
     </File>
+    <File Include="Image/FontHome/stock-photo-man-jumps-over.jpg">
+      <publishTime>03/24/2020 12:32:30</publishTime>
+    </File>
+    <File Include="Image/FontHome/stock-photo-pink-unicorn-with-the-wings-reared-in-the-grass-on-mountains-background-729913882.jpg">
+      <publishTime>03/24/2020 11:38:29</publishTime>
+    </File>
+    <File Include="Image/FontHome/stock-photo-white-pegasus-flying-in-sky-1087797566.jpg">
+      <publishTime>03/24/2020 11:35:40</publishTime>
+    </File>
+    <File Include="Image/FontHome/stock-photo-white-pegasus.jpg">
+      <publishTime>03/24/2020 13:16:17</publishTime>
+    </File>
+    <File Include="Image/FontHome/stock-photo.jpg">
+      <publishTime>03/24/2020 13:16:39</publishTime>
+    </File>
+    <File Include="Image/FontHome/stock.jpg">
+      <publishTime>03/24/2020 13:17:35</publishTime>
+    </File>
+    <File Include="Image/FontHome/tuan-nguyen-9lhg59wHMIA-unsplash.jpg">
+      <publishTime>03/19/2020 17:02:04</publishTime>
+    </File>
     <File Include="Image/FontHome/twitter.jpg">
       <publishTime>02/14/2020 11:24:03</publishTime>
+    </File>
+    <File Include="Image/FontHome/v2.jpg">
+      <publishTime>03/24/2020 13:10:51</publishTime>
+    </File>
+    <File Include="Image/FontHome/young-sporty.jpg">
+      <publishTime>03/24/2020 13:16:07</publishTime>
     </File>
     <File Include="Image/FontHome/老皮.jpg">
       <publishTime>03/05/2020 12:11:23</publishTime>
     </File>
+    <File Include="Image/LatestNews/2-735x720.jpeg">
+      <publishTime>03/12/2020 10:13:05</publishTime>
+    </File>
+    <File Include="Image/LatestNews/3-720x720.jpeg">
+      <publishTime>03/12/2020 10:13:17</publishTime>
+    </File>
+    <File Include="Image/LatestNews/case-11.jpg">
+      <publishTime>03/16/2020 16:31:09</publishTime>
+    </File>
     <File Include="Image/LatestNews/file-1.jpeg">
       <publishTime>02/13/2020 15:50:54</publishTime>
+    </File>
+    <File Include="Image/LatestNews/index-wordpress.jpg">
+      <publishTime>03/05/2020 11:21:38</publishTime>
     </File>
     <File Include="Image/LatestNews/lastestnew-1.jpg">
       <publishTime>03/16/2020 11:51:11</publishTime>
@@ -5456,6 +5615,12 @@
     </File>
     <File Include="Image/LatestNews/NoImage.jpg">
       <publishTime>02/14/2020 13:14:02</publishTime>
+    </File>
+    <File Include="Image/ServiceItem/1.jpg">
+      <publishTime>03/05/2020 11:08:06</publishTime>
+    </File>
+    <File Include="Image/ServiceItem/5fe5e029.jpg">
+      <publishTime>03/05/2020 11:07:25</publishTime>
     </File>
     <File Include="Image/ServiceItem/JaketheDog.png">
       <publishTime>02/13/2020 13:43:30</publishTime>
@@ -32497,112 +32662,112 @@
       <publishTime>12/23/2016 16:28:27</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/attributor.d.ts">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/attributor.js">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/class.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/class.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/store.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/store.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/style.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/attributor/style.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/blot.d.ts">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/blot.js">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/container.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/container.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/format.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/format.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/leaf.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/leaf.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/shadow.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/abstract/shadow.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/block.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/block.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/embed.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/embed.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/inline.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/inline.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/scroll.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/scroll.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/text.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/blot/text.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/collection/linked-list.d.ts">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/collection/linked-list.js">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/collection/linked-node.d.ts">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/collection/linked-node.js">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/parchment.d.ts">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/parchment.js">
-      <publishTime>03/26/2020 17:52:34</publishTime>
+      <publishTime>05/20/2020 13:19:31</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/registry.d.ts">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/src/registry.js">
-      <publishTime>03/26/2020 17:52:33</publishTime>
+      <publishTime>05/20/2020 13:19:30</publishTime>
     </File>
     <File Include="node_modules/quill-image-resize-module/node_modules/parchment/tsconfig.json">
       <publishTime>12/13/2016 07:54:11</publishTime>
@@ -37729,28 +37894,28 @@
       <publishTime>10/26/1985 16:15:00</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/constant/index.js">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/constant/index.js.map">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/index.js">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/index.js.map">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/types/index.js">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/types/index.js.map">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/utils/index.js">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/utils/index.js.map">
-      <publishTime>03/26/2020 17:52:36</publishTime>
+      <publishTime>05/20/2020 13:19:32</publishTime>
     </File>
     <File Include="node_modules/vue-easy-lightbox/src/vue-easy-lightbox.vue">
       <publishTime>10/26/1985 16:15:00</publishTime>
@@ -38785,256 +38950,256 @@
       <publishTime>03/04/2020 14:35:58</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/AuthorityManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/AuthorityManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Create/AuthorityCreateManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Create/AuthorityCreateManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Create/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Create/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Edit/AuthorityEditManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Edit/AuthorityEditManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Edit/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/Edit/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/AuthorityManagement/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/BackOperationManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/BackOperationManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/BackOperation/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/CaseManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/CaseManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Create/CaseCreateManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Create/CaseCreateManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Create/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Create/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Edit/CaseEditManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Edit/CaseEditManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Edit/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/Edit/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Case/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/components/Aside.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/components/Aside.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/ContactManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/ContactManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/Edit/ContactEditManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/Edit/ContactEditManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/Edit/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/Edit/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Contact/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/FontHomeCreateManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/FontHomeCreateManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Create/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/FontHomeEditManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/FontHomeEditManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/Edit/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeListItem.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeListItem.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/FontHomeManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/FontHome/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/HomeManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/HomeManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Home/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Create/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Create/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Create/LatestNewsCreateManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Create/LatestNewsCreateManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Edit/FontHomeEditManagement.js">
       <publishTime>02/14/2020 11:47:21</publishTime>
@@ -39043,40 +39208,40 @@
       <publishTime>02/14/2020 11:47:21</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Edit/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Edit/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Edit/LatestNewsEditManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/Edit/LatestNewsEditManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/LatestNewsManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/LatestNewsManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/LatestNews/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Permission/index.js">
       <publishTime>02/15/2020 17:15:15</publishTime>
@@ -39103,118 +39268,118 @@
       <publishTime>02/15/2020 17:15:15</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemEvent.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemEvent.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemList.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemList.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemListItem.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemListItem.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/ServiceItem/ServiceItemManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/Enums.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/Enums.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/FilterFunction.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/FilterFunction.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/PublicFunction.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/Share/PublicFunction.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:38</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/StaticPageItem.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/StaticPageItem.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/StaticPageManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/StaticPage/StaticPageManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/index.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/index.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/model.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/model.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/service.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/service.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/WebConfigManagement.js">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/build/view/WebConfig/WebConfigManagement.js.map">
-      <publishTime>03/26/2020 17:52:42</publishTime>
+      <publishTime>05/20/2020 13:19:39</publishTime>
     </File>
     <File Include="Scripts/jquery.validate/jquery.validate.js">
       <publishTime>02/03/2020 15:52:54</publishTime>
@@ -39256,7 +39421,7 @@
       <publishTime>02/06/2020 10:22:57</publishTime>
     </File>
     <File Include="Views/Account/SignIn.cshtml">
-      <publishTime>03/18/2020 16:35:02</publishTime>
+      <publishTime>05/19/2020 10:57:27</publishTime>
     </File>
     <File Include="Views/Authority/Create.cshtml">
       <publishTime>03/05/2020 17:28:05</publishTime>
@@ -39265,10 +39430,10 @@
       <publishTime>03/05/2020 17:26:34</publishTime>
     </File>
     <File Include="Views/Authority/Index.cshtml">
-      <publishTime>03/05/2020 16:01:10</publishTime>
+      <publishTime>04/20/2020 14:39:41</publishTime>
     </File>
     <File Include="Views/BackOperation/Index.cshtml">
-      <publishTime>03/25/2020 17:27:49</publishTime>
+      <publishTime>04/20/2020 14:41:11</publishTime>
     </File>
     <File Include="Views/BackOperationRecord/Index.cshtml">
       <publishTime>02/05/2020 17:33:47</publishTime>
@@ -39277,16 +39442,16 @@
       <publishTime>03/05/2020 15:20:49</publishTime>
     </File>
     <File Include="Views/Case/Edit.cshtml">
-      <publishTime>03/05/2020 15:27:22</publishTime>
+      <publishTime>03/31/2020 16:59:07</publishTime>
     </File>
     <File Include="Views/Case/Index.cshtml">
-      <publishTime>03/17/2020 09:50:55</publishTime>
+      <publishTime>04/20/2020 14:41:39</publishTime>
     </File>
     <File Include="Views/Contact/Edit.cshtml">
       <publishTime>03/05/2020 15:33:53</publishTime>
     </File>
     <File Include="Views/Contact/Index.cshtml">
-      <publishTime>03/05/2020 15:59:43</publishTime>
+      <publishTime>04/20/2020 14:46:40</publishTime>
     </File>
     <File Include="Views/Error/InternalServerError.cshtml">
       <publishTime>03/17/2020 11:31:10</publishTime>
@@ -39301,7 +39466,7 @@
       <publishTime>03/24/2020 13:12:57</publishTime>
     </File>
     <File Include="Views/FontHome/Index.cshtml">
-      <publishTime>03/17/2020 09:49:22</publishTime>
+      <publishTime>04/20/2020 14:47:01</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
       <publishTime>03/16/2020 14:37:36</publishTime>
@@ -39319,7 +39484,7 @@
       <publishTime>03/16/2020 11:37:52</publishTime>
     </File>
     <File Include="Views/LatestNews/Index.cshtml">
-      <publishTime>03/17/2020 09:43:29</publishTime>
+      <publishTime>04/20/2020 14:48:20</publishTime>
     </File>
     <File Include="Views/NewMessage/Index.cshtml">
       <publishTime>02/06/2020 16:32:41</publishTime>
@@ -39361,7 +39526,7 @@
       <publishTime>02/03/2020 15:52:49</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>03/26/2020 17:52:46</publishTime>
+      <publishTime>05/20/2020 13:19:49</publishTime>
     </File>
   </ItemGroup>
 </Project>

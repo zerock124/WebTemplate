@@ -12547,6 +12547,7 @@
     <Content Include="Views\Account\LineLoginConfirmation.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Error\InternalServerError.cshtml" />
+    <Content Include="Views\Shared\_Meta.cshtml" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\bv-config.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\alert\index.d.ts" />
     <TypeScriptCompile Include="node_modules\bootstrap-vue\esm\components\badge\index.d.ts" />

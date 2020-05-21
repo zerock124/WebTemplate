@@ -176,7 +176,7 @@ export default class ContactManagement extends Vue {
         const _this = this;
         _this.Pagination.PerPage = _this.PerPage;
         _this.Pagination.CurrentPage = _this.CurrentPage;
-        if (!_this.searchmodel) {return;}
+        if (!_this.searchmodel) { return; }
         else {
             if (_this.searchmodel.Query) {
                 _this.searchmodel.Query = _this.Query;

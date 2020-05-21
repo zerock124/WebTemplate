@@ -1,6 +1,6 @@
 ﻿@{
     string mete_title = ViewBag.meta_title;
- }
+}
 
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -33,16 +33,16 @@
 
 <script>
     (function (g) {
-    var signoutBtns = document.querySelectorAll('[data-fn="signout"]');
-    signoutBtns.forEach(function (item) {
-        item.addEventListener('click', HandleSignOutFn);
-    });
-    function HandleSignOutFn() {
-        var Form = document.querySelector('#signoutForm');
-        if (Form != null) {
-            var _form = Form;
-            _form.submit();
+        var signoutBtns = document.querySelectorAll('[data-fn="signout"]');
+        signoutBtns.forEach(function (item) {
+            item.addEventListener('click', HandleSignOutFn);
+        });
+        function HandleSignOutFn() {
+            var Form = document.querySelector('#signoutForm');
+            if (Form != null) {
+                var _form = Form;
+                _form.submit();
+            }
         }
-    }
-})(window);
+    })(window);
 </script>
