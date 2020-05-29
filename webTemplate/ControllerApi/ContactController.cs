@@ -50,16 +50,5 @@ namespace webTemplate.ControllerApi
                 throw;
             }
         }
-
-        public async Task<string> ResponseMessage(int kmsgid, string dstaddr, DateTime dlvtime, DateTime donetime)
-        {
-            var k = kmsgid;
-            var d = dstaddr;
-            var dl = dlvtime;
-            var dn = donetime;
-
-            return await Task.Run(() => dstaddr);
-
-        }
     }
 }

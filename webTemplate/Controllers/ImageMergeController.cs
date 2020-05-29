@@ -17,7 +17,12 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// 圖片合成
+        /// </summary>
+        /// <param name="UploadImage"></param>
+        /// <param name="Text"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public ActionResult ImageMerge(HttpPostedFileBase UploadImage, string Text)

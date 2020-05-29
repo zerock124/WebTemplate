@@ -38,7 +38,12 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// 取得聯絡我們列表
+        /// </summary>
+        /// <param name="searchModel"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetContactList(SearchModel searchModel, PaginationViewModel pagination)
@@ -68,7 +73,12 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        /// <summary>
+        /// 取得編輯聯絡我們的內容
+        /// </summary>
+        /// <param name="ContactId"></param>
+        /// <returns></returns>
+        [HttpGet]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetEditContactItem(int ContactId)
         {
@@ -91,6 +101,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// 編輯聯絡我們
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditContactItem(ContactViewModel model) 
@@ -114,6 +129,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 刪除聯絡我們
+        /// </summary>
+        /// <param name="ContactId"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteContact(int ContactId)

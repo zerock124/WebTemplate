@@ -53,6 +53,10 @@ namespace webTemplate.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 取得角色清單
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<JsonResult> GetRoleOptions()
         {
@@ -76,9 +80,14 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        /// <summary>
+        /// 取得權限管理的列表
+        /// </summary>
+        /// <param name="searchModel"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         [HttpPost]
-        [ValidateJsonAntiForgeryToken]
+        [ValidateJsonAntiForgeryToken] //Ajax防止CSRF攻擊的方法
         public async Task<JsonResult> GetAuthorityList(SearchModel searchModel, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel res = new ResWithPaginationViewModel();
@@ -104,6 +113,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 確認權限是否可以編輯此帳號
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CheckAuthority(string Id)
@@ -127,7 +141,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        /// <summary>
+        /// 新增使用者
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateUser(CreateUserViewModel model)
@@ -200,6 +218,11 @@ namespace webTemplate.Controllers
 
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 取得編輯使用者的資訊
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpGet]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetEditAuthorityItem(string Id)
@@ -224,7 +247,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        /// <summary>
+        /// 編輯使用者
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditAuthorityItem(AuthorityViewModel model)
@@ -248,7 +275,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        /// <summary>
+        /// 刪除使用者
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteAuthorityItem(string Id) 

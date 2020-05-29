@@ -38,6 +38,10 @@ namespace webTemplate.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 取得Home頁資訊
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public async Task<JsonResult> GetHomeDate()
         {

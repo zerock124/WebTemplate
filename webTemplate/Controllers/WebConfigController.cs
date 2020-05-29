@@ -29,7 +29,11 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// 取得網站設定
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetWebConfig(int Id) 
         {
@@ -52,6 +56,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// 編輯網站設定
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditWebConfig(WebConfigViewModel model) 

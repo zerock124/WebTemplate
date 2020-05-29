@@ -29,7 +29,13 @@ namespace WebTemplateDB.Service
             _aspnetRole = new GenericRepository<AspNetRoles>();
             _aspnetUserRole = new GenericRepository<AspNetUserRoles>();
         }
-
+        /// <summary>
+        /// 寫入操作紀錄
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="ContentText"></param>
+        /// <param name="IP"></param>
+        /// <returns></returns>
         public async Task<VerityResult> CreateBackOperation(string Id, string ContentText, string IP)
         {
             var result = new VerityResult();
@@ -64,7 +70,12 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 取得後台操作紀錄列表
+        /// </summary>
+        /// <param name="searchModel"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         public async Task<ResWithPaginationViewModel> GetBackOperationList(SearchModel searchModel, PaginationViewModel pagination) 
         {
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();

@@ -24,7 +24,11 @@ namespace WebTemplateDB.Service
             _db = new WebTemplateEntities();
             _case = new GenericRepository<Case>();
         }
-
+        /// <summary>
+        /// 新增案例
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<VerityResult> CreateCase(CaseViewModel model)
         {
             DataVerityResult<CaseViewModel> result = new DataVerityResult<CaseViewModel>();
@@ -56,7 +60,12 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 取得案例介紹列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         public async Task<ResWithPaginationViewModel> GetCaseList(SearchModel model, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
@@ -163,7 +172,11 @@ namespace WebTemplateDB.Service
             pageData.Success = true;
             return await Task.Run(() => pageData);
         }
-
+        /// <summary>
+        /// 取得變更案例介紹圖片
+        /// </summary>
+        /// <param name="CaseId"></param>
+        /// <returns></returns>
         public async Task<CaseViewModel> GetEditCaseItem(int CaseId)
         {
             CaseViewModel caseitem = new CaseViewModel();
@@ -191,7 +204,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => caseitem);
         }
-
+        /// <summary>
+        /// 變更案例介紹圖片
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<VerityResult> EditCaseItem(CaseViewModel model)
         {
             VerityResult result = new VerityResult();
@@ -226,7 +243,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 刪除案例介紹圖片
+        /// </summary>
+        /// <param name="CaseId"></param>
+        /// <returns></returns>
         public async Task<VerityResult> DeleteCaseItem(int CaseId)
         {
             VerityResult result = new VerityResult();
@@ -252,7 +273,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 取得案例介紹列表 -- API Service
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<List<CaseViewModel>> GetCaseList(APISearchModel model)
         {
             List<CaseViewModel> list = new List<CaseViewModel>();

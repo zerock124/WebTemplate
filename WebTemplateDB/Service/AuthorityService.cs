@@ -31,7 +31,12 @@ namespace WebTemplateDB.Service
 
             hasher = new PasswordHasher();
         }
-
+        /// <summary>
+        /// 取得帳號權限管理列表
+        /// </summary>
+        /// <param name="searchModel"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         public async Task<ResWithPaginationViewModel> GetAuthorityList(SearchModel searchModel, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
@@ -110,7 +115,10 @@ namespace WebTemplateDB.Service
             pageData.Success = true;
             return await Task.Run(() => pageData);
         }
-
+        /// <summary>
+        /// 取得角色列表
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<AspNetUserRolesViewModel>> GetRoleOptions()
         {
             List<AspNetUserRolesViewModel> listitem = new List<AspNetUserRolesViewModel>();
@@ -129,6 +137,12 @@ namespace WebTemplateDB.Service
             }
             return await Task.Run(() => listitem);
         }
+        /// <summary>
+        /// 確認是否有權限
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="CurrendUserid"></param>
+        /// <returns></returns>
         public async Task<VerityResult> CheckAuthority(string Id, string CurrendUserid)
         {
             VerityResult result = new VerityResult();
@@ -163,7 +177,12 @@ namespace WebTemplateDB.Service
             }
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 取得編輯帳號資料
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <param name="CurrendUserid"></param>
+        /// <returns></returns>
         public async Task<AuthorityViewModel> GetEditAuthorityItem(string Id, string CurrendUserid)
         {
             AuthorityViewModel item = new AuthorityViewModel();
@@ -197,7 +216,11 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => item);
 
         }
-
+        /// <summary>
+        /// 編輯帳號資料
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<VerityResult> EditAuthorityItem(AuthorityViewModel model)
         {
             VerityResult result = new VerityResult();
@@ -239,7 +262,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 刪除帳號資料
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public async Task<VerityResult> DeleteAuthorityItem(string Id)
         {
             DataVerityResult result = new DataVerityResult();

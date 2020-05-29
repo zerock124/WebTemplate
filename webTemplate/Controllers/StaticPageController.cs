@@ -30,7 +30,10 @@ namespace webTemplate.Controllers
         {
             return View();
         }
-
+        /// <summary>
+        /// 取得靜態頁內容
+        /// </summary>
+        /// <returns></returns>
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetStaticPageList()
         {
@@ -55,7 +58,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
-
+        /// <summary>
+        /// 新增靜態頁
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateStaticPage(StaticPageViewModel model)
@@ -91,7 +98,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
-
+        /// <summary>
+        /// 編輯靜態頁
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditStaticPage(StaticPageViewModel model)

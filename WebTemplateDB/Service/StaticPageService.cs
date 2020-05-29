@@ -20,9 +20,12 @@ namespace WebTemplateDB.Service
         public StaticPageService()
         {
             _db = new WebTemplateEntities();
-            _staticPage = new GenericRepository<StaticPage>();
+            _staticPage = new GenericRepository<StaticPage>(_db);
         }
-
+        /// <summary>
+        /// 取得靜態頁列表內容
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<StaticPageViewModel>> GetStaticPageList() 
         {
             List<StaticPageViewModel> StaticPageList = new List<StaticPageViewModel>();
@@ -133,7 +136,7 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
         }
         /// <summary>
-        /// 取得靜態頁內容
+        /// 取得靜態頁內容 -- API Service
         /// </summary>
         /// <param name="StaticPageEnum"></param>
         /// <returns></returns>

@@ -27,6 +27,12 @@ namespace webTemplate.Controllers
         {
             return View();
         }
+        /// <summary>
+        /// 取得操作紀錄列表
+        /// </summary>
+        /// <param name="searchModel"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetBackOperationList(SearchModel searchModel, PaginationViewModel pagination)

@@ -3,11 +3,6 @@
     /**取得靜態頁內容 */
     GetStaticPageList(): JQuery.jqXHR<ResponseViewModel<StaticPageViewModel[]>>
     /**
-     * 新增靜態頁內容
-     * @param model
-     */
-    CreateStaticPage(model: StaticPageViewModel): JQuery.jqXHR<ResponseViewModel>
-    /**
      * 變更靜態頁內容
      * @param model
      */

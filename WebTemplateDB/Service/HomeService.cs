@@ -22,12 +22,15 @@ namespace WebTemplateDB.Service
         public HomeService()
         {
             _db = new WebTemplateEntities();
-            _latestNews = new GenericRepository<LatestNews>();
-            _case = new GenericRepository<Case>();
-            _contact = new GenericRepository<Contact>();
-            _webconfig = new GenericRepository<WebConfig>();
+            _latestNews = new GenericRepository<LatestNews>(_db);
+            _case = new GenericRepository<Case>(_db);
+            _contact = new GenericRepository<Contact>(_db);
+            _webconfig = new GenericRepository<WebConfig>(_db);
         }
-
+        /// <summary>
+        /// 取得HomeData
+        /// </summary>
+        /// <returns></returns>
         public async Task<HomeViewModel> GetHomeData()
         {
             HomeViewModel home = new HomeViewModel();

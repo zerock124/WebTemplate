@@ -25,7 +25,12 @@ namespace WebTemplateDB.Service
             _db = new WebTemplateEntities();
             _contact = new GenericRepository<Contact>();
         }
-
+        /// <summary>
+        /// 取得連絡管理列表
+        /// </summary>
+        /// <param name="searchModel"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         public async Task<ResWithPaginationViewModel> GetContactList(SearchModel searchModel, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
@@ -149,7 +154,11 @@ namespace WebTemplateDB.Service
             pageData.Success = true;
             return await Task.Run(() => pageData);
         }
-
+        /// <summary>
+        /// 取得編輯聯絡我們
+        /// </summary>
+        /// <param name="ContactId"></param>
+        /// <returns></returns>
         public async Task<ContactViewModel> GetEditContact(int ContactId)
         {
             ContactViewModel contact = new ContactViewModel();
@@ -182,7 +191,12 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => contact);
         }
-
+        /// <summary>
+        /// 編輯聯絡我們
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="CurrendUserid"></param>
+        /// <returns></returns>
         public async Task<VerityResult> EditContactItem(ContactViewModel model, string CurrendUserid)
         {
             VerityResult result = new VerityResult();
@@ -221,7 +235,11 @@ namespace WebTemplateDB.Service
             }
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 刪除聯絡我們
+        /// </summary>
+        /// <param name="ContactId"></param>
+        /// <returns></returns>
         public async Task<VerityResult> DeleteContact(int ContactId)
         {
             VerityResult result = new VerityResult();
@@ -246,7 +264,12 @@ namespace WebTemplateDB.Service
             }
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 新增聯絡我們 -- API Service
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="url"></param>
+        /// <returns></returns>
         public async Task<VerityResult> CreateContact(ContactViewModel model, string url)
         {
             VerityResult result = new VerityResult();

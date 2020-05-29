@@ -23,7 +23,11 @@ namespace WebTemplateDB.Service
             _db = new WebTemplateEntities();
             _fontHome = new GenericRepository<FontHome>();
         }
-
+        /// <summary>
+        /// 新增前台首頁圖片
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<DataVerityResult<FontHomeViewModel>> CreateFontHome(FontHomeViewModel model)
         {
             DataVerityResult<FontHomeViewModel> result = new DataVerityResult<FontHomeViewModel>();
@@ -240,7 +244,11 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
 
         }
-
+        /// <summary>
+        /// 刪除前台首頁圖片
+        /// </summary>
+        /// <param name="FontHomeId"></param>
+        /// <returns></returns>
         public async Task<DataVerityResult> DeleteFontHome(int FontHomeId)
         {
             DataVerityResult result = new DataVerityResult();
@@ -264,7 +272,10 @@ namespace WebTemplateDB.Service
             return await Task.Run(() => result);
 
         }
-
+        /// <summary>
+        /// 取得Banner圖片 -- API Service
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<FontHomeViewModel>> GetFontHomeList()
         {
             List<FontHomeViewModel> list = new List<FontHomeViewModel>();

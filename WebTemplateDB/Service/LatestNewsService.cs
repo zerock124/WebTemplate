@@ -21,9 +21,13 @@ namespace WebTemplateDB.Service
         public LatestNewsService()
         {
             _db = new WebTemplateEntities();
-            _latestnews = new GenericRepository<LatestNews>();
+            _latestnews = new GenericRepository<LatestNews>(_db);
         }
-
+        /// <summary>
+        /// 新增最新消息圖片
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<DataVerityResult<LatestNewsViewModel>> CreateLatestNews(LatestNewsViewModel model)
         {
             DataVerityResult<LatestNewsViewModel> result = new DataVerityResult<LatestNewsViewModel>();
@@ -72,7 +76,12 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 取得最新消息列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         public async Task<ResWithPaginationViewModel> GetLatestNewsList(SearchModel model, PaginationViewModel pagination)
         {
             ResWithPaginationViewModel pageData = new ResWithPaginationViewModel();
@@ -178,7 +187,11 @@ namespace WebTemplateDB.Service
             pageData.Success = true;
             return await Task.Run(() => pageData);
         }
-
+        /// <summary>
+        /// 取得變更最新消息圖片
+        /// </summary>
+        /// <param name="LatestNewsId"></param>
+        /// <returns></returns>
         public async Task<LatestNewsViewModel> GetLatestNewsItem(int LatestNewsId)
         {
             LatestNewsViewModel latestNews = new LatestNewsViewModel();
@@ -207,7 +220,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => latestNews);
         }
-
+        /// <summary>
+        /// 變更最新消息圖片
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<VerityResult> EditLatestNewsItem(LatestNewsViewModel model)
         {
             DataVerityResult result = new DataVerityResult();
@@ -243,7 +260,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 刪除最新消息
+        /// </summary>
+        /// <param name="LatestNewsId"></param>
+        /// <returns></returns>
         public async Task<VerityResult> DeleteLatestNewsItem(int LatestNewsId)
         {
             DataVerityResult result = new DataVerityResult();
@@ -267,7 +288,10 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 取得最新消息文章 -- API Service
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<LatestNewsViewModel>> GetLatestNewsList()
         {
             List<LatestNewsViewModel> list = new List<LatestNewsViewModel>();

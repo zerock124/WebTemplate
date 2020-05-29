@@ -106,6 +106,12 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res,JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 取得案例圖片列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetCaseList(SearchModel model, PaginationViewModel pagination)
@@ -134,6 +140,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 取得案例圖片的資訊
+        /// </summary>
+        /// <param name="CaseId"></param>
+        /// <returns></returns>
         [HttpGet]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetEditCaseItem(int CaseId)
@@ -159,6 +170,11 @@ namespace webTemplate.Controllers
             return Json(res, JsonRequestBehavior.AllowGet);
         }
 
+        /// <summary>
+        /// 編輯案例圖片
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditCaseItem(CaseViewModel model)
@@ -195,6 +211,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 刪除案例圖片
+        /// </summary>
+        /// <param name="CaseId"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteCaseItem(int CaseId)

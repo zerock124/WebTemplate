@@ -45,7 +45,7 @@ namespace webTemplate.Controllers
         }
 
         /// <summary>
-        /// 取得廣告圖片
+        /// 取得首頁圖片
         /// </summary>
         /// <param name="filesname"></param>
         /// <returns></returns>
@@ -60,7 +60,12 @@ namespace webTemplate.Controllers
             string mimeType = MimeMapping.GetMimeMapping(filename);
             return await Task.Run(() => new FileStreamResult(new System.IO.MemoryStream(imgData), mimeType));
         }
-
+        /// <summary>
+        /// 取得首頁圖片列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> GetFontHomeList(SearchModel model, PaginationViewModel pagination)
@@ -223,6 +228,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 刪除前台首頁圖
+        /// </summary>
+        /// <param name="FontHomeId"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteFontHome(int FontHomeId) 

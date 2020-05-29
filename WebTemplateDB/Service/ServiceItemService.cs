@@ -19,9 +19,12 @@ namespace WebTemplateDB.Service
         public ServiceItemService()
         {
             _db = new WebTemplateEntities();
-            _serviceItem = new GenericRepository<ServiceItem>();
+            _serviceItem = new GenericRepository<ServiceItem>(_db);
         }
-
+        /// <summary>
+        /// 取得服務項目列表
+        /// </summary>
+        /// <returns></returns>
         public async Task<List<ServiceItemViewModel>> GetServiceItemList()
         {
             List<ServiceItemViewModel> serviceItemList = new List<ServiceItemViewModel>();
@@ -46,7 +49,12 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => serviceItemList);
         }
-
+        /// <summary>
+        /// 新增服務項目
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="CurrendUserid"></param>
+        /// <returns></returns>
         public async Task<VerityResult> CreateServiceItemList(List<ServiceItemViewModel> model, string CurrendUserid)
         {
             VerityResult result = new VerityResult();
@@ -107,7 +115,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => result);
         }
-
+        /// <summary>
+        /// 刪除服務項目
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<VerityResult> DeleteServiceItem(ServiceItemViewModel model) 
         {
             VerityResult result = new VerityResult();

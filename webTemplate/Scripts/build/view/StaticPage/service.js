@@ -11,14 +11,6 @@ define(["require", "exports", "../Share/PublicFunction"], function (require, exp
             };
             return PublicFunction_1.AjaxReturn(setting);
         };
-        StaticPageService.prototype.CreateStaticPage = function (model) {
-            var setting = {
-                url: '/StaticPage/CreateStaticPage',
-                type: 'POST',
-                data: model
-            };
-            return PublicFunction_1.AjaxReturn(setting);
-        };
         StaticPageService.prototype.EditStaticPage = function (model) {
             var setting = {
                 url: '/StaticPage/EditStaticPage',

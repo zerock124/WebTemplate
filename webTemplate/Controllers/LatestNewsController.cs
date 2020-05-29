@@ -69,7 +69,6 @@ namespace webTemplate.Controllers
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        //[ValidateInput(false)]
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> CreateLatestNews(LatestNewsViewModel model)
@@ -107,6 +106,12 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res,JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 取得最新消息列表
+        /// </summary>
+        /// <param name="model"></param>
+        /// <param name="pagination"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<JsonResult> GetLatestNewsList(SearchModel model, PaginationViewModel pagination)
         {
@@ -135,6 +140,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// 取得最新消息的內容
+        /// </summary>
+        /// <param name="LatestNewsId"></param>
+        /// <returns></returns>
         [HttpGet]
         public async Task<JsonResult> GetEditLatestNewsItem(int LatestNewsId)
         {
@@ -157,6 +167,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// 編輯最新消息
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> EditLatestNewsItem(LatestNewsViewModel model)
@@ -194,6 +209,11 @@ namespace webTemplate.Controllers
             res.ResponseTime = DateTime.Now.ToString("yyyy-MM-dd hh:mm:ss");
             return Json(res, JsonRequestBehavior.DenyGet);
         }
+        /// <summary>
+        /// 刪除最新消息
+        /// </summary>
+        /// <param name="LatestNewsId"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateJsonAntiForgeryToken]
         public async Task<JsonResult> DeleteLatestNews(int LatestNewsId)

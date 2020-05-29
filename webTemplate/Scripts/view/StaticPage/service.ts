@@ -12,16 +12,6 @@ class StaticPageService implements IStaticPageService {
         return AjaxReturn(setting);
     }
 
-    CreateStaticPage(model: StaticPageViewModel): JQuery.jqXHR<ResponseViewModel> {
-        const setting: JQueryAjaxSettings = {
-            url: '/StaticPage/CreateStaticPage',
-            type: 'POST',
-            data: model
-        };
-
-        return AjaxReturn(setting);
-    }
-
     EditStaticPage(model: StaticPageViewModel): JQuery.jqXHR<ResponseViewModel> {
         const setting: JQueryAjaxSettings = {
             url: '/StaticPage/EditStaticPage',

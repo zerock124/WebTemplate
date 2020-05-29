@@ -19,7 +19,11 @@ namespace WebTemplateDB.Service
         {
             _webconfig = new GenericRepository<WebConfig>();
         }
-
+        /// <summary>
+        /// 取得網站設定內容
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
         public async Task<WebConfigViewModel> GetWebConfig(int Id)
         {
             WebConfigViewModel item = new WebConfigViewModel();
@@ -53,7 +57,11 @@ namespace WebTemplateDB.Service
 
             return await Task.Run(() => item);
         }
-
+        /// <summary>
+        /// 變更網站設定
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public async Task<VerityResult> EditWebConfig(WebConfigViewModel model)
         {
             VerityResult result = new VerityResult();
